@@ -8,8 +8,10 @@ import {EnglishAudioContextProvider} from "./PlayEnglishContext";
 import AudioContextProvider from "./AudioContext";
 import Homepage from "./Homepage";
 import Introduction from "./Introduction";
+import TopAppBar from "./TopAppBar";
 
 function App() {
+
   return (
 
         <LanguageContextProvider>
@@ -17,6 +19,7 @@ function App() {
                 <AudioContextProvider>
                     <div className="App">
                         <BrowserRouter>
+                            <TopAppBar/>
                             <Routes>
                                 <Route path="/" element={<Homepage />}/>
                                 <Route path="/Introduction" element={<Introduction />}/>

@@ -17,7 +17,6 @@ function Introduction() {
     const {language, chooseLanguage} = useContext(LanguageContext)
     console.log(isPlaying)
     console.log(language)
-
     return(
         <div>
             <img src={img} className="App-logo" alt="logo" />
