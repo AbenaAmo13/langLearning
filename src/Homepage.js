@@ -1,17 +1,28 @@
 
 import logo from "./logo.svg";
 import {Link} from "react-router-dom";
-import {useContext, useEffect} from "react";
-import {AudioContext} from "./AudioContext";
-import {EnglishAudioContext} from "./PlayEnglishContext";
-import {LanguageContext} from "./LanguageContext";
+import {useContext, useEffect, useState} from "react";
+import {AudioContext} from "./context/AudioContext";
+import {EnglishAudioContext} from "./context/PlayEnglishContext";
+import {LanguageContext} from "./context/LanguageContext";
 import {navBarElements} from "./NavBarElements";
+import testImage from "./images/3dspaceship.png";
+import testAudio from "./audios/testing.mp3";
 
 function Homepage() {
     //let audio = new Audio(process.env.PUBLIC_URL + '/audio/introduction.mp3')
     const { isPlaying, playAudio, stopAudio } = useContext(AudioContext);
     const {speakEnglishWords} = useContext(EnglishAudioContext);
     const {language, updateLanguage} = useContext(LanguageContext)
+
+    const lockedStatusObj =
+    {  Basics: "unlocked",
+        Health: "locked",
+        Education: "locked",
+         Identification:"locked",
+        Jobs: "Basics"
+    }
+
     const English = "English";
 
     useEffect(() => {
@@ -19,7 +30,18 @@ function Homepage() {
             updateLanguage("twi");
             localStorage.setItem("language", "twi")
         }
+
+        if (!localStorage.getItem('lockedStatusData')) {
+            localStorage.setItem('lockedStatusData', JSON.stringify(lockedStatusObj));
+        }
     }, []);
+
+
+
+
+
+
+
 
 
 
@@ -54,7 +76,9 @@ function Homepage() {
                                <i className="material-icons" alt="help icon">volume_up</i>
                            </button>
                            <button className="icon-buttons">
-                               <i className="material-icons" alt="help icon">lock</i>
+                               <i className="material-icons" alt="help icon">
+                                   {navElement.locked_status ==="locked"? "lock":"lock_open"}
+                               </i>
                            </button>
                            <Link key={index} to={`/${navElement.Link}`} className= "nav_link_routers">
                            <button className="start-button">Start</button>

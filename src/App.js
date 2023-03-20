@@ -3,12 +3,13 @@ import logo from './logo.svg';
 import img from './img.png'
 import './App.css';
 import {BrowserRouter, Routes, Route} from "react-router-dom";
-import LanguageContextProvider from "./LanguageContext";
-import {EnglishAudioContextProvider} from "./PlayEnglishContext";
-import AudioContextProvider from "./AudioContext";
+import LanguageContextProvider from "./context/LanguageContext";
+import {EnglishAudioContextProvider} from "./context/PlayEnglishContext";
+import AudioContextProvider from "./context/AudioContext";
 import Homepage from "./Homepage";
 import Introduction from "./Introduction";
 import TopAppBar from "./TopAppBar";
+import Basics from "./lessons/Basics/Basics"
 
 function App() {
 
@@ -23,6 +24,7 @@ function App() {
                             <Routes>
                                 <Route path="/" element={<Homepage />}/>
                                 <Route path="/Introduction" element={<Introduction />}/>
+                                <Route path="/Basics" element={<Basics/>}/>
                             </Routes>
                         </BrowserRouter>
                     </div>

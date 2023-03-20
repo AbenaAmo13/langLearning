@@ -1,7 +1,7 @@
 import {useContext, useEffect, useState} from "react";
-import {AudioContext} from "./AudioContext";
-import {EnglishAudioContext} from "./PlayEnglishContext";
-import {LanguageContext} from "./LanguageContext";
+import {AudioContext} from "./context/AudioContext";
+import {EnglishAudioContext} from "./context/PlayEnglishContext";
+import {LanguageContext} from "./context/LanguageContext";
 import appBarTestAudio from "./audios/testing.mp3"
 import {Link} from "react-router-dom";
 

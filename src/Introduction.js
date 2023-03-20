@@ -1,8 +1,8 @@
 import img from "./img.png";
 import {useContext, useEffect} from "react";
-import { AudioContext } from './AudioContext';
-import {EnglishAudioContext} from './PlayEnglishContext'
-import {LanguageContext} from "./LanguageContext";
+import { AudioContext } from './context/AudioContext';
+import {EnglishAudioContext} from './context/PlayEnglishContext'
+import {LanguageContext} from "./context/LanguageContext";
 import audioFile from './audios/introduction.mp3'
 import testing from './audios/testing.mp3'
 
