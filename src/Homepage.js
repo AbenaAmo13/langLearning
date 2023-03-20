@@ -6,9 +6,10 @@ import {AudioContext} from "./context/AudioContext";
 import {EnglishAudioContext} from "./context/PlayEnglishContext";
 import {LanguageContext} from "./context/LanguageContext";
 import {navBarElements} from "./NavBarElements";
-import testImage from "./images/3dspaceship.png";
-import testAudio from "./audios/testing.mp3";
-import test2Audio from "./audios/introduction.mp3";
+import testImage from "./images/3dspaceship.png"
+import testAudio from "./audios/testing.mp3"
+import test2Audio from "./audios/introduction.mp3"
+import audioFile from "./audios/introduction.mp3";
 
 function Homepage() {
     //let audio = new Audio(process.env.PUBLIC_URL + '/audio/introduction.mp3')
@@ -25,7 +26,6 @@ function Homepage() {
         Jobs: true
     }
     const English = "English";
-    console.log(status)
      const navBarElements=[
         {  "Image":testImage,
             "NavBarTitleEnglish": "Basics",
@@ -76,11 +76,14 @@ function Homepage() {
 
         if (!localStorage.getItem('lockedStatusData')) {
             localStorage.setItem('lockedStatusData', JSON.stringify(lockedStatusObj));
-            const status = JSON.parse(localStorage.getItem('lockedStatusData'));
-            setStatus(status)
-
         }
+
     }, []);
+
+    useEffect(()=>{
+        const status = JSON.parse(localStorage.getItem('lockedStatusData'));
+        setStatus(status)
+    }, [])
 
     return(
     <div>
@@ -117,11 +120,11 @@ function Homepage() {
                                    {navElement.locked_status === true? "lock":"lock_open"}
                                </i>
                            </button>
+                           {navElement.locked_status ===false &&(
                            <Link key={index} to={`/${navElement.Link}`} className= "nav_link_routers">
-                               {navElement.locked_status ===false &&(
                                    <button className="start-button">Start</button>
-                                   )}
                            </Link>
+                           )}
                        </div>
                    </div>
                 </div>
