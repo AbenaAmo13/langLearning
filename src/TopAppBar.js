@@ -3,6 +3,7 @@ import {AudioContext} from "./AudioContext";
 import {EnglishAudioContext} from "./PlayEnglishContext";
 import {LanguageContext} from "./LanguageContext";
 import appBarTestAudio from "./audios/testing.mp3"
+import {Link} from "react-router-dom";
 
 function TopAppBar(){
     const { isPlaying, playAudio, stopAudio } = useContext(AudioContext);
@@ -26,12 +27,17 @@ function TopAppBar(){
                 {language === English ? "Government Says" : "Aban Ka sɛ"}
             </div>
             <div className="appbar-icons">
-                <button className="icon-buttons">
-                    <i className="material-icons" alt="help icon">help</i>
-                </button>
-                <button className="icon-buttons">
-                    <i className="material-icons" alt="help icon">home</i>
-                </button>
+                <Link to="/Help">
+                    <button className="icon-buttons">
+                        <i className="material-icons" alt="help icon">help</i>
+                    </button>
+                </Link>
+                <Link to="/">
+                    <button className="icon-buttons">
+                        <i className="material-icons" alt="home icon">home</i>
+                    </button>
+                </Link>
+
                 <button className="icon-buttons" onClick={()=>playAudio(testAudio)}>
                     <i className="material-icons" alt="volume icon">volume_up</i>
                 </button>

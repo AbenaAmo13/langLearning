@@ -30,7 +30,7 @@ function Homepage() {
                 <h1>Akwaaba </h1>
             </div>
             <div className="volume_div">
-                <button className="icon-buttons volume_icon" >
+                <button className="icon-buttons volume_icon lesson_volume_icon" >
                     <i className="material-icons" alt="help icon">volume_up</i>
                 </button>
             </div>
@@ -39,7 +39,6 @@ function Homepage() {
 
         <div className="navBar">
             {navBarElements.map((navElement, index) => (
-                <Link key={index} to={`/${navElement.Link}`} className= "nav_link_routers">
                 <div key={index} className="navCard">
                     <div className="cardmedia">
                         <img src={navElement.Image} alt={navElement.NavBarTitleEnglish} className="cardImg" />
@@ -57,11 +56,12 @@ function Homepage() {
                            <button className="icon-buttons">
                                <i className="material-icons" alt="help icon">lock</i>
                            </button>
+                           <Link key={index} to={`/${navElement.Link}`} className= "nav_link_routers">
+                           <button className="start-button">Start</button>
+                           </Link>
                        </div>
                    </div>
-
                 </div>
-                </Link>
             ))}
         </div>
     </div>
