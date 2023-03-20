@@ -8,22 +8,65 @@ import {LanguageContext} from "./context/LanguageContext";
 import {navBarElements} from "./NavBarElements";
 import testImage from "./images/3dspaceship.png";
 import testAudio from "./audios/testing.mp3";
+import test2Audio from "./audios/introduction.mp3";
 
 function Homepage() {
     //let audio = new Audio(process.env.PUBLIC_URL + '/audio/introduction.mp3')
     const { isPlaying, playAudio, stopAudio } = useContext(AudioContext);
     const {speakEnglishWords} = useContext(EnglishAudioContext);
     const {language, updateLanguage} = useContext(LanguageContext)
+    const [status, setStatus]= useState({})
 
     const lockedStatusObj =
-    {  Basics: "unlocked",
-        Health: "locked",
-        Education: "locked",
-         Identification:"locked",
-        Jobs: "Basics"
+    {  Basics: false,
+        Health: true,
+        Education: true,
+         Identification:true,
+        Jobs: true
     }
-
     const English = "English";
+    console.log(status)
+     const navBarElements=[
+        {  "Image":testImage,
+            "NavBarTitleEnglish": "Basics",
+            "NavBarTitleTwi": "Mfitiaseɛ no",
+            "TwiAudio":testAudio,
+            "Link": "Basics",
+            "locked_status": status.Basics
+        }, {
+            "Image":testImage,
+            "NavBarTitleEnglish": "HealthCare",
+            "NavBarTitleTwi": "Apomuden",
+            "TwiAudio":test2Audio,
+            "Link": "Health",
+            "locked_status": status.Health
+        },
+        {
+            "Image":testImage,
+            "NavBarTitleEnglish": "Education",
+            "NavBarTitleTwi": "Adesua ne nhomasua",
+            "TwiAudio":testAudio,
+            "Link":"Education",
+            "locked_status": status.Education
+        },
+        {
+            "Image":testImage,
+            "NavBarTitleEnglish": "Identification",
+            "NavBarTitleTwi": "Nipakuo ho nnwuma",
+            "TwiAudio":testAudio,
+            "Link": "Identification",
+            "locked_status": status.Identification
+        }, {
+            "Image":testImage,
+            "NavBarTitleEnglish": "Jobs",
+            "NavBarTitleTwi": "Adwuma",
+            "TwiAudio":testAudio,
+            "Link": "Jobs",
+            "locked_status": status.Jobs
+        }
+    ]
+
+
 
     useEffect(() => {
         if(!language){
@@ -33,17 +76,11 @@ function Homepage() {
 
         if (!localStorage.getItem('lockedStatusData')) {
             localStorage.setItem('lockedStatusData', JSON.stringify(lockedStatusObj));
+            const status = JSON.parse(localStorage.getItem('lockedStatusData'));
+            setStatus(status)
+
         }
     }, []);
-
-
-
-
-
-
-
-
-
 
     return(
     <div>
@@ -77,14 +114,13 @@ function Homepage() {
                            </button>
                            <button className="icon-buttons">
                                <i className="material-icons" alt="help icon">
-                                   {navElement.locked_status ==="locked"? "lock":"lock_open"}
+                                   {navElement.locked_status === true? "lock":"lock_open"}
                                </i>
                            </button>
                            <Link key={index} to={`/${navElement.Link}`} className= "nav_link_routers">
-                               {navElement.locked_status ==="unlocked" &&(
+                               {navElement.locked_status ===false &&(
                                    <button className="start-button">Start</button>
                                    )}
-
                            </Link>
                        </div>
                    </div>
