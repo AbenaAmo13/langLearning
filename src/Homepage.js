@@ -81,7 +81,10 @@ function Homepage() {
                                </i>
                            </button>
                            <Link key={index} to={`/${navElement.Link}`} className= "nav_link_routers">
-                           <button className="start-button">Start</button>
+                               {navElement.locked_status ==="unlocked" &&(
+                                   <button className="start-button">Start</button>
+                                   )}
+
                            </Link>
                        </div>
                    </div>
