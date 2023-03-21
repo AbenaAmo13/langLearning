@@ -5,11 +5,14 @@ import {useContext, useEffect, useState} from "react";
 import {AudioContext} from "./context/AudioContext";
 import {EnglishAudioContext} from "./context/PlayEnglishContext";
 import {LanguageContext} from "./context/LanguageContext";
-import {navBarElements} from "./NavBarElements";
 import testImage from "./images/3dspaceship.png"
+import basicsTwiAudio from "./audios/homepage/mfitias3no_audio.ogg"
+import healthAudio from "./audios/homepage/healthintroaudio.ogg"
+import educationAudio from "./audios/homepage/educationaudio.ogg"
+import identificationAudio from "./audios/homepage/identification.ogg"
+import adwuma from "./audios/homepage/adwuma.ogg"
 import testAudio from "./audios/testing.mp3"
-import test2Audio from "./audios/introduction.mp3"
-import audioFile from "./audios/introduction.mp3";
+
 
 function Homepage() {
     //let audio = new Audio(process.env.PUBLIC_URL + '/audio/introduction.mp3')
@@ -30,37 +33,37 @@ function Homepage() {
         {  "Image":testImage,
             "NavBarTitleEnglish": "Basics",
             "NavBarTitleTwi": "Mfitiaseɛ no",
-            "TwiAudio":testAudio,
+            "TwiAudio":basicsTwiAudio,
             "Link": "Basics",
             "locked_status": status.Basics
         }, {
             "Image":testImage,
-            "NavBarTitleEnglish": "HealthCare",
-            "NavBarTitleTwi": "Apomuden",
-            "TwiAudio":test2Audio,
+            "NavBarTitleEnglish": "Ghana Health Service",
+            "NavBarTitleTwi": "Ghana Apɔmuden adwuma",
+            "TwiAudio":healthAudio,
             "Link": "Health",
             "locked_status": status.Health
         },
         {
             "Image":testImage,
-            "NavBarTitleEnglish": "Education",
-            "NavBarTitleTwi": "Adesua ne nhomasua",
-            "TwiAudio":testAudio,
+            "NavBarTitleEnglish": "Ghana Education Service",
+            "NavBarTitleTwi": "Ghana sukuu dwumadie",
+            "TwiAudio":educationAudio,
             "Link":"Education",
             "locked_status": status.Education
         },
         {
             "Image":testImage,
-            "NavBarTitleEnglish": "Identification",
-            "NavBarTitleTwi": "Nipakuo ho nnwuma",
-            "TwiAudio":testAudio,
+            "NavBarTitleEnglish": "National Identification Authority",
+            "NavBarTitleTwi": "ɔman agyinahyɛdeɛ",
+            "TwiAudio":identificationAudio,
             "Link": "Identification",
             "locked_status": status.Identification
         }, {
             "Image":testImage,
             "NavBarTitleEnglish": "Jobs",
             "NavBarTitleTwi": "Adwuma",
-            "TwiAudio":testAudio,
+            "TwiAudio":adwuma,
             "Link": "Jobs",
             "locked_status": status.Jobs
         }
@@ -89,10 +92,10 @@ function Homepage() {
     <div>
         <div className="card_box">
             <div className="card_title">
-                <h1>Akwaaba </h1>
+                <h2>Akwaaba </h2>
             </div>
             <div className="volume_div">
-                <button className="icon-buttons volume_icon lesson_volume_icon" >
+                <button className="icon-buttons volume_icon lesson_volume_icon main_audio" >
                     <i className="material-icons" alt="help icon">volume_up</i>
                 </button>
             </div>

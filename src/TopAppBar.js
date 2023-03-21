@@ -24,7 +24,7 @@ function TopAppBar(){
     return(
         <div className='topAppBar'>
             <div>
-                {language === English ? "Government Says" : "Aban Ka sɛ"}
+                <h1>  {language === English ? "Government Says" : "Aban Ka sɛ"}</h1>
             </div>
             <div className="appbar-icons">
                 <Link to="/Help">
@@ -38,7 +38,7 @@ function TopAppBar(){
                     </button>
                 </Link>
 
-                <button className="icon-buttons" onClick={()=>playAudio(testAudio)}>
+                <button className="icon-buttons" onClick={()=>playAudio(new Audio(testAudio))}>
                     <i className="material-icons" alt="volume icon">volume_up</i>
                 </button>
                 <select id="languageSelector" value={language} onChange={(e) => handleLanguageChange(e.target.value)}>
