@@ -23,7 +23,7 @@ export const basicLessonData=[
     {
         Image: '',
         EnglishWord: "Education",
-        TwiWord: "Apɔmuden",
+        TwiWord: "Adesua",
         TwiAudio: '',
         EnglishScript: '',
     }
