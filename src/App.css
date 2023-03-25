@@ -90,6 +90,23 @@
 }
 
 
+.lesson_card_visuals{
+  box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+  margin: 5%;
+
+}
+
+.card_lesson_image{
+  width: 100%;
+}
+
+.lesson_card_keywords{
+  padding: 5%;
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
 /*NavBar Elements*/
 .navCard{
   display: flex;

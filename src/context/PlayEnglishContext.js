@@ -17,6 +17,7 @@ export const EnglishAudioContextProvider= ({children}) => {
 
     //This is triggered after the voices are ready.
     synth.addEventListener("voiceschanged",()=>{
+        console.log('getting voices')
         voice = synth.getVoices()[50]
     })
     //Initial get voices call, when they voices are ready
@@ -24,10 +25,12 @@ export const EnglishAudioContextProvider= ({children}) => {
 
     const speakEnglishWords = useCallback((text) => {
         if(!voice){
+            console.log('no voice available')
             //Use Daniel
             let utterance_words = new SpeechSynthesisUtterance(text);
             synth.speak(utterance_words);
         }else{
+            console.log('voice available')
             let utterance_words = new SpeechSynthesisUtterance(text);
             utterance_words.voice = voice;
             // Get the voices and speak the utterance for the words
