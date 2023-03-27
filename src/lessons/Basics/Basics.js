@@ -71,8 +71,15 @@ function Basics() {
                         </div>
                     </div>
                     <div className="lesson_buttons_div">
-                        <button onClick={getNextLesson} disabled={currentIndex === basicLessonData.length - 1} className="lesson_buttons">Next Item</button>
-                        <button onClick={getPreviousLesson} disabled={currentIndex===0} className="lesson_buttons">Previous Button</button>
+                        <button onClick={getPreviousLesson} disabled={currentIndex===0} className="lesson_buttons icon-buttons">
+                            <i className="material-icons" alt="help icon">arrow_back</i>
+                           <p>Back</p>
+
+                        </button>
+                        <button onClick={getNextLesson} disabled={currentIndex === basicLessonData.length - 1} className="lesson_buttons icon-buttons">
+                            <i className="material-icons" alt="help icon">arrow_forward</i>
+                            <p>Next</p>
+                        </button>
 
                     </div>
 

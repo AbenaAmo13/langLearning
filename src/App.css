@@ -123,6 +123,15 @@
 .progress_bar_padding{
   margin:5%;
 }
+.lesson_buttons{
+  box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+  display: flex;
+  align-items: center;
+  font-size: 20px;
+  border-radius: 4px;
+  background-color: antiquewhite;
+  padding-right: 5%;
+}
 
 
 
@@ -171,12 +180,10 @@
 }
 .lesson_buttons_div{
   display: flex;
+  margin: 5%;
   justify-content: space-around;
 }
 
-.lesson_buttons{
-  font-size: 20px;
-}
 
 
 .lesson_card_heading_title{
