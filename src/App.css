@@ -1,5 +1,5 @@
 .App {
-  text-align: center;
+  /*text-align: center*/;
 }
 
 .App-header {
@@ -15,6 +15,10 @@
 
 .volume_icon .lesson_volume_icon{
   color: #2365ae
+}
+
+.keyword_volume_icon{
+  margin-top: 3%;
 }
 
 
@@ -90,8 +94,15 @@
 }
 
 .progress_bar_main{
+
   background-color: lightgrey;
   width: 100%;
+}
+
+.lesson_progress_text{
+  font-size: 20px;
+  margin: auto;
+  text-align: center;
 }
 
 .progress_bar_secondary{
@@ -110,14 +121,18 @@
 }
 
 .progress_bar_padding{
-  padding:5%;
+  margin:5%;
 }
+
+
 
 .lesson_card_keywords{
   padding: 5%;
   display: flex;
   align-items: center;
   flex-wrap: wrap;
+  line-height: 1.5em;
+  font-size: 24px;
 }
 
 /*NavBar Elements*/
@@ -153,14 +168,33 @@
   justify-content: center;
   margin: 5%;
 }
+.lesson_buttons_div{
+  display: flex;
+  justify-content: space-around;
+}
+
+.lesson_buttons{
+  font-size: 20px;
+}
+
+
+.lesson_card_heading_title{
+  font-size: 25px;
+  line-height: 2em;
+}
 
 .lesson_card{
   box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
   display: flex;
+  flex-direction: column;
+  align-items: flex-start;
   margin: 5%;
-  align-items: center;
-  justify-content:space-around;
+  flex-wrap: wrap;
+  padding: 2%;
 }
+
+
+
 
 
 
