@@ -13,6 +13,7 @@ function Basics() {
     const {language, updateLanguage} = useContext(LanguageContext)
     const [currentIndex, setCurrentIndex] = useState(0);
     const [error, setError] = useState(null);
+    const progressWidth = ((currentIndex + 1) / basicLessonData.length) * 100;
     const English = "English";
     const mainCardTitle = "Introduction"
     const mainCardTitleTwi ="Mfitiaseɛ no"
@@ -30,8 +31,10 @@ function Basics() {
             if (currentIndex === basicLessonData.length - 1) {
                 setError('No more items to show');
             }else{
+
                 setError(null);
                 setCurrentIndex(currentIndex + 1);
+
             }
         }
     };
@@ -77,6 +80,17 @@ function Basics() {
                 </div>
 
             )}
+            <div className="progress_bar_padding">
+                <div className="progress_bar_main">
+                    <div className="progress_bar_secondary"
+                         style={{ width: `${progressWidth}%` }}
+                    >
+                        <p>{currentIndex + 1}/ {basicLessonData.length}</p>
+                    </div>
+            </div>
+
+
+            </div>
         </div>
 
     )

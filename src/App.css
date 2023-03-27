@@ -89,6 +89,15 @@
  box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);;
 }
 
+.progress_bar_main{
+  background-color: lightgrey;
+  width: 100%;
+}
+
+.progress_bar_secondary{
+  background-color:antiquewhite;
+}
+
 
 .lesson_card_visuals{
   box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
@@ -98,6 +107,10 @@
 
 .card_lesson_image{
   width: 100%;
+}
+
+.progress_bar_padding{
+  padding:5%;
 }
 
 .lesson_card_keywords{
