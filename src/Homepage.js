@@ -32,6 +32,15 @@ function Homepage() {
          Identification:true,
         Jobs: true
     }
+
+
+    const userScore={
+        BasicsScore: 0,
+        HealthScore: 0,
+        EducationScore:0,
+        IDScore: 0,
+        JobsScore:0
+    }
     const English = "English";
      const navBarElements=[
         {  "Image":greyGovernment,
@@ -74,6 +83,10 @@ function Homepage() {
         if (!localStorage.getItem('lockedStatusData')) {
             localStorage.setItem('lockedStatusData', JSON.stringify(lockedStatusObj));
         }
+        if (!localStorage.getItem('userScores')) {
+            localStorage.setItem('userScores', JSON.stringify(userScore));
+        }
+
 
     }, []);
 

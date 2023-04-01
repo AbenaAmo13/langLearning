@@ -1,22 +1,45 @@
 
-import {useContext, useEffect, useState} from "react";
+import {useContext, useState, useReducer} from "react";
 import {AudioContext} from "../../context/AudioContext";
 import {EnglishAudioContext} from "../../context/PlayEnglishContext";
 import introductionAudio from "../../audios/testing.mp3"
-import {basicLessonData} from "./BasicsLessonData"
+import {basicLessonData, trueOrFalseQuestions} from "./BasicsLessonData"
 
 
 function Basics() {
-    const [lessonCompleted, setLessonCompleted] = useState(false);
-    const [score, setScore] = useState(0);
-    console.log(lessonCompleted)
-    if(!lessonCompleted){
+    let basicsUserScore = JSON.parse(localStorage.getItem('userScores'));
+    basicsUserScore = basicsUserScore.BasicsScore;
+
+    const initialState={
+        lessonCompleted: false,
+        startQuestion: false,
+        basicsUserSore: basicsUserScore,
+        userPassedLesson : false
+    };
+
+    function reducer(state, action) {
+        switch (action.type) {
+            case "SET_LESSON_COMPLETED":
+                return { ...state, lessonCompleted: action.payload };
+            case "SET_START_QUESTION":
+                return { ...state, startQuestion: action.payload };
+            case "SET_USER_SCORE":
+                return { ...state, userScore: action.payload };
+            case "SET_USER_PASSED_LESSON":
+                return { ...state, userPassedLesson: action.payload };
+            default:
+                throw new Error();
+        }
+    }
+    const [lessonStates, dispatch] = useReducer(reducer, initialState);
+
+    if(!lessonStates.lessonCompleted){
         return(
-            <BasicLessons {...{lessonCompleted, setLessonCompleted}} />
+            <BasicLessons state={lessonStates} dispatch={dispatch} />
         )
-    }else if(lessonCompleted){
+    }else if(lessonStates.lessonCompleted && lessonStates.startQuestion){
         return(
-            <BasicTrueOrFalseQuestions {...{lessonCompleted, setLessonCompleted}} />
+            <BasicTrueOrFalseQuestions state={lessonStates} dispatch={dispatch}  />
         )
     }
 
@@ -27,15 +50,16 @@ function Basics() {
 
 
 
-function BasicLessons({lessonCompleted, setLessonCompleted}){
+function BasicLessons({state, dispatch}){
     const {renderAsking, setRenderAsking} = useState(false);
     const { isPlaying, playAudio, stopAudio } = useContext(AudioContext);
     const [currentIndex, setCurrentIndex] = useState(0);
     const [error, setError] = useState(null);
     //It is basicLessonData.
     const progressWidth = Math.round(((currentIndex + 1) / basicLessonData.length ) * 100);
-    let [progress, setProgress] = useState(progressWidth);
     const mainCardTitle = "Introduction"
+    console.log("Lesson Completed " + state.lessonCompleted)
+    console.log("Start Question " + state.startQuestion)
     /*
     * onClick={() => (language === English ? speakEnglishWords() : playAudio())}
     * */
@@ -47,12 +71,12 @@ function BasicLessons({lessonCompleted, setLessonCompleted}){
         else {
             if (currentIndex === basicLessonData.length -1) {
                 console.log('final one')
-                setLessonCompleted(true)
+                dispatch({ type: "SET_LESSON_COMPLETED", payload: true });
+                dispatch({ type: "SET_START_QUESTION", payload: true });
                 //setError('No more items to show');
             }else{
                 setError(null);
                 setCurrentIndex(currentIndex + 1);
-               setProgress(progressWidth + 20)
             }
         }
         console.log('NEW INDEX ' + currentIndex)
@@ -64,12 +88,11 @@ function BasicLessons({lessonCompleted, setLessonCompleted}){
         } else {
             setError(null)
             setCurrentIndex(currentIndex - 1);
-            setProgress(progressWidth -20)
         }
     };
     return(
         <div className="overall_lessons_container">
-            {!lessonCompleted && basicLessonData.length > 0  && (
+            {basicLessonData.length > 0  && (
                 <div >
                     <div className="lesson_card">
                         <h3 className="lesson_card_heading_title"> {mainCardTitle + ": "+ basicLessonData[currentIndex].EnglishWord}
@@ -106,7 +129,6 @@ function BasicLessons({lessonCompleted, setLessonCompleted}){
                         <button onClick={getPreviousLesson} disabled={currentIndex===0} className="lesson_buttons icon-buttons">
                             <i className="material-icons" alt="help icon">arrow_back</i>
                             <p>Back</p>
-
                         </button>
                         <button onClick={getNextLesson} disabled={currentIndex === basicLessonData.length} className="lesson_buttons icon-buttons">
                             <p>Next </p>
@@ -144,13 +166,56 @@ function BasicLessons({lessonCompleted, setLessonCompleted}){
     )
 }
 
-function BasicTrueOrFalseQuestions() {
-    return(
-        <div>
-            <h1> Are you ready to begin the questions</h1>
-        </div>
-    )
+function BasicTrueOrFalseQuestions({state, dispatch}) {
+    const { isPlaying, playAudio, stopAudio } = useContext(AudioContext);
+    function notReady(){
 
+    }
+    function ready(){
+
+
+    }
+    return(
+        <div className="questionPending">
+            <h1 className="question_title"> Ready for the questions?</h1>
+            <div className="question_audio_icons">
+                <div className="volume_button_divs">
+                    <div>🇬🇭</div>
+                    <button className=" volume_icon lesson_volume_icon keyword_volume_icon" onClick={()=>{playAudio(new Audio(introductionAudio))}}  >
+                        <i className="material-icons" alt="help icon">volume_up</i>
+                    </button>
+                </div>
+
+                <div className="volume_button_divs">
+                    <div>🇬🇧</div>
+                    <button className=" volume_icon lesson_volume_icon keyword_volume_icon" onClick={()=>{playAudio(new Audio(introductionAudio))}}  >
+                        <i className="material-icons" alt="help icon">volume_up</i>
+                    </button>
+                </div>
+            </div>
+            <div className="question_buttons">
+                <button  className="lesson_buttons icon-buttons">
+                    <p>Yes</p>
+                    <i className="material-icons" alt="help icon">thumb_up_alt</i>
+                </button>
+                <button  className="lesson_buttons icon-buttons">
+                    <p>No</p>
+                    <i className="material-icons" alt="help icon">thumb_down_off_alt</i>
+                </button>
+            </div>
+
+
+        </div>
+
+    )
 }
+
+function trueOrFalse(props){
+    return(<div>
+        <h1>True or False</h1>
+    </div>)
+}
+
+
 
 export default Basics;

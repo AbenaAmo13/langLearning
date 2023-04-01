@@ -64,6 +64,16 @@ background-color: #e2e5df;
   width: 100%;
 }
 
+.question_title{
+  text-align: center;
+}
+
+.question_audio_icons{
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  width: 100%;
+}
 .audio_options{}
 
 
@@ -126,6 +136,10 @@ background-color: #e2e5df;
   width: 100%;
 }
 
+.questionPending{
+  /*box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);*/
+}
+
 .lesson_progress_text{
   font-size: 20px;
   margin: auto;
@@ -140,7 +154,8 @@ background-color: #e2e5df;
 .lesson_card_visuals{
   box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
   margin: 5%;
-
+  border-radius: 16px;
+  overflow: hidden;
 }
 
 .card_lesson_image{
@@ -226,15 +241,7 @@ background-color: #e2e5df;
   line-height: 2em;
 }
 
-.lesson_card{
-  box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
-  display: flex;
-  flex-direction: column;
-  align-items: flex-start;
-  margin: 5%;
-  flex-wrap: wrap;
-  padding: 2%;
-}
+
 
 progress {
   height: 40px;
@@ -292,7 +299,11 @@ progress::-moz-progress-bar {
   width: 10%;
 }
 
-
+.question_buttons{
+  display: flex;
+  justify-content: space-around;
+  margin: 2%;
+}
 
 
 
@@ -330,10 +341,22 @@ progress::-moz-progress-bar {
     align-items: center;
   }
 
+  .lesson_card{
+    box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    margin: 5%;
+    flex-wrap: wrap;
+    padding: 2%;
+  }
+
 }
 
-@media only screen and (min-width: 767px){
 
+
+
+@media only screen and (min-width: 767px){
 
   /*NavBar Element Stylings*/
 .overall_lessons_container{
@@ -348,6 +371,18 @@ progress::-moz-progress-bar {
 
   .topAppBar{
     flex-direction: row;
+  }
+  .lesson_card{
+    display: flex;
+    text-align: center;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+  }
+
+  .questionPending{
+    width: 50%;
+    margin: auto;
   }
 
 }
