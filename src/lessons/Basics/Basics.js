@@ -32,28 +32,30 @@ function BasicLessons({lessonCompleted, setLessonCompleted}){
     const { isPlaying, playAudio, stopAudio } = useContext(AudioContext);
     const [currentIndex, setCurrentIndex] = useState(0);
     const [error, setError] = useState(null);
-    const progressWidth = Math.round(((currentIndex +1) / basicLessonData.length) * 100);
-    console.log("The progress width" + progressWidth);
+    //It is basicLessonData.
+    const progressWidth = Math.round(((currentIndex + 1) / basicLessonData.length ) * 100);
     let [progress, setProgress] = useState(progressWidth);
     const mainCardTitle = "Introduction"
-    console.log(progress)
     /*
     * onClick={() => (language === English ? speakEnglishWords() : playAudio())}
     * */
+    console.log("Current Index: " + currentIndex)
     const getNextLesson = () => {
         if (currentIndex >= basicLessonData.length) {
             setCurrentIndex(0);
         }
         else {
-            if (currentIndex === basicLessonData.length) {
+            if (currentIndex === basicLessonData.length -1) {
+                console.log('final one')
+                setLessonCompleted(true)
                 //setError('No more items to show');
             }else{
-
                 setError(null);
                 setCurrentIndex(currentIndex + 1);
                setProgress(progressWidth + 20)
             }
         }
+        console.log('NEW INDEX ' + currentIndex)
     };
 
     const getPreviousLesson = () => {
@@ -65,13 +67,6 @@ function BasicLessons({lessonCompleted, setLessonCompleted}){
             setProgress(progressWidth -20)
         }
     };
-
-    useEffect(()=>{
-        if(progress ===100){
-            setLessonCompleted(true)
-            console.log('This lesson is complete')
-        }
-    }, [progress])
     return(
         <div className="overall_lessons_container">
             {!lessonCompleted && basicLessonData.length > 0  && (
@@ -113,7 +108,7 @@ function BasicLessons({lessonCompleted, setLessonCompleted}){
                             <p>Back</p>
 
                         </button>
-                        <button onClick={getNextLesson} disabled={currentIndex === basicLessonData.length-1} className="lesson_buttons icon-buttons">
+                        <button onClick={getNextLesson} disabled={currentIndex === basicLessonData.length} className="lesson_buttons icon-buttons">
                             <p>Next </p>
                             <i className="material-icons" alt="help icon">arrow_forward</i>
 
