@@ -6,25 +6,28 @@ import appBarTestAudio from "./audios/testing.mp3"
 import {Link} from "react-router-dom";
 
 function TopAppBar(){
+    //const imagePath = `${process.env.PUBLIC_URL}/empower-us-192.webp`;
+    const imagePath = process.env.PUBLIC_URL + '/empower-us-192.webp';
+    console.log(imagePath)
     const { isPlaying, playAudio, stopAudio } = useContext(AudioContext);
     const {speakEnglishWords} = useContext(EnglishAudioContext);
-    const {language, updateLanguage} = useContext(LanguageContext)
     const testAudio = appBarTestAudio;
     const English = "English";
     const Twi = "Twi";
-    //Function to change the appBar title on the project
+/*    //Function to change the appBar title on the project
     function handleLanguageChange(language) {
         let newLanguage = language.toLowerCase();
         console.log(newLanguage)
         updateLanguage(language);
         speakEnglishWords(newLanguage);
-    }
+    }*/
 
 
     return(
         <div className='topAppBar'>
-            <div>
-                <h1>  {language === English ? "Government Says" : "Aban Ka sɛ"}</h1>
+            <div className="title_and_logo">
+                <img src={imagePath} alt="logo" id="logo"/>
+                <h1> Government Says</h1>
             </div>
             <div className="appbar-icons">
                 <Link to="/Help">
@@ -41,10 +44,10 @@ function TopAppBar(){
                 <button className="icon-buttons" onClick={()=>playAudio(new Audio(testAudio))}>
                     <i className="material-icons" alt="volume icon">volume_up</i>
                 </button>
-                <select id="languageSelector" value={language} onChange={(e) => handleLanguageChange(e.target.value)}>
+              {/*  <select id="languageSelector" value={language} onChange={(e) => handleLanguageChange(e.target.value)}>
                     <option value="Twi" id="twiflag">🇬🇭Twi</option>
                     <option value="English" id="engishflag">🇬🇧 English</option>
-                </select>
+                </select>*/}
                 </div>
             </div>
     );

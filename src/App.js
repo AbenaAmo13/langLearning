@@ -15,7 +15,6 @@ function App() {
 
   return (
 
-        <LanguageContextProvider>
             <EnglishAudioContextProvider>
                 <AudioContextProvider>
                     <div className="App">
@@ -30,7 +29,6 @@ function App() {
                     </div>
                 </AudioContextProvider>
             </EnglishAudioContextProvider>
-        </LanguageContextProvider>
   );
 }
 

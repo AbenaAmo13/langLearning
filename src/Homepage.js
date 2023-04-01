@@ -6,6 +6,11 @@ import {AudioContext} from "./context/AudioContext";
 import {EnglishAudioContext} from "./context/PlayEnglishContext";
 import {LanguageContext} from "./context/LanguageContext";
 import testImage from "./images/3dspaceship.png"
+import healthImage from "./images/greyhealthcare.webp"
+import greyGovernment from "./images/greygovernment.webp"
+import ghanaId from "./images/greyid.webp"
+import educationalImage from "./images/greyeducation.webp"
+import jobsImage from "./images/greyjobs.webp"
 import basicsTwiAudio from "./audios/homepage/mfitias3no_audio.ogg"
 import healthAudio from "./audios/homepage/healthintroaudio.ogg"
 import educationAudio from "./audios/homepage/educationaudio.ogg"
@@ -18,7 +23,6 @@ function Homepage() {
     //let audio = new Audio(process.env.PUBLIC_URL + '/audio/introduction.mp3')
     const { isPlaying, playAudio, stopAudio } = useContext(AudioContext);
     const {speakEnglishWords} = useContext(EnglishAudioContext);
-    const {language, updateLanguage} = useContext(LanguageContext)
     const [status, setStatus]= useState({})
 
     const lockedStatusObj =
@@ -30,39 +34,34 @@ function Homepage() {
     }
     const English = "English";
      const navBarElements=[
-        {  "Image":testImage,
-            "NavBarTitleEnglish": "Basics",
-            "NavBarTitleTwi": "Mfitiaseɛ no",
+        {  "Image":greyGovernment,
+            "NavBarTitleEnglish": "Introduction",
             "TwiAudio":basicsTwiAudio,
             "Link": "Basics",
             "locked_status": status.Basics
         }, {
-            "Image":testImage,
+            "Image":healthImage,
             "NavBarTitleEnglish": "Ghana Health Service",
-            "NavBarTitleTwi": "Ghana Apɔmuden adwuma",
             "TwiAudio":healthAudio,
             "Link": "Health",
             "locked_status": status.Health
         },
         {
-            "Image":testImage,
+            "Image":educationalImage,
             "NavBarTitleEnglish": "Ghana Education Service",
-            "NavBarTitleTwi": "Ghana sukuu dwumadie",
             "TwiAudio":educationAudio,
             "Link":"Education",
             "locked_status": status.Education
         },
         {
-            "Image":testImage,
+            "Image":ghanaId,
             "NavBarTitleEnglish": "National Identification Authority",
-            "NavBarTitleTwi": "ɔman agyinahyɛdeɛ",
             "TwiAudio":identificationAudio,
             "Link": "Identification",
             "locked_status": status.Identification
         }, {
-            "Image":testImage,
+            "Image":jobsImage,
             "NavBarTitleEnglish": "Jobs",
-            "NavBarTitleTwi": "Adwuma",
             "TwiAudio":adwuma,
             "Link": "Jobs",
             "locked_status": status.Jobs
@@ -72,11 +71,6 @@ function Homepage() {
 
 
     useEffect(() => {
-        if(!language){
-            updateLanguage("twi");
-            localStorage.setItem("language", "twi")
-        }
-
         if (!localStorage.getItem('lockedStatusData')) {
             localStorage.setItem('lockedStatusData', JSON.stringify(lockedStatusObj));
         }
@@ -95,7 +89,7 @@ function Homepage() {
                 <h2>Akwaaba </h2>
             </div>
             <div className="volume_div">
-                <button className="icon-buttons volume_icon lesson_volume_icon main_audio" >
+                <button className="volume_icon lesson_volume_icon main_audio" >
                     <i className="material-icons" alt="help icon">volume_up</i>
                 </button>
             </div>
@@ -106,16 +100,16 @@ function Homepage() {
             {navBarElements.map((navElement, index) => (
                 <div key={index} className="navCard">
                     <div className="cardmedia">
-                        <img src={navElement.Image} alt={navElement.NavBarTitleEnglish} className="cardImg" />
+                        <img src={navElement.Image} alt={navElement.NavBarTitleEnglish}  className="cardImg" />
                     </div>
                    <div>
                        <div className="navTitle">
                            <h3 className="nav-title">
-                               {language === English ? navElement.NavBarTitleEnglish :navElement.NavBarTitleTwi }
+                               { navElement.NavBarTitleEnglish}
                            </h3>
                        </div>
                        <div className="nav-icons">
-                           <button className="icon-buttons volume_icon" onClick={() => (language === English ? speakEnglishWords(navElement.NavBarTitleEnglish) : playAudio(  new Audio(navElement.TwiAudio)))} >
+                           <button className=" volume_icon" onClick={() => (playAudio(  new Audio(navElement.TwiAudio)))} >
                                <i className="material-icons" alt="help icon">volume_up</i>
                            </button>
                            <button className="icon-buttons">
@@ -124,9 +118,9 @@ function Homepage() {
                                </i>
                            </button>
                            {navElement.locked_status ===false &&(
-                           <Link key={index} to={`/${navElement.Link}`} className= "nav_link_routers">
-                                   <button className="start-button">Start</button>
-                           </Link>
+                               <Link key={index} to={`/${navElement.Link}`} className= "nav_link_routers">
+                                   <button className="start-button">START</button>
+                               </Link>
                            )}
                        </div>
                    </div>
