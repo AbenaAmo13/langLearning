@@ -182,7 +182,7 @@ function QuestionPrompt({state, dispatch}) {
     }
     return(
         <div className="questionPending">
-            <h1 className="question_title"> Ready for the questions?</h1>
+            <h2 className="question_title"> Ready for the questions?</h2>
             <div className="question_audio_icons">
                 <div className="volume_button_divs">
                     <div>🇬🇭</div>
@@ -215,10 +215,39 @@ function QuestionPrompt({state, dispatch}) {
     )
 }
 
-function TrueOrFalseQuestions(props){
-    return(<div>
-        <h1>True or False</h1>
-    </div>)
+function TrueOrFalseQuestions({state, dispatch}){
+    const { isPlaying, playAudio, stopAudio } = useContext(AudioContext);
+    const [currentQuestion, setCurrentQuestion] = useState(0)
+    const question = trueOrFalseQuestions[currentQuestion];
+    console.log(question)
+    return(
+        <div>
+        <h2>True or False Questions</h2>
+            <div>
+                <div className="true_or_false_questions">
+                    <h3>Question Number: {question.id}</h3>
+                    <p className="questions"> {question.Question}</p>
+                </div>
+                <div className="question_audio_icons">
+                    <div className="volume_button_divs">
+                        <div>🇬🇭</div>
+                        <button className=" volume_icon lesson_volume_icon keyword_volume_icon" onClick={()=>{playAudio(new Audio(introductionAudio))}}  >
+                            <i className="material-icons" alt="help icon">volume_up</i>
+                        </button>
+                    </div>
+
+                    <div className="volume_button_divs">
+                        <div>🇬🇧</div>
+                        <button className=" volume_icon lesson_volume_icon keyword_volume_icon" onClick={()=>{playAudio(new Audio(introductionAudio))}}  >
+                            <i className="material-icons" alt="help icon">volume_up</i>
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+
+    </div>
+    )
 }
 
 

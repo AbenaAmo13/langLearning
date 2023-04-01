@@ -158,9 +158,7 @@ background-color: #e2e5df;
   overflow: hidden;
 }
 
-.card_lesson_image{
-  width: 100%;
-}
+
 
 .progress_bar_padding{
   margin:5%;
@@ -201,6 +199,10 @@ background-color: #e2e5df;
 
 .cardmedia{
   /*height: 30vh*/;
+}
+
+.questions{
+  font-size: 24px;
 }
 .cardImg{
   object-fit: cover;
@@ -310,7 +312,9 @@ progress::-moz-progress-bar {
 
 @media only screen and (max-width: 767px){
 
-
+  .card_lesson_image{
+    width: 100%;
+  }
 /*NavBar Element Stylings*/
   .navBar{
     display: block;
@@ -383,6 +387,12 @@ progress::-moz-progress-bar {
   .questionPending{
     width: 50%;
     margin: auto;
+  }
+
+  .lesson_card_media{
+    display: flex;
+    justify-content: center;
+    background-color: #e1e5df;
   }
 
 }

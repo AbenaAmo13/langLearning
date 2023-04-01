@@ -47,12 +47,14 @@ export const basicLessonData=[
 
 export const trueOrFalseQuestions=[
     {
+        id: 1,
         Question: "The government helps us with our healthcare",
         TwiAudio: "",
         EnglishAudio: "",
         Answer:'True'
     },
     {
+        id: 2,
         Question: "The government does not help us with our education",
         TwiAudio: "",
         EnglishAudio: "",
@@ -60,6 +62,7 @@ export const trueOrFalseQuestions=[
     },
 
     {
+        id: 3,
         Question: "The government gives us cards for identification",
         EnglishAudio: "",
         TwiAudio: "",
@@ -73,6 +76,7 @@ export const trueOrFalseQuestions=[
         Answer:'True'
     },
     {
+        id: 4,
         Question: "The government provide services to improve our health, education, and wellbeing",
         EnglishAudio: "",
         TwiAudio: "",
