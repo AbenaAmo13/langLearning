@@ -37,10 +37,15 @@ function Basics() {
         return(
             <BasicLessons state={lessonStates} dispatch={dispatch} />
         )
+    }else if(lessonStates.lessonCompleted && !lessonStates.startQuestion){
+        return(
+            <QuestionPrompt state={lessonStates} dispatch={dispatch}  />
+        )
     }else if(lessonStates.lessonCompleted && lessonStates.startQuestion){
         return(
-            <BasicTrueOrFalseQuestions state={lessonStates} dispatch={dispatch}  />
+            <TrueOrFalseQuestions state={lessonStates} dispatch={dispatch}  />
         )
+
     }
 
 
@@ -63,23 +68,22 @@ function BasicLessons({state, dispatch}){
     /*
     * onClick={() => (language === English ? speakEnglishWords() : playAudio())}
     * */
-    console.log("Current Index: " + currentIndex)
+    //console.log("Current Index: " + currentIndex)
     const getNextLesson = () => {
         if (currentIndex >= basicLessonData.length) {
             setCurrentIndex(0);
         }
         else {
             if (currentIndex === basicLessonData.length -1) {
-                console.log('final one')
+                //console.log('final one')
                 dispatch({ type: "SET_LESSON_COMPLETED", payload: true });
-                dispatch({ type: "SET_START_QUESTION", payload: true });
                 //setError('No more items to show');
             }else{
                 setError(null);
                 setCurrentIndex(currentIndex + 1);
             }
         }
-        console.log('NEW INDEX ' + currentIndex)
+        //console.log('NEW INDEX ' + currentIndex)
     };
 
     const getPreviousLesson = () => {
@@ -166,13 +170,14 @@ function BasicLessons({state, dispatch}){
     )
 }
 
-function BasicTrueOrFalseQuestions({state, dispatch}) {
+function QuestionPrompt({state, dispatch}) {
     const { isPlaying, playAudio, stopAudio } = useContext(AudioContext);
     function notReady(){
-
+        console.log('not ready is being clicked')
+        dispatch({ type: "SET_LESSON_COMPLETED", payload: false });
     }
     function ready(){
-
+        dispatch({ type: "SET_START_QUESTION", payload: true });
 
     }
     return(
@@ -194,11 +199,11 @@ function BasicTrueOrFalseQuestions({state, dispatch}) {
                 </div>
             </div>
             <div className="question_buttons">
-                <button  className="lesson_buttons icon-buttons">
+                <button  className="lesson_buttons icon-buttons" onClick={ready}>
                     <p>Yes</p>
                     <i className="material-icons" alt="help icon">thumb_up_alt</i>
                 </button>
-                <button  className="lesson_buttons icon-buttons">
+                <button  className="lesson_buttons icon-buttons" onClick={notReady}>
                     <p>No</p>
                     <i className="material-icons" alt="help icon">thumb_down_off_alt</i>
                 </button>
@@ -210,7 +215,7 @@ function BasicTrueOrFalseQuestions({state, dispatch}) {
     )
 }
 
-function trueOrFalse(props){
+function TrueOrFalseQuestions(props){
     return(<div>
         <h1>True or False</h1>
     </div>)
