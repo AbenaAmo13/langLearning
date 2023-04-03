@@ -21,7 +21,7 @@ import testAudio from "./audios/testing.mp3"
 
 function Homepage() {
     //let audio = new Audio(process.env.PUBLIC_URL + '/audio/introduction.mp3')
-    const { isPlaying, playAudio, stopAudio } = useContext(AudioContext);
+    const {playAudio} = useContext(AudioContext);
     const {speakEnglishWords} = useContext(EnglishAudioContext);
     const [status, setStatus]= useState({})
 
@@ -46,12 +46,14 @@ function Homepage() {
         {  "Image":greyGovernment,
             "NavBarTitleEnglish": "Introduction",
             "TwiAudio":basicsTwiAudio,
+            "EnglishAudio": "",
             "Link": "Basics",
             "locked_status": status.Basics
         }, {
             "Image":healthImage,
             "NavBarTitleEnglish": "Ghana Health Service",
             "TwiAudio":healthAudio,
+             "EnglishAudio": "",
             "Link": "Health",
             "locked_status": status.Health
         },
@@ -59,6 +61,7 @@ function Homepage() {
             "Image":educationalImage,
             "NavBarTitleEnglish": "Ghana Education Service",
             "TwiAudio":educationAudio,
+            "EnglishAudio": "",
             "Link":"Education",
             "locked_status": status.Education
         },
@@ -66,12 +69,14 @@ function Homepage() {
             "Image":ghanaId,
             "NavBarTitleEnglish": "National Identification Authority",
             "TwiAudio":identificationAudio,
+            "EnglishAudio": "",
             "Link": "Identification",
             "locked_status": status.Identification
         }, {
             "Image":jobsImage,
             "NavBarTitleEnglish": "Jobs",
             "TwiAudio":adwuma,
+             "EnglishAudio": "",
             "Link": "Jobs",
             "locked_status": status.Jobs
         }
@@ -99,7 +104,7 @@ function Homepage() {
     <div>
         <div className="card_box">
             <div className="card_title">
-                <h2>Akwaaba </h2>
+                <h2>Welcome </h2>
             </div>
             <div className="volume_div">
                 <button className="volume_icon lesson_volume_icon main_audio" >
@@ -122,9 +127,18 @@ function Homepage() {
                            </h3>
                        </div>
                        <div className="nav-icons">
-                           <button className=" volume_icon" onClick={() => (playAudio(  new Audio(navElement.TwiAudio)))} >
-                               <i className="material-icons" alt="help icon">volume_up</i>
-                           </button>
+                           <div className="volume_button_divs">
+                               <div>🇬🇭</div>
+                               <button className=" volume_icon" onClick={() => (playAudio(  new Audio(navElement.TwiAudio)))} >
+                                   <i className="material-icons" alt="help icon">volume_up</i>
+                               </button>
+                           </div>
+                           <div className="volume_button_divs">
+                               <div>🇬🇧</div>
+                               <button className=" volume_icon" onClick={() => (playAudio(  new Audio(navElement.TwiAudio)))} >
+                                   <i className="material-icons" alt="help icon">volume_up</i>
+                               </button>
+                           </div>
                            <button className="icon-buttons">
                                <i className="material-icons" alt="help icon">
                                    {navElement.locked_status === true? "lock":"lock_open"}

@@ -3,15 +3,16 @@ import healthImage from "../../images/greyhealthcare.webp"
 import educationalImage from "../../images/greyeducation.webp"
 import jobs from "../../images/greyjobs.webp"
 import id from "../../images/greyid.webp"
-
-
+import question1english from "../../audios/basics/trueorfalsequestion1english.ogg"
+import question1twi from "../../audios/basics/trueorfalsequestion1twi.ogg"
+import question1twiv2 from "../../audios/basics/question1twi.ogg"
 
 export const basicLessonData=[
     {
         Image: ghanaGovernment,
         EnglishWord: "The Government",
         TwiAudio: '',
-        KeyMessageEnglish: "The government helps us by providing services to improve our health, education, jobs and wellbeing",
+        KeyMessageEnglish: "For this topic, we will learn how the government helps us with our healthcare. We will look at the National Health Insurance Scheme, free maternal healthcare and other things that the government does to improve our health. We will also learn ways that we can keep ourselves healthy. ",
     },
 
     {
@@ -19,28 +20,28 @@ export const basicLessonData=[
         EnglishWord: "Health Care",
         TwiAudio: '',
         EnglishAudio:'' ,
-        KeyMessageEnglish:'The government helps us with health care by making it easy for us to go to hospitals when we our sick.',
+        KeyMessageEnglish:'For this topic, we will learn how the government helps us to get education. We will look at Free SHS, free primary education, loans and scholarships that the government provide to help us attain quality education. ',
     },
     {
         Image: educationalImage,
         EnglishWord: "Education",
         TwiAudio: '',
         EnglishAudio: '',
-        KeyMessageEnglish:'The government also helps us to be able to get good education even if we have little money.',
+        KeyMessageEnglish:'For this topics, we will look at ways that the government helps us to identify ourselves including birth/death certificates, passports, and Ghana cards and their importance. ',
     },
     {
         Image: id,
         EnglishWord: "Ghana and ID",
         TwiAudio: '',
         EnglishAudio: '',
-        KeyMessageEnglish:'The government give us cards and other things for identifcation ',
+        KeyMessageEnglish:'For this topics, we will look at ways that the government helps us to identify ourselves including birth/death certificates, passports, and Ghana cards and their importance.',
     },
     {
         Image: jobs,
         EnglishWord: "Jobs",
         TwiAudio: '',
         EnglishAudio: '',
-        KeyMessageEnglish:"The government's job is to make our work life easier.",
+        KeyMessageEnglish:"For this topic, we will look at the way that the government helps to make our job life easier including job creation programs, workplace laws, taxes and pensions.",
     }
 ]
 
@@ -48,38 +49,46 @@ export const basicLessonData=[
 export const trueOrFalseQuestions=[
     {
         id: 1,
-        Question: "The government helps us with our healthcare",
-        TwiAudio: "",
-        EnglishAudio: "",
-        Answer:'True'
+        Question: " The course will cover how the government helps us with healthcare, education, identification and jobs",
+        TwiAudio:question1twiv2 ,
+        EnglishAudio: question1english,
+        ExplanationAudio:"" ,
+        Answer:'True',
+        isAnswered: false
     },
     {
         id: 2,
-        Question: "The government does not help us with our education",
+        Question: "The course will cover ways that we can keep ourselves healthy",
         TwiAudio: "",
         EnglishAudio: "",
-        Answer:'False'
+        Answer:'True',
+        isAnswered: false
     },
 
     {
         id: 3,
-        Question: "The government gives us cards for identification",
+        Question: " The course will not cover Free SHS",
         EnglishAudio: "",
         TwiAudio: "",
-        Answer:'True'
+        Answer:'False',
+        isAnswered: false
     },
 
     {
-        Question: "The government job is to make our work life easier",
+
+        id:4,
+        Question: "Job creation programs and workplace laws are some of the ways that the government helps to make our life easier",
         EnglishAudio: "",
         TwiAudio: "",
-        Answer:'True'
+        Answer:'True',
+        isAnswered: false
     },
     {
-        id: 4,
+        id: 5,
         Question: "The government provide services to improve our health, education, and wellbeing",
         EnglishAudio: "",
         TwiAudio: "",
-        Answer:'True'
+        Answer:'True',
+        isAnswered: false
     },
 ]
