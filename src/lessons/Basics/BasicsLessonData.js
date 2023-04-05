@@ -12,6 +12,7 @@ export const basicLessonData=[
         Image: ghanaGovernment,
         EnglishWord: "The Government",
         TwiAudio: '',
+        EnglishAudio: '',
         KeyMessageEnglish: "For this topic, we will learn how the government helps us with our healthcare. We will look at the National Health Insurance Scheme, free maternal healthcare and other things that the government does to improve our health. We will also learn ways that we can keep ourselves healthy. ",
     },
 

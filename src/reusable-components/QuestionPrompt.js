@@ -7,8 +7,15 @@ function QuestionPrompt({state,dispatch, questionPromptData}) {
     function ready(){
         if(questionPromptData.questionType ==="trueorfalse"){
             dispatch({ type: "RESET_QUESTION", payload: { lesson: state.id, index: 0}});
-            dispatch({type:"RESET_SCORE",  payload: { lesson: state.id, score: questionPromptData.questions.componentScore}})
+            if(state.firstQuestionTypeRendered === "trueorfalse"){
+                dispatch({type:"RESET_SCORE",  payload: { lesson: state.id, score: questionPromptData.questions.componentScore}})
+            }
             //console.log(state.questions)
+        }else if(questionPromptData.questionType==="mcqs"){
+            dispatch({ type: "RESET_QUESTION", payload: { lesson: state.id, index: 1}});
+            if(state.firstQuestionTypeRendered === "mcqs"){
+                dispatch({type:"RESET_SCORE",  payload: { lesson: state.id, score: questionPromptData.questions.componentScore}})
+            }
         }
         dispatch({ type: "SET_QUESTION_STARTED", payload: { lesson: state.id, started: true }});
     }

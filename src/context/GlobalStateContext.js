@@ -14,6 +14,7 @@ export function GlobalStatesProvider({ children }) {
             lessonCompleted: false,
             questionStarted: false,
             trueOrFalseComplete: false,
+            firstQuestionTypeRendered: "trueorfalse", //The first question.
             mcqComplete: false,
             questions: [trueOrFalseQuestions, basicsMCQS],
             userPassedPoints : 65
@@ -77,7 +78,6 @@ export function GlobalStatesProvider({ children }) {
                 const updatedLesson = {
                     ...fullLesson,
                     trueOrFalseComplete: true,
-                    lessonCompleted: true
                 };
                 return {
                     ...lessonState,
@@ -90,7 +90,6 @@ export function GlobalStatesProvider({ children }) {
                 const fullLesson = lessonState[lesson];
                 const updatedLesson = {
                     ...fullLesson,
-                    lessonCompleted: true,
                     mcqComplete: true
                 };
                 console.log(updatedLesson)
@@ -110,7 +109,6 @@ export function GlobalStatesProvider({ children }) {
                 const updatedLesson = {
                     ...fullLesson,
                     questions: [...fullLesson.questions],
-                    lessonCompleted: true
                 };
                 updatedLesson.questions[index] = updatedQuestions;
                 return {

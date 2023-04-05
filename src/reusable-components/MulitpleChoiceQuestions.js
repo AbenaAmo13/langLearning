@@ -2,14 +2,34 @@ import {useContext, useState} from "react";
 import {QuestionContext} from "../context/QuestionsContext";
 import LessonAudioPlayer from "./LessonAudioPlayer";
 import AudioPlayer from "./LessonAudioPlayer";
+import QuestionPrompt from "./QuestionPrompt";
+import quizImage from "../images/quizImage.png";
 
 
 function MultipleChoiceQuestions() {
-    let { state, correctNumberAnswers, handleNextQuestion, checkAnswer, handlePrevQuestion, currentQuestion, selectedAnswer,nextSetOfQuestions } = useContext(QuestionContext)
+    let { state, correctNumberAnswers,
+        handleNextQuestion, checkAnswer,
+        handlePrevQuestion, currentQuestion,
+        selectedAnswer,nextSetOfQuestions,
+        dispatch
+        } = useContext(QuestionContext)
     const [optionSelected, setOptionSelected] = useState(null)
     let MCQQuestions = state.questions[1];
     let question = MCQQuestions[currentQuestion];
     console.log(currentQuestion)
+
+    const QuestionPromptData = {
+        cardTextContent:[{
+            text: "Next we have a multiple choice questions where you are given a question, and many answers to choose from" +
+                " If you are ready to start the activity, click the thumbs up button else click the thumbs down button."
+        }],
+        quizImage : quizImage,
+        cardTitle: "Multiple Choice Questions",
+        EnglishAudio: "",
+        TwiAudio:"",
+        questionType: "mcqs",
+        questions: question
+    }
 
 
     const handleOptionChange = (event) => {
@@ -85,7 +105,11 @@ function MultipleChoiceQuestions() {
     return (
         <div>
 
-            {
+            {!state.questionStarted ? (
+                    /* Render the question prompt */
+                    <QuestionPrompt state={state} dispatch={dispatch} questionPromptData={QuestionPromptData}/>
+
+                ) :
                 (
                     currentQuestion < MCQQuestions.length ? renderMCQS(): renderResults()
                 )
