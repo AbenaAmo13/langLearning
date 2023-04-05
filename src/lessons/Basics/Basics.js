@@ -12,8 +12,8 @@ function Basics() {
 
     useEffect(()=>{
         //console.log(lessons.BasicLessons.lessonCompleted)
-        dispatch({ type: "SET_LESSON_COMPLETED", payload: { lesson: lessons.BasicLessons.id, completed: false }});
-
+        //dispatch({ type: "SET_LESSON_COMPLETED", payload: { lesson: lessons.BasicLessons.id, completed: false }});
+        dispatch({ type: "RESET_LESSON", payload: { lesson: lessons.BasicLessons.id}});
     }, [])
 
     console.log(lessons.BasicLessons.lessonCompleted)

@@ -101,6 +101,18 @@ export function GlobalStatesProvider({ children }) {
                     [lesson]: updatedLesson,
                 };
             }
+            case "RESET_LESSON":{
+                const {lesson} = action.payload;
+                const fullLesson = lessonStates[lesson];
+                const updatedLesson ={
+                    ...fullLesson
+                }
+                console.log(updatedLesson)
+                return {
+                    ...lessonState,
+                    [lesson]: updatedLesson
+                }
+            }
             default:
                 throw new Error(`Unhandled action type: ${action.type}`);
         }
