@@ -1,40 +1,31 @@
 import {useContext, useEffect, useState} from "react";
-import {AudioContext} from "../context/AudioContext";
-import answeredCorrectly from "../audios/basics/answeredCorrectlyv2.ogg";
 import AudioPlayer from "./LessonAudioPlayer";
-import introductionAudio from "../audios/testing.mp3";
+import {QuestionContext} from "../context/Questions";
+import quizImage from "../images/quizImage.png";
+import QuestionPrompt from "./QuestionPrompt";
 
-function QuestionsTrueOrFalse({state, dispatch}){
-    const [CorrectAudio] = useState(new Audio(answeredCorrectly))
-    console.log(state.questions)
-    const {  playAudio } = useContext(AudioContext);
-    const question = state.questions[state.currentQuestion];
-    const [correctNumberAnswers, setCorrectNumberAnswers] = useState(0)
-    useEffect(() => {
-        CorrectAudio.preload = 'auto';
-        CorrectAudio.load();
-    }, [CorrectAudio]);
-
-    function checkAnswer(question, answer){
-        let correctAnswer = question.Answer;
-        dispatch({ type: "SET_SELECTED_ANSWER", payload: answer });
-        if(!question.isAnswered){
-            if(answer===correctAnswer){
-                playAudio(CorrectAudio);
-                dispatch({ type: "SET_SCORE", payload: { score: "BasicsScore", value: 10 }});
-                setCorrectNumberAnswers(correctNumberAnswers+ 1)
-            }
-        }
-        question.isAnswered = true;
+function TrueOrFalseComponent(){
+    let { state, correctNumberAnswers, handleNextQuestion, checkAnswer, nextSetOfQuestions, selectedAnswer, currentQuestion, dispatch} = useContext(QuestionContext)
+    let trueOrFalseQuestions = state.questions[0];
+    let question = trueOrFalseQuestions[currentQuestion];
+    const QuestionPromptData = {
+        cardTextContent:[{
+                        text: "Next we have a true or false activity. We will ask you whether some sentences are true or false." +
+                            " If you are ready to start the activity, click the thumbs up button else click the thumbs down button."
+                    }],
+        quizImage : quizImage,
+        cardTitle: "True or False",
+        EnglishAudio: "",
+        TwiAudio:"",
+        questionType: "trueorfalse",
+        questions: question
     }
 
-    function handleNextQuestion(){
-        dispatch({ type: "SET_SELECTED_ANSWER", payload: null });
-        dispatch({ type: "SET_CURRENT_QUESTION", payload: state.currentQuestion + 1 });
-    }
+    useEffect(()=>{
+        dispatch({ type: "SET_QUESTION_STARTED", payload: { lesson: state.id, started: false }});
 
 
-
+    }, [state.lessonCompleted])
     const renderQuestions=()=>{
         return(
             <div className="center">
@@ -50,32 +41,32 @@ function QuestionsTrueOrFalse({state, dispatch}){
                     <div>
                         <div className="question_buttons">
                             <button
-                                className={`lesson_buttons icon-buttons ${state.selectedAnswer === 'True' ? 'selected' : ''}`}
+                                className={`lesson_buttons icon-buttons ${selectedAnswer === 'True' ? 'selected' : ''}`}
                                 onClick={()=>checkAnswer(question, "True")}
-                                disabled={state.selectedAnswer !== null}
+                                disabled={selectedAnswer !== null}
                             >
                                 <p>True</p>
                                 <i className="material-icons" alt="help icon">thumb_up_alt</i>
                             </button>
                             <button
-                                className={`lesson_buttons icon-buttons ${state.selectedAnswer === 'False' ? 'selected' : ''}`}
+                                className={`lesson_buttons icon-buttons ${selectedAnswer === 'False' ? 'selected' : ''}`}
                                 onClick={()=>checkAnswer(question, "False")}
-                                disabled={state.selectedAnswer !== null}
+                                disabled={selectedAnswer !== null}
                             >
                                 <p>False</p>
                                 <i className="material-icons" alt="help icon">thumb_down_off_alt</i>
                             </button>
                         </div>
                     </div>
-                    {state.selectedAnswer && (
+                    {selectedAnswer && (
                         <div>
-                            {state.selectedAnswer === question.Answer ? (
+                            {selectedAnswer === question.Answer ? (
                                 <div className="correct_answer">
                                     <p className="questions">You got it right!</p>
                                     <button className="correct_answer_icon">
                                         <i className="material-icons correct_answer_icons" alt="account icon" > check_circle </i>
                                     </button>
-                                    <p className="questions"> You have {state.scores.BasicsScore} points!</p>
+                                    <p className="questions"> You have {state.scores} points!</p>
                                 </div>
                             ) : (
                                 <div className="correct_answer">
@@ -104,20 +95,36 @@ function QuestionsTrueOrFalse({state, dispatch}){
     const renderResults=()=>{
         return(
             <div>
-                <h3 className="questions">You got {correctNumberAnswers} out of {state.questions.length} questions correct</h3>
+                <h3 className="questions">You got {correctNumberAnswers} out of {trueOrFalseQuestions.length} questions correct</h3>
+                <h3>To go to the next question, click the button:</h3>
+                <button onClick={()=> nextSetOfQuestions("t/f")}>Next Questions</button>
+                <AudioPlayer/>
                 <div>
                 </div>
             </div>
         )
     }
+
+
+
+
     return(
         <div>
-            {
-                state.currentQuestion < state.questions.length ? renderQuestions() : renderResults()
-            }
+
+            {!state.questionStarted ? (
+                /* Render the question prompt */
+                <QuestionPrompt state={state} dispatch={dispatch} questionPromptData={QuestionPromptData}/>
+
+            ) : (
+                /* Render the rest of the condition */
+                currentQuestion < trueOrFalseQuestions.length ? renderQuestions() : renderResults()
+
+            )}
+
+
         </div>
 
     )
 }
 
-export default QuestionsTrueOrFalse;
+export default TrueOrFalseComponent;

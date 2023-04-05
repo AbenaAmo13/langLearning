@@ -2,7 +2,7 @@ import React, {createContext, useState, useRef, useEffect} from 'react';
 
 export const AudioContext = createContext();
 
-export const AudioContextProvider = ({ children }) => {
+ export const AudioContextProvider = ({ children }) => {
     const [isPlaying, setIsPlaying] = useState(false);
     const audioRef = useRef(null);
 

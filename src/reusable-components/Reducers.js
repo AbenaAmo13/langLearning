@@ -1,15 +1,33 @@
+import {basicLessonData, FreeForm, basicsMCQS, trueOrFalseQuestions} from "../lessons/Basics/BasicsLessonData";
 
 let userScores = JSON.parse(localStorage.getItem('userScores'));
-export const initialState={
-    lessonCompleted: false,
-    startQuestion: false,
-    scores:userScores,
-    userPassedLesson: false,
-    selectedAnswer: null,
-    currentQuestion: 0,
-    lessons: [],
-    questions: []
+const questionCompletion={
+    trueOrFalse: false,
+    MCQFalse: false,
+    FreeForm: false
+}
+export const lessonStates={
+    Basics: {
+        lessonCompleted: false,
+        startQuestion: false,
+        scores: userScores.BasicsScore,
+        userPassedLesson: false,
+        selectedAnswer: null,
+        currentQuestion: 0,
+        lessons: basicLessonData,
+        questions: [trueOrFalseQuestions,basicsMCQS, FreeForm ],
+        questionType: null,
+        questionCompletion: questionCompletion
+    },
+
 };
+
+
+
+
+
+
+
 
 export function reducer(state, action) {
     switch (action.type) {
@@ -35,6 +53,8 @@ export function reducer(state, action) {
             return { ...state, lessons: action.payload };
         case "SET_QUESTIONS":
             return { ...state, questions: action.payload };
+        case "SET_QUESTION_TYPE":
+            return { ...state, questionType: action.payload };
         case "RESET_QUESTIONS":
             const resetQuestions = state.questions.map(question => ({
                 ...question,
@@ -45,6 +65,14 @@ export function reducer(state, action) {
             return { ...state, currentQuestion: action.payload };
         case "SET_SELECTED_ANSWER":
             return { ...state, selectedAnswer: action.payload};
+        case "SET_QUESTION_COMPLETED":
+            return {
+                ...state,
+                questionCompletion: {
+                    ...state.questionCompletion,
+                    [action.payload]: true,
+                },
+            };
         default:
             throw new Error();
     }

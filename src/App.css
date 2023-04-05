@@ -349,6 +349,39 @@ progress::-moz-progress-bar {
 
 
 
+/*Card Component stylings*/
+.card_component_container{
+  box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+  margin: 5%;
+  border-radius: 16px;
+  overflow: hidden;
+}
+
+.card_component_content{
+  padding: 16px 16px 1px 16px;
+ }
+
+.card_component_image{
+
+}
+
+.card_component_cards{
+
+}
+
+.card_component_title{
+  font-size: 28px;
+}
+
+.card_component_text{
+  font-size: 24px;
+  line-height: 1.7em;
+}
+
+
+
+
+
 @media only screen and (max-width: 767px){
 
   .card_lesson_image{
@@ -437,6 +470,30 @@ progress::-moz-progress-bar {
   .center{
     width: 50%;
     margin:auto
+  }
+
+
+  /*Card Component stylings*/
+  .card_component_container{
+    width: 50%;
+    margin:auto;
+
+  }
+
+  .card_component_image{
+
+  }
+
+  .card_component_cards{
+
+  }
+
+  .card_component_title{
+
+  }
+
+  .card_component_text{
+
   }
 
 }

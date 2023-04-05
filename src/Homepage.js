@@ -3,9 +3,6 @@ import logo from "./logo.svg";
 import {Link} from "react-router-dom";
 import {useContext, useEffect, useState} from "react";
 import {AudioContext} from "./context/AudioContext";
-import {EnglishAudioContext} from "./context/PlayEnglishContext";
-import {LanguageContext} from "./context/LanguageContext";
-import testImage from "./images/3dspaceship.png"
 import healthImage from "./images/greyhealthcare.webp"
 import greyGovernment from "./images/greygovernment.webp"
 import ghanaId from "./images/greyid.webp"
@@ -16,13 +13,11 @@ import healthAudio from "./audios/homepage/healthintroaudio.ogg"
 import educationAudio from "./audios/homepage/educationaudio.ogg"
 import identificationAudio from "./audios/homepage/identification.ogg"
 import adwuma from "./audios/homepage/adwuma.ogg"
-import testAudio from "./audios/testing.mp3"
 
 
 function Homepage() {
     //let audio = new Audio(process.env.PUBLIC_URL + '/audio/introduction.mp3')
     const {playAudio} = useContext(AudioContext);
-    const {speakEnglishWords} = useContext(EnglishAudioContext);
     const [status, setStatus]= useState({})
 
     const lockedStatusObj =

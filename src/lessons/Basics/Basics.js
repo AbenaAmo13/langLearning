@@ -1,74 +1,48 @@
-
-import {useContext, useState, useReducer, useEffect} from "react";
-import {AudioContext} from "../../context/AudioContext";
-import AudioPlayer from "../../reusable-components/LessonAudioPlayer";
-import introductionAudio from "../../audios/testing.mp3"
+import {useReducer, useEffect, useContext} from "react";
 import Lessons from "../../reusable-components/Lessons"
-import answeredCorrectly from "../../audios/basics/answeredCorrectlyv2.ogg"
-import QuestionsTrueOrFalse from "../../reusable-components/TrueOrFalseQuestions";
-import {basicLessonData, trueOrFalseQuestions} from "./BasicsLessonData"
-import { initialState, reducer } from '../../reusable-components/Reducers';
-import quizImage from "../../images/quiz.png"
+import {LessonContext, LessonDispatchContext} from "../../context/GlobalStateContext";
+import Question from "../../reusable-components/Questions";
+import MulitpleChoiceQuestions from "../../reusable-components/MulitpleChoiceQuestions";
+
 
 
 function Basics() {
-    const [lessonStates, dispatch] = useReducer(reducer, initialState);
+    const lessons = useContext(LessonContext)
+    const dispatch = useContext(LessonDispatchContext)
+
     useEffect(()=>{
-        dispatch({ type: "SET_LESSONS", payload: basicLessonData });
-        dispatch({ type: "SET_QUESTIONS", payload: trueOrFalseQuestions});
+        console.log(lessons.BasicLessons.lessonCompleted)
+        dispatch({ type: "SET_LESSON_COMPLETED", payload: { lesson: lessons.BasicLessons.id, completed: false }});
 
     }, [])
 
-    if(!lessonStates.lessonCompleted){
-        return(
-            <Lessons state={lessonStates} dispatch={dispatch} />
-        )
-    }else if(lessonStates.lessonCompleted && !lessonStates.startQuestion){
-        return(
-            <QuestionPrompt state={lessonStates} dispatch={dispatch}  />
-        )
-    }else if(lessonStates.lessonCompleted && lessonStates.startQuestion){
-        return(
-            <QuestionsTrueOrFalse state={lessonStates} dispatch={dispatch}  />
-        )
-    }
-}
+    console.log(lessons.BasicLessons.lessonCompleted)
 
-function QuestionPrompt({dispatch}) {
-    function notReady(){
-        dispatch({ type: "SET_LESSON_COMPLETED", payload: false });
+    if(!lessons.BasicLessons.lessonCompleted ){
+        return( <Lessons state={lessons.BasicLessons} dispatch={dispatch}/>)
+    }else {
+        if(!lessons.BasicLessons.trueOrFalseComplete){
+            return(<Question state={lessons.BasicLessons} questionType={"trueorfalse"} dispatch={dispatch}/>)
+        }else{
+            return(<Question state={lessons.BasicLessons} questionType={"mcq"} dispatch={dispatch}/>)
+        }
     }
-    function ready(){
-        dispatch({ type: "SET_START_QUESTION", payload: true });
-        dispatch({type:"RESET_SCORE",  payload: { score: "BasicsScore"}})
-        dispatch({type:"RESET_QUESTIONS"})
-    }
-    return(
-        <div className="questionPending navCard">
-            <div className="cardmedia">
-                <img src={quizImage}/>
-            </div>
+
+
+
+    /*    return(
             <div>
-                <h2 className="question_title"> Ready for the questions?</h2>
-                <AudioPlayer englishAudio={introductionAudio} twiAudio={introductionAudio}/>
+                {
+                    (!lessons.BasicLessons.lessonCompleted ?
+                            <Lessons state={lessons.BasicLessons} dispatch={dispatch}/>:
+
+                            <Question state={lessons.BasicLessons} questionType={"trueorfalse"} dispatch={dispatch}/>
+                    )
+                }
+
             </div>
-
-            <div className="question_buttons">
-                <button  className="lesson_buttons icon-buttons" onClick={()=>ready()}>
-                    <p>Yes</p>
-                    <i className="material-icons" alt="help icon">thumb_up_alt</i>
-                </button>
-                <button  className="lesson_buttons icon-buttons" onClick={()=>notReady()}>
-                    <p>No</p>
-                    <i className="material-icons" alt="help icon">thumb_down_off_alt</i>
-                </button>
-            </div>
-
-        </div>
-
-    )
+        )*/
 }
-
 
 
 export default Basics;

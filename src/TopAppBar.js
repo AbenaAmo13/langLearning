@@ -10,17 +10,8 @@ function TopAppBar(){
     const imagePath = process.env.PUBLIC_URL + '/empower-us-192.webp';
     console.log(imagePath)
     const { isPlaying, playAudio, stopAudio } = useContext(AudioContext);
-    const {speakEnglishWords} = useContext(EnglishAudioContext);
     const testAudio = appBarTestAudio;
-    const English = "English";
-    const Twi = "Twi";
-/*    //Function to change the appBar title on the project
-    function handleLanguageChange(language) {
-        let newLanguage = language.toLowerCase();
-        console.log(newLanguage)
-        updateLanguage(language);
-        speakEnglishWords(newLanguage);
-    }*/
+
 
 
     return(
