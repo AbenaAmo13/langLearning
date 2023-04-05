@@ -1,5 +1,5 @@
 import {useContext, useState} from "react";
-import {QuestionContext} from "../context/Questions";
+import {QuestionContext} from "../context/QuestionsContext";
 import LessonAudioPlayer from "./LessonAudioPlayer";
 import AudioPlayer from "./LessonAudioPlayer";
 
@@ -74,7 +74,7 @@ function MultipleChoiceQuestions() {
             <div>
                 <h3 className="questions">You got {correctNumberAnswers} out of {MCQQuestions.length} questions correct</h3>
                 <h3>To go to the next question, click the button:</h3>
-                <button onClick={()=> nextSetOfQuestions("mcqs")}>Next Questions</button>
+                <button onClick={()=> nextSetOfQuestions("mcq")}>Next Questions</button>
                 <AudioPlayer/>
                 <div>
                 </div>

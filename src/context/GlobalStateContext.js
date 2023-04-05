@@ -14,12 +14,14 @@ export function GlobalStatesProvider({ children }) {
             lessonCompleted: false,
             questionStarted: false,
             trueOrFalseComplete: false,
-            questions: [trueOrFalseQuestions, basicsMCQS, FreeForm]
-
+            mcqComplete: false,
+            questions: [trueOrFalseQuestions, basicsMCQS],
+            userPassedPoints : 65
         }
     }
 
     function lessonReducer(lessonState, action) {
+        console.log(lessonState)
         switch (action.type) {
             case "SET_SCORE": {
                 const { lesson, score, value } = action.payload;
@@ -71,7 +73,7 @@ export function GlobalStatesProvider({ children }) {
             }
             case "SET_TRUE_OR_FALSE_COMPLETE": {
                 const { lesson } = action.payload;
-                const fullLesson = lessonStates[lesson];
+                const fullLesson = lessonState[lesson];
                 const updatedLesson = {
                     ...fullLesson,
                     trueOrFalseComplete: true,
@@ -82,9 +84,24 @@ export function GlobalStatesProvider({ children }) {
                     [lesson]: updatedLesson
                 };
             }
+            case "SET_MCQ_COMPLETE": {
+                console.log("The lesson state is" + lessonState)
+                const { lesson } = action.payload;
+                const fullLesson = lessonState[lesson];
+                const updatedLesson = {
+                    ...fullLesson,
+                    lessonCompleted: true,
+                    mcqComplete: true
+                };
+                console.log(updatedLesson)
+                return {
+                    ...lessonState,
+                    [lesson]: updatedLesson
+                };
+            }
             case "RESET_QUESTION": {
                 const { lesson, index } = action.payload;
-                const fullLesson = lessonStates[lesson];
+                const fullLesson = lessonState[lesson];
                 const activeQuestion = fullLesson.questions[index];
                 const updatedQuestions = activeQuestion.map((question) => ({
                     ...question,

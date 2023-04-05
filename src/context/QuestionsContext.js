@@ -50,10 +50,11 @@ function QuestionContextProvider({children, state, dispatch}) {
 
 
     const nextSetOfQuestions = useCallback((questionType)=>{
-        console.log("action_happening")
         if(questionType==="t/f"){
             console.log('I am in here')
             dispatch({ type: "SET_TRUE_OR_FALSE_COMPLETE", payload: {lesson: state.id,completed: true}});
+        }else if(questionType==="mcq"){
+            dispatch({ type: "SET_MCQ_COMPLETE", payload: {lesson: state.id,completed: true}});
 
         }
         setCurrentQuestion(0);

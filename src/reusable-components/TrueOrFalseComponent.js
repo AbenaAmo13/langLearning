@@ -1,11 +1,11 @@
 import {useContext, useEffect, useState} from "react";
 import AudioPlayer from "./LessonAudioPlayer";
-import {QuestionContext} from "../context/Questions";
+import {QuestionContext} from "../context/QuestionsContext";
 import quizImage from "../images/quizImage.png";
 import QuestionPrompt from "./QuestionPrompt";
 
 function TrueOrFalseComponent(){
-    let { state, correctNumberAnswers, handleNextQuestion, checkAnswer, nextSetOfQuestions, selectedAnswer, currentQuestion, dispatch} = useContext(QuestionContext)
+    let { state, correctNumberAnswers, handleNextQuestion, checkAnswer, nextSetOfQuestions, selectedAnswer, currentQuestion, dispatch, handlePrevQuestion} = useContext(QuestionContext)
     let trueOrFalseQuestions = state.questions[0];
     let question = trueOrFalseQuestions[currentQuestion];
     const QuestionPromptData = {
@@ -82,8 +82,9 @@ function TrueOrFalseComponent(){
                             )}
                         </div>
                     )}
+                    <button onClick={()=> handlePrevQuestion()} disabled={currentQuestion === 0}>Previous Question</button>
+                    <button onClick={()=> handleNextQuestion()} disabled={currentQuestion===trueOrFalseQuestions.length} >Next Question</button>
 
-                    <button onClick={()=> handleNextQuestion()}>Next Question</button>
 
                 </div>
                 <div>

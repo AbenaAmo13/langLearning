@@ -1,4 +1,4 @@
-import QuestionContextProvider from "../context/Questions";
+import QuestionContextProvider from "../context/QuestionsContext";
 import TrueOrFalseComponent from "./TrueOrFalseComponent";
 import MulitpleChoiceQuestions from "./MulitpleChoiceQuestions";
 import FreeFormQuestions from "./FreeForm";
