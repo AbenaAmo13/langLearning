@@ -1,4 +1,4 @@
-import {useReducer, useEffect, useContext} from "react";
+import {useReducer, useEffect, useContext, useState} from "react";
 import Lessons from "../../reusable-components/Lessons"
 import {LessonContext, LessonDispatchContext} from "../../context/GlobalStateContext";
 import Question from "../../reusable-components/Questions";
@@ -9,32 +9,46 @@ import MulitpleChoiceQuestions from "../../reusable-components/MulitpleChoiceQue
 function Basics() {
     const lessons = useContext(LessonContext)
     const dispatch = useContext(LessonDispatchContext)
+    const basicLessonState = lessons.BasicLessons;
+    const [passedBasicLesson, setPassedBasicLesson] = useState(false)
     let allQuestionsAnswered
 
     useEffect(()=>{
-        dispatch({ type: "RESET_LESSON", payload: { lesson: lessons.BasicLessons.id}});
+        dispatch({ type: "RESET_LESSON", payload: { lesson: basicLessonState.id}});
 
     }, [])
 
     useEffect(()=>{
-         allQuestionsAnswered = lessons.BasicLessons.questions.every((questionArray) => {
-            return questionArray.every((question) => question.isAnswered);
-        });
-    }, [lessons.BasicLessons.trueOrFalseComplete, lessons.BasicLessons.mcqComplete])
+        const userPoints = basicLessonState.scores;
+        console.log(userPoints)
+        const pointsRequired = basicLessonState.pointsToPassLesson;
+        if(userPoints > pointsRequired && localStorage.getItem('lockedStatusData')) {
+            const lockedStatus = JSON.parse(localStorage.getItem('lockedStatusData'))
+            lockedStatus.Health = false
+            localStorage.setItem('lockedStatusData', JSON.stringify(lockedStatus))
+            //lockedStatus["Health"] = false;
+
+            setPassedBasicLesson(true);
+        }
+        console.log(userPoints)
+    }, [basicLessonState.mcqComplete])
 
 
-    console.log("Answered all status" + allQuestionsAnswered)
 
 
-    if(!lessons.BasicLessons.lessonCompleted ){
-        return( <Lessons state={lessons.BasicLessons} dispatch={dispatch}/>)
-    }else if(!lessons.BasicLessons.trueOrFalseComplete){
-            return(<Question state={lessons.BasicLessons} questionType={"trueorfalse"} dispatch={dispatch}/>)
-        }else if(!lessons.BasicLessons.mcqComplete){
-            return(<Question state={lessons.BasicLessons} questionType={"mcq"} dispatch={dispatch}/>)
-        }else {
+    if(!basicLessonState.lessonCompleted ){
+        return( <Lessons state={basicLessonState} dispatch={dispatch}/>)
+    }else if(!basicLessonState.trueOrFalseComplete){
+            return(<Question state={basicLessonState} questionType={"trueorfalse"} dispatch={dispatch}/>)
+    }else if(!basicLessonState.mcqComplete){
+            return(<Question state={basicLessonState} questionType={"mcq"} dispatch={dispatch}/>)
+    }else if(passedBasicLesson) {
         // All questions answered, quiz complete
-        return(<div><h1>You are done with the quiz</h1></div>)
+        return(<div>
+            <h1>You passed this course! Congratualtions</h1>
+        </div>)
+    }else{
+        return(<div> <h1> You did not pass this course, please click the button to try</h1></div>)
     }
 
 }

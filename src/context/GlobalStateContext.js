@@ -17,7 +17,7 @@ export function GlobalStatesProvider({ children }) {
             firstQuestionTypeRendered: "trueorfalse", //The first question.
             mcqComplete: false,
             questions: [trueOrFalseQuestions, basicsMCQS],
-            userPassedPoints : 65
+            pointsToPassLesson : 65
         }
     }
 
