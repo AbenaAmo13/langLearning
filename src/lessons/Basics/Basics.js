@@ -11,7 +11,7 @@ function Basics() {
     const dispatch = useContext(LessonDispatchContext)
 
     useEffect(()=>{
-        console.log(lessons.BasicLessons.lessonCompleted)
+        //console.log(lessons.BasicLessons.lessonCompleted)
         dispatch({ type: "SET_LESSON_COMPLETED", payload: { lesson: lessons.BasicLessons.id, completed: false }});
 
     }, [])

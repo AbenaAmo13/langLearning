@@ -18,64 +18,94 @@ export function GlobalStatesProvider({ children }) {
 
         }
     }
+
     function lessonReducer(lessonState, action) {
-        //let lessonName = action.payload.lesson;
         switch (action.type) {
-            case "SET_SCORE":
+            case "SET_SCORE": {
+                const { lesson, score, value } = action.payload;
                 const userScore = JSON.parse(localStorage.getItem('userScores'));
-                const originalScore = userScore[action.payload.score];
-                console.log(originalScore)
-                userScore[action.payload.score] = action.payload.value + originalScore; // Update the score
+                const originalScore = userScore[score];
+                const updatedScore = originalScore + value;
+                userScore[score] = updatedScore;
                 localStorage.setItem('userScores', JSON.stringify(userScore));
-                return { ...lessonState, [action.payload.lesson]: { ...lessonState[action.payload.lesson], scores: userScore[action.payload.score] } };
-            case "RESET_SCORE":
-                const resetScore = JSON.parse(localStorage.getItem('userScores'));
-                resetScore[action.payload.score] = 0;
-                //console.log(resetScore)
-                localStorage.setItem('userScores', JSON.stringify(resetScore));
-                return { ...lessonState, [action.payload.lesson]: { ...lessonState[action.payload.lesson], scores: 0 } };
-            case "SET_LESSON_COMPLETED":
-                return { ...lessonState, [action.payload.lesson]: { ...lessonState[action.payload.lesson], lessonCompleted: action.payload.completed } };
-            case "SET_QUESTION_STARTED":
-                return { ...lessonState, [action.payload.lesson]: { ...lessonState[action.payload.lesson], questionStarted: action.payload.started } };
-            case "SET_TRUE_OR_FALSE_COMPLETE":
-               let LessonNameTrueOrFalse = action.payload.lesson
-                let fullLesson = lessonStates[LessonNameTrueOrFalse]
-                const TrueOrFalseUpdateLesson = {
-                   ...fullLesson,
-                    trueOrFalseComplete: true,
-                    lessonCompleted: true,
-                }
                 return {
-                   ...lessonStates,
-                    [LessonNameTrueOrFalse]: TrueOrFalseUpdateLesson
+                    ...lessonState,
+                    [lesson]: {
+                        ...lessonState[lesson],
+                        scores: updatedScore
+                    }
                 };
-                //return { ...lessonState, [action.payload.lesson]: { ...lessonState[action.payload.lesson], trueOrFalseComplete: action.payload.completed } };
-            case "RESET_QUESTION":
-                const lessonName = action.payload.lesson;
-                const questionIndex = action.payload.index;
-                const lesson = lessonStates[lessonName];
-                const activeQuestion = lesson.questions[questionIndex];
+            }
+            case "RESET_SCORE": {
+                const { lesson, score } = action.payload;
+                const resetScore = JSON.parse(localStorage.getItem('userScores'));
+                resetScore[score] = 0;
+                localStorage.setItem('userScores', JSON.stringify(resetScore));
+                return {
+                    ...lessonState,
+                    [lesson]: {
+                        ...lessonState[lesson],
+                        scores: 0
+                    }
+                };
+            }
+            case "SET_LESSON_COMPLETED": {
+                const { lesson, completed } = action.payload;
+                return {
+                    ...lessonState,
+                    [lesson]: {
+                        ...lessonState[lesson],
+                        lessonCompleted: completed
+                    }
+                };
+            }
+            case "SET_QUESTION_STARTED": {
+                const { lesson, started } = action.payload;
+                return {
+                    ...lessonState,
+                    [lesson]: {
+                        ...lessonState[lesson],
+                        questionStarted: started
+                    }
+                };
+            }
+            case "SET_TRUE_OR_FALSE_COMPLETE": {
+                const { lesson } = action.payload;
+                const fullLesson = lessonStates[lesson];
+                const updatedLesson = {
+                    ...fullLesson,
+                    trueOrFalseComplete: true,
+                    lessonCompleted: true
+                };
+                return {
+                    ...lessonState,
+                    [lesson]: updatedLesson
+                };
+            }
+            case "RESET_QUESTION": {
+                const { lesson, index } = action.payload;
+                const fullLesson = lessonStates[lesson];
+                const activeQuestion = fullLesson.questions[index];
                 const updatedQuestions = activeQuestion.map((question) => ({
                     ...question,
                     isAnswered: false,
                 }));
-                console.log(updatedQuestions)
                 const updatedLesson = {
-                    ...lesson,
-                    questions: [...lesson.questions],
+                    ...fullLesson,
+                    questions: [...fullLesson.questions],
                     lessonCompleted: true
                 };
-                console.log(updatedLesson)
-                updatedLesson.questions[questionIndex] = updatedQuestions;
+                updatedLesson.questions[index] = updatedQuestions;
                 return {
-                    ...lessonStates,
-                    [lessonName]: updatedLesson,
+                    ...lessonState,
+                    [lesson]: updatedLesson,
                 };
+            }
             default:
-                throw new Error();
+                throw new Error(`Unhandled action type: ${action.type}`);
         }
     }
+
     const [lessons, dispatch] = useReducer( lessonReducer, lessonStates);
 
     return (

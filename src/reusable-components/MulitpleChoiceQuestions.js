@@ -3,10 +3,11 @@ import {QuestionContext} from "../context/Questions";
 
 
 function MultipleChoiceQuestions() {
-    let { state, correctNumberAnswers, handleNextQuestion, checkAnswer, nextSetOfQuestions, selectedAnswer, currentQuestion, dispatch} = useContext(QuestionContext)
+    let { state, correctNumberAnswers, handleNextQuestion, checkAnswer, nextSetOfQuestions, selectedAnswer, currentQuestion, dispatch, setCurrentQuestion} = useContext(QuestionContext)
     let MCQQuestions = state.questions[1];
-    let question = MCQQuestions[currentQuestion];
-    console.log(question)
+    let question = MCQQuestions[currentQuestion];;
+    console.log(MCQQuestions)
+    console.log(currentQuestion)
 
 
     const renderMCQS = () => {

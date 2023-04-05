@@ -49,12 +49,13 @@ function QuestionContextProvider({children, state, dispatch}) {
             dispatch({ type: "SET_TRUE_OR_FALSE_COMPLETE", payload: {lesson: state.id,completed: true}});
 
         }
+        setCurrentQuestion(0);
 
     },[])
 
 
     return(
-        <QuestionContext.Provider value={{ handleNextQuestion, checkAnswer, state, dispatch, nextSetOfQuestions, selectedAnswer, currentQuestion, correctNumberAnswers}}>
+        <QuestionContext.Provider value={{ handleNextQuestion, checkAnswer, state, dispatch, nextSetOfQuestions, selectedAnswer, currentQuestion, correctNumberAnswers, setCurrentQuestion}}>
             {children}
         </QuestionContext.Provider>
     )
