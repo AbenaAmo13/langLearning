@@ -19,8 +19,11 @@ function QuestionContextProvider({children, state, dispatch}) {
     const checkAnswer = useCallback((question, answer) => {
         let correctAnswer = question.Answer;
         setSelectedAnswer(answer)
+        console.log("Question: " + question)
+        console.log("State: " + question.isAnswered)
         if (!question.isAnswered) {
             if (answer === correctAnswer) {
+                console.log("It got in here")
                 playAudio(CorrectAudio);
                 console.log(question.componentScore)
                 dispatch({type: "SET_SCORE", payload: {lesson: state.id, score: question.componentScore, value: 10}});
@@ -35,11 +38,15 @@ function QuestionContextProvider({children, state, dispatch}) {
 
 
     const handleNextQuestion = useCallback(() => {
-        // function code
-        console.log("It is here")
         setSelectedAnswer(null)
         setCurrentQuestion(currentQuestion + 1)
     }, [currentQuestion]);
+
+    const handlePrevQuestion = useCallback(() => {
+        setSelectedAnswer(null)
+        setCurrentQuestion(currentQuestion - 1)
+    }, [currentQuestion]);
+
 
 
     const nextSetOfQuestions = useCallback((questionType)=>{
@@ -55,7 +62,7 @@ function QuestionContextProvider({children, state, dispatch}) {
 
 
     return(
-        <QuestionContext.Provider value={{ handleNextQuestion, checkAnswer, state, dispatch, nextSetOfQuestions, selectedAnswer, currentQuestion, correctNumberAnswers, setCurrentQuestion}}>
+        <QuestionContext.Provider value={{ handleNextQuestion, checkAnswer, state, dispatch, nextSetOfQuestions, selectedAnswer, setSelectedAnswer, currentQuestion, correctNumberAnswers, setCurrentQuestion, handlePrevQuestion}}>
             {children}
         </QuestionContext.Provider>
     )

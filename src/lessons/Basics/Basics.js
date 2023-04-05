@@ -11,12 +11,9 @@ function Basics() {
     const dispatch = useContext(LessonDispatchContext)
 
     useEffect(()=>{
-        //console.log(lessons.BasicLessons.lessonCompleted)
-        //dispatch({ type: "SET_LESSON_COMPLETED", payload: { lesson: lessons.BasicLessons.id, completed: false }});
         dispatch({ type: "RESET_LESSON", payload: { lesson: lessons.BasicLessons.id}});
     }, [])
 
-    console.log(lessons.BasicLessons.lessonCompleted)
 
     if(!lessons.BasicLessons.lessonCompleted ){
         return( <Lessons state={lessons.BasicLessons} dispatch={dispatch}/>)
@@ -28,20 +25,6 @@ function Basics() {
         }
     }
 
-
-
-    /*    return(
-            <div>
-                {
-                    (!lessons.BasicLessons.lessonCompleted ?
-                            <Lessons state={lessons.BasicLessons} dispatch={dispatch}/>:
-
-                            <Question state={lessons.BasicLessons} questionType={"trueorfalse"} dispatch={dispatch}/>
-                    )
-                }
-
-            </div>
-        )*/
 }
 
 

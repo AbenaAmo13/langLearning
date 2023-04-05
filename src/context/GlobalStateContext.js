@@ -107,7 +107,6 @@ export function GlobalStatesProvider({ children }) {
                 const updatedLesson ={
                     ...fullLesson
                 }
-                console.log(updatedLesson)
                 return {
                     ...lessonState,
                     [lesson]: updatedLesson

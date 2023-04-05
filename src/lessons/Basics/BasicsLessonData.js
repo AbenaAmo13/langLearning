@@ -111,8 +111,8 @@ export const basicsMCQS =[
         Options: ["Banking", "Education", "HealthCare"],
         EnglishAudio: "",
         TwiAudio:",",
-        Answer: "Education",
-        IsAnswered: false,
+        Answer: "Banking",
+        isAnswered: false,
         componentScore : "BasicsScore",
         type: "mcqs",
     },
@@ -122,7 +122,7 @@ export const basicsMCQS =[
         EnglishAudio: "",
         TwiAudio:",",
         Answer: "Education",
-        IsAnswered: false,
+        isAnswered: false,
         componentScore : "BasicsScore"
 
     },
@@ -132,7 +132,7 @@ export const basicsMCQS =[
         EnglishAudio: "",
         TwiAudio:",",
         Answer: "Ghana Card",
-        IsAnswered: false,
+        isAnswered: false,
         componentScore : "BasicsScore",
     },
     {
@@ -140,8 +140,8 @@ export const basicsMCQS =[
         Options: ["Passports", "Workplace laws", "National Health Insurance"],
         EnglishAudio: "",
         TwiAudio:",",
-        Answer: "Ghana Card",
-        IsAnswered: false,
+        Answer: "Workplace laws",
+        isAnswered: false,
         componentScore : "BasicsScore",
     }
     ,
@@ -150,8 +150,8 @@ export const basicsMCQS =[
         Options: ["National Health Insurance Scheme", "Passports", "Free SHS"],
         EnglishAudio: "",
         TwiAudio:",",
-        Answer: "Ghana Card",
-        IsAnswered: false,
+        Answer: "National Health Insurance Scheme",
+        isAnswered: false,
         componentScore : "BasicsScore"
     }
 ]

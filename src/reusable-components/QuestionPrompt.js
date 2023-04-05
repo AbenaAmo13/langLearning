@@ -8,7 +8,7 @@ function QuestionPrompt({state,dispatch, questionPromptData}) {
         if(questionPromptData.questionType ==="trueorfalse"){
             dispatch({ type: "RESET_QUESTION", payload: { lesson: state.id, index: 0}});
             dispatch({type:"RESET_SCORE",  payload: { lesson: state.id, score: questionPromptData.questions.componentScore}})
-            console.log(state.questions)
+            //console.log(state.questions)
         }
         dispatch({ type: "SET_QUESTION_STARTED", payload: { lesson: state.id, started: true }});
     }
