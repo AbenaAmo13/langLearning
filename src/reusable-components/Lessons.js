@@ -52,9 +52,7 @@ function Lessons({state, dispatch}){
                         </div>
                     </div>
 
-
                 </div>
-
 
             )}
             <div className="testprogressbar" className="progress_bar_style">
@@ -84,9 +82,6 @@ function Lessons({state, dispatch}){
                     </div>
             </div>
             </div>*/}
-
-
-
         </div>
 
     )

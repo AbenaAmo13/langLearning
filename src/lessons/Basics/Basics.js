@@ -3,6 +3,7 @@ import Lessons from "../../reusable-components/Lessons"
 import {LessonContext, LessonDispatchContext} from "../../context/GlobalStateContext";
 import Question from "../../reusable-components/Questions";
 import MulitpleChoiceQuestions from "../../reusable-components/MulitpleChoiceQuestions";
+import {Link} from "react-router-dom";
 
 
 
@@ -26,8 +27,6 @@ function Basics() {
             const lockedStatus = JSON.parse(localStorage.getItem('lockedStatusData'))
             lockedStatus.Health = false
             localStorage.setItem('lockedStatusData', JSON.stringify(lockedStatus))
-            //lockedStatus["Health"] = false;
-
             setPassedBasicLesson(true);
         }
         console.log(userPoints)
@@ -46,6 +45,13 @@ function Basics() {
         // All questions answered, quiz complete
         return(<div>
             <h1>You passed this course! Congratualtions</h1>
+            <h3>To continue to the first course which click the button below:</h3>
+            <button>
+                <Link  to="/Health" className= "nav_link_routers">
+                    <button className="start-button">START</button>
+                </Link>
+            </button>
+
         </div>)
     }else{
         return(<div> <h1> You did not pass this course, please click the button to try</h1></div>)

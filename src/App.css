@@ -1,6 +1,82 @@
 .App {
+
   /*text-align: center*/;
 }
+
+
+/*body
+@media (orientation: portrait) {
+  body {
+    background-size: auto 100vh;
+  }
+}*/
+
+
+html, body {
+  background: url("./images/backgroundPic.svg") no-repeat;
+  background-size: cover;
+  background-position: center center;
+}
+/*body > #root > div {
+  background: url("./images/backgroundPic.svg") no-repeat;
+  height: 100vh;
+}*/
+
+#app-bar-title{
+  font-family: "BRONSON";
+}
+
+.nav-title{
+  font-family: 'Inter';
+  font-style: normal;
+
+}
+
+.orangeCard2{
+  background: #FFFFFF;
+  box-shadow: -2px 14px 6px rgb(216, 155, 28) !important;
+  border-radius: 20px;
+
+}
+
+
+.orangeCardOutline{
+  background: #FFFFFF;
+  box-shadow: 11px 11px 4px rgb(216, 155, 28) !important;
+}
+
+
+.blueCardOutline{
+  background: #FFFFFF !important;
+  /*box-shadow: 16px 9px 4px rgba(76, 212, 255, 0.82)!important;*/
+  box-shadow: 11px 11px 4px rgba(76, 212, 255, 0.82)!important;
+}
+
+.blueCard2{
+  background: #FFFFFF !important;
+  box-shadow: -2px 14px 6px rgba(76, 212, 255, 0.82) !important;
+  border-radius: 20px;
+}
+
+.purpleCardOutline{
+  /*filter: drop-shadow(11px 11px 4px #6C0BB1);*/
+  background: #FFFFFF;
+  box-shadow: 11px 11px 4px rgb(180, 91, 236) !important;
+}
+
+
+.purpleCard2{
+  background: #FFFFFF !important;
+  box-shadow: -2px 14px 6px rgba(180, 91, 236) !important;
+  border-radius: 20px;
+}
+
+@font-face {
+  font-family: "BRONSON";
+  src: url('BRONSON-Black.ttf');
+}
+
+
 
 .App-header {
   background-color: #282c34;
@@ -120,8 +196,14 @@ background: transparent;
   align-items: center;
   flex-direction: column;
   justify-content: space-between;
-  background-color: antiquewhite;
-
+  /*background-color: antiquewhite;*/
+  /* Created with https://www.css-gradient.com */
+  background: rgba(255, 255, 255, 0.84);
+ /* background: #C4F9FC;
+  background: -webkit-linear-gradient(top left, #C4F9FC, #BECDF7);
+  background: -moz-linear-gradient(top left, #C4F9FC, #BECDF7);
+  background: linear-gradient(to bottom right, #C4F9FC, #BECDF7);
+*/
 }
 
 
@@ -225,7 +307,7 @@ background: transparent;
 /*NavBar Elements*/
 .navCard{
   display: flex;
-  box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+ /* box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);*/
   flex-direction: column;
   position: relative;
   margin: 2%;
@@ -244,14 +326,14 @@ background: transparent;
 .cardImg{
   object-fit: cover;
   width:100%;
-  height: 30vh;
+  /*height: 30vh;*/
 }
 
 
 .nav-icons{
   display: flex;
   padding: 5% 5% 5% 3%;
-  align-items: center;
+  align-items: flex-end;
   justify-content: space-evenly;
 }
 
@@ -260,7 +342,7 @@ background: transparent;
   flex-direction: row;
   flex-wrap: wrap;
   justify-content: center;
-  margin: 5%;
+  /*margin: 5%;*/
 }
 .lesson_buttons_div{
   display: flex;
@@ -307,7 +389,9 @@ progress::-moz-progress-bar {
 .question_section_title{
   text-align: center;
 }
-
+.navCard{
+  background-color: white;
+}
 
 
 
@@ -345,10 +429,6 @@ progress::-moz-progress-bar {
   justify-content: space-around;
   margin: 2%;
 }
-
-
-
-
 /*Card Component stylings*/
 .card_component_container{
   box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
@@ -399,15 +479,16 @@ progress::-moz-progress-bar {
     position: relative;
     margin: 5%;
 
+
   }
 
   .cardmedia{
-    height: 30vh;
+   /* height: 30vh;*/
   }
   .cardImg{
     object-fit: cover;
     width:100%;
-    height: 30vh;
+    /*height: 30vh;*/
   }
 
 

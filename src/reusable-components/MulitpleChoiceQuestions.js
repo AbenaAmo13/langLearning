@@ -51,7 +51,7 @@ function MultipleChoiceQuestions() {
                 <form onSubmit={handleSubmit}>
                 {question.Options.map((option, index) => (
                     <div key={index}>
-                        <input type="radio" value={option} name="options" onChange={handleOptionChange} />
+                        <input type="radio" value={option} name="options" onChange={handleOptionChange}   />
                         <label htmlFor={option}> {option}</label>
                     </div>
                 ))}

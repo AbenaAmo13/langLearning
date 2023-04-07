@@ -18,7 +18,7 @@ function TopAppBar(){
         <div className='topAppBar'>
             <div className="title_and_logo">
                 <img src={imagePath} alt="logo" id="logo"/>
-                <h1> Government Says</h1>
+                <h1 id="app-bar-title"> Government Says</h1>
             </div>
             <div className="appbar-icons">
                 <Link to="/Help">

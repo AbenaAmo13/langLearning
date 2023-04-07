@@ -1,15 +1,14 @@
-import {createContext, useReducer} from 'react';
+import {createContext, useEffect, useReducer} from 'react';
 import {basicLessonData, basicsMCQS, FreeForm, trueOrFalseQuestions} from "../lessons/Basics/BasicsLessonData";
 
 export const LessonContext = createContext(null);
 export const LessonDispatchContext = createContext(null);
 
 export function GlobalStatesProvider({ children }) {
-    let userScores = JSON.parse(localStorage.getItem('userScores'));
     const lessonStates= {
         BasicLessons: {
             id: "BasicLessons",
-            scores: userScores.BasicsScore,
+            scores: 0,
             lessons: basicLessonData,
             lessonCompleted: false,
             questionStarted: false,
