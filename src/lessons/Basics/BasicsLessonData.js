@@ -118,7 +118,7 @@ export const basicsMCQS =[
         type: "mcqs",
     },
     {
-        Question: "Free SHS is made to help students get free ",
+        Question: "Free SHS is made to help students get free... ",
         Options: ["Education", "HealthCare", "Money"],
         EnglishAudio: "",
         TwiAudio:",",
@@ -128,7 +128,7 @@ export const basicsMCQS =[
 
     },
     {
-        Question: "Which of the following is used to help us officially identify ourselves in Ghana",
+        Question: "Which of the following is used to help us officially identify ourselves in Ghana?",
         Options: ["Our names", "Phones", "Ghana Card"],
         EnglishAudio: "",
         TwiAudio:",",
@@ -137,7 +137,7 @@ export const basicsMCQS =[
         componentScore : "BasicsScore",
     },
     {
-        Question: "Which of these does the government use to help make our job life easier",
+        Question: "Which of these does the government use to help make our job life easier?",
         Options: ["Passports", "Workplace laws", "National Health Insurance"],
         EnglishAudio: "",
         TwiAudio:",",
@@ -147,7 +147,7 @@ export const basicsMCQS =[
     }
     ,
     {
-        Question: "Which of these does the government use to give everyone access to healthcare",
+        Question: "Which of these does the government use to give everyone access to healthcare?",
         Options: ["National Health Insurance Scheme", "Passports", "Free SHS"],
         EnglishAudio: "",
         TwiAudio:",",

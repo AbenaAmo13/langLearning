@@ -44,48 +44,67 @@ function MultipleChoiceQuestions() {
 
     const renderMCQS = () => {
         return (
-            <div>
-
-                <h1>{question.Question}</h1>
-                <LessonAudioPlayer twiAudio={question.twiAudio} englishAudio={question.TwiAudio}/>
-                <form onSubmit={handleSubmit}>
-                {question.Options.map((option, index) => (
-                    <div key={index}>
-                        <input type="radio" value={option} name="options" onChange={handleOptionChange}   />
-                        <label htmlFor={option}> {option}</label>
-                    </div>
-                ))}
-                <button type="submit">Check Answer</button>
-                </form>
-                {selectedAnswer && (
-                    <div>
-                        {selectedAnswer === question.Answer ? (
-                            <div className="correct_answer">
-                                <p className="questions">You got it right!</p>
-                                <button className="correct_answer_icon">
-                                    <i className="material-icons correct_answer_icons" alt="account icon" > check_circle </i>
-                                </button>
-                                <p className="questions"> You have {state.scores} points!</p>
+            <div className="mcq_main_container">
+                <div className="mcqCard orangeCardOutline overall_lessons_container">
+                    <h1>{question.Question}</h1>
+                    <form onSubmit={handleSubmit} >
+                        {question.Options.map((option, index) => (
+                            <div key={index} className="input_options">
+                                <label>
+                                    <input type="radio" value={option} name="options" onChange={handleOptionChange} required  />
+                                    <span className="radio-label">{option}</span>
+                                </label>
                             </div>
-                        ) : (
-                            <div className="correct_answer">
-                                <div>
-                                    <p className="questions">Sorry, that's incorrect.</p>
-                                    <button className="incorrect_answer_icon">
-                                        <i className="material-icons correct_answer_icons" alt="account icon" > cancel </i>
+                        ))}
+                        <div className="mcq_actions">
+                            <LessonAudioPlayer twiAudio={question.twiAudio} englishAudio={question.TwiAudio}/>
+                            <button type="submit" className="lesson_buttons mcq_buttons" >
+                                <p>CHECK ANSWER </p>
+                                <i className="material-icons" alt="help icon">flaky</i>
+                            </button>
+                        </div>
+
+
+                    </form>
+                    {selectedAnswer && (
+                        <div>
+                            {selectedAnswer === question.Answer ? (
+                                <div className="correct_answer">
+                                    <p className="questions">You got it right!</p>
+                                    <button className="correct_answer_icon">
+                                        <i className="material-icons correct_answer_icons" alt="account icon" > check_circle </i>
                                     </button>
+                                    <p className="questions"> You have {state.scores} points!</p>
                                 </div>
-                                <p className="questions">The correct answer is: {question.Answer}</p>
-                                <AudioPlayer />
-                            </div>
-                        )}
-                    </div>
-                )}
-                <button onClick={()=> handlePrevQuestion()}  disabled={currentQuestion === 0}>Previous Question</button>
-
-                <button onClick={()=> handleNextQuestion()} disabled={currentQuestion===MCQQuestions.length}>Next Question</button>
+                            ) : (
+                                <div className="correct_answer">
+                                    <div>
+                                        <p className="questions">Sorry, that's incorrect.</p>
+                                        <button className="incorrect_answer_icon">
+                                            <i className="material-icons correct_answer_icons" alt="account icon" > cancel </i>
+                                        </button>
+                                    </div>
+                                    <p className="questions">The correct answer is: {question.Answer}</p>
+                                    <AudioPlayer />
+                                </div>
+                            )}
+                        </div>
+                    )}
+                </div>
+                <div className="overall_lessons_container action_buttons">
+                    <button onClick={()=> handlePrevQuestion()}  disabled={currentQuestion === 0} className="lesson_buttons mcq_buttons">
+                        <i className="material-icons" alt="help icon">arrow_back</i>
+                        <p>BACK </p>
+                    </button>
+                    <button onClick={()=> handleNextQuestion()} disabled={currentQuestion===MCQQuestions.length} className="lesson_buttons mcq_buttons">
+                        <p>NEXT </p>
+                        <i className="material-icons" alt="help icon">arrow_forward</i>
+                    </button>
+                </div>
 
             </div>
+
+
         )
     }
 
@@ -103,7 +122,7 @@ function MultipleChoiceQuestions() {
     }
 
     return (
-        <div>
+        <div className="mcq-container">
 
             {!state.questionStarted ? (
                     /* Render the question prompt */

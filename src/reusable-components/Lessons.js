@@ -42,18 +42,17 @@ function Lessons({state, dispatch}){
                             <i className="material-icons" alt="help icon">volume_up</i>
                         </button>
                     </div>*/}
-                    <div className="lesson_card_visuals">
+                    <div className="lesson_card_visuals lessonBlueOutline">
                         <div className="lesson_card_media">
                             <img src={state.lessons[currentIndex].Image} className="card_lesson_image"/>
                         </div>
                         <div className="lesson_card_keywords">
+                            <h3 className="lesson_titles">{state.lessons[currentIndex].EnglishWord}</h3>
                             {state.lessons[currentIndex].KeyMessageEnglish}
                             <AudioPlayer/>
                         </div>
                     </div>
-
                 </div>
-
             )}
             <div className="testprogressbar" className="progress_bar_style">
                 <span  className="progress_text_style">{progressWidth}%</span>
