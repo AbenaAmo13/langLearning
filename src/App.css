@@ -11,6 +11,10 @@
   }
 }*/
 
+.wrong_answer_subdiv{
+  display: flex;
+}
+
 .lesson_titles{
   width: 100%;
   text-align: center;

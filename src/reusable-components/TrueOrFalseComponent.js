@@ -98,15 +98,18 @@ function TrueOrFalseComponent(){
                             <div>
                                 {selectedAnswer === question.Answer ? (
                                     <div className="correct_answer">
-                                        <p className="questions">You got it right!</p>
-                                        <button className="correct_answer_icon">
-                                            <i className="material-icons correct_answer_icons" alt="account icon" > check_circle </i>
-                                        </button>
+                                        <div className="correct_answer_subdiv" >
+                                            <p className="questions">You got it right!</p>
+                                            <button className="correct_answer_icon">
+                                                <i className="material-icons correct_answer_icons" alt="account icon" > check_circle </i>
+                                            </button>
+                                        </div>
+
                                         <p className="questions"> You have {state.scores} points!</p>
                                     </div>
                                 ) : (
-                                    <div className="correct_answer">
-                                        <div>
+                                    <div className="wrong_answer">
+                                        <div className="wrong_answer_subdiv">
                                             <p className="questions">Sorry, that's incorrect.</p>
                                             <button className="incorrect_answer_icon">
                                                 <i className="material-icons correct_answer_icons" alt="account icon" > cancel </i>
