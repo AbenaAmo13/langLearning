@@ -1,7 +1,12 @@
 import CardComponent from "./CardComponent";
+import LessonAudioPlayer from "./LessonAudioPlayer";
+import {useContext} from "react";
+import {AudioContext} from "../context/AudioContext";
 
 function QuestionPrompt({state,dispatch, questionPromptData}) {
-  function notReady(){
+    const {playAudio, isPlaying } = useContext(AudioContext);
+
+    function notReady(){
       dispatch({ type: "SET_LESSON_COMPLETED", payload: { lesson: state.id, completed: false }});
     }
     function ready(){
@@ -22,24 +27,62 @@ function QuestionPrompt({state,dispatch, questionPromptData}) {
 
     return(
         <div>
-           <CardComponent
-           cardImage={questionPromptData.quizImage}
-           cardTitle={questionPromptData.cardTitle}
-           cardTextContent={questionPromptData.cardTextContent}
-           englishAudio={questionPromptData.englishAudio}
-           twiAudio={questionPromptData.twiAudio}
-           />
+            <div className="card_component_container purpleCardOutline">
+                <div className="card_component_image" >
+                    <img src={questionPromptData.quizImage}/>
+                </div>
+                <div className="card_component_content">
+                    <h3 className="card_component_title">{questionPromptData.cardTitle}</h3>
+                    {questionPromptData.cardTextContent.map((cardTextContent, index) => (
+                        <p key={index} className="card_component_text">
+                            {cardTextContent.text}
+                        </p>
+                    ))}
 
-            <div className="question_buttons">
-                <button  className="lesson_buttons icon-buttons" onClick={()=>ready()}>
-                    <p>Yes</p>
-                    <i className="material-icons" alt="help icon">thumb_up_alt</i>
-                </button>
-                <button  className="lesson_buttons icon-buttons" onClick={()=>notReady()}>
-                    <p>No</p>
-                    <i className="material-icons" alt="help icon">thumb_down_off_alt</i>
-                </button>
+                </div>
+                <div className="card_audio_controls">
+                    <div className="volume_button_divs">
+                        <div>🇬🇭</div>
+                        <button
+                            className={`question_prompt_volume_icons   ${isPlaying === true ? 'audio_active' : ''}`}
+                            onClick={() => {
+                                playAudio(new Audio(questionPromptData.twiAudio));
+                            }}
+                        >
+                            <i className="material-icons" alt="help icon">
+                                volume_up
+                            </i>
+                        </button>
+                    </div>
+
+                    <div className="volume_button_divs">
+                        <div>🇬🇧</div>
+                        <div>
+                            <button
+                                className={`question_prompt_volume_icons   ${isPlaying === true ? 'audio_active' : ''}`}
+                                onClick={() => {
+                                    playAudio(new Audio(questionPromptData.englishAudio));
+                                    //onEnglishClick();
+                                }}
+                            >
+                                <i className="material-icons" alt="help icon">
+                                    volume_up
+                                </i>
+                            </button>
+                        </div>
+
+                    </div>
+                        <button  className="lesson_buttons icon-buttons" onClick={()=>ready()}>
+                            <p>Yes</p>
+                            <i className="material-icons" alt="help icon">thumb_up_alt</i>
+                        </button>
+                        <button  className="lesson_buttons icon-buttons" onClick={()=>notReady()}>
+                            <p>No</p>
+                            <i className="material-icons" alt="help icon">thumb_down_off_alt</i>
+                        </button>
+                </div>
             </div>
+
 
         </div>
 

@@ -1,4 +1,4 @@
-import {useContext, useEffect, useState} from "react";
+import {useContext, useEffect, useState, useRef} from "react";
 import {QuestionContext} from "../context/QuestionsContext";
 import LessonAudioPlayer from "./LessonAudioPlayer";
 import AudioPlayer from "./LessonAudioPlayer";
@@ -14,12 +14,9 @@ function MultipleChoiceQuestions() {
         dispatch
         } = useContext(QuestionContext)
     const [optionSelected, setOptionSelected] = useState(null)
-    const [answerChecked, setAnswerChecked] = useState(null);
+    const inputRefs = useRef([]);
     let MCQQuestions = state.questions[1];
     let question = MCQQuestions[currentQuestion];
-    console.log(currentQuestion)
-    console.log(selectedAnswer)
-
     const QuestionPromptData = {
         cardTextContent:[{
             text: "Next we have a multiple choice questions where you are given a question, and many answers to choose from" +
@@ -34,9 +31,10 @@ function MultipleChoiceQuestions() {
     }
 
     useEffect(()=>{
-
         setOptionSelected(null)
-
+        inputRefs.current.forEach((input) =>{
+          input.checked = false;
+        });
     }, [currentQuestion])
 
 
@@ -47,6 +45,7 @@ function MultipleChoiceQuestions() {
 
     const handleAnswers=()=>{
         checkAnswer(question, optionSelected);
+
     }
 
     const renderMCQS = () => {
@@ -54,12 +53,11 @@ function MultipleChoiceQuestions() {
             <div className="mcq_main_container">
                 <div className="mcqCard orangeCardOutline overall_lessons_container">
                     <h3>Question Number: {question.id}</h3>
-                    <h1>{question.Question}</h1>
-
+                    <p className="text_content"> {question.Question}</p>
                         {question.Options.map((option, index) => (
                             <div key={index} className="input_options">
                                 <label>
-                                    <input type="radio" value={option} name="options" onChange={handleOptionChange} required key={index}  />
+                                    <input type="radio" value={option} name="options" onClick={handleOptionChange} required key={index} ref={(el) => inputRefs.current[index] = el}  />
                                     <span className="radio-label">{option}</span>
                                 </label>
                             </div>
@@ -74,9 +72,7 @@ function MultipleChoiceQuestions() {
                                 </button>
                             </div>
                         )
-
                         }
-
                     {selectedAnswer && (
                         <div className="feedback_div">
                             {selectedAnswer === question.Answer ? (
@@ -114,10 +110,7 @@ function MultipleChoiceQuestions() {
                         <i className="material-icons" alt="help icon">arrow_forward</i>
                     </button>
                 </div>
-
             </div>
-
-
         )
     }
 

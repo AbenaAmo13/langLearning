@@ -21,7 +21,6 @@ function Basics() {
 
     useEffect(()=>{
         const userPoints = basicLessonState.scores;
-        console.log(userPoints)
         const pointsRequired = basicLessonState.pointsToPassLesson;
         if(userPoints > pointsRequired && localStorage.getItem('lockedStatusData')) {
             const lockedStatus = JSON.parse(localStorage.getItem('lockedStatusData'))
@@ -29,7 +28,6 @@ function Basics() {
             localStorage.setItem('lockedStatusData', JSON.stringify(lockedStatus))
             setPassedBasicLesson(true);
         }
-        console.log(userPoints)
     }, [basicLessonState.mcqComplete])
 
 

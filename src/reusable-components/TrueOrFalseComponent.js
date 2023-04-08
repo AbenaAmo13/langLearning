@@ -1,4 +1,4 @@
-import {useContext, useEffect, useState} from "react";
+import {useContext, useEffect, useState, useRef} from "react";
 import AudioPlayer from "./LessonAudioPlayer";
 import {QuestionContext} from "../context/QuestionsContext";
 import quizImage from "../images/quizImage.png";
@@ -10,6 +10,7 @@ function TrueOrFalseComponent(){
     let { state, correctNumberAnswers, handleNextQuestion, checkAnswer, nextSetOfQuestions, selectedAnswer, currentQuestion, dispatch, handlePrevQuestion} = useContext(QuestionContext)
     let trueOrFalseQuestions = state.questions[0];
     const [optionSelected, setOptionSelected] = useState(null)
+    const inputRefs = useRef([]);
     let question = trueOrFalseQuestions[currentQuestion];
     const options =["True", "False"];
     const QuestionPromptData = {
@@ -30,6 +31,19 @@ function TrueOrFalseComponent(){
 
 
     }, [state.lessonCompleted])
+
+
+
+
+    useEffect(()=>{
+        console.log('This gets here')
+        setOptionSelected(null)
+        console.log(inputRefs.current)
+        inputRefs.current.forEach((input) =>{
+           input.checked = false;
+        });
+
+    }, [currentQuestion])
     const handleOptionChange = (event) => {
         setOptionSelected(event.target.value);
 
@@ -37,7 +51,6 @@ function TrueOrFalseComponent(){
 
 
     const handleAnswers=()=>{
-        console.log('being clicked')
         checkAnswer(question, optionSelected);
     }
     const renderQuestions=()=>{
@@ -47,14 +60,20 @@ function TrueOrFalseComponent(){
                     <div className="mcqCard orangeCardOutline mcq-containe overall_lessons_container ">
                         <div className="true_or_false_questions">
                             <h3>Question Number: {question.id}</h3>
-                            <p className="questions"> {question.Question}</p>
+                            <p className="text_content"> {question.Question}</p>
                         </div>
                         <div>
 
                                 {options.map((option, index) => (
                                     <div key={index} className="input_options">
                                         <label>
-                                            <input type="radio" value={option} name="options" required onChange={handleOptionChange}  />
+                                            <input type="radio" value={option} name="options" required onClick={handleOptionChange}
+                                                   ref={(el) => {
+                                                       if (el) {
+                                                           inputRefs.current[index] = el;
+                                                       }
+                                                   }}
+                                            />
                                             <span className="radio-label">{option}</span>
                                             {option.toLowerCase() === 'true' ? <i className="material-icons" alt="help icon">thumb_up_alt</i>
                                                 : <i className="material-icons" alt="help icon">thumb_down_alt</i>}
@@ -86,7 +105,6 @@ function TrueOrFalseComponent(){
                                                 <i className="material-icons correct_answer_icons" alt="account icon" > check_circle </i>
                                             </button>
                                         </div>
-
                                         <p className="questions"> You have {state.scores} points!</p>
                                     </div>
                                 ) : (

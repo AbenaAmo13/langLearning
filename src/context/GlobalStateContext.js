@@ -21,7 +21,6 @@ export function GlobalStatesProvider({ children }) {
     }
 
     function lessonReducer(lessonState, action) {
-        console.log(lessonState)
         switch (action.type) {
             case "SET_SCORE": {
                 const { lesson, score, value } = action.payload;
