@@ -16,6 +16,11 @@
   text-align: center;
 }
 
+.correct_answer_subdiv {
+  display: flex;
+}
+
+
 input[type=radio] {
   transform: scale(1.5);
 }
@@ -59,12 +64,17 @@ label {
 input[type="radio"] {
   margin-right: 0.5rem; /* add some spacing between radio button and label */
   /* do not set width or height to maintain default size */
+  display: flex;
+  justify-content: center;
 }
 
 input[type="radio"]:focus + .radio-label {
   /* add focus styles to the label element */
   outline: 2px solid blue;
 }
+
+
+
 
 .mcq_main_container>.action_buttons{
   display: flex;
@@ -554,6 +564,10 @@ progress::-moz-progress-bar {
 
 
   }
+  .mcq-container{
+    margin: 3%;
+
+  }
 
   .cardmedia{
     display: flex;
@@ -582,6 +596,16 @@ progress::-moz-progress-bar {
     flex-wrap: wrap;
     padding: 2%;
   }
+
+  .correct_answer{
+    display: flex;
+    flex-direction: column;
+  }
+
+  .mcq_main_container>.action_buttons{
+    margin: 5% auto;
+  }
+
 
 }
 
@@ -631,6 +655,8 @@ progress::-moz-progress-bar {
   .mcq_buttons{
     flex-shrink: 0;
   }
+
+
 
 
   /*Card Component stylings*/

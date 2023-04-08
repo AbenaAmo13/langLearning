@@ -109,7 +109,7 @@ export const trueOrFalseQuestions=[
 export const basicsMCQS =[
     {
         Question: "Which of the following is not going to be covered in this course?",
-        Options: ["Banking", "Education", "HealthCare"],
+        Options: ["A: Banking", "B: Education", "C: HealthCare"],
         EnglishAudio: "",
         TwiAudio:",",
         Answer: "Banking",
@@ -119,7 +119,7 @@ export const basicsMCQS =[
     },
     {
         Question: "Free SHS is made to help students get free... ",
-        Options: ["Education", "HealthCare", "Money"],
+        Options: ["A: Education", "B: HealthCare", "C: Money"],
         EnglishAudio: "",
         TwiAudio:",",
         Answer: "Education",
@@ -129,7 +129,7 @@ export const basicsMCQS =[
     },
     {
         Question: "Which of the following is used to help us officially identify ourselves in Ghana?",
-        Options: ["Our names", "Phones", "Ghana Card"],
+        Options: ["A: Our names", "B: Phones", "C:Ghana Card"],
         EnglishAudio: "",
         TwiAudio:",",
         Answer: "Ghana Card",
@@ -138,7 +138,7 @@ export const basicsMCQS =[
     },
     {
         Question: "Which of these does the government use to help make our job life easier?",
-        Options: ["Passports", "Workplace laws", "National Health Insurance"],
+        Options: ["A: Passports", "B: Workplace laws", "C: National Health Insurance"],
         EnglishAudio: "",
         TwiAudio:",",
         Answer: "Workplace laws",
@@ -148,7 +148,7 @@ export const basicsMCQS =[
     ,
     {
         Question: "Which of these does the government use to give everyone access to healthcare?",
-        Options: ["National Health Insurance Scheme", "Passports", "Free SHS"],
+        Options: ["A: National Health Insurance Scheme", "B: Passports", "C: Free SHS"],
         EnglishAudio: "",
         TwiAudio:",",
         Answer: "National Health Insurance Scheme",

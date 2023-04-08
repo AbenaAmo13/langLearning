@@ -29,66 +29,70 @@ function TrueOrFalseComponent(){
     const renderQuestions=()=>{
         return(
             <div className="center">
-                <div>
-                    <h2 className="question_section_title">True or False Questions</h2>
-                </div>
-                <div>
-                    <div className="true_or_false_questions">
-                        <h3>Question Number: {question.id}</h3>
-                        <p className="questions"> {question.Question}</p>
-                    </div>
-                    <AudioPlayer englishAudio={question.EnglishAudio} twiAudio={question.TwiAudio}/>
-                    <div>
-                        <div className="question_buttons">
-                            <button
-                                className={`lesson_buttons icon-buttons ${selectedAnswer === 'True' ? 'selected' : ''}`}
-                                onClick={()=>checkAnswer(question, "True")}
-                                disabled={selectedAnswer !== null}
-                            >
-                                <p>True</p>
-                                <i className="material-icons" alt="help icon">thumb_up_alt</i>
-                            </button>
-                            <button
-                                className={`lesson_buttons icon-buttons ${selectedAnswer === 'False' ? 'selected' : ''}`}
-                                onClick={()=>checkAnswer(question, "False")}
-                                disabled={selectedAnswer !== null}
-                            >
-                                <p>False</p>
-                                <i className="material-icons" alt="help icon">thumb_down_off_alt</i>
-                            </button>
+                <div className="mcq_main_container">
+                    <div className="mcqCard orangeCardOutline overall_lessons_container mcq-container ">
+                        <div className="true_or_false_questions">
+                            <h3>Question Number: {question.id}</h3>
+                            <p className="questions"> {question.Question}</p>
                         </div>
-                    </div>
-                    {selectedAnswer && (
+                        <AudioPlayer englishAudio={question.EnglishAudio} twiAudio={question.TwiAudio}/>
                         <div>
-                            {selectedAnswer === question.Answer ? (
-                                <div className="correct_answer">
-                                    <p className="questions">You got it right!</p>
-                                    <button className="correct_answer_icon">
-                                        <i className="material-icons correct_answer_icons" alt="account icon" > check_circle </i>
-                                    </button>
-                                    <p className="questions"> You have {state.scores} points!</p>
-                                </div>
-                            ) : (
-                                <div className="correct_answer">
-                                    <div>
-                                        <p className="questions">Sorry, that's incorrect.</p>
-                                        <button className="incorrect_answer_icon">
-                                            <i className="material-icons correct_answer_icons" alt="account icon" > cancel </i>
-                                        </button>
-                                    </div>
-                                    <p className="questions">The correct answer is: {question.Answer}</p>
-                                    <AudioPlayer />
-                                </div>
-                            )}
+                            <div className="question_buttons">
+                                <button
+                                    className={`lesson_buttons icon-buttons ${selectedAnswer === 'True' ? 'selected' : ''}`}
+                                    onClick={()=>checkAnswer(question, "True")}
+                                    disabled={selectedAnswer !== null}
+                                >
+                                    <p>True</p>
+                                    <i className="material-icons" alt="help icon">thumb_up_alt</i>
+                                </button>
+                                <button
+                                    className={`lesson_buttons icon-buttons ${selectedAnswer === 'False' ? 'selected' : ''}`}
+                                    onClick={()=>checkAnswer(question, "False")}
+                                    disabled={selectedAnswer !== null}
+                                >
+                                    <p>False</p>
+                                    <i className="material-icons" alt="help icon">thumb_down_off_alt</i>
+                                </button>
+                            </div>
                         </div>
-                    )}
-                    <button onClick={()=> handlePrevQuestion()} disabled={currentQuestion === 0}>Previous Question</button>
-                    <button onClick={()=> handleNextQuestion()} disabled={currentQuestion===trueOrFalseQuestions.length} >Next Question</button>
-
-
+                        {selectedAnswer && (
+                            <div>
+                                {selectedAnswer === question.Answer ? (
+                                    <div className="correct_answer">
+                                        <p className="questions">You got it right!</p>
+                                        <button className="correct_answer_icon">
+                                            <i className="material-icons correct_answer_icons" alt="account icon" > check_circle </i>
+                                        </button>
+                                        <p className="questions"> You have {state.scores} points!</p>
+                                    </div>
+                                ) : (
+                                    <div className="correct_answer">
+                                        <div>
+                                            <p className="questions">Sorry, that's incorrect.</p>
+                                            <button className="incorrect_answer_icon">
+                                                <i className="material-icons correct_answer_icons" alt="account icon" > cancel </i>
+                                            </button>
+                                        </div>
+                                        <p className="questions">The correct answer is: {question.Answer}</p>
+                                        <AudioPlayer />
+                                    </div>
+                                )}
+                            </div>
+                        )}
+                    </div>
+                    <div  className="overall_lessons_container action_buttons">
+                        <button onClick={()=> handlePrevQuestion()} disabled={currentQuestion === 0}  className="lesson_buttons mcq_buttons">
+                            <i className="material-icons" alt="help icon">arrow_back</i>
+                            <p>BACK </p>
+                        </button>
+                        <button onClick={()=> handleNextQuestion()} disabled={currentQuestion===trueOrFalseQuestions.length}  className="lesson_buttons mcq_buttons" >
+                            <p>NEXT </p>
+                            <i className="material-icons" alt="help icon">arrow_forward</i>
+                        </button>
+                    </div>
                 </div>
-                <div>
-                </div>
+
             </div>
         );
     }

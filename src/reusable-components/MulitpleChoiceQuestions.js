@@ -14,9 +14,11 @@ function MultipleChoiceQuestions() {
         dispatch
         } = useContext(QuestionContext)
     const [optionSelected, setOptionSelected] = useState(null)
+    const [answerChecked, setAnswerChecked] = useState(null);
     let MCQQuestions = state.questions[1];
     let question = MCQQuestions[currentQuestion];
     console.log(currentQuestion)
+    console.log(selectedAnswer)
 
     const QuestionPromptData = {
         cardTextContent:[{
@@ -40,6 +42,7 @@ function MultipleChoiceQuestions() {
     const handleSubmit = (event) => {
         event.preventDefault();
         checkAnswer(question, optionSelected);
+        setAnswerChecked(true);
     };
 
     const renderMCQS = () => {
@@ -56,29 +59,35 @@ function MultipleChoiceQuestions() {
                                 </label>
                             </div>
                         ))}
-                        <div className="mcq_actions">
-                            <LessonAudioPlayer twiAudio={question.twiAudio} englishAudio={question.TwiAudio}/>
-                            <button type="submit" className="lesson_buttons mcq_buttons" >
-                                <p>CHECK ANSWER </p>
-                                <i className="material-icons" alt="help icon">flaky</i>
-                            </button>
-                        </div>
+                        {!selectedAnswer &&
+                        (
+                            <div className="mcq_actions">
+                                <LessonAudioPlayer twiAudio={question.twiAudio} englishAudio={question.TwiAudio}/>
+                                <button type="submit" className="lesson_buttons mcq_buttons" >
+                                    <p>CHECK ANSWER </p>
+                                    <i className="material-icons" alt="help icon">flaky</i>
+                                </button>
+                            </div>
+                        )
 
+                        }
 
                     </form>
                     {selectedAnswer && (
-                        <div>
+                        <div className="feedback_div">
                             {selectedAnswer === question.Answer ? (
                                 <div className="correct_answer">
-                                    <p className="questions">You got it right!</p>
-                                    <button className="correct_answer_icon">
-                                        <i className="material-icons correct_answer_icons" alt="account icon" > check_circle </i>
-                                    </button>
+                                    <div className="correct_answer_subdiv">
+                                        <p className="questions">You got it right!</p>
+                                        <button className="correct_answer_icon">
+                                            <i className="material-icons correct_answer_icons" alt="account icon" > check_circle </i>
+                                        </button>
+                                    </div>
                                     <p className="questions"> You have {state.scores} points!</p>
                                 </div>
                             ) : (
-                                <div className="correct_answer">
-                                    <div>
+                                <div className="wrong_answer">
+                                    <div className="wrong_answer_subdiv">
                                         <p className="questions">Sorry, that's incorrect.</p>
                                         <button className="incorrect_answer_icon">
                                             <i className="material-icons correct_answer_icons" alt="account icon" > cancel </i>
