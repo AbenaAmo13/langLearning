@@ -3,6 +3,7 @@ import AudioPlayer from "./LessonAudioPlayer";
 import {QuestionContext} from "../context/QuestionsContext";
 import quizImage from "../images/quizImage.png";
 import QuestionPrompt from "./QuestionPrompt";
+import testing from "../audios/testing.mp3"
 import LessonAudioPlayer from "./LessonAudioPlayer";
 
 function TrueOrFalseComponent(){
@@ -34,10 +35,11 @@ function TrueOrFalseComponent(){
 
     };
 
-    const handleSubmit = (event) => {
-        event.preventDefault();
+
+    const handleAnswers=()=>{
+        console.log('being clicked')
         checkAnswer(question, optionSelected);
-    };
+    }
     const renderQuestions=()=>{
         return(
             <div className="">
@@ -48,7 +50,7 @@ function TrueOrFalseComponent(){
                             <p className="questions"> {question.Question}</p>
                         </div>
                         <div>
-                            <form onSubmit={handleSubmit}>
+
                                 {options.map((option, index) => (
                                     <div key={index} className="input_options">
                                         <label>
@@ -63,8 +65,8 @@ function TrueOrFalseComponent(){
                                 {!selectedAnswer &&
                                 (
                                     <div className="mcq_actions">
-                                        <LessonAudioPlayer twiAudio={question.twiAudio} englishAudio={question.TwiAudio}/>
-                                        <button type="submit" className="lesson_buttons mcq_buttons" >
+                                        <LessonAudioPlayer twiAudio={question.twiAudio} englishAudio={testing}/>
+                                        <button type="submit" className="lesson_buttons mcq_buttons" onClick={()=>handleAnswers()} >
                                             <p>CHECK ANSWER </p>
                                             <i className="material-icons" alt="help icon">flaky</i>
                                         </button>
@@ -72,9 +74,6 @@ function TrueOrFalseComponent(){
                                 )
 
                                 }
-                            </form>
-
-
                         </div>
 
                         {selectedAnswer && (

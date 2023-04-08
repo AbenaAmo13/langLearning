@@ -45,12 +45,9 @@ function MultipleChoiceQuestions() {
 
     };
 
-    const handleSubmit = (event) => {
-        event.preventDefault();
-        //checkAnswer(question, optionSelected);
-        checkAnswer(question, optionSelected)
-        setAnswerChecked(true);
-    };
+    const handleAnswers=()=>{
+        checkAnswer(question, optionSelected);
+    }
 
     const renderMCQS = () => {
         return (
@@ -58,7 +55,7 @@ function MultipleChoiceQuestions() {
                 <div className="mcqCard orangeCardOutline overall_lessons_container">
                     <h3>Question Number: {question.id}</h3>
                     <h1>{question.Question}</h1>
-                    <form onSubmit={handleSubmit} >
+
                         {question.Options.map((option, index) => (
                             <div key={index} className="input_options">
                                 <label>
@@ -71,7 +68,7 @@ function MultipleChoiceQuestions() {
                         (
                             <div className="mcq_actions">
                                 <LessonAudioPlayer twiAudio={question.twiAudio} englishAudio={question.TwiAudio}/>
-                                <button type="submit" className="lesson_buttons mcq_buttons" >
+                                <button type="submit" className="lesson_buttons mcq_buttons"  onClick={()=>handleAnswers()}>
                                     <p>CHECK ANSWER </p>
                                     <i className="material-icons" alt="help icon">flaky</i>
                                 </button>
@@ -79,7 +76,7 @@ function MultipleChoiceQuestions() {
                         )
 
                         }
-                    </form>
+
                     {selectedAnswer && (
                         <div className="feedback_div">
                             {selectedAnswer === question.Answer ? (
