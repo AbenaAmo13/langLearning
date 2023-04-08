@@ -1,4 +1,4 @@
-import {useContext, useState} from "react";
+import {useContext, useEffect, useState} from "react";
 import {QuestionContext} from "../context/QuestionsContext";
 import LessonAudioPlayer from "./LessonAudioPlayer";
 import AudioPlayer from "./LessonAudioPlayer";
@@ -32,6 +32,11 @@ function MultipleChoiceQuestions() {
         questionType: "mcqs",
         questions: question
     }
+
+    useEffect(()=>{
+        setOptionSelected(null)
+
+    }, [currentQuestion])
 
 
     const handleOptionChange = (event) => {
@@ -71,7 +76,6 @@ function MultipleChoiceQuestions() {
                         )
 
                         }
-
                     </form>
                     {selectedAnswer && (
                         <div className="feedback_div">

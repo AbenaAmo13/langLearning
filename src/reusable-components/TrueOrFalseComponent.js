@@ -3,11 +3,14 @@ import AudioPlayer from "./LessonAudioPlayer";
 import {QuestionContext} from "../context/QuestionsContext";
 import quizImage from "../images/quizImage.png";
 import QuestionPrompt from "./QuestionPrompt";
+import LessonAudioPlayer from "./LessonAudioPlayer";
 
 function TrueOrFalseComponent(){
     let { state, correctNumberAnswers, handleNextQuestion, checkAnswer, nextSetOfQuestions, selectedAnswer, currentQuestion, dispatch, handlePrevQuestion} = useContext(QuestionContext)
     let trueOrFalseQuestions = state.questions[0];
+    const [optionSelected, setOptionSelected] = useState(null)
     let question = trueOrFalseQuestions[currentQuestion];
+    const options =["True", "False"];
     const QuestionPromptData = {
         cardTextContent:[{
                         text: "Next we have a true or false activity. We will ask you whether some sentences are true or false." +
@@ -26,6 +29,15 @@ function TrueOrFalseComponent(){
 
 
     }, [state.lessonCompleted])
+    const handleOptionChange = (event) => {
+        setOptionSelected(event.target.value);
+
+    };
+
+    const handleSubmit = (event) => {
+        event.preventDefault();
+        checkAnswer(question, optionSelected);
+    };
     const renderQuestions=()=>{
         return(
             <div className="center">
@@ -35,9 +47,34 @@ function TrueOrFalseComponent(){
                             <h3>Question Number: {question.id}</h3>
                             <p className="questions"> {question.Question}</p>
                         </div>
-                        <AudioPlayer englishAudio={question.EnglishAudio} twiAudio={question.TwiAudio}/>
                         <div>
-                            <div className="question_buttons">
+                            <form onSubmit={handleSubmit}>
+                                {options.map((option, index) => (
+                                    <div key={index} className="input_options">
+                                        <label>
+                                            <input type="radio" value={option} name="options" required onChange={handleOptionChange}  />
+                                            <span className="radio-label">{option}</span>
+                                            {option.toLowerCase() === 'true' ? <i className="material-icons" alt="help icon">thumb_up_alt</i>
+                                                : <i className="material-icons" alt="help icon">thumb_down_alt</i>}
+
+                                        </label>
+                                    </div>
+                                ))}
+                                {!selectedAnswer &&
+                                (
+                                    <div className="mcq_actions">
+                                        <LessonAudioPlayer twiAudio={question.twiAudio} englishAudio={question.TwiAudio}/>
+                                        <button type="submit" className="lesson_buttons mcq_buttons" >
+                                            <p>CHECK ANSWER </p>
+                                            <i className="material-icons" alt="help icon">flaky</i>
+                                        </button>
+                                    </div>
+                                )
+
+                                }
+                            </form>
+
+                           {/* <div className="question_buttons">
                                 <button
                                     className={`lesson_buttons icon-buttons ${selectedAnswer === 'True' ? 'selected' : ''}`}
                                     onClick={()=>checkAnswer(question, "True")}
@@ -54,8 +91,9 @@ function TrueOrFalseComponent(){
                                     <p>False</p>
                                     <i className="material-icons" alt="help icon">thumb_down_off_alt</i>
                                 </button>
-                            </div>
+                            </div>*/}
                         </div>
+
                         {selectedAnswer && (
                             <div>
                                 {selectedAnswer === question.Answer ? (
