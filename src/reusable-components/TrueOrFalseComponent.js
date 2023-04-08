@@ -40,9 +40,9 @@ function TrueOrFalseComponent(){
     };
     const renderQuestions=()=>{
         return(
-            <div className="center">
-                <div className="mcq_main_container">
-                    <div className="mcqCard orangeCardOutline overall_lessons_container mcq-container ">
+            <div className="">
+                <div className="mcq_main_container mcq-container">
+                    <div className="mcqCard orangeCardOutline mcq-containe overall_lessons_container ">
                         <div className="true_or_false_questions">
                             <h3>Question Number: {question.id}</h3>
                             <p className="questions"> {question.Question}</p>
