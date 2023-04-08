@@ -34,6 +34,7 @@ function MultipleChoiceQuestions() {
     }
 
     useEffect(()=>{
+
         setOptionSelected(null)
 
     }, [currentQuestion])
@@ -46,7 +47,8 @@ function MultipleChoiceQuestions() {
 
     const handleSubmit = (event) => {
         event.preventDefault();
-        checkAnswer(question, optionSelected);
+        //checkAnswer(question, optionSelected);
+        checkAnswer(question, optionSelected)
         setAnswerChecked(true);
     };
 
@@ -54,12 +56,13 @@ function MultipleChoiceQuestions() {
         return (
             <div className="mcq_main_container">
                 <div className="mcqCard orangeCardOutline overall_lessons_container">
+                    <h3>Question Number: {question.id}</h3>
                     <h1>{question.Question}</h1>
                     <form onSubmit={handleSubmit} >
                         {question.Options.map((option, index) => (
                             <div key={index} className="input_options">
                                 <label>
-                                    <input type="radio" value={option} name="options" onChange={handleOptionChange} required  />
+                                    <input type="radio" value={option} name="options" onChange={handleOptionChange} required key={index}  />
                                     <span className="radio-label">{option}</span>
                                 </label>
                             </div>

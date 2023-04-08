@@ -74,24 +74,7 @@ function TrueOrFalseComponent(){
                                 }
                             </form>
 
-                           {/* <div className="question_buttons">
-                                <button
-                                    className={`lesson_buttons icon-buttons ${selectedAnswer === 'True' ? 'selected' : ''}`}
-                                    onClick={()=>checkAnswer(question, "True")}
-                                    disabled={selectedAnswer !== null}
-                                >
-                                    <p>True</p>
-                                    <i className="material-icons" alt="help icon">thumb_up_alt</i>
-                                </button>
-                                <button
-                                    className={`lesson_buttons icon-buttons ${selectedAnswer === 'False' ? 'selected' : ''}`}
-                                    onClick={()=>checkAnswer(question, "False")}
-                                    disabled={selectedAnswer !== null}
-                                >
-                                    <p>False</p>
-                                    <i className="material-icons" alt="help icon">thumb_down_off_alt</i>
-                                </button>
-                            </div>*/}
+
                         </div>
 
                         {selectedAnswer && (
