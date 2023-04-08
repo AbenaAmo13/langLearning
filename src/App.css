@@ -68,17 +68,25 @@ input[type=radio] {
 
 }
 
+
 html, body {
   background: url("./images/backgroundPic.svg") no-repeat;
   background-size: cover;
-  /*background-position: center center;*/
+  /*!*background-position: center center;*/
 }
 
 body{
+ /*background-image: linear-gradient(to right, #ffecd2 0%, #fcb69f 100%);*/
  /* background-color: #0093E9;
-  background-image: linear-gradient(160deg, #0093E9 0%, #80D0C7 100%);*/
-/*  background-image: linear-gradient(120deg, #e0c3fc 0%, #8ec5fc 100%);*/
 
+
+  background-image: linear-gradient(160deg, #0093E9 0%, #80D0C7 100%);*/
+/*
+background-image: linear-gradient(120deg, #e0c3fc 0%, #8ec5fc 100%);
+*/
+  /*
+  background-image: linear-gradient(-20deg, #e9defa 0%, #fbfcdb 100%);
+  */
 
 }
 
@@ -137,9 +145,22 @@ height: 100vh;
 }
 
 
+.flex{
+  display: flex;
+  align-items: center;
+}
+
 .orangeCardOutline{
   background: #FFFFFF;
   box-shadow: 11px 11px 4px rgb(216, 155, 28) !important;
+}
+
+.lightOrangeCardOutline{
+  background: #FFFFFF;
+  box-shadow: 11px 11px 4px rgb(245, 159, 98) !important;
+}
+.padding{
+  padding: 16px;
 }
 
 

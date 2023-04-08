@@ -32,9 +32,14 @@ function MultipleChoiceQuestions() {
 
     useEffect(()=>{
         setOptionSelected(null)
-        inputRefs.current.forEach((input) =>{
-          input.checked = false;
-        });
+        if(inputRefs.current){
+            inputRefs.current.forEach((input) =>{
+                if(input){
+                    input.checked = false;
+                }
+            });
+        }
+
     }, [currentQuestion])
 
 
@@ -116,11 +121,16 @@ function MultipleChoiceQuestions() {
 
     const renderResults=()=>{
         return(
-            <div>
+            <div className="card_component_container lightOrangeCardOutline padding">
                 <h3 className="questions">You got {correctNumberAnswers} out of {MCQQuestions.length} questions correct</h3>
                 <h3>To go to the next question, click the button:</h3>
-                <button onClick={()=> nextSetOfQuestions("mcq")}>Next Questions</button>
-                <AudioPlayer/>
+                <div className="flex">
+                    <button onClick={()=> nextSetOfQuestions("mcq")} className="lesson_buttons mcq_buttons">
+                        <p>Next </p>
+                        <i className="material-icons" alt="help icon">arrow_forward</i>
+                    </button>
+                    <AudioPlayer/>
+                </div>
                 <div>
                 </div>
             </div>

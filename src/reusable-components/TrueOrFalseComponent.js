@@ -140,11 +140,17 @@ function TrueOrFalseComponent(){
 
     const renderResults=()=>{
         return(
-            <div>
+            <div className="card_component_container lightOrangeCardOutline padding">
                 <h3 className="questions">You got {correctNumberAnswers} out of {trueOrFalseQuestions.length} questions correct</h3>
                 <h3>To go to the next question, click the button:</h3>
-                <button onClick={()=> nextSetOfQuestions("t/f")}>Next Questions</button>
-                <AudioPlayer/>
+                <div className="flex">
+                    <button className="lesson_buttons mcq_buttons" onClick={()=> nextSetOfQuestions("t/f")}>
+                        <p>Next </p>
+                        <i className="material-icons" alt="help icon">arrow_forward</i>
+                    </button>
+                    <AudioPlayer/>
+                </div>
+
                 <div>
                 </div>
             </div>

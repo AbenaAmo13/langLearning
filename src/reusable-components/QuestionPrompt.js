@@ -13,6 +13,7 @@ function QuestionPrompt({state,dispatch, questionPromptData}) {
         if(questionPromptData.questionType ==="trueorfalse"){
             dispatch({ type: "RESET_QUESTION", payload: { lesson: state.id, index: 0}});
             if(state.firstQuestionTypeRendered === "trueorfalse"){
+                console.log( questionPromptData.questions)
                 dispatch({type:"RESET_SCORE",  payload: { lesson: state.id, score: questionPromptData.questions.componentScore}})
             }
             //console.log(state.questions)
