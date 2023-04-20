@@ -22,6 +22,7 @@ function TrueOrFalseComponent(){
         cardTitle: "True or False",
         EnglishAudio: questionPromptEnglishAudio,
         TwiAudio:"",
+        TwiTitle: "nokre anaa ntoro",
         questionType: "trueorfalse",
         questions: question
     }

@@ -4,7 +4,7 @@ import {useContext} from "react";
 import {AudioContext} from "../context/AudioContext";
 
 function QuestionPrompt({state,dispatch, questionPromptData}) {
-    const {playAudio, isPlaying } = useContext(AudioContext);
+    const {playAudio, isPlaying, activeName } = useContext(AudioContext);
 
     function notReady(){
       dispatch({ type: "SET_LESSON_COMPLETED", payload: { lesson: state.id, completed: false }});
@@ -45,9 +45,9 @@ function QuestionPrompt({state,dispatch, questionPromptData}) {
                     <div className="volume_button_divs">
                         <div>🇬🇭</div>
                         <button
-                            className={`question_prompt_volume_icons   ${isPlaying === true ? 'audio_active' : ''}`}
+                            className={`question_prompt_volume_icons   ${activeName === questionPromptData.TwiTitle ? 'audio_active' : ''}`}
                             onClick={() => {
-                                playAudio(new Audio(questionPromptData.TwiAudio));
+                                playAudio(new Audio(questionPromptData.TwiAudio), questionPromptData.TwiTitle);
                             }}
                         >
                             <i className="material-icons" alt="help icon">
@@ -60,9 +60,9 @@ function QuestionPrompt({state,dispatch, questionPromptData}) {
                         <div>🇬🇧</div>
                         <div>
                             <button
-                                className={`question_prompt_volume_icons   ${isPlaying === true ? 'audio_active' : ''}`}
+                                className={`question_prompt_volume_icons   ${activeName === questionPromptData.cardTitle ? 'audio_active' : ''}`}
                                 onClick={() => {
-                                    playAudio(new Audio(questionPromptData.EnglishAudio));
+                                    playAudio(new Audio(questionPromptData.EnglishAudio), questionPromptData.cardTitle);
                                     //onEnglishClick();
                                 }}
                             >
