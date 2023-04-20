@@ -21,11 +21,12 @@ import healthAudio from "./audios/homepage/healthintroaudio.ogg"
 import educationAudio from "./audios/homepage/educationaudio.ogg"
 import identificationAudio from "./audios/homepage/identification.ogg"
 import adwuma from "./audios/homepage/adwuma.ogg"
+import LessonAudioPlayer from "./reusable-components/LessonAudioPlayer";
 
 
 function Homepage() {
     //let audio = new Audio(process.env.PUBLIC_URL + '/audio/introduction.mp3')
-    const {playAudio} = useContext(AudioContext);
+    const {playAudio, activeName} = useContext(AudioContext);
     const [status, setStatus]= useState({})
 
     const lockedStatusObj =
@@ -48,6 +49,7 @@ function Homepage() {
      const navBarElements=[
         {  "Image":greyGovernment,
             "NavBarTitleEnglish": "Course Outline",
+            "TwiAudioName": "coursetwi",
             "TwiAudio":basicsTwiAudio,
             "EnglishAudio": courseOutline ,
             "Link": "Basics",
@@ -57,6 +59,7 @@ function Homepage() {
         }, {
             "Image":healthImage,
             "NavBarTitleEnglish": "Ghana Health Service",
+             "TwiAudioName": "apumoden",
             "TwiAudio":healthAudio,
              "EnglishAudio": ghanahealthservice,
             "Link": "Health",
@@ -69,6 +72,7 @@ function Homepage() {
         {
             "Image":educationalImage,
             "NavBarTitleEnglish": "Ghana Education Service",
+            "TwiAudioName": "adesua",
             "TwiAudio":educationAudio,
             "EnglishAudio": educationEnglish,
             "Link":"Education",
@@ -80,6 +84,7 @@ function Homepage() {
         {
             "Image":ghanaId,
             "NavBarTitleEnglish": "National Identification Authority",
+            "TwiAudioName": "twiid",
             "TwiAudio":identificationAudio,
             "EnglishAudio": identification,
             "Link": "Identification",
@@ -144,15 +149,22 @@ function Homepage() {
                            </h3>
                        </div>
                        <div className="nav-icons">
-                           <div className="volume_button_divs">
+                           {/*<LessonAudioPlayer
+                                twiAudio={navElement.TwiAudio}
+                                englishAudio={navElement.EnglishAudio}
+                                englishAudioName={navElement.NavBarTitleEnglish}
+                                twiAudioName={navElement}
+
+                           />*/}
+                          <div className="volume_button_divs">
                                <div>🇬🇭</div>
-                               <button className=" volume_icon" onClick={() => (playAudio(  new Audio(navElement.TwiAudio)))} >
+                               <button className={`volume_icon ${activeName ===  navElement.TwiAudioName ? 'audio_active' : ''}`} onClick={() => (playAudio(  new Audio(navElement.TwiAudio), navElement.TwiAudioName))} >
                                    <i className="material-icons" alt="help icon">volume_up</i>
                                </button>
                            </div>
                            <div className="volume_button_divs">
                                <div>🇬🇧</div>
-                               <button className=" volume_icon" onClick={() => (playAudio(  new Audio(navElement.EnglishAudio)))} >
+                               <button  className={`volume_icon ${activeName ===  navElement.NavBarTitleEnglish ? 'audio_active' : ''}`} onClick={() => (playAudio(  new Audio(navElement.EnglishAudio), navElement.NavBarTitleEnglish))} >
                                    <i className="material-icons" alt="help icon">volume_up</i>
                                </button>
                            </div>

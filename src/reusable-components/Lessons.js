@@ -49,7 +49,10 @@ function Lessons({state, dispatch}){
                         <div className="lesson_card_keywords">
                             <h3 className="lesson_titles">{state.lessons[currentIndex].EnglishWord}</h3>
                             <p className="text_content">{state.lessons[currentIndex].KeyMessageEnglish}</p>
-                            <AudioPlayer/>
+                            <AudioPlayer
+                                twiAudio={state.lessons[currentIndex].TwiAudio}
+                                englishAudio={state.lessons[currentIndex].EnglishAudio}
+                            />
                         </div>
                     </div>
                 </div>

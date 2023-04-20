@@ -6,13 +6,18 @@ import id from "../../images/greyid.webp"
 import question1english from "../../audios/basics/trueorfalsequestion1english.ogg"
 import question1twi from "../../audios/basics/trueorfalsequestion1twi.ogg"
 import question1twiv2 from "../../audios/basics/question1twi.ogg"
+import theGovernmentEnglishAudio from "../../audios/courseoutline/thegovernmentenglish.ogg"
+import healthCareEnglishAudio from "../../audios/courseoutline/healthCareEnglishAudio.ogg"
+import educationEnglishAudio from "../../audios/courseoutline/educationEnglishAudio.ogg"
+import identificationEnglishAudio from "../../audios/courseoutline/identificationenglishAudio.ogg"
+import jobsEnglishAudio from "../../audios/courseoutline/jobsEnglishAudio.ogg"
 
 export const basicLessonData=[
     {
         Image: ghanaGovernment,
         EnglishWord: "The Government",
         TwiAudio: '',
-        EnglishAudio: '',
+        EnglishAudio: theGovernmentEnglishAudio,
         KeyMessageEnglish: "We will be going over the course outline for the application. By the end of the entire course, you should know how the government helps us with our healthcare, education, identification and jobs. ",
     },
 
@@ -20,29 +25,29 @@ export const basicLessonData=[
         Image: healthImage,
         EnglishWord: "Health Care",
         TwiAudio: '',
-        EnglishAudio:'' ,
+        EnglishAudio: healthCareEnglishAudio,
         KeyMessageEnglish: 'For this topic, we will learn how the government helps us with our healthcare. We will look at the National Health Insurance Scheme, free maternal healthcare and other things that the government does to improve our health. We will also learn ways that we can keep ourselves healthy.'
     },
     {
         Image: educationalImage,
         EnglishWord: "Education",
         TwiAudio: '',
-        EnglishAudio: '',
+        EnglishAudio: educationEnglishAudio,
         KeyMessageEnglish:'For this topic, we will learn how the government helps us to get education. We will look at Free SHS, free primary education, loans and scholarships that the government provide to help us attain quality education. ',
     },
     {
         Image: id,
         EnglishWord: "Ghana and ID",
         TwiAudio: '',
-        EnglishAudio: '',
-        KeyMessageEnglish:'For this topics, we will look at ways that the government helps us to identify ourselves including birth/death certificates, passports, and Ghana cards and their importance.',
+        EnglishAudio: identificationEnglishAudio,
+        KeyMessageEnglish:'For this topic, we will look at ways and that the government helps us to identify ourselves including birth/death certificates, passports, and Ghana cards and their importance.',
     },
     {
         Image: jobs,
         EnglishWord: "Jobs",
         TwiAudio: '',
-        EnglishAudio: '',
-        KeyMessageEnglish:"For this topic, we will look at the way that the government helps to make our job life easier including job creation programs, workplace laws, taxes and pensions.",
+        EnglishAudio: jobsEnglishAudio,
+        KeyMessageEnglish:"For this topic, we will look at the ways that the government helps us to make our job life easier including job creation programs, workplace laws, taxes and pensions.",
     }
 ]
 

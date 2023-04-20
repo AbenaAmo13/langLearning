@@ -47,7 +47,7 @@ function QuestionPrompt({state,dispatch, questionPromptData}) {
                         <button
                             className={`question_prompt_volume_icons   ${isPlaying === true ? 'audio_active' : ''}`}
                             onClick={() => {
-                                playAudio(new Audio(questionPromptData.twiAudio));
+                                playAudio(new Audio(questionPromptData.TwiAudio));
                             }}
                         >
                             <i className="material-icons" alt="help icon">
@@ -62,7 +62,7 @@ function QuestionPrompt({state,dispatch, questionPromptData}) {
                             <button
                                 className={`question_prompt_volume_icons   ${isPlaying === true ? 'audio_active' : ''}`}
                                 onClick={() => {
-                                    playAudio(new Audio(questionPromptData.englishAudio));
+                                    playAudio(new Audio(questionPromptData.EnglishAudio));
                                     //onEnglishClick();
                                 }}
                             >

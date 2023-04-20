@@ -4,10 +4,12 @@ export const AudioContext = createContext();
 
  export const AudioContextProvider = ({ children }) => {
     const [isPlaying, setIsPlaying] = useState(false);
+    const [activeName, setActiveName] = useState(null)
     const audioRef = useRef(null);
 
 
-    const playAudio = (audio) => {
+    const playAudio = (audio, audioName) => {
+        setActiveName(audioName)
         if (isPlaying) {
             stopAudio();
         }
@@ -30,14 +32,15 @@ export const AudioContext = createContext();
         if(audio){
             audio.onended= function() {
                 setIsPlaying(false);
-                alert('Audio has ended');
+                setActiveName(null)
+                //alert('Audio has ended');
             };;
         }
 
-    }, []);
+    }, [isPlaying]);
 
     return (
-        <AudioContext.Provider value={{ isPlaying, playAudio, stopAudio }}>
+        <AudioContext.Provider value={{ isPlaying, playAudio, stopAudio, activeName }}>
             {children}
         </AudioContext.Provider>
     );

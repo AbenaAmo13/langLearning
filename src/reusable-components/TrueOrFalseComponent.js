@@ -5,6 +5,7 @@ import quizImage from "../images/quizImage.png";
 import QuestionPrompt from "./QuestionPrompt";
 import testing from "../audios/testing.mp3"
 import LessonAudioPlayer from "./LessonAudioPlayer";
+import questionPromptEnglishAudio from "../audios/basics/trueorfalseprompt.ogg"
 
 function TrueOrFalseComponent(){
     let { state, correctNumberAnswers, handleNextQuestion, checkAnswer, nextSetOfQuestions, selectedAnswer, currentQuestion, dispatch, handlePrevQuestion} = useContext(QuestionContext)
@@ -15,12 +16,11 @@ function TrueOrFalseComponent(){
     const options =["True", "False"];
     const QuestionPromptData = {
         cardTextContent:[{
-                        text: "Next we have a true or false activity. We will ask you whether some sentences are true or false." +
-                            " If you are ready to start the activity, click the thumbs up button else click the thumbs down button."
+                        text: "Next, we will give you some sentences and you tell us if they are true or false. If you're ready to start, click the thumbs up. If you're not ready, click the thumbs down."
                     }],
         quizImage : quizImage,
         cardTitle: "True or False",
-        EnglishAudio: "",
+        EnglishAudio: questionPromptEnglishAudio,
         TwiAudio:"",
         questionType: "trueorfalse",
         questions: question
