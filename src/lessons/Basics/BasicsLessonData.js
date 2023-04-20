@@ -104,7 +104,7 @@ export const trueOrFalseQuestions=[
     },
     {
         id: 5,
-        Question: "The government provide services to improve our health, education, and wellbeing",
+        Question: "The government provide services to improve our health, education, and well being",
         EnglishAudio: "",
         TwiAudio: "",
         Answer:'True',
@@ -120,7 +120,7 @@ export const basicsMCQS =[
     {
         id: 1,
         Question: "Which of the following is not going to be covered in this course?",
-        Options: ["A: Banking", "B: Education", "C: HealthCare"],
+        Options: ["Banking", "Education", "HealthCare"],
         EnglishAudio: "",
         TwiAudio:",",
         Answer: "Banking",
@@ -131,7 +131,7 @@ export const basicsMCQS =[
     {
         id: 2,
         Question: "Free SHS is made to help students get free... ",
-        Options: ["A: Education", "B: HealthCare", "C: Money"],
+        Options: ["Education", "HealthCare", "Money"],
         EnglishAudio: "",
         TwiAudio:",",
         Answer: "Education",
@@ -142,7 +142,7 @@ export const basicsMCQS =[
     {
         id: 3,
         Question: "Which of the following is used to help us officially identify ourselves in Ghana?",
-        Options: ["A: Our names", "B: Phones", "C:Ghana Card"],
+        Options: ["Our names", "Phones", "Ghana Card"],
         EnglishAudio: "",
         TwiAudio:",",
         Answer: "Ghana Card",
@@ -152,7 +152,7 @@ export const basicsMCQS =[
     {
         id: 4,
         Question: "Which of these does the government use to help make our job life easier?",
-        Options: ["A: Passports", "B: Workplace laws", "C: National Health Insurance"],
+        Options: ["Passports", "Workplace laws", "National Health Insurance"],
         EnglishAudio: "",
         TwiAudio:",",
         Answer: "Workplace laws",
@@ -163,7 +163,7 @@ export const basicsMCQS =[
     {
         id: 5,
         Question: "Which of these does the government use to give everyone access to healthcare?",
-        Options: ["A: National Health Insurance Scheme", "B: Passports", "C: Free SHS"],
+        Options: ["National Health Insurance Scheme", "Passports", "Free SHS"],
         EnglishAudio: "",
         TwiAudio:",",
         Answer: "National Health Insurance Scheme",

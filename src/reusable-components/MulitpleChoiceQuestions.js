@@ -19,11 +19,12 @@ function MultipleChoiceQuestions() {
     let question = MCQQuestions[currentQuestion];
     const QuestionPromptData = {
         cardTextContent:[{
-            text: "Next we have a multiple choice questions where you are given a question, and many answers to choose from" +
-                " If you are ready to start the activity, click the thumbs up button else click the thumbs down button."
+            text: "Next we have a multiple choice game where you have to select only one answer from many options " +
+                " If you are ready to start playing, click the thumbs up, if not click the thumbs down."
         }],
         quizImage : quizImage,
         cardTitle: "Multiple Choice Questions",
+        cardTitleTwi: "twiTitle",
         EnglishAudio: "",
         TwiAudio:"",
         questionType: "mcqs",
@@ -63,7 +64,7 @@ function MultipleChoiceQuestions() {
                             <div key={index} className="input_options">
                                 <label>
                                     <input type="radio" value={option} name="options" onClick={handleOptionChange} required key={index} ref={(el) => inputRefs.current[index] = el}  />
-                                    <span className="radio-label">{option}</span>
+                                    <span className="radio-label">{String.fromCharCode(65 + index)}. {option}</span>
                                 </label>
                             </div>
                         ))}
@@ -99,7 +100,12 @@ function MultipleChoiceQuestions() {
                                         </button>
                                     </div>
                                     <p className="questions">The correct answer is: {question.Answer}</p>
-                                    <AudioPlayer />
+                                    <AudioPlayer
+                                    twiAudioName={QuestionPromptData.cardTitleTwi}
+                                    englishAudioName={QuestionPromptData.cardTitle}
+
+
+                                    />
                                 </div>
                             )}
                         </div>

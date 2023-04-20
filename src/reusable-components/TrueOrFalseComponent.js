@@ -21,7 +21,7 @@ function TrueOrFalseComponent(){
         quizImage : quizImage,
         cardTitle: "True or False",
         EnglishAudio: questionPromptEnglishAudio,
-        TwiAudio:"",
+        TwiAudio:"titleInput",
         TwiTitle: "nokre anaa ntoro",
         questionType: "trueorfalse",
         questions: question
@@ -85,7 +85,13 @@ function TrueOrFalseComponent(){
                                 {!selectedAnswer &&
                                 (
                                     <div className="mcq_actions">
-                                        <LessonAudioPlayer twiAudio={question.twiAudio} englishAudio={testing}/>
+                                        <LessonAudioPlayer
+                                            twiAudio={question.twiAudio}
+                                            englishAudio={testing}
+                                            twiAudioName={question.TwiAudio}
+                                            englishAudioName={question.EnglishAudio}
+
+                                        />
                                         <button type="submit" className="lesson_buttons mcq_buttons" onClick={()=>handleAnswers()} >
                                             <p>CHECK ANSWER </p>
                                             <i className="material-icons" alt="help icon">flaky</i>

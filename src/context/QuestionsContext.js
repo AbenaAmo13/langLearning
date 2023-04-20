@@ -19,7 +19,8 @@ function QuestionContextProvider({children, state, dispatch}) {
     const checkAnswer = useCallback((question, answer) => {
         let correctAnswer = question.Answer;
         setSelectedAnswer(answer)
-        console.log("Question: " + question)
+        console.log("Question: " + question.Question)
+        console.log("Answer is: " + question.Answer)
         console.log("State: " + question.isAnswered)
         if (!question.isAnswered) {
             if (answer === correctAnswer) {
