@@ -9,6 +9,14 @@ import ghanaId from "./images/ghanacard.webp"
 import educationalImage from "./images/transparenteducation.webp"
 import jobsImage from "./images/jobstransparent.webp"
 import basicsTwiAudio from "./audios/homepage/mfitias3no_audio.ogg"
+import courseOutline from "./audios/homepage/courseoutline.ogg"
+import ghanahealthservice from "./audios/homepage/ghanahealthservice.ogg"
+import identification from "./audios/homepage/nationalidentification.ogg"
+import educationEnglish from "./audios/homepage/ghanaeducationservice.ogg"
+import jobsEnglishAudio from "./audios/homepage/jobs.ogg"
+
+
+
 import healthAudio from "./audios/homepage/healthintroaudio.ogg"
 import educationAudio from "./audios/homepage/educationaudio.ogg"
 import identificationAudio from "./audios/homepage/identification.ogg"
@@ -41,7 +49,7 @@ function Homepage() {
         {  "Image":greyGovernment,
             "NavBarTitleEnglish": "Course Outline",
             "TwiAudio":basicsTwiAudio,
-            "EnglishAudio": "",
+            "EnglishAudio": courseOutline ,
             "Link": "Basics",
             "locked_status": status.Basics,
             "className": "blueCardOutline",
@@ -50,7 +58,7 @@ function Homepage() {
             "Image":healthImage,
             "NavBarTitleEnglish": "Ghana Health Service",
             "TwiAudio":healthAudio,
-             "EnglishAudio": "",
+             "EnglishAudio": ghanahealthservice,
             "Link": "Health",
             "locked_status": status.Health,
              "className": "orangeCardOutline",
@@ -62,7 +70,7 @@ function Homepage() {
             "Image":educationalImage,
             "NavBarTitleEnglish": "Ghana Education Service",
             "TwiAudio":educationAudio,
-            "EnglishAudio": "",
+            "EnglishAudio": educationEnglish,
             "Link":"Education",
             "locked_status": status.Education,
             "className": "blueCardOutline",
@@ -73,7 +81,7 @@ function Homepage() {
             "Image":ghanaId,
             "NavBarTitleEnglish": "National Identification Authority",
             "TwiAudio":identificationAudio,
-            "EnglishAudio": "",
+            "EnglishAudio": identification,
             "Link": "Identification",
             "locked_status": status.Identification,
             "className": 'purpleCardOutline',
@@ -82,7 +90,7 @@ function Homepage() {
             "Image":jobsImage,
             "NavBarTitleEnglish": "Jobs",
             "TwiAudio":adwuma,
-             "EnglishAudio": "",
+             "EnglishAudio": jobsEnglishAudio,
             "Link": "Jobs",
             "locked_status": status.Jobs,
              "className": 'orangeCardOutline',

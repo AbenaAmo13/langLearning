@@ -13,7 +13,7 @@ export const basicLessonData=[
         EnglishWord: "The Government",
         TwiAudio: '',
         EnglishAudio: '',
-        KeyMessageEnglish: "For this topic, we will learn how the government helps us with our healthcare. We will look at the National Health Insurance Scheme, free maternal healthcare and other things that the government does to improve our health. We will also learn ways that we can keep ourselves healthy. ",
+        KeyMessageEnglish: "We will be going over the course outline for the application. By the end of the entire course, you should know how the government helps us with our healthcare, education, identification and jobs. ",
     },
 
     {
@@ -21,14 +21,14 @@ export const basicLessonData=[
         EnglishWord: "Health Care",
         TwiAudio: '',
         EnglishAudio:'' ,
-        KeyMessageEnglish:'For this topic, we will learn how the government helps us to get education. We will look at Free SHS, free primary education, loans and scholarships that the government provide to help us attain quality education. ',
+        KeyMessageEnglish: 'For this topic, we will learn how the government helps us with our healthcare. We will look at the National Health Insurance Scheme, free maternal healthcare and other things that the government does to improve our health. We will also learn ways that we can keep ourselves healthy.'
     },
     {
         Image: educationalImage,
         EnglishWord: "Education",
         TwiAudio: '',
         EnglishAudio: '',
-        KeyMessageEnglish:'For this topics, we will look at ways that the government helps us to identify ourselves including birth/death certificates, passports, and Ghana cards and their importance. ',
+        KeyMessageEnglish:'For this topic, we will learn how the government helps us to get education. We will look at Free SHS, free primary education, loans and scholarships that the government provide to help us attain quality education. ',
     },
     {
         Image: id,
