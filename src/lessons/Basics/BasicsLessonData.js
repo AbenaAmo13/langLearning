@@ -16,6 +16,7 @@ export const basicLessonData=[
     {
         Image: ghanaGovernment,
         EnglishWord: "The Government",
+        TwiWord: "Aban",
         TwiAudio: '',
         EnglishAudio: theGovernmentEnglishAudio,
         KeyMessageEnglish: "We will be going over the course outline for the application. By the end of the entire course, you should know how the government helps us with our healthcare, education, identification and jobs. ",
@@ -24,6 +25,7 @@ export const basicLessonData=[
     {
         Image: healthImage,
         EnglishWord: "Health Care",
+        TwiWord: "Apumoden",
         TwiAudio: '',
         EnglishAudio: healthCareEnglishAudio,
         KeyMessageEnglish: 'For this topic, we will learn how the government helps us with our healthcare. We will look at the National Health Insurance Scheme, free maternal healthcare and other things that the government does to improve our health. We will also learn ways that we can keep ourselves healthy.'
@@ -31,6 +33,7 @@ export const basicLessonData=[
     {
         Image: educationalImage,
         EnglishWord: "Education",
+        TwiWord: "Adesua",
         TwiAudio: '',
         EnglishAudio: educationEnglishAudio,
         KeyMessageEnglish:'For this topic, we will learn how the government helps us to get education. We will look at Free SHS, free primary education, loans and scholarships that the government provide to help us attain quality education. ',
@@ -38,6 +41,7 @@ export const basicLessonData=[
     {
         Image: id,
         EnglishWord: "Ghana and ID",
+        TwiWord: "TwiID",
         TwiAudio: '',
         EnglishAudio: identificationEnglishAudio,
         KeyMessageEnglish:'For this topic, we will look at ways and that the government helps us to identify ourselves including birth/death certificates, passports, and Ghana cards and their importance.',
@@ -45,6 +49,7 @@ export const basicLessonData=[
     {
         Image: jobs,
         EnglishWord: "Jobs",
+        TwiWord: "Adwuma",
         TwiAudio: '',
         EnglishAudio: jobsEnglishAudio,
         KeyMessageEnglish:"For this topic, we will look at the ways that the government helps us to make our job life easier including job creation programs, workplace laws, taxes and pensions.",

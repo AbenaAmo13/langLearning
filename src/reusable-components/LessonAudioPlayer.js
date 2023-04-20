@@ -8,7 +8,7 @@ import {useContext} from "react";
             <div className="volume_button_divs">
                 <div>🇬🇭</div>
                 <button
-                    className={`volume_icon lesson_volume_icon keyword_volume_icon ${activeName === englishAudioName ? 'audio_active' : ''}`}
+                    className={`volume_icon lesson_volume_icon keyword_volume_icon ${activeName === twiAudioName ? 'audio_active' : ''}`}
                     onClick={() => {
                         playAudio(new Audio(twiAudio),twiAudioName );
                     }}
@@ -22,7 +22,7 @@ import {useContext} from "react";
             <div className="volume_button_divs">
                 <div>🇬🇧</div>
                 <button
-                    className={`volume_icon lesson_volume_icon keyword_volume_icon ${activeName === twiAudioName ? 'audio_active' : ''}`}
+                    className={`volume_icon lesson_volume_icon keyword_volume_icon ${activeName === englishAudioName ? 'audio_active' : ''}`}
                     onClick={() => {
                         playAudio(new Audio(englishAudio), englishAudioName);
                         //onEnglishClick();
