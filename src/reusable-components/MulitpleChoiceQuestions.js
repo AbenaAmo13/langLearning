@@ -3,7 +3,7 @@ import {QuestionContext} from "../context/QuestionsContext";
 import LessonAudioPlayer from "./LessonAudioPlayer";
 import AudioPlayer from "./LessonAudioPlayer";
 import QuestionPrompt from "./QuestionPrompt";
-import quizImage from "../images/quizImage.png";
+import quizImage from "../images/quizImage.webp";
 import twiAudio from "../audios/transitionalaudios/mcqaudiotwi.mp3"
 
 
