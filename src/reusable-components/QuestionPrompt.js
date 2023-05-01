@@ -1,5 +1,3 @@
-import CardComponent from "./CardComponent";
-import LessonAudioPlayer from "./LessonAudioPlayer";
 import {useContext} from "react";
 import {AudioContext} from "../context/AudioContext";
 
@@ -39,7 +37,6 @@ function QuestionPrompt({state,dispatch, questionPromptData}) {
                             {cardTextContent.text}
                         </p>
                     ))}
-
                 </div>
                 <div className="card_audio_controls">
                     <div className="volume_button_divs">
@@ -83,8 +80,6 @@ function QuestionPrompt({state,dispatch, questionPromptData}) {
                         </button>
                 </div>
             </div>
-
-
         </div>
 
     )

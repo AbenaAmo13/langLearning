@@ -1,9 +1,8 @@
 import {useContext, useEffect, useState, useRef} from "react";
 import AudioPlayer from "./LessonAudioPlayer";
 import {QuestionContext} from "../context/QuestionsContext";
-import quizImage from "../images/quizImage.png";
+import quizImage from "../images/quizImage.webp";
 import QuestionPrompt from "./QuestionPrompt";
-import testing from "../audios/testing.mp3"
 import LessonAudioPlayer from "./LessonAudioPlayer";
 import questionPromptEnglishAudio from "../audios/basics/trueorfalseprompt.ogg"
 import questionPromptTwiAudio from "../audios/transitionalaudios/questiontrueorfalsetwi.mp3"
@@ -164,10 +163,6 @@ function TrueOrFalseComponent(){
             </div>
         )
     }
-
-
-
-
     return(
         <div>
 

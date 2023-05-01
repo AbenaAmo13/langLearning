@@ -17,7 +17,6 @@ import mcqQuestion4 from "../../audios/courseoutline/mcquestions/mcquestion4.mp3
 import mcQuestion5 from "../../audios/courseoutline/mcquestions/mcquestion5.mp3"
 
 
-
 import theGovernmentEnglishAudio from "../../audios/courseoutline/thegovernmentenglish.ogg"
 import theGovernmentTwiAudio from "../../audios/courseoutline/thegovernmenttwi.mp3"
 import healthCareTwiAudio from "../../audios/courseoutline/healthcaretwi.mp3"
