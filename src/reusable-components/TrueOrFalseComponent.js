@@ -6,6 +6,7 @@ import QuestionPrompt from "./QuestionPrompt";
 import testing from "../audios/testing.mp3"
 import LessonAudioPlayer from "./LessonAudioPlayer";
 import questionPromptEnglishAudio from "../audios/basics/trueorfalseprompt.ogg"
+import questionPromptTwiAudio from "../audios/transitionalaudios/questiontrueorfalsetwi.mp3"
 
 function TrueOrFalseComponent(){
     let { state, correctNumberAnswers, handleNextQuestion, checkAnswer, nextSetOfQuestions, selectedAnswer, currentQuestion, dispatch, handlePrevQuestion} = useContext(QuestionContext)
@@ -21,7 +22,7 @@ function TrueOrFalseComponent(){
         quizImage : quizImage,
         cardTitle: "True or False",
         EnglishAudio: questionPromptEnglishAudio,
-        TwiAudio:"titleInput",
+        TwiAudio:questionPromptTwiAudio,
         TwiTitle: "nokre anaa ntoro",
         questionType: "trueorfalse",
         questions: question
@@ -86,8 +87,8 @@ function TrueOrFalseComponent(){
                                 (
                                     <div className="mcq_actions">
                                         <LessonAudioPlayer
-                                            twiAudio={question.twiAudio}
-                                            englishAudio={testing}
+                                            twiAudio={question.TwiAudio}
+                                            englishAudio={question.EnglishAudio}
                                             twiAudioName={question.TwiAudio}
                                             englishAudioName={question.EnglishAudio}
 

@@ -71,6 +71,14 @@ input[type=radio] {
 
 }
 
+.nav_link_routers{
+  text-decoration: none;
+}
+
+.lesson_buttons.mcq_buttons.retake {
+padding: 6px 16px;
+}
+
 
 html, body {
   background: url("./images/backgroundPic.svg") no-repeat;

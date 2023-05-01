@@ -4,6 +4,7 @@ import LessonAudioPlayer from "./LessonAudioPlayer";
 import AudioPlayer from "./LessonAudioPlayer";
 import QuestionPrompt from "./QuestionPrompt";
 import quizImage from "../images/quizImage.png";
+import twiAudio from "../audios/transitionalaudios/mcqaudiotwi.mp3"
 
 
 function MultipleChoiceQuestions() {
@@ -26,7 +27,7 @@ function MultipleChoiceQuestions() {
         cardTitle: "Multiple Choice Questions",
         cardTitleTwi: "twiTitle",
         EnglishAudio: "",
-        TwiAudio:"",
+        TwiAudio: twiAudio,
         questionType: "mcqs",
         questions: question
     }
@@ -71,7 +72,13 @@ function MultipleChoiceQuestions() {
                         {!selectedAnswer &&
                         (
                             <div className="mcq_actions">
-                                <LessonAudioPlayer twiAudio={question.twiAudio} englishAudio={question.TwiAudio}/>
+                                <LessonAudioPlayer
+                                    twiAudio={question.TwiAudio}
+                                    englishAudio={question.EnglishAudio}
+                                    twiAudioName={question.TwiAudio}
+                                    englishAudioName={question.EnglishAudio}
+
+                                />
                                 <button type="submit" className="lesson_buttons mcq_buttons"  onClick={()=>handleAnswers()}>
                                     <p>CHECK ANSWER </p>
                                     <i className="material-icons" alt="help icon">flaky</i>
@@ -103,6 +110,7 @@ function MultipleChoiceQuestions() {
                                     <AudioPlayer
                                     twiAudioName={QuestionPromptData.cardTitleTwi}
                                     englishAudioName={QuestionPromptData.cardTitle}
+
 
 
                                     />
