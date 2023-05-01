@@ -1,5 +1,6 @@
 import {useContext, useEffect, useState} from "react";
 import {AudioContext} from "./context/AudioContext";
+import logo from "./images/empower-us-192.webp"
 import {EnglishAudioContext} from "./context/PlayEnglishContext";
 import {LanguageContext} from "./context/LanguageContext";
 import appBarTestAudio from "./audios/testing.mp3"
