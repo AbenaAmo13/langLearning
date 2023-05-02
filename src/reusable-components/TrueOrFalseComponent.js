@@ -123,7 +123,12 @@ function TrueOrFalseComponent(){
                                             </button>
                                         </div>
                                         <p className="questions">The correct answer is: {question.Answer}</p>
-                                        <AudioPlayer />
+                                        <AudioPlayer
+                                            twiAudio={question.TwiAudio}
+
+
+
+                                        />
                                     </div>
                                 )}
                             </div>

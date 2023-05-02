@@ -19,6 +19,7 @@ export const EnglishAudioContextProvider= ({children}) => {
     synth.addEventListener("voiceschanged",()=>{
         console.log('getting voices')
         voice = synth.getVoices()[50]
+        console.log(voice)
     })
     //Initial get voices call, when they voices are ready
     synth.getVoices();

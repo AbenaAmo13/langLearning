@@ -5,6 +5,7 @@ import AudioPlayer from "./LessonAudioPlayer";
 import QuestionPrompt from "./QuestionPrompt";
 import quizImage from "../images/quizImage.webp";
 import twiAudio from "../audios/transitionalaudios/mcqaudiotwi.mp3"
+import englishAudio from "../audios/transitionalaudios/mcquestionenglish.mp3"
 
 
 function MultipleChoiceQuestions() {
@@ -26,7 +27,7 @@ function MultipleChoiceQuestions() {
         quizImage : quizImage,
         cardTitle: "Multiple Choice Questions",
         cardTitleTwi: "twiTitle",
-        EnglishAudio: "",
+        EnglishAudio: englishAudio,
         TwiAudio: twiAudio,
         questionType: "mcqs",
         questions: question
@@ -111,8 +112,6 @@ function MultipleChoiceQuestions() {
                                     twiAudioName={QuestionPromptData.cardTitleTwi}
                                     englishAudioName={QuestionPromptData.cardTitle}
 
-
-
                                     />
                                 </div>
                             )}
@@ -143,7 +142,12 @@ function MultipleChoiceQuestions() {
                         <p>Next </p>
                         <i className="material-icons" alt="help icon">arrow_forward</i>
                     </button>
-                    <AudioPlayer/>
+                    <AudioPlayer
+                        twiAudioName={QuestionPromptData.TwiAudio}
+                        englishAudioName={QuestionPromptData.EnglishAudio}
+
+
+                    />
                 </div>
                 <div>
                 </div>

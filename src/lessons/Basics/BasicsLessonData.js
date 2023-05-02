@@ -6,14 +6,23 @@ import id from "../../images/greyid.webp"
 import question1english from "../../audios/courseoutline/trueorfalsequestions/question1english.mp3"
 import question1twi from "../../audios/courseoutline/trueorfalsequestions/question1.mp3"
 import question2twi from "../../audios/courseoutline/trueorfalsequestions/question2twi.mp3"
+import question2English from "../../audios/courseoutline/trueorfalsequestions/question2english.mp3"
 import question3twi from "../../audios/courseoutline/trueorfalsequestions/question3twi.mp3"
+import  question3english from "../../audios/courseoutline/trueorfalsequestions/question3english.mp3"
 import question4twi from "../../audios/courseoutline/trueorfalsequestions/question4twi.mp3"
+import question4english from "../../audios/courseoutline/trueorfalsequestions/question4english.mp3"
 import question5twi from "../../audios/courseoutline/trueorfalsequestions/question5twi.mp3"
+import question5english from "../../audios/courseoutline/trueorfalsequestions/question5english.mp3"
+
 
 import mcqQuestion1 from "../../audios/courseoutline/mcquestions/mcquestion1twi.mp3"
+import mcqQuestion1English from "../../audios/courseoutline/mcquestions/mcquestion1english.mp3"
 import mcqQuestion2 from "../../audios/courseoutline/mcquestions/mcquestion2.mp3"
+import mcQuestion2English from "../../audios/courseoutline/mcquestions/mcquestion2english.mp3"
 import mcqQuestion3 from "../../audios/courseoutline/mcquestions/mcquestion3.mp3"
+import mcqQuestion3english from "../../audios/courseoutline/mcquestions/mcquestion3english.mp3"
 import mcqQuestion4 from "../../audios/courseoutline/mcquestions/mcquestion4.mp3"
+import mcqQuestion4English from "../../audios/courseoutline/mcquestions/mcquestion4english.mp3"
 import mcQuestion5 from "../../audios/courseoutline/mcquestions/mcquestion5.mp3"
 
 
@@ -82,7 +91,8 @@ export const trueOrFalseQuestions=[
         Question: " The course will cover how the government helps us with healthcare, education, identification and jobs",
         TwiAudio:question1twi ,
         EnglishAudio: question1english,
-        ExplanationAudio:"" ,
+        IncorrectEnglishAudio: '',
+        IncorrectTwiAudio: '',
         Answer:'True',
         isAnswered: false,
         componentScore : "BasicsScore",
@@ -92,7 +102,9 @@ export const trueOrFalseQuestions=[
         id: 2,
         Question: "The course will cover ways that we can keep ourselves healthy",
         TwiAudio: question2twi,
-        EnglishAudio: "",
+        EnglishAudio: question2English,
+        IncorrectEnglishAudio: '',
+        IncorrectTwiAudio: '',
         Answer:'True',
         isAnswered: false,
         componentScore : "BasicsScore",
@@ -102,8 +114,10 @@ export const trueOrFalseQuestions=[
     {
         id: 3,
         Question: " The course will not cover Free SHS",
-        EnglishAudio: "",
         TwiAudio: question3twi,
+        EnglishAudio: question3english,
+        IncorrectEnglishAudio: '',
+        IncorrectTwiAudio: '',
         Answer:'False',
         isAnswered: false,
         componentScore : "BasicsScore",
@@ -114,8 +128,10 @@ export const trueOrFalseQuestions=[
 
         id:4,
         Question: "Job creation programs and workplace laws are some of the ways that the government helps to make our life easier",
-        EnglishAudio: "",
+        EnglishAudio:question4english,
         TwiAudio: question4twi,
+        IncorrectEnglishAudio: '',
+        IncorrectTwiAudio: '',
         Answer:'True',
         isAnswered: false,
         componentScore : "BasicsScore",
@@ -124,8 +140,10 @@ export const trueOrFalseQuestions=[
     {
         id: 5,
         Question: "The government provide services to improve our health, education, and well being",
-        EnglishAudio: "",
+        EnglishAudio: question5english,
         TwiAudio: question5twi,
+        IncorrectEnglishAudio: '',
+        IncorrectTwiAudio: '',
         Answer:'True',
         isAnswered: false,
         componentScore : "BasicsScore",
@@ -140,8 +158,10 @@ export const basicsMCQS =[
         id: 1,
         Question: "Which of the following is not going to be covered in this course?",
         Options: ["Banking", "Education", "HealthCare"],
-        EnglishAudio: "",
+        EnglishAudio: mcqQuestion1English,
         TwiAudio:mcqQuestion1,
+        IncorrectEnglishAudio: '',
+        IncorrectTwiAudio: '',
         Answer: "Banking",
         isAnswered: false,
         componentScore : "BasicsScore",
@@ -151,8 +171,10 @@ export const basicsMCQS =[
         id: 2,
         Question: "Free SHS is made to help students get free... ",
         Options: ["Education", "HealthCare", "Money"],
-        EnglishAudio: "",
+        EnglishAudio: mcQuestion2English,
         TwiAudio:mcqQuestion2,
+        IncorrectEnglishAudio: '',
+        IncorrectTwiAudio: '',
         Answer: "Education",
         isAnswered: false,
         componentScore : "BasicsScore"
@@ -162,8 +184,10 @@ export const basicsMCQS =[
         id: 3,
         Question: "Which of the following is used to help us officially identify ourselves in Ghana?",
         Options: ["Our names", "Phones", "Ghana Card"],
-        EnglishAudio: "",
+        EnglishAudio: mcqQuestion3english,
         TwiAudio:mcqQuestion3,
+        IncorrectEnglishAudio: '',
+        IncorrectTwiAudio: '',
         Answer: "Ghana Card",
         isAnswered: false,
         componentScore : "BasicsScore",
@@ -172,8 +196,10 @@ export const basicsMCQS =[
         id: 4,
         Question: "Which of these does the government use to help make our job life easier?",
         Options: ["Passports", "Workplace laws", "National Health Insurance"],
-        EnglishAudio: "",
+        EnglishAudio: mcqQuestion4English,
         TwiAudio:mcqQuestion4,
+        IncorrectEnglishAudio: '',
+        IncorrectTwiAudio: '',
         Answer: "Workplace laws",
         isAnswered: false,
         componentScore : "BasicsScore",
@@ -184,6 +210,8 @@ export const basicsMCQS =[
         Question: "Which of these does the government use to give everyone access to healthcare?",
         Options: ["National Health Insurance Scheme", "Passports", "Free SHS"],
         EnglishAudio: "",
+        IncorrectEnglishAudio: '',
+        IncorrectTwiAudio: '',
         TwiAudio:mcQuestion5,
         Answer: "National Health Insurance Scheme",
         isAnswered: false,

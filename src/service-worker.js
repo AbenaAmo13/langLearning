@@ -70,3 +70,18 @@ self.addEventListener('message', (event) => {
 });
 
 // Any other custom service worker logic can go here.
+
+//Network first:
+/*
+self.addEventListener('fetch', (event) => {
+    event.respondWith(async function () {
+        try {
+            console.log('Network: ' + event.request)
+            return await fetch(event.request);
+        } catch (err) {
+            console.log('Cache: ' + event.request)
+            return caches.match(event.request);
+        }
+    }());
+});
+*/

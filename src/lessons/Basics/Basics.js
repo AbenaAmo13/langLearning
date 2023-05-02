@@ -2,7 +2,7 @@ import {useReducer, useEffect, useContext, useState} from "react";
 import Lessons from "../../reusable-components/Lessons"
 import {LessonContext, LessonDispatchContext} from "../../context/GlobalStateContext";
 import Question from "../../reusable-components/Questions";
-import MulitpleChoiceQuestions from "../../reusable-components/MulitpleChoiceQuestions";
+import RetakeCourse from "../../reusable-components/RetakeCourse";
 import {Link} from "react-router-dom";
 
 
@@ -44,21 +44,16 @@ function Basics() {
             <div className="card_component_container lightOrangeCardOutline padding">
                 <h1>You passed this course! Congratualtions</h1>
                 <h3>To continue to the first course which click the button below:</h3>
-                <button>
+
                     <Link  to="/Health" className= "nav_link_routers">
-                        <button className="start-button complete_button">START</button>
+                        <button className="start-button ">START</button>
                     </Link>
-                </button>
+
         </div>
         )
     }else{
         return(
-            <div className="card_component_container lightOrangeCardOutline padding">
-                <h1 className="text_content"> You did not pass this course, please click the button to do this course</h1>
-                    <Link  to="/" className= "nav_link_routers">
-                        <button className="lesson_buttons mcq_buttons retake">Retake course</button>
-                    </Link>
-            </div>
+            <RetakeCourse/>
         )
     }
 
