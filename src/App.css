@@ -82,7 +82,7 @@ padding: 6px 16px;
 
 html, body {
   background: url("./images/backgroundPic.svg") no-repeat;
-  background-size: cover;
+  /*background-size: cover;*/
 
 }
 
