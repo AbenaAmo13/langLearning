@@ -6,7 +6,8 @@ import QuestionPrompt from "./QuestionPrompt";
 import LessonAudioPlayer from "./LessonAudioPlayer";
 import questionPromptEnglishAudio from "../audios/basics/trueorfalseprompt.ogg"
 import questionPromptTwiAudio from "../audios/transitionalaudios/questiontrueorfalsetwi.mp3"
-
+import correctAnswerIsTrueAudio from "../audios/transitionalaudios/correctistrueenglish.mp3"
+import isFalseAudio from "../audios/transitionalaudios/isFalse.mp3"
 function TrueOrFalseComponent(){
     let { state, correctNumberAnswers, handleNextQuestion, checkAnswer, nextSetOfQuestions, selectedAnswer, currentQuestion, dispatch, handlePrevQuestion} = useContext(QuestionContext)
     let trueOrFalseQuestions = state.questions[0];
@@ -124,11 +125,14 @@ function TrueOrFalseComponent(){
                                         </div>
                                         <p className="questions">The correct answer is: {question.Answer}</p>
                                         <AudioPlayer
-                                            twiAudio={question.TwiAudio}
+                                            englishAudio={question.Answer === 'True' ? correctAnswerIsTrueAudio  : isFalseAudio }
+                                            englishAudioName={question.Answer === 'True' ? correctAnswerIsTrueAudio  : isFalseAudio }
 
 
 
                                         />
+
+                                        {/*<AudioPlayer twiAudio={question.TwiAudio}/>*/}
                                     </div>
                                 )}
                             </div>
