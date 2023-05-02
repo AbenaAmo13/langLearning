@@ -46,7 +46,7 @@ function Basics() {
                 <h3>To continue to the first course which click the button below:</h3>
 
                     <Link  to="/Health" className= "nav_link_routers">
-                        <button className="start-button ">START</button>
+                        <button className="start-button complete_button ">START</button>
                     </Link>
 
         </div>

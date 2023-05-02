@@ -72,7 +72,6 @@ self.addEventListener('message', (event) => {
 // Any other custom service worker logic can go here.
 
 //Network first:
-/*
 self.addEventListener('fetch', (event) => {
     event.respondWith(async function () {
         try {
@@ -84,4 +83,4 @@ self.addEventListener('fetch', (event) => {
         }
     }());
 });
-*/
+
