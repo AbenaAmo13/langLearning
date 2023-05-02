@@ -16,7 +16,6 @@ function Basics() {
 
     useEffect(()=>{
         dispatch({ type: "RESET_LESSON", payload: { lesson: basicLessonState.id}});
-
     }, [])
 
     useEffect(()=>{
@@ -41,16 +40,17 @@ function Basics() {
             return(<Question state={basicLessonState} questionType={"mcq"} dispatch={dispatch}/>)
     }else if(passedBasicLesson) {
         // All questions answered, quiz complete
-        return(<div>
-            <h1>You passed this course! Congratualtions</h1>
-            <h3>To continue to the first course which click the button below:</h3>
-            <button>
-                <Link  to="/Health" className= "nav_link_routers">
-                    <button className="start-button">START</button>
-                </Link>
-            </button>
-
-        </div>)
+        return(
+            <div className="card_component_container lightOrangeCardOutline padding">
+                <h1>You passed this course! Congratualtions</h1>
+                <h3>To continue to the first course which click the button below:</h3>
+                <button>
+                    <Link  to="/Health" className= "nav_link_routers">
+                        <button className="start-button complete_button">START</button>
+                    </Link>
+                </button>
+        </div>
+        )
     }else{
         return(
             <div className="card_component_container lightOrangeCardOutline padding">
