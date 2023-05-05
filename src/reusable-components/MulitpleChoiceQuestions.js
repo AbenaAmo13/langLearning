@@ -6,6 +6,7 @@ import QuestionPrompt from "./QuestionPrompt";
 import quizImage from "../images/quizImage.webp";
 import twiAudio from "../audios/transitionalaudios/mcqaudiotwi.mp3"
 import englishAudio from "../audios/transitionalaudios/mcquestionenglish.mp3"
+import RenderResults from "./RenderResults";
 
 
 function MultipleChoiceQuestions() {
@@ -109,8 +110,10 @@ function MultipleChoiceQuestions() {
                                     </div>
                                     <p className="questions">The correct answer is: {question.Answer}</p>
                                     <AudioPlayer
-                                    twiAudioName={QuestionPromptData.cardTitleTwi}
-                                    englishAudioName={QuestionPromptData.cardTitle}
+                                    twiAudioName={question.IncorrectTwiAudio}
+                                    englishAudioName={question.IncorrectEnglishAudio}
+                                    englishAudio={ question.IncorrectEnglishAudio}
+                                    twiAudio={question.IncorrectTwiAudio}
 
                                     />
                                 </div>
@@ -132,29 +135,6 @@ function MultipleChoiceQuestions() {
         )
     }
 
-    const renderResults=()=>{
-        return(
-            <div className="card_component_container lightOrangeCardOutline padding">
-                <h3 className="questions">You got {correctNumberAnswers} out of {MCQQuestions.length} questions correct</h3>
-                <h3>To go to the next question, click the button:</h3>
-                <div className="flex">
-                    <button onClick={()=> nextSetOfQuestions("mcq")} className="lesson_buttons mcq_buttons">
-                        <p>Next </p>
-                        <i className="material-icons" alt="help icon">arrow_forward</i>
-                    </button>
-                    <AudioPlayer
-                        twiAudioName={QuestionPromptData.TwiAudio}
-                        englishAudioName={QuestionPromptData.EnglishAudio}
-
-
-                    />
-                </div>
-                <div>
-                </div>
-            </div>
-        )
-    }
-
     return (
         <div className="mcq-container">
 
@@ -164,7 +144,14 @@ function MultipleChoiceQuestions() {
 
                 ) :
                 (
-                    currentQuestion < MCQQuestions.length ? renderMCQS(): renderResults()
+                    currentQuestion < MCQQuestions.length ? renderMCQS():
+
+                        <RenderResults
+                            correctNumberAnswers={correctNumberAnswers}
+                            questions={MCQQuestions.length}
+                            nextSetOfQuestions={nextSetOfQuestions}
+                            questionName= "mcq"
+                        />
                 )
 
             }

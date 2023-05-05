@@ -8,11 +8,9 @@ import FreeFormQuestions from "./FreeForm";
 function Question({questionType, state, dispatch}){
     return(
             <QuestionContextProvider state={state} dispatch={dispatch}>
-
                 {questionType === "trueorfalse" && <TrueOrFalseComponent />}
                 {questionType === "mcq" && <MulitpleChoiceQuestions />}
                 {questionType === "free" && <FreeFormQuestions />}
-
             </QuestionContextProvider>
         )
 

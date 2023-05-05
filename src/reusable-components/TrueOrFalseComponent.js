@@ -8,6 +8,7 @@ import questionPromptEnglishAudio from "../audios/basics/trueorfalseprompt.ogg"
 import questionPromptTwiAudio from "../audios/transitionalaudios/questiontrueorfalsetwi.mp3"
 import correctAnswerIsTrueAudio from "../audios/transitionalaudios/correctistrueenglish.mp3"
 import isFalseAudio from "../audios/transitionalaudios/isFalse.mp3"
+import RenderResults from "./RenderResults";
 function TrueOrFalseComponent(){
     let { state, correctNumberAnswers, handleNextQuestion, checkAnswer, nextSetOfQuestions, selectedAnswer, currentQuestion, dispatch, handlePrevQuestion} = useContext(QuestionContext)
     let trueOrFalseQuestions = state.questions[0];
@@ -127,12 +128,7 @@ function TrueOrFalseComponent(){
                                         <AudioPlayer
                                             englishAudio={question.Answer === 'True' ? correctAnswerIsTrueAudio  : isFalseAudio }
                                             englishAudioName={question.Answer === 'True' ? correctAnswerIsTrueAudio  : isFalseAudio }
-
-
-
                                         />
-
-                                        {/*<AudioPlayer twiAudio={question.TwiAudio}/>*/}
                                     </div>
                                 )}
                             </div>
@@ -153,25 +149,6 @@ function TrueOrFalseComponent(){
             </div>
         );
     }
-
-    const renderResults=()=>{
-        return(
-            <div className="card_component_container lightOrangeCardOutline padding">
-                <h3 className="questions">You got {correctNumberAnswers} out of {trueOrFalseQuestions.length} questions correct</h3>
-                <h3>To go to the next question, click the button:</h3>
-                <div className="flex">
-                    <button className="lesson_buttons mcq_buttons" onClick={()=> nextSetOfQuestions("t/f")}>
-                        <p>Next </p>
-                        <i className="material-icons" alt="help icon">arrow_forward</i>
-                    </button>
-                    <AudioPlayer/>
-                </div>
-
-                <div>
-                </div>
-            </div>
-        )
-    }
     return(
         <div>
 
@@ -181,7 +158,14 @@ function TrueOrFalseComponent(){
 
             ) : (
                 /* Render the rest of the condition */
-                currentQuestion < trueOrFalseQuestions.length ? renderQuestions() : renderResults()
+                currentQuestion < trueOrFalseQuestions.length ? renderQuestions() :
+
+                    <RenderResults
+                        correctNumberAnswers={correctNumberAnswers}
+                        questions={trueOrFalseQuestions.length}
+                        nextSetOfQuestions={nextSetOfQuestions}
+                        questionName= "t/f"
+                    />
 
             )}
 

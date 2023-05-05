@@ -27,6 +27,14 @@ import mcQuestion5 from "../../audios/courseoutline/mcquestions/mcquestion5.mp3"
 import mcqQuestion5English from "../../audios/courseoutline/mcquestions/mcquestion5.mp3"
 
 
+import answerIsBanking from "../../audios/courseoutline/mcquestions/incorrectaudios/answerisbanking.mp3"
+import answerIsEducation from "../../audios/courseoutline/mcquestions/incorrectaudios/answeriseducation.mp3"
+import answerIsGhanaCard from "../../audios/courseoutline/mcquestions/incorrectaudios/answerisGhanaCard.mp3"
+import answerIsWorkPlaceLaws from "../../audios/courseoutline/mcquestions/incorrectaudios/answerisworkplacelaws.mp3"
+import answerIsNHIS from "../../audios/courseoutline/mcquestions/incorrectaudios/answerisnhis.mp3"
+
+
+
 import theGovernmentEnglishAudio from "../../audios/courseoutline/thegovernmentenglish.ogg"
 import theGovernmentTwiAudio from "../../audios/courseoutline/thegovernmenttwi.mp3"
 import healthCareTwiAudio from "../../audios/courseoutline/healthcaretwi.mp3"
@@ -89,8 +97,6 @@ export const trueOrFalseQuestions=[
         Question: " The course will cover how the government helps us with healthcare, education, identification and jobs",
         TwiAudio:question1twi ,
         EnglishAudio: question1english,
-        IncorrectEnglishAudio: '',
-        IncorrectTwiAudio: '',
         Answer:'True',
         isAnswered: false,
         componentScore : "BasicsScore",
@@ -101,8 +107,6 @@ export const trueOrFalseQuestions=[
         Question: "The course will cover ways that we can keep ourselves healthy",
         TwiAudio: question2twi,
         EnglishAudio: question2English,
-        IncorrectEnglishAudio: '',
-        IncorrectTwiAudio: '',
         Answer:'True',
         isAnswered: false,
         componentScore : "BasicsScore",
@@ -114,8 +118,6 @@ export const trueOrFalseQuestions=[
         Question: " The course will not cover Free SHS",
         TwiAudio: question3twi,
         EnglishAudio: question3english,
-        IncorrectEnglishAudio: '',
-        IncorrectTwiAudio: '',
         Answer:'False',
         isAnswered: false,
         componentScore : "BasicsScore",
@@ -128,8 +130,6 @@ export const trueOrFalseQuestions=[
         Question: "Job creation programs and workplace laws are some of the ways that the government helps to make our life easier",
         EnglishAudio:question4english,
         TwiAudio: question4twi,
-        IncorrectEnglishAudio: '',
-        IncorrectTwiAudio: '',
         Answer:'True',
         isAnswered: false,
         componentScore : "BasicsScore",
@@ -140,8 +140,6 @@ export const trueOrFalseQuestions=[
         Question: "The government provide services to improve our health, education, and well being",
         EnglishAudio: question5english,
         TwiAudio: question5twi,
-        IncorrectEnglishAudio: '',
-        IncorrectTwiAudio: '',
         Answer:'True',
         isAnswered: false,
         componentScore : "BasicsScore",
@@ -158,7 +156,7 @@ export const basicsMCQS =[
         Options: ["Banking", "Education", "HealthCare"],
         EnglishAudio: mcqQuestion1English,
         TwiAudio:mcqQuestion1,
-        IncorrectEnglishAudio: '',
+        IncorrectEnglishAudio: answerIsBanking,
         IncorrectTwiAudio: '',
         Answer: "Banking",
         isAnswered: false,
@@ -171,7 +169,7 @@ export const basicsMCQS =[
         Options: ["Education", "HealthCare", "Money"],
         EnglishAudio: mcQuestion2English,
         TwiAudio:mcqQuestion2,
-        IncorrectEnglishAudio: '',
+        IncorrectEnglishAudio: answerIsEducation,
         IncorrectTwiAudio: '',
         Answer: "Education",
         isAnswered: false,
@@ -184,7 +182,7 @@ export const basicsMCQS =[
         Options: ["Our names", "Phones", "Ghana Card"],
         EnglishAudio: mcqQuestion3english,
         TwiAudio:mcqQuestion3,
-        IncorrectEnglishAudio: '',
+        IncorrectEnglishAudio: answerIsGhanaCard,
         IncorrectTwiAudio: '',
         Answer: "Ghana Card",
         isAnswered: false,
@@ -196,7 +194,7 @@ export const basicsMCQS =[
         Options: ["Passports", "Workplace laws", "National Health Insurance"],
         EnglishAudio: mcqQuestion4English,
         TwiAudio:mcqQuestion4,
-        IncorrectEnglishAudio: '',
+        IncorrectEnglishAudio: answerIsWorkPlaceLaws,
         IncorrectTwiAudio: '',
         Answer: "Workplace laws",
         isAnswered: false,
@@ -209,7 +207,7 @@ export const basicsMCQS =[
         Options: ["National Health Insurance Scheme", "Passports", "Free SHS"],
         EnglishAudio: mcqQuestion5English,
         TwiAudio:mcQuestion5,
-        IncorrectEnglishAudio: '',
+        IncorrectEnglishAudio: answerIsNHIS,
         IncorrectTwiAudio: '',
         Answer: "National Health Insurance Scheme",
         isAnswered: false,
