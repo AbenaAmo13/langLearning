@@ -1,26 +1,20 @@
 import {useContext} from "react";
 import {AudioContext} from "../context/AudioContext";
+import LessonAudioPlayer from "./LessonAudioPlayer";
 
-function QuestionPrompt({state,dispatch, questionPromptData}) {
+function QuestionPrompt({state,dispatch, questionPromptData, id}) {
     const {playAudio, isPlaying, activeName } = useContext(AudioContext);
 
     function notReady(){
-      dispatch({ type: "SET_LESSON_COMPLETED", payload: { lesson: state.id, completed: false }});
+        dispatch({ type: "DECREASE_NUMBER_OF_LESSONS_COMPLETED", payload: { lesson: state.id, value: 1 }});
+
+        dispatch({ type: "SET_LESSON_COMPLETED", payload: { lesson: state.id, completed: false }});
     }
     function ready(){
-        if(questionPromptData.questionType ==="trueorfalse"){
-            dispatch({ type: "RESET_QUESTION", payload: { lesson: state.id, index: 0}});
-            if(state.firstQuestionTypeRendered === "trueorfalse"){
-                console.log( questionPromptData.questions)
-                dispatch({type:"RESET_SCORE",  payload: { lesson: state.id, score: questionPromptData.questions.componentScore}})
-            }
-            //console.log(state.questions)
-        }else if(questionPromptData.questionType==="mcqs"){
-            dispatch({ type: "RESET_QUESTION", payload: { lesson: state.id, index: 1}});
-            if(state.firstQuestionTypeRendered === "mcqs"){
-                dispatch({type:"RESET_SCORE",  payload: { lesson: state.id, score: questionPromptData.questions.componentScore}})
-            }
+        if(id===0){
+            dispatch({type:"RESET_SCORE",  payload: { lesson: state.id, score: questionPromptData.questions.componentScore}})
         }
+        dispatch({ type: "RESET_QUESTION", payload: { lesson: state.id, index: id}});
         dispatch({ type: "SET_QUESTION_STARTED", payload: { lesson: state.id, started: true }});
     }
 
@@ -38,8 +32,8 @@ function QuestionPrompt({state,dispatch, questionPromptData}) {
                         </p>
                     ))}
                 </div>
-                <div className="card_audio_controls">
-                    <div className="volume_button_divs">
+                <div>
+                  {/*  <div className="volume_button_divs">
                         <div>🇬🇭</div>
                         <button
                             className={`question_prompt_volume_icons   ${activeName === questionPromptData.TwiTitle ? 'audio_active' : ''}`}
@@ -69,7 +63,17 @@ function QuestionPrompt({state,dispatch, questionPromptData}) {
                             </button>
                         </div>
 
-                    </div>
+                    </div>*/}
+
+                    <LessonAudioPlayer
+                        englishAudio={questionPromptData.EnglishAudio}
+                        twiAudio={questionPromptData.TwiAudio}
+                        englishAudioName={questionPromptData.EnglishAudio}
+                        twiAudioName={questionPromptData.TwiAudio}
+
+
+                    />
+                    <div className="question_prompt_button_divs">
                         <button  className="lesson_buttons icon-buttons" onClick={()=>ready()}>
                             <p>Yes</p>
                             <i className="material-icons" alt="help icon">thumb_up_alt</i>
@@ -78,6 +82,8 @@ function QuestionPrompt({state,dispatch, questionPromptData}) {
                             <p>No</p>
                             <i className="material-icons" alt="help icon">thumb_down_off_alt</i>
                         </button>
+                    </div>
+
                 </div>
             </div>
         </div>

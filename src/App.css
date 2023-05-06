@@ -79,11 +79,47 @@ input[type=radio] {
 padding: 6px 16px;
 }
 
+.matching_left_column{
+  display: flex;
+  flex-direction: column;
+}
+
+.matching_right_column{
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+.matching_options_container{
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
 
 html, body {
   background: url("./images/backgroundPic.svg") no-repeat;
   /*background-size: cover;*/
 
+}
+
+.question_prompt_button_divs{
+  display: flex;
+  padding: 2%;
+  justify-content: space-evenly;
+}
+.keywords_div{
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+.keyword_button_div{
+  padding: 2%;
+  display: flex;
+  justify-content: space-evenly;
+}
+.keywords_icon{
+  font-size: 25px;
 }
 
 .start-button.complete_button{

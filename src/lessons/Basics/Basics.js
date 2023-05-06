@@ -37,9 +37,9 @@ function Basics() {
     if(!basicLessonState.lessonCompleted ){
         return( <Lessons state={basicLessonState} dispatch={dispatch}/>)
     }else if(!basicLessonState.trueOrFalseComplete){
-            return(<Question state={basicLessonState} questionType={"trueorfalse"} dispatch={dispatch}/>)
+            return(<Question state={basicLessonState} questionType={"trueorfalse"} dispatch={dispatch} id={0}/>)
     }else if(!basicLessonState.mcqComplete){
-            return(<Question state={basicLessonState} questionType={"mcq"} dispatch={dispatch}/>)
+            return(<Question state={basicLessonState} questionType={"mcq"} dispatch={dispatch} id={1}/>)
     }else if(passedBasicLesson) {
         // All questions answered, quiz complete
         return(

@@ -6,7 +6,7 @@ export const QuestionContext = createContext();
 
 function QuestionContextProvider({children, state, dispatch}) {
     const [CorrectAudio] = useState(() => new Audio(answeredCorrectly));
-    const {playAudio} = useContext(AudioContext);
+    const {playAudio, isPlaying} = useContext(AudioContext);
     const [correctNumberAnswers, setCorrectNumberAnswers] = useState(0)
     const [selectedAnswer, setSelectedAnswer] = useState(null)
     const [currentQuestion, setCurrentQuestion] = useState(0);
@@ -25,14 +25,12 @@ function QuestionContextProvider({children, state, dispatch}) {
         if (!question.isAnswered) {
             if (answer === correctAnswer) {
                 console.log("It got in here")
-                playAudio(CorrectAudio);
+                playAudio(CorrectAudio, question.TwiAudio);
                 console.log(question.componentScore)
                 dispatch({type: "SET_SCORE", payload: {lesson: state.id, score: question.componentScore, value: 10}});
                 setCorrectNumberAnswers(correctNumberAnswers + 1)
             }
-
         }
-
         question.isAnswered = true;
         // function code
     }, [currentQuestion]);
@@ -65,7 +63,7 @@ function QuestionContextProvider({children, state, dispatch}) {
 
 
     return(
-        <QuestionContext.Provider value={{ handleNextQuestion, checkAnswer, state, dispatch, nextSetOfQuestions, selectedAnswer, setSelectedAnswer, currentQuestion, correctNumberAnswers, setCurrentQuestion, handlePrevQuestion}}>
+        <QuestionContext.Provider value={{ handleNextQuestion, checkAnswer, state, dispatch, nextSetOfQuestions, selectedAnswer, setSelectedAnswer, currentQuestion, correctNumberAnswers, setCurrentQuestion, handlePrevQuestion, isPlaying}}>
             {children}
         </QuestionContext.Provider>
     )

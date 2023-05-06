@@ -9,7 +9,7 @@ import englishAudio from "../audios/transitionalaudios/mcquestionenglish.mp3"
 import RenderResults from "./RenderResults";
 
 
-function MultipleChoiceQuestions() {
+function MultipleChoiceQuestions({id}) {
     let { state, correctNumberAnswers,
         handleNextQuestion, checkAnswer,
         handlePrevQuestion, currentQuestion,
@@ -18,7 +18,7 @@ function MultipleChoiceQuestions() {
         } = useContext(QuestionContext)
     const [optionSelected, setOptionSelected] = useState(null)
     const inputRefs = useRef([]);
-    let MCQQuestions = state.questions[1];
+    let MCQQuestions = state.questions[id];
     let question = MCQQuestions[currentQuestion];
     const QuestionPromptData = {
         cardTextContent:[{
@@ -140,7 +140,7 @@ function MultipleChoiceQuestions() {
 
             {!state.questionStarted ? (
                     /* Render the question prompt */
-                    <QuestionPrompt state={state} dispatch={dispatch} questionPromptData={QuestionPromptData}/>
+                    <QuestionPrompt state={state} dispatch={dispatch} questionPromptData={QuestionPromptData} id={id}/>
 
                 ) :
                 (

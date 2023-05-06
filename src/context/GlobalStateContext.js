@@ -1,5 +1,11 @@
 import {createContext, useEffect, useReducer} from 'react';
 import {basicLessonData, basicsMCQS, FreeForm, trueOrFalseQuestions} from "../lessons/Basics/BasicsLessonData";
+import {
+    healthCareKeyWordsData,
+    healthCareLessonData,
+    MatchingWordsQuestions,
+    NHISLessonData
+} from "../lessons/HealthCare/HealthCareLessonData";
 
 export const LessonContext = createContext(null);
 export const LessonDispatchContext = createContext(null);
@@ -13,11 +19,24 @@ export function GlobalStatesProvider({ children }) {
             lessonCompleted: false,
             questionStarted: false,
             trueOrFalseComplete: false,
-            firstQuestionTypeRendered: "trueorfalse", //The first question.
             mcqComplete: false,
             questions: [trueOrFalseQuestions, basicsMCQS],
             pointsToPassLesson : 65
-        }
+        },
+        HealthCareLessons: {
+            id: "HealthCareLessons",
+            scores: 0,
+            lessons:[healthCareLessonData, healthCareKeyWordsData, NHISLessonData],
+            numberOfCompletedLessons: 0,
+            numberOfCompletedQuestions: 0,
+            lessonCompleted: false,
+            questionStarted: false,
+            trueOrFalseComplete: false,
+            mcqComplete: false,
+            questions: [MatchingWordsQuestions],
+            pointsToPassLesson : 65
+        },
+
     }
 
     function lessonReducer(lessonState, action) {
@@ -99,11 +118,14 @@ export function GlobalStatesProvider({ children }) {
             case "RESET_QUESTION": {
                 const { lesson, index } = action.payload;
                 const fullLesson = lessonState[lesson];
+                //console.log("Full lesson: " + fullLesson)
                 const activeQuestion = fullLesson.questions[index];
+                //console.log("Active question" + activeQuestion)
                 const updatedQuestions = activeQuestion.map((question) => ({
                     ...question,
                     isAnswered: false,
                 }));
+                //console.log("Updated question" + updatedQuestions)
                 const updatedLesson = {
                     ...fullLesson,
                     questions: [...fullLesson.questions],
@@ -120,6 +142,34 @@ export function GlobalStatesProvider({ children }) {
                 const updatedLesson ={
                     ...fullLesson
                 }
+                return {
+                    ...lessonState,
+                    [lesson]: updatedLesson
+                }
+            }
+            case "INCREASE_NUMBER_OF_LESSONS_COMPLETED":{
+                const {lesson, value} = action.payload;
+                const fullLesson = lessonState[lesson];
+                const originalNumberOfLessons = fullLesson.numberOfCompletedLessons
+                console.log(originalNumberOfLessons)
+                const updatedLesson = {
+                    ...fullLesson,
+                    numberOfCompletedLessons: originalNumberOfLessons + value,
+                };
+                return {
+                    ...lessonState,
+                    [lesson]: updatedLesson
+                }
+            }
+            case "DECREASE_NUMBER_OF_LESSONS_COMPLETED":{
+                const {lesson, value} = action.payload;
+                const fullLesson = lessonState[lesson];
+                const originalNumberOfLessons = fullLesson.numberOfCompletedLessons
+                console.log(originalNumberOfLessons)
+                const updatedLesson = {
+                    ...fullLesson,
+                    numberOfCompletedLessons: originalNumberOfLessons - value,
+                };
                 return {
                     ...lessonState,
                     [lesson]: updatedLesson

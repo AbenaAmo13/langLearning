@@ -9,9 +9,9 @@ import questionPromptTwiAudio from "../audios/transitionalaudios/questiontrueorf
 import correctAnswerIsTrueAudio from "../audios/transitionalaudios/correctistrueenglish.mp3"
 import isFalseAudio from "../audios/transitionalaudios/isFalse.mp3"
 import RenderResults from "./RenderResults";
-function TrueOrFalseComponent(){
+function TrueOrFalseComponent({id}){
     let { state, correctNumberAnswers, handleNextQuestion, checkAnswer, nextSetOfQuestions, selectedAnswer, currentQuestion, dispatch, handlePrevQuestion} = useContext(QuestionContext)
-    let trueOrFalseQuestions = state.questions[0];
+    let trueOrFalseQuestions = state.questions[id];
     const [optionSelected, setOptionSelected] = useState(null)
     const inputRefs = useRef([]);
     let question = trueOrFalseQuestions[currentQuestion];
@@ -154,7 +154,7 @@ function TrueOrFalseComponent(){
 
             {!state.questionStarted ? (
                 /* Render the question prompt */
-                <QuestionPrompt state={state} dispatch={dispatch} questionPromptData={QuestionPromptData}/>
+                <QuestionPrompt state={state} dispatch={dispatch} questionPromptData={QuestionPromptData} id={id}/>
 
             ) : (
                 /* Render the rest of the condition */

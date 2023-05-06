@@ -9,6 +9,7 @@ export const AudioContext = createContext();
 
 
     const playAudio = (audio, audioName) => {
+
         if (isPlaying) {
             stopAudio();
         }
@@ -17,6 +18,7 @@ export const AudioContext = createContext();
         audioRef.current.onplaying = function() {
             setIsPlaying(true);
             setActiveName(audioName)
+            console.log("Audio name: " + audioName)
         };
     };
 

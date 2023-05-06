@@ -217,7 +217,7 @@ export const basicsMCQS =[
 
 export const FreeForm =[
     {
-        Question: "Name one way the government helps us"
+
     }
 
 ]
