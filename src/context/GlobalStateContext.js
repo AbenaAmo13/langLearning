@@ -1,10 +1,11 @@
-import {createContext, useEffect, useReducer} from 'react';
+import {createContext, useEffect, useReducer, useState} from 'react';
 import {basicLessonData, basicsMCQS, FreeForm, trueOrFalseQuestions} from "../lessons/Basics/BasicsLessonData";
 import {
+    basicsMCQHealthCare,
     healthCareKeyWordsData,
     healthCareLessonData,
-    MatchingWordsQuestions,
-    NHISLessonData
+    MatchingWordsQuestions, NHISKeyWordsData,
+    NHISLessonData, NHISRegistrationForm, RegistrationFormKeyWords, trueOrFalseQuestionsHealth
 } from "../lessons/HealthCare/HealthCareLessonData";
 
 export const LessonContext = createContext(null);
@@ -26,14 +27,14 @@ export function GlobalStatesProvider({ children }) {
         HealthCareLessons: {
             id: "HealthCareLessons",
             scores: 0,
-            lessons:[healthCareLessonData, healthCareKeyWordsData, NHISLessonData],
+            lessons:[healthCareLessonData, healthCareKeyWordsData, NHISLessonData, NHISKeyWordsData, NHISRegistrationForm, RegistrationFormKeyWords],
             numberOfCompletedLessons: 0,
             numberOfCompletedQuestions: 0,
             lessonCompleted: false,
             questionStarted: false,
             trueOrFalseComplete: false,
             mcqComplete: false,
-            questions: [MatchingWordsQuestions],
+            questions: [MatchingWordsQuestions, basicsMCQHealthCare, trueOrFalseQuestionsHealth],
             pointsToPassLesson : 65
         },
 
@@ -161,6 +162,34 @@ export function GlobalStatesProvider({ children }) {
                     [lesson]: updatedLesson
                 }
             }
+            case "INCREASE_NUMBER_OF_QUESTIONS_COMPLETED":{
+                const {lesson, value} = action.payload;
+                const fullLesson = lessonState[lesson];
+                const originalNumberOfQuestions = fullLesson.numberOfCompletedQuestions
+                console.log(originalNumberOfQuestions)
+                const updatedLesson = {
+                    ...fullLesson,
+                    numberOfCompletedQuestions: originalNumberOfQuestions + value,
+                };
+                return {
+                    ...lessonState,
+                    [lesson]: updatedLesson
+                }
+            }
+            case "DECREASE_NUMBER_OF_QUESTIONS_COMPLETED":{
+                const {lesson, value} = action.payload;
+                const fullLesson = lessonState[lesson];
+                const originalNumberOfQuestions = fullLesson.numberOfCompletedQuestions
+                console.log(originalNumberOfQuestions)
+                const updatedLesson = {
+                    ...fullLesson,
+                    numberOfCompletedQuestions: originalNumberOfQuestions - value,
+                };
+                return {
+                    ...lessonState,
+                    [lesson]: updatedLesson
+                }
+            }
             case "DECREASE_NUMBER_OF_LESSONS_COMPLETED":{
                 const {lesson, value} = action.payload;
                 const fullLesson = lessonState[lesson];
@@ -183,6 +212,7 @@ export function GlobalStatesProvider({ children }) {
     const [lessons, dispatch] = useReducer( lessonReducer, lessonStates);
 
     return (
+
         <LessonContext.Provider value={lessons}>
             <LessonDispatchContext.Provider value={dispatch}>
                 {children}

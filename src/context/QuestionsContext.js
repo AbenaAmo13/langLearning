@@ -56,6 +56,7 @@ function QuestionContextProvider({children, state, dispatch}) {
             dispatch({ type: "SET_MCQ_COMPLETE", payload: {lesson: state.id,completed: true}});
         }
         dispatch({ type: "SET_QUESTION_STARTED", payload: {lesson: state.id,started: false}});
+        dispatch({ type: "INCREASE_NUMBER_OF_QUESTIONS_COMPLETED", payload: {lesson: state.id,value: 1}});
         setCurrentQuestion(0);
         setCorrectNumberAnswers(0)
 

@@ -17,6 +17,10 @@ function HealthCare(){
     }, [])
 
     useEffect(()=>{
+        console.log('The number of completed questions attempted' + healthcareLessonsState.numberOfCompletedQuestions)
+    },[healthcareLessonsState.numberOfCompletedQuestions])
+
+    useEffect(()=>{
        // console.log("The value of numberOfCompletedLessons are: " + healthcareLessonsState.numberOfCompletedLessons)
 
     }, [healthcareLessonsState.numberOfCompletedLessons])
@@ -27,6 +31,13 @@ function HealthCare(){
         <KeyWordsLessons state={healthcareLessonsState} dispatch={dispatch} lessonId={1} />,
         <Question state={healthcareLessonsState} questionType={"matching"} dispatch={dispatch} id={0}/>,
         <MultipleLessons state={healthcareLessonsState} dispatch={dispatch} lessonId={2} />,
+        <KeyWordsLessons state={healthcareLessonsState} dispatch={dispatch} lessonId={3} />,
+        <Question state={healthcareLessonsState} questionType={"mcq"} dispatch={dispatch} id={1}/>,
+        <MultipleLessons state={healthcareLessonsState} dispatch={dispatch} lessonId={4} />,
+        <KeyWordsLessons state={healthcareLessonsState} dispatch={dispatch} lessonId={5} />,
+        <Question state={healthcareLessonsState} questionType={"trueorfalse"} dispatch={dispatch} id={2}/>,
+
+
     ];
 
     //Math.min is used to ensure that the component index does not exceed the maximum index of the lessonComponents Array

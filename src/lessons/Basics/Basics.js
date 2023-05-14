@@ -6,10 +6,12 @@ import RetakeCourse from "../../reusable-components/RetakeCourse";
 import {Link} from "react-router-dom";
 import LessonAudioPlayer from "../../reusable-components/LessonAudioPlayer";
 import PassedCourse from "../../reusable-components/PassedCourse";
+import {LockedStatusObjContext} from "../../App";
 
 
 
 function Basics() {
+    const {lockedStatusJsonObj, setLockedStatusJsonObj} = useContext(LockedStatusObjContext)
     const lessons = useContext(LessonContext)
     const dispatch = useContext(LessonDispatchContext)
     const basicLessonState = lessons.BasicLessons;
@@ -27,6 +29,9 @@ function Basics() {
             const lockedStatus = JSON.parse(localStorage.getItem('lockedStatusData'))
             lockedStatus.Health = false
             localStorage.setItem('lockedStatusData', JSON.stringify(lockedStatus))
+            console.log("Final object: "+ lockedStatus)
+            setLockedStatusJsonObj(lockedStatus)
+
             setPassedBasicLesson(true);
         }
     }, [basicLessonState.mcqComplete])

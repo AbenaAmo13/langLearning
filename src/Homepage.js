@@ -113,8 +113,6 @@ function Homepage() {
         if (!localStorage.getItem('userScores')) {
             localStorage.setItem('userScores', JSON.stringify(userScore));
         }
-
-
     }, []);
 
     useEffect(()=>{
