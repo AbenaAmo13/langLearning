@@ -207,6 +207,96 @@ export const NHISRegistrationForm=[
     }
 ]
 
+export const healthLessonData=[
+    {
+        Image: "" ,
+        EnglishWord: "Malaria",
+        TwiWord: "",
+        TwiAudio: "",
+        EnglishAudio: "",
+        KeyMessageEnglish:'In this lesson, we will learn about malaria and ways to keep ourselves healthy by preventing and treating it.' ,
+
+    },
+    {
+        Image: "" ,
+        EnglishWord: "Malaria",
+        TwiWord: "",
+        TwiAudio: "",
+        EnglishAudio: "",
+        KeyMessageEnglish:'This is a diseases we get when we are bitten by mosquitoes' ,
+
+    },
+
+    {
+        Image: "" ,
+        EnglishWord: "Malaria Prevention: Mosquito Nets",
+        TwiWord: "",
+        TwiAudio: "",
+        EnglishAudio: "",
+        KeyMessageEnglish:'To prevent malaria, you must get and sleep under mosquito nets',
+
+    },  {
+        Image: "" ,
+        EnglishWord: "Malaria Prevention: Mosquito Coils",
+        TwiWord: "",
+        TwiAudio: "",
+        EnglishAudio: "",
+        KeyMessageEnglish:'To prevent malaria, you must buy and use mosquito coils in your house',
+
+    }, {
+        Image: "" ,
+        EnglishWord: "Malaria Treatment: Medicine",
+        TwiWord: "",
+        TwiAudio: "",
+        EnglishAudio: "",
+        KeyMessageEnglish:'To treat malaria, you must go to a hospital or a drug store and ask for medicine for malaria ',
+
+    },{
+        Image: "" ,
+        EnglishWord: "Malaria Treatment: Self Care",
+        TwiWord: "",
+        TwiAudio: "",
+        EnglishAudio: "",
+        KeyMessageEnglish:'To treat malaria, you must also make sure you are eating properly, drinking lots of water and sleeping well',
+
+    },{
+        Image: "" ,
+        EnglishWord: "Keeping Healthy",
+        TwiWord: "",
+        TwiAudio: "",
+        EnglishAudio: "",
+        KeyMessageEnglish:'Next we will going over ways that we can keep ourselves healthy',
+
+    },
+    {
+        Image: "" ,
+        EnglishWord: "Wash your Hands",
+        TwiWord: "",
+        TwiAudio: "",
+        EnglishAudio: "",
+        KeyMessageEnglish:'To keep healthy: you must wash your hands before and after meals',
+
+    },  {
+        Image: "" ,
+        EnglishWord: "Balanced Diet",
+        TwiWord: "",
+        TwiAudio: "",
+        EnglishAudio: "",
+        KeyMessageEnglish:'To keep healthy: you must eat a balanced diet with plenty fruits and vegetables',
+
+    }, {
+        Image: "" ,
+        EnglishWord: "Exercise",
+        TwiWord: "",
+        TwiAudio: "",
+        EnglishAudio: "",
+        KeyMessageEnglish:'To keep healthy: you must get lots of exercise such as dancing, walking, and/or playing sports',
+
+    },
+
+
+]
+
 
 
 
@@ -350,6 +440,61 @@ export const RegistrationFormKeyWords=[
         EnglishAudio:"",
         KeyMessageEnglish: ""
     },
+]
+
+export const healthyKeyWords=[
+    {
+        Image:"",
+        EnglishWord: "Malaria",
+        TwiWord: "Malaria",
+        TwiAudio:"",
+        EnglishAudio:"",
+        KeyMessageEnglish: ""
+    },
+    {
+        Image:"",
+        EnglishWord: "Mosquito Nets",
+        TwiWord: "Nwansena afiri",
+        TwiAudio:"",
+        EnglishAudio:"",
+        KeyMessageEnglish: ""
+    },
+    {
+        Image:"",
+        EnglishWord: "Mosquito Coils",
+        TwiWord: "Nwansena coil",
+        TwiAudio:"",
+        EnglishAudio:"",
+        KeyMessageEnglish: ""
+    },
+    {
+        Image:"",
+        EnglishWord: "Mosquito Coils",
+        TwiWord: "Nwansena coil",
+        TwiAudio:"",
+        EnglishAudio:"",
+        KeyMessageEnglish: ""
+    },
+    {
+        Image:"",
+        EnglishWord: "Balanced Diet", //Not sure about this one
+        TwiWord: "Aduan a ɛkari pɛ",
+        TwiAudio:"",
+        EnglishAudio:"",
+        KeyMessageEnglish: ""
+    },
+    {
+        Image:"",
+        EnglishWord: "Exercise", //Not sure about this one
+        TwiWord: "Dwumadie",
+        TwiAudio:"",
+        EnglishAudio:"",
+        KeyMessageEnglish: ""
+    },
+
+
+
+
 ]
 
 
@@ -499,4 +644,30 @@ export const trueOrFalseQuestionsHealth=[
         componentScore : "HealthScore",
         type: "trueorfalse",
     },
+]
+
+
+
+
+
+export const MatchingWordsQuestions2=[
+    {
+        id: 1,
+        Task: "Match the english word to the twi word",
+        leftColumn:["Mosquito Nets","Balanced Diet", "Exercise", "Mosquito Coils", "Malaria" ],
+        rightColumn:["Dwumadie", "Aduan a ɛkari pɛ", "Nwansena afiri", "Malaria","Nwansena coil" ],
+        correctAnswerPairs:[
+            { leftColumn: "Mosquito Nets", rightColumn: "Nwansena afiri" },
+            { leftColumn: "Malaria", rightColumn: "Malaria" },
+            { leftColumn: "Balanced Diet", rightColumn: "Aduan a ɛkari pɛ" },
+            { leftColumn: "Exercise", rightColumn: "Dwumadie" },
+            { leftColumn: "Mosquito Coils", rightColumn: "Nwansena coil" },
+        ],
+        Answer:"Matched",
+        componentScore : "HealthScore",
+        isAnswered: false,
+        TwiAudio:"testforTwi",
+        EnglishAudio: "",
+
+    }
 ]

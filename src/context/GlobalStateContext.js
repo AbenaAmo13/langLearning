@@ -1,11 +1,8 @@
 import {createContext, useEffect, useReducer, useState} from 'react';
 import {basicLessonData, basicsMCQS, FreeForm, trueOrFalseQuestions} from "../lessons/Basics/BasicsLessonData";
 import {
-    basicsMCQHealthCare,
-    healthCareKeyWordsData,
-    healthCareLessonData,
-    MatchingWordsQuestions, NHISKeyWordsData,
-    NHISLessonData, NHISRegistrationForm, RegistrationFormKeyWords, trueOrFalseQuestionsHealth
+    basicsMCQHealthCare, healthCareKeyWordsData, healthCareLessonData, MatchingWordsQuestions, NHISKeyWordsData,healthyKeyWords,
+    NHISLessonData, NHISRegistrationForm, RegistrationFormKeyWords, trueOrFalseQuestionsHealth, healthLessonData, MatchingWordsQuestions2
 } from "../lessons/HealthCare/HealthCareLessonData";
 
 export const LessonContext = createContext(null);
@@ -27,14 +24,14 @@ export function GlobalStatesProvider({ children }) {
         HealthCareLessons: {
             id: "HealthCareLessons",
             scores: 0,
-            lessons:[healthCareLessonData, healthCareKeyWordsData, NHISLessonData, NHISKeyWordsData, NHISRegistrationForm, RegistrationFormKeyWords],
+            lessons:[healthCareLessonData, healthCareKeyWordsData, NHISLessonData, NHISKeyWordsData, NHISRegistrationForm, RegistrationFormKeyWords, healthLessonData, healthyKeyWords],
             numberOfCompletedLessons: 0,
             numberOfCompletedQuestions: 0,
             lessonCompleted: false,
             questionStarted: false,
             trueOrFalseComplete: false,
             mcqComplete: false,
-            questions: [MatchingWordsQuestions, basicsMCQHealthCare, trueOrFalseQuestionsHealth],
+            questions: [MatchingWordsQuestions, basicsMCQHealthCare, trueOrFalseQuestionsHealth, MatchingWordsQuestions2],
             pointsToPassLesson : 65
         },
 

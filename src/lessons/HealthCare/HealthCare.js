@@ -18,6 +18,11 @@ function HealthCare(){
 
     useEffect(()=>{
         console.log('The number of completed questions attempted' + healthcareLessonsState.numberOfCompletedQuestions)
+        //Completed all lessons
+        if(healthcareLessonsState.numberOfCompletedQuestions === healthcareLessonsState.questions.length){
+
+
+        }
     },[healthcareLessonsState.numberOfCompletedQuestions])
 
     useEffect(()=>{
@@ -36,6 +41,10 @@ function HealthCare(){
         <MultipleLessons state={healthcareLessonsState} dispatch={dispatch} lessonId={4} />,
         <KeyWordsLessons state={healthcareLessonsState} dispatch={dispatch} lessonId={5} />,
         <Question state={healthcareLessonsState} questionType={"trueorfalse"} dispatch={dispatch} id={2}/>,
+        <MultipleLessons state={healthcareLessonsState} dispatch={dispatch} lessonId={6} />,
+        <KeyWordsLessons state={healthcareLessonsState} dispatch={dispatch} lessonId={7} />,
+        <Question state={healthcareLessonsState} questionType={"matching"} dispatch={dispatch} id={3}/>,
+
 
 
     ];
