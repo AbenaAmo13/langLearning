@@ -123,7 +123,6 @@ export function GlobalStatesProvider({ children }) {
                 //const updatedQuestions = mainCurrentQuestion.find(index=> index===questionIndex)
                 mainCurrentQuestion.isAnswered = true
                 activeQuestion[currentQuestionIndex] = mainCurrentQuestion
-
                 //console.log("Updated Main Questions" + JSON.stringify(mainCurrentQuestion, null, 4))
                 //console.log("Updated question" + updatedQuestions)
                 const updatedLesson = {
