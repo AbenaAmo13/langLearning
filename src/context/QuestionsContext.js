@@ -6,7 +6,7 @@ export const QuestionContext = createContext();
 
 function QuestionContextProvider({children, state, dispatch}) {
     const [CorrectAudio] = useState(() => new Audio(answeredCorrectly));
-    const {playAudio, isPlaying} = useContext(AudioContext);
+    const {playAudio, isPlaying, stopAudio} = useContext(AudioContext);
     const [correctNumberAnswers, setCorrectNumberAnswers] = useState(0)
     const [selectedAnswer, setSelectedAnswer] = useState(null)
     const [currentQuestion, setCurrentQuestion] = useState(0);
@@ -14,6 +14,13 @@ function QuestionContextProvider({children, state, dispatch}) {
         CorrectAudio.preload = 'auto';
         CorrectAudio.load();
     }, [CorrectAudio]);
+
+    useEffect(()=>{
+        if(isPlaying){
+            stopAudio()
+        }
+
+    }, [currentQuestion])
 
 
     const checkAnswer = useCallback((question, answer) => {
@@ -39,11 +46,16 @@ function QuestionContextProvider({children, state, dispatch}) {
     const handleNextQuestion = useCallback(() => {
         setSelectedAnswer(null)
         setCurrentQuestion(currentQuestion + 1)
+        if(isPlaying){
+            stopAudio()
+        }
     }, [currentQuestion]);
 
     const handlePrevQuestion = useCallback(() => {
         setSelectedAnswer(null)
         setCurrentQuestion(currentQuestion - 1)
+        console.log("BACK BUTTON AND IS PLAYING")
+        console.log(isPlaying)
     }, [currentQuestion]);
 
 

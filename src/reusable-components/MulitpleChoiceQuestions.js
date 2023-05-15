@@ -7,9 +7,11 @@ import quizImage from "../images/quizImage.webp";
 import twiAudio from "../audios/transitionalaudios/mcqaudiotwi.mp3"
 import englishAudio from "../audios/transitionalaudios/mcquestionenglish.mp3"
 import RenderResults from "./RenderResults";
+import {AudioContext} from "../context/AudioContext";
 
 
 function MultipleChoiceQuestions({id}) {
+    let {isPlaying, stopAudio} = useContext(AudioContext)
     let { state, correctNumberAnswers,
         handleNextQuestion, checkAnswer,
         handlePrevQuestion, currentQuestion,

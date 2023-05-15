@@ -1,6 +1,7 @@
 import {useContext, useEffect, useState, useRef} from "react";
 import AudioPlayer from "./LessonAudioPlayer";
 import {QuestionContext} from "../context/QuestionsContext";
+import {AudioContext} from "../context/AudioContext";
 import quizImage from "../images/quizImage.webp";
 import QuestionPrompt from "./QuestionPrompt";
 import LessonAudioPlayer from "./LessonAudioPlayer";
@@ -10,6 +11,7 @@ import correctAnswerIsTrueAudio from "../audios/transitionalaudios/correctistrue
 import isFalseAudio from "../audios/transitionalaudios/isFalse.mp3"
 import RenderResults from "./RenderResults";
 function TrueOrFalseComponent({id}){
+    let {isPlaying, stopAudio} = useContext(AudioContext)
     let { state, correctNumberAnswers, handleNextQuestion, checkAnswer, nextSetOfQuestions, selectedAnswer, currentQuestion, dispatch, handlePrevQuestion} = useContext(QuestionContext)
     let trueOrFalseQuestions = state.questions[id];
     const [optionSelected, setOptionSelected] = useState(null)
