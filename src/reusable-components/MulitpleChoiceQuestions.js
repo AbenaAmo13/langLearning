@@ -55,7 +55,7 @@ function MultipleChoiceQuestions({id}) {
     };
 
     const handleAnswers=()=>{
-        checkAnswer(question, optionSelected);
+        checkAnswer(question, optionSelected, id);
 
     }
 

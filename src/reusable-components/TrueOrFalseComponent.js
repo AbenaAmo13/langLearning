@@ -56,7 +56,7 @@ function TrueOrFalseComponent({id}){
 
 
     const handleAnswers=()=>{
-        checkAnswer(question, optionSelected);
+        checkAnswer(question, optionSelected, id);
     }
     const renderQuestions=()=>{
         return(

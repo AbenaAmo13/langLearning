@@ -113,6 +113,30 @@ export function GlobalStatesProvider({ children }) {
                     [lesson]: updatedLesson
                 };
             }
+            case "SET_QUESTION_IS_ANSWERED": {
+                const { lesson, questionIndex, currentQuestionIndex } = action.payload;
+                const fullLesson = lessonState[lesson];
+                //console.log("Full lesson: " + fullLesson)
+                const activeQuestion = fullLesson.questions[questionIndex];
+                //console.log("Active question" + activeQuestion)
+                const mainCurrentQuestion = activeQuestion[currentQuestionIndex]
+                //const updatedQuestions = mainCurrentQuestion.find(index=> index===questionIndex)
+                mainCurrentQuestion.isAnswered = true
+                activeQuestion[currentQuestionIndex] = mainCurrentQuestion
+
+                //console.log("Updated Main Questions" + JSON.stringify(mainCurrentQuestion, null, 4))
+                //console.log("Updated question" + updatedQuestions)
+                const updatedLesson = {
+                    ...fullLesson,
+                    questions: [...fullLesson.questions],
+                };
+                //console.log("Return value: " + JSON.stringify(returnValue, null, 4))
+                updatedLesson.questions[questionIndex] = activeQuestion;
+                return {
+                    ...lessonState,
+                    [lesson]: updatedLesson,
+                };
+            }
             case "RESET_QUESTION": {
                 const { lesson, index } = action.payload;
                 const fullLesson = lessonState[lesson];
@@ -134,6 +158,7 @@ export function GlobalStatesProvider({ children }) {
                     [lesson]: updatedLesson,
                 };
             }
+
             case "RESET_LESSON":{
                 const {lesson} = action.payload;
                 const fullLesson = lessonStates[lesson];

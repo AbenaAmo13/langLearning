@@ -23,7 +23,12 @@ function QuestionContextProvider({children, state, dispatch}) {
     }, [currentQuestion])
 
 
-    const checkAnswer = useCallback((question, answer) => {
+    const checkAnswer = useCallback((question, answer, id) => {
+        //alert(id)
+        if(isPlaying){
+            //alert('IS PLAYING')
+            stopAudio()
+        }
         let correctAnswer = question.Answer;
         setSelectedAnswer(answer)
         console.log("Question: " + question.Question)
@@ -31,14 +36,14 @@ function QuestionContextProvider({children, state, dispatch}) {
         console.log("State: " + question.isAnswered)
         if (!question.isAnswered) {
             if (answer === correctAnswer) {
-                console.log("It got in here")
                 playAudio(CorrectAudio, question.TwiAudio);
                 console.log(question.componentScore)
                 dispatch({type: "SET_SCORE", payload: {lesson: state.id, score: question.componentScore, value: 10}});
                 setCorrectNumberAnswers(correctNumberAnswers + 1)
             }
         }
-        question.isAnswered = true;
+        dispatch({ type: "SET_QUESTION_IS_ANSWERED", payload: { lesson: state.id, questionIndex: id, currentQuestionIndex: currentQuestion}});
+        //question.isAnswered = true;
         // function code
     }, [currentQuestion]);
 
@@ -71,6 +76,9 @@ function QuestionContextProvider({children, state, dispatch}) {
         dispatch({ type: "INCREASE_NUMBER_OF_QUESTIONS_COMPLETED", payload: {lesson: state.id,value: 1}});
         setCurrentQuestion(0);
         setCorrectNumberAnswers(0)
+        if(isPlaying){
+            stopAudio()
+        }
 
     },[])
 
