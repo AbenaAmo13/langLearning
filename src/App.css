@@ -98,7 +98,7 @@ padding: 6px 16px;
 
 
 html, body {
-  background: url("./images/backgroundPic.svg") no-repeat;
+  background: url("./images/backgroundPic.svg") no-repeat center center fixed;
   background-size: cover;
   /*background-size: cover;*/
 
