@@ -3,12 +3,15 @@ import {AudioContext} from "../context/AudioContext";
 import LessonAudioPlayer from "./LessonAudioPlayer";
 
 function QuestionPrompt({state,dispatch, questionPromptData, id}) {
-    const {playAudio, isPlaying, activeName } = useContext(AudioContext);
+    const {playAudio, isPlaying, activeName, stopAudio } = useContext(AudioContext);
 
     function notReady(){
         dispatch({ type: "DECREASE_NUMBER_OF_LESSONS_COMPLETED", payload: { lesson: state.id, value: 1 }});
 
         dispatch({ type: "SET_LESSON_COMPLETED", payload: { lesson: state.id, completed: false }});
+        if(isPlaying){
+            stopAudio()
+        }
     }
     function ready(){
         if(id===0){
@@ -16,6 +19,9 @@ function QuestionPrompt({state,dispatch, questionPromptData, id}) {
         }
         dispatch({ type: "RESET_QUESTION", payload: { lesson: state.id, index: id}});
         dispatch({ type: "SET_QUESTION_STARTED", payload: { lesson: state.id, started: true }});
+        if(isPlaying){
+            stopAudio()
+        }
     }
 
     return(
