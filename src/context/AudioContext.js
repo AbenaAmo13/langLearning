@@ -5,35 +5,57 @@ export const AudioContext = createContext();
  export const AudioContextProvider = ({ children }) => {
     const [isPlaying, setIsPlaying] = useState(false);
     const [activeName, setActiveName] = useState(null)
+     const [prevAudioPlayed, setPrevAudioPlayed] = useState('')
     const audioRef = useRef(null);
 
 
     const playAudio = (audio, audioName) => {
+        if(isPlaying){
+            stopAudio()
 
-        if (isPlaying) {
-            stopAudio();
         }
+
         audioRef.current = audio;
         audioRef.current.play();
         audioRef.current.onplaying = function() {
             setIsPlaying(true);
             setActiveName(audioName)
-            console.log("Audio name: " + audioName)
+            //console.log("Audio name: " + audioName)
         };
+
+
+
+            /*if(isPlaying){
+                stopAudio()
+                setPrevAudioPlayed(audioName)
+
+            }
+
+            audioRef.current = audio;
+            audioRef.current.play();
+            audioRef.current.onplaying = function() {
+                setIsPlaying(true);
+                setActiveName(audioName)
+                //console.log("Audio name: " + audioName)
+            };
+*/
+
     };
 
     const stopAudio = () => {
         audioRef.current.pause();
         audioRef.current.currentTime = 0;
         setIsPlaying(false);
+        setActiveName(null)
     };
 
     useEffect(() => {
         const audio = audioRef.current;
         if(audio){
             audio.onended= function() {
-                setIsPlaying(false);
-                setActiveName(null)
+                stopAudio()
+                /*setIsPlaying(false);
+                setActiveName(null)*/
                 //alert('Audio has ended');
             };;
         }

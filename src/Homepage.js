@@ -26,7 +26,7 @@ import LessonAudioPlayer from "./reusable-components/LessonAudioPlayer";
 
 function Homepage() {
     //let audio = new Audio(process.env.PUBLIC_URL + '/audio/introduction.mp3')
-    const {playAudio, activeName} = useContext(AudioContext);
+    const {playAudio, activeName, isPlaying, stopAudio} = useContext(AudioContext);
     const [status, setStatus]= useState({})
 
     const lockedStatusObj =
@@ -156,13 +156,32 @@ function Homepage() {
                            />*/}
                           <div className="volume_button_divs">
                                <div>🇬🇭</div>
-                               <button className={`volume_icon ${activeName ===  navElement.TwiAudioName ? 'audio_active' : ''}`} onClick={() => (playAudio(  new Audio(navElement.TwiAudio), navElement.TwiAudioName))} >
+                               <button className={`volume_icon ${activeName ===  navElement.TwiAudioName ? 'audio_active' : ''}`}
+                                       onClick={() =>{
+                                           if(isPlaying && activeName===navElement.TwiAudioName){
+                                               stopAudio()
+                                           }else{
+                                               playAudio(  new Audio(navElement.TwiAudio), navElement.TwiAudioName)
+
+                                           }
+                                       }
+
+                                       } >
                                    <i className="material-icons" alt="help icon">volume_up</i>
                                </button>
                            </div>
                            <div className="volume_button_divs">
                                <div>🇬🇧</div>
-                               <button  className={`volume_icon ${activeName ===  navElement.NavBarTitleEnglish ? 'audio_active' : ''}`} onClick={() => (playAudio(  new Audio(navElement.EnglishAudio), navElement.NavBarTitleEnglish))} >
+                               <button  className={`volume_icon ${activeName ===  navElement.NavBarTitleEnglish ? 'audio_active' : ''}`}
+                                        onClick={() => {
+                                            if(isPlaying && activeName === navElement.NavBarTitleEnglish){
+                                              stopAudio()
+                                            }else{
+                                                (playAudio(  new Audio(navElement.EnglishAudio), navElement.NavBarTitleEnglish))
+                                            }
+                                        }
+
+                                            } >
                                    <i className="material-icons" alt="help icon">volume_up</i>
                                </button>
                            </div>

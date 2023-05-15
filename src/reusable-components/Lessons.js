@@ -60,8 +60,8 @@ function Lessons({state, dispatch}){
                             <AudioPlayer
                                 twiAudio={state.lessons[currentIndex].TwiAudio}
                                 englishAudio={state.lessons[currentIndex].EnglishAudio}
-                                englishAudioName={state.lessons[currentIndex].EnglishWord}
-                                twiAudioName={state.lessons[currentIndex].TwiWord}
+                                englishAudioName={state.lessons[currentIndex].EnglishAudio}
+                                twiAudioName={state.lessons[currentIndex].TwiAudio}
                             />
                         </div>
                     </div>
