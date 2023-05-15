@@ -4,6 +4,7 @@ import {LessonContext, LessonDispatchContext} from "../../context/GlobalStateCon
 import KeyWordsLessons from "../../reusable-components/KeyWordsLessons";
 import MatchingOptionsQuestions from "../../reusable-components/MatchingOptionsQuestions";
 import Question from "../../reusable-components/Questions";
+import {AudioContext} from "../../context/AudioContext";
 
 
 function HealthCare(){

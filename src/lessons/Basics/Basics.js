@@ -8,8 +8,6 @@ import LessonAudioPlayer from "../../reusable-components/LessonAudioPlayer";
 import PassedCourse from "../../reusable-components/PassedCourse";
 import {LockedStatusObjContext} from "../../App";
 
-
-
 function Basics() {
     const {lockedStatusJsonObj, setLockedStatusJsonObj} = useContext(LockedStatusObjContext)
     const lessons = useContext(LessonContext)

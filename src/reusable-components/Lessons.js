@@ -1,8 +1,10 @@
 import {useContext, useEffect, useReducer, useState} from "react";
 
 import AudioPlayer from "../reusable-components/LessonAudioPlayer";
+import {AudioContext} from "../context/AudioContext";
 
 function Lessons({state, dispatch}){
+    const {playAudio, isPlaying, activeName, stopAudio } = useContext(AudioContext);
     const [currentIndex, setCurrentIndex] = useState(0);
     const [error, setError] = useState(null);
     //It is basicLessonData.
@@ -19,6 +21,9 @@ function Lessons({state, dispatch}){
                 setCurrentIndex(currentIndex + 1);
             }
         }
+        if(isPlaying){
+            stopAudio()
+        }
     };
 
 
@@ -28,6 +33,9 @@ function Lessons({state, dispatch}){
         } else {
             setError(null)
             setCurrentIndex(currentIndex - 1);
+        }
+        if(isPlaying){
+            stopAudio()
         }
     };
     return(
