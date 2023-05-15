@@ -71,7 +71,7 @@ self.addEventListener('message', (event) => {
 
 // Any other custom service worker logic can go here.
 
-//Network first:
+//Network first: used for testing
 self.addEventListener('fetch', (event) => {
     event.respondWith(async function () {
         try {
