@@ -10,17 +10,17 @@ import educationalImage from "./images/transparenteducation.webp"
 import jobsImage from "./images/jobstransparent.webp"
 import basicsTwiAudio from "./audios/homepage/courseoutlinetwi.mp3"
 import courseOutline from "./audios/homepage/courseoutlineenglish.mp3"
-import ghanahealthservice from "./audios/homepage/ghanahealthservice.ogg"
-import identification from "./audios/homepage/nationalidentification.ogg"
-import educationEnglish from "./audios/homepage/ghanaeducationservice.ogg"
-import jobsEnglishAudio from "./audios/homepage/jobs.ogg"
+import ghanahealthservice from "./audios/homepage/ghanahealthservice.mp3"
+import identification from "./audios/homepage/nationalidentification.mp3"
+import educationEnglish from "./audios/homepage/ghanaeducationservice.mp3"
+import jobsEnglishAudio from "./audios/homepage/jobs.mp3"
 
 
 
-import healthAudio from "./audios/homepage/healthintroaudio.ogg"
-import educationAudio from "./audios/homepage/educationaudio.ogg"
-import identificationAudio from "./audios/homepage/identification.ogg"
-import adwuma from "./audios/homepage/adwuma.ogg"
+import healthAudio from "./audios/homepage/healthintroaudio.mp3"
+import educationAudio from "./audios/homepage/educationaudio.mp3"
+import identificationAudio from "./audios/homepage/identification.mp3"
+import adwuma from "./audios/homepage/adwuma.mp3"
 import LessonAudioPlayer from "./reusable-components/LessonAudioPlayer";
 
 
