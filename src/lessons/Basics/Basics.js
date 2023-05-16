@@ -7,9 +7,11 @@ import {Link} from "react-router-dom";
 import LessonAudioPlayer from "../../reusable-components/LessonAudioPlayer";
 import PassedCourse from "../../reusable-components/PassedCourse";
 import {LockedStatusObjContext} from "../../App";
+import {AudioContext} from "../../context/AudioContext";
 
 function Basics() {
     const {lockedStatusJsonObj, setLockedStatusJsonObj} = useContext(LockedStatusObjContext)
+    const {isPlaying, stopAudio} = useContext(AudioContext)
     const lessons = useContext(LessonContext)
     const dispatch = useContext(LessonDispatchContext)
     const basicLessonState = lessons.BasicLessons;
@@ -21,6 +23,10 @@ function Basics() {
     }, [])
 
     useEffect(()=>{
+        if(isPlaying){
+            stopAudio()
+        }
+
         const userPoints = basicLessonState.scores;
         const pointsRequired = basicLessonState.pointsToPassLesson;
         if(userPoints > pointsRequired && localStorage.getItem('lockedStatusData')) {

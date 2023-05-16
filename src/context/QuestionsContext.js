@@ -66,6 +66,10 @@ function QuestionContextProvider({children, state, dispatch}) {
 
 
     const nextSetOfQuestions = useCallback((questionType)=>{
+        if(isPlaying){
+            alert(isPlaying)
+            stopAudio()
+        }
         if(questionType==="t/f"){
             //console.log('I am in here')
             dispatch({ type: "SET_TRUE_OR_FALSE_COMPLETE", payload: {lesson: state.id,completed: true}});
@@ -76,9 +80,7 @@ function QuestionContextProvider({children, state, dispatch}) {
         dispatch({ type: "INCREASE_NUMBER_OF_QUESTIONS_COMPLETED", payload: {lesson: state.id,value: 1}});
         setCurrentQuestion(0);
         setCorrectNumberAnswers(0)
-        if(isPlaying){
-            stopAudio()
-        }
+
 
     },[])
 
