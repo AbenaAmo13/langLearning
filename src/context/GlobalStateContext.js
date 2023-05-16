@@ -13,7 +13,9 @@ export function GlobalStatesProvider({ children }) {
         BasicLessons: {
             id: "BasicLessons",
             scores: 0,
-            lessons: basicLessonData,
+            lessons: [basicLessonData],
+            numberOfCompletedLessons: 0,
+            numberOfCompletedQuestions: 0,
             lessonCompleted: false,
             questionStarted: false,
             trueOrFalseComplete: false,

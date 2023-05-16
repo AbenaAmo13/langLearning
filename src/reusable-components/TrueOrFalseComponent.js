@@ -6,7 +6,7 @@ import quizImage from "../images/quizImage.webp";
 import QuestionPrompt from "./QuestionPrompt";
 import LessonAudioPlayer from "./LessonAudioPlayer";
 import questionPromptEnglishAudio from "../audios/basics/trueorfalseprompt.ogg"
-import questionPromptTwiAudio from "../audios/transitionalaudios/questiontrueorfalsetwi.mp3"
+import questionPromptTwiAudio from "../audios/transitionalaudios/trueorfalsetransition.mp3"
 import correctAnswerIsTrueAudio from "../audios/transitionalaudios/correctistrueenglish.mp3"
 import isFalseAudio from "../audios/transitionalaudios/isFalse.mp3"
 import RenderResults from "./RenderResults";

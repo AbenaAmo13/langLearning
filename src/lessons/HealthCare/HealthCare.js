@@ -21,8 +21,6 @@ function HealthCare(){
         console.log('The number of completed questions attempted' + healthcareLessonsState.numberOfCompletedQuestions)
         //Completed all lessons
         if(healthcareLessonsState.numberOfCompletedQuestions === healthcareLessonsState.questions.length){
-
-
         }
     },[healthcareLessonsState.numberOfCompletedQuestions])
 

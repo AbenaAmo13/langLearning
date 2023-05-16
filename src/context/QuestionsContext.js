@@ -66,17 +66,18 @@ function QuestionContextProvider({children, state, dispatch}) {
 
 
     const nextSetOfQuestions = useCallback((questionType)=>{
-        alert(isPlaying)
+       // alert(isPlaying)
         if(isPlaying){
-            alert(isPlaying)
+            //alert(isPlaying)
             stopAudio()
         }
-        if(questionType==="t/f"){
+    /*    if(questionType==="t/f"){
             //console.log('I am in here')
             dispatch({ type: "SET_TRUE_OR_FALSE_COMPLETE", payload: {lesson: state.id,completed: true}});
         }else if(questionType==="mcq"){
             dispatch({ type: "SET_MCQ_COMPLETE", payload: {lesson: state.id,completed: true}});
-        }
+        }*/
+
         dispatch({ type: "SET_QUESTION_STARTED", payload: {lesson: state.id,started: false}});
         dispatch({ type: "INCREASE_NUMBER_OF_QUESTIONS_COMPLETED", payload: {lesson: state.id,value: 1}});
         setCurrentQuestion(0);
