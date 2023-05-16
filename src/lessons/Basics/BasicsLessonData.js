@@ -35,15 +35,15 @@ import answerIsNHIS from "../../audios/courseoutline/mcquestions/incorrectaudios
 
 
 
-import theGovernmentEnglishAudio from "../../audios/courseoutline/thegovernmentenglish.ogg"
+import theGovernmentEnglishAudio from "../../audios/courseoutline/thegovernmentenglish.mp3"
 import theGovernmentTwiAudio from "../../audios/courseoutline/thegovernmenttwi.mp3"
 import healthCareTwiAudio from "../../audios/courseoutline/healthcaretwi.mp3"
-import healthCareEnglishAudio from "../../audios/courseoutline/healthCareEnglishAudio.ogg"
-import educationEnglishAudio from "../../audios/courseoutline/educationEnglishAudio.ogg"
+import healthCareEnglishAudio from "../../audios/courseoutline/healthCareEnglishAudio.mp3"
+import educationEnglishAudio from "../../audios/courseoutline/educationEnglishAudio.mp3"
 import educationTwiAudio from "../../audios/courseoutline/educationTwi.mp3"
 import idTwiAudio from "../../audios/courseoutline/idtwi.mp3"
-import identificationEnglishAudio from "../../audios/courseoutline/identificationenglishAudio.ogg"
-import jobsEnglishAudio from "../../audios/courseoutline/jobsEnglishAudio.ogg"
+import identificationEnglishAudio from "../../audios/courseoutline/identificationenglishAudio.mp3"
+import jobsEnglishAudio from "../../audios/courseoutline/jobsEnglishAudio.mp3"
 import jobsTwiAudio from "../../audios/courseoutline/jobstwi.mp3"
 
 export const basicLessonData=[
