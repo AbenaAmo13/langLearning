@@ -23,12 +23,8 @@ function QuestionContextProvider({children, state, dispatch}) {
     }, [currentQuestion])
 
 
+
     const checkAnswer = useCallback((question, answer, id) => {
-        //alert(id)
-        if(isPlaying){
-            //alert('IS PLAYING')
-            stopAudio()
-        }
         let correctAnswer = question.Answer;
         setSelectedAnswer(answer)
         console.log("Question: " + question.Question)
@@ -36,6 +32,7 @@ function QuestionContextProvider({children, state, dispatch}) {
         console.log("State: " + question.isAnswered)
         if (!question.isAnswered) {
             if (answer === correctAnswer) {
+                stopAudio()
                 playAudio(CorrectAudio, question.TwiAudio);
                 console.log(question.componentScore)
                 dispatch({type: "SET_SCORE", payload: {lesson: state.id, score: question.componentScore, value: 10}});

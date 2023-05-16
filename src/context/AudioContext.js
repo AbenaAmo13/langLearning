@@ -17,6 +17,7 @@ export const AudioContext = createContext();
 
         audioRef.current = audio;
         audioRef.current.play();
+        setIsPlaying(true);
         audioRef.current.onplaying = function() {
             setIsPlaying(true);
             setActiveName(audioName)

@@ -18,43 +18,8 @@ function Basics() {
     const basicLessonState = lessons.BasicLessons;
     const numberOfCompletedLessons = basicLessonState.numberOfCompletedLessons
     const numberOfCompletedQuestions = basicLessonState.numberOfCompletedQuestions
-
     const [passedBasicLesson, setPassedBasicLesson] = useState(false)
     let allQuestionsAnswered
-
-    useEffect(()=>{
-        dispatch({ type: "RESET_LESSON", payload: { lesson: basicLessonState.id}});
-    }, [])
-
-    useEffect(()=>{
-        const userPoints = basicLessonState.scores;
-        const pointsRequired = basicLessonState.pointsToPassLesson;
-        console.log("Number of completed questions: " + numberOfCompletedQuestions)
-        if(numberOfCompletedQuestions === basicLessonState.questions.length){
-            if(userPoints > pointsRequired ) {
-                console.log('you have passed the lessons')
-                const lockedStatus = JSON.parse(localStorage.getItem('lockedStatusData'))
-                lockedStatus.Health = false
-                localStorage.setItem('lockedStatusData', JSON.stringify(lockedStatus))
-                //console.log("Final object: "+ lockedStatus)
-                setLockedStatusJsonObj(lockedStatus)
-                return(
-                    <PassedCourse to="/Health"/>
-                )
-
-            }else{
-                return(
-                    <RetakeCourse/>
-                )
-
-            }
-
-        }
-
-
-
-    }, [numberOfCompletedQuestions])
-
     const basicsComponent=[
         <MultipleLessons state={basicLessonState} dispatch={dispatch} lessonId={0}/>,
         <Question state={basicLessonState} questionType={"trueorfalse"} dispatch={dispatch} id={0}/>,
@@ -67,7 +32,42 @@ function Basics() {
         basicsComponent.length - 1
     );
 
-    return basicsComponent[currentComponentIndex]
+    useEffect(()=>{
+        dispatch({ type: "RESET_LESSON", payload: { lesson: basicLessonState.id}});
+    }, [])
+
+    useEffect(()=>{
+        const userPoints = basicLessonState.scores;
+        const pointsRequired = basicLessonState.pointsToPassLesson;
+        //console.log("Number of completed questions: " + numberOfCompletedQuestions);
+        if (numberOfCompletedQuestions === basicLessonState.questions.length) {
+            if (userPoints > pointsRequired) {
+                //console.log("you have passed the lessons");
+                const lockedStatus = JSON.parse(localStorage.getItem("lockedStatusData"));
+                lockedStatus.Health = false;
+                localStorage.setItem("lockedStatusData", JSON.stringify(lockedStatus));
+                setLockedStatusJsonObj(lockedStatus);
+                setPassedBasicLesson(true);
+            } else {
+                setPassedBasicLesson(false);
+            }
+        }
+    }, [numberOfCompletedQuestions]);
+
+    if (passedBasicLesson) {
+        return <PassedCourse to="/Health" />;
+    } else if (numberOfCompletedQuestions === basicLessonState.questions.length) {
+        return <RetakeCourse />;
+    } else {
+        return basicsComponent[currentComponentIndex];
+    }
+
+
+
+
+
+
+
 
 
 
