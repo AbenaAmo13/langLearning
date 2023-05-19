@@ -2,12 +2,14 @@ import {useContext, useEffect, useReducer, useState} from "react";
 
 import AudioPlayer from "../reusable-components/LessonAudioPlayer";
 import {AudioContext} from "../context/AudioContext";
+import {useNavigate} from "react-router";
 
 function Lessons({state, dispatch, lessonId}){
     const { isPlaying, stopAudio } = useContext(AudioContext);
     const currentLesson = state.lessons[lessonId]
     const [currentIndex, setCurrentIndex] = useState(0);
     const [error, setError] = useState(null);
+    const navigate = useNavigate();
     //It is basicLessonData.
     const progressWidth = Math.round(((currentIndex + 1) / currentLesson.length ) * 100);
     const getNextLesson = () => {
@@ -30,7 +32,11 @@ function Lessons({state, dispatch, lessonId}){
 
 
     const getPreviousLesson = () => {
+        if(currentIndex === 0 && lessonId === 0){
+            navigate('/')
+        }
         if (currentIndex === 0) {
+            dispatch({ type: "DECREASE_NUMBER_OF_LESSONS_COMPLETED", payload: { lesson: state.id, value: 1 }});
             setError('No previous items');
         } else {
             setError(null)
@@ -66,7 +72,7 @@ function Lessons({state, dispatch, lessonId}){
                 <progress id="file" value={progressWidth} max="100"> </progress>
             </div>
             <div className="lesson_buttons_div">
-                <button onClick={getPreviousLesson} disabled={currentIndex===0} className="lesson_buttons icon-buttons">
+                <button onClick={getPreviousLesson} /*disabled={currentIndex===0}*/ className="lesson_buttons icon-buttons">
                     <i className="material-icons" alt="help icon">arrow_back</i>
                     <p>Back</p>
                 </button>

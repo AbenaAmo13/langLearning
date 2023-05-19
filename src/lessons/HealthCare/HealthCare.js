@@ -5,6 +5,7 @@ import KeyWordsLessons from "../../reusable-components/KeyWordsLessons";
 import MatchingOptionsQuestions from "../../reusable-components/MatchingOptionsQuestions";
 import Question from "../../reusable-components/Questions";
 import {AudioContext} from "../../context/AudioContext";
+import CourseSummary from "../../reusable-components/CourseSummary";
 
 
 function HealthCare(){
@@ -17,17 +18,7 @@ function HealthCare(){
         dispatch({ type: "RESET_LESSON", payload: { lesson: healthcareLessonsState.id}});
     }, [])
 
-    useEffect(()=>{
-        console.log('The number of completed questions attempted' + healthcareLessonsState.numberOfCompletedQuestions)
-        //Completed all lessons
-        if(healthcareLessonsState.numberOfCompletedQuestions === healthcareLessonsState.questions.length){
-        }
-    },[healthcareLessonsState.numberOfCompletedQuestions])
 
-    useEffect(()=>{
-       // console.log("The value of numberOfCompletedLessons are: " + healthcareLessonsState.numberOfCompletedLessons)
-
-    }, [healthcareLessonsState.numberOfCompletedLessons])
 
 
     const healthCareComponents = [
@@ -43,6 +34,7 @@ function HealthCare(){
         <MultipleLessons state={healthcareLessonsState} dispatch={dispatch} lessonId={6} />,
         <KeyWordsLessons state={healthcareLessonsState} dispatch={dispatch} lessonId={7} />,
         <Question state={healthcareLessonsState} questionType={"matching"} dispatch={dispatch} id={3}/>,
+        <CourseSummary state={healthcareLessonsState} dispatch={dispatch}/>
 
 
 

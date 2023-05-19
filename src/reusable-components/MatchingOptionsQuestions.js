@@ -240,7 +240,7 @@ function MatchingOptionsQuestions({id}) {
                     )}
                 </div>
                 <div className="overall_lessons_container action_buttons">
-                    <button onClick={()=> handlePrevQuestion()}  disabled={currentQuestion === 0} className="lesson_buttons mcq_buttons">
+                    <button onClick={()=> handlePrevQuestion()}  /*disabled={currentQuestion === 0}*/ className="lesson_buttons mcq_buttons">
                         <i className="material-icons" alt="help icon">arrow_back</i>
                         <p>BACK </p>
                     </button>

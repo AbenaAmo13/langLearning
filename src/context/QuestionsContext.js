@@ -54,10 +54,17 @@ function QuestionContextProvider({children, state, dispatch}) {
     }, [currentQuestion]);
 
     const handlePrevQuestion = useCallback(() => {
-        setSelectedAnswer(null)
-        setCurrentQuestion(currentQuestion - 1)
-        console.log("BACK BUTTON AND IS PLAYING")
-        console.log(isPlaying)
+        if(currentQuestion===0){
+            dispatch({ type: "SET_QUESTION_STARTED", payload: { lesson: state.id, started: false }});
+            // dispatch({ type: "DECREASE_NUMBER_OF_LESSONS_COMPLETED", payload: { lesson: state.id, value: 1 }});
+
+        }else{
+            setSelectedAnswer(null)
+            setCurrentQuestion(currentQuestion - 1)
+            console.log("BACK BUTTON AND IS PLAYING")
+            console.log(isPlaying)
+        }
+
     }, [currentQuestion]);
 
 

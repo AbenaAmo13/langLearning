@@ -4,7 +4,7 @@ import LessonAudioPlayer from "./LessonAudioPlayer";
 import AudioPlayer from "./LessonAudioPlayer";
 import QuestionPrompt from "./QuestionPrompt";
 import quizImage from "../images/quizImage.webp";
-import twiAudio from "../audios/transitionalaudios/mcqaudiotwi.mp3"
+import twiAudio from "../audios/transitionalaudios/mcqtwiaudio.mp3"
 import englishAudio from "../audios/transitionalaudios/mcquestionenglish.mp3"
 import RenderResults from "./RenderResults";
 import {AudioContext} from "../context/AudioContext";
@@ -124,7 +124,7 @@ function MultipleChoiceQuestions({id}) {
                     )}
                 </div>
                 <div className="overall_lessons_container action_buttons">
-                    <button onClick={()=> handlePrevQuestion()}  disabled={currentQuestion === 0} className="lesson_buttons mcq_buttons">
+                    <button onClick={()=> handlePrevQuestion()}  /*disabled={currentQuestion === 0}*/ className="lesson_buttons mcq_buttons">
                         <i className="material-icons" alt="help icon">arrow_back</i>
                         <p>BACK </p>
                     </button>

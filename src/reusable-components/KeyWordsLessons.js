@@ -34,6 +34,7 @@ function KeyWordsLessons({state, dispatch, lessonId}){
 
     const getPreviousLesson = () => {
         if (currentIndex === 0) {
+            setKeyLessonState(false)
             setError('No previous items');
         } else {
             setError(null)
@@ -76,7 +77,7 @@ function KeyWordsLessons({state, dispatch, lessonId}){
                     <progress id="file" value={progressWidth} max="100"> </progress>
                 </div>
                 <div className="lesson_buttons_div">
-                    <button onClick={getPreviousLesson} disabled={currentIndex===0} className="lesson_buttons icon-buttons">
+                    <button onClick={getPreviousLesson} /*disabled={currentIndex===0}*/ className="lesson_buttons icon-buttons">
                         <i className="material-icons" alt="help icon">arrow_back</i>
                         <p>Back</p>
                     </button>
