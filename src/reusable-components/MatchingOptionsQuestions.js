@@ -30,7 +30,7 @@ function MatchingOptionsQuestions({id}) {
     //console.log(question)
     const QuestionPromptData = {
         cardTextContent:[{
-            text: "Next we have a matching game where we will get to match the " +
+            text: "Next we have a matching game where we will get to match words based on the question given" +
                 " If you are ready to start playing, click the thumbs up, if not click the thumbs down."
         }],
         quizImage : quizImage,

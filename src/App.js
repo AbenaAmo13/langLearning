@@ -8,6 +8,8 @@ import TopAppBar from "./TopAppBar";
 import Basics from "./lessons/Basics/Basics"
 import HealthCare from "./lessons/HealthCare/HealthCare"
 import Education from "./lessons/Education/Education"
+import Jobs from "./lessons/Jobs/Jobs";
+import Id from "./lessons/Id/Id"
 
 export const LockedStatusObjContext = createContext(null);
 
@@ -27,9 +29,6 @@ function App() {
         IDScore: 0,
         JobsScore: 0
     }
-
-    let lockedStatusState = JSON.parse(localStorage.getItem('lockedStatusData'));
-
     useEffect(() => {
         if (!localStorage.getItem('lockedStatusData')) {
             console.log("The locked status" + lockedStatusJsonObj)
@@ -45,46 +44,23 @@ function App() {
 
     useEffect(() => {
         console.log('The new json object is: ' + JSON.stringify(lockedStatusJsonObj))
-
-
     }, [lockedStatusJsonObj])
 
 
     return (
         <GlobalStatesProvider>
             <AudioContextProvider>
-                <LockedStatusContextProvider lockedStatusJsonObj={lockedStatusJsonObj}
-                                             setLockedStatusJsonObj={setLockedStatusJsonObj}>
+                <LockedStatusContextProvider lockedStatusJsonObj={lockedStatusJsonObj} setLockedStatusJsonObj={setLockedStatusJsonObj}>
                     <div className="App">
                         <BrowserRouter>
                             <TopAppBar/>
                             <Routes>
                                 <Route path="/" element={<Homepage/>}/>
-                                <Route
-                                    path="/Basics"
-                                    element={
-                                        <Basics/>
-                                    }
-                                />
-                                <Route path="/Health"
-                                       element={
-                                           lockedStatusJsonObj && lockedStatusJsonObj.Health === false ? (
-                                               <HealthCare/>
-                                           ) : (
-                                               <Navigate to="/"/>
-                                           )
-                                       }
-                                />
-                                <Route path="/Education"
-                                       element={
-
-                                           lockedStatusJsonObj && lockedStatusJsonObj.Education === false ? (
-                                               <Education/>
-                                           ) : (
-                                               <Navigate to="/"/>
-                                           )
-                                       }
-                                />
+                                <Route path="/Basics" element={<Basics/>}/>
+                                <Route path="/Health" element={lockedStatusJsonObj && lockedStatusJsonObj.Health === false ? (<HealthCare/>) : (<Navigate to="/"/>)}/>
+                                <Route path="/Education" element={lockedStatusJsonObj && lockedStatusJsonObj.Education === false ? (<Education/>) : (<Navigate to="/"/>)}/>
+                                <Route path="/Jobs" element={lockedStatusJsonObj && lockedStatusJsonObj.Jobs === false ? (<Jobs/>) : (<Navigate to="/"/>)}/>
+                                <Route path="/Id" element={lockedStatusJsonObj && lockedStatusJsonObj.Identification === false ? (<Id/>) : (<Navigate to="/"/>)}/>
                             </Routes>
                         </BrowserRouter>
                     </div>
@@ -106,3 +82,7 @@ function LockedStatusContextProvider({children, lockedStatusJsonObj, setLockedSt
 }
 
 export default App;
+
+
+
+

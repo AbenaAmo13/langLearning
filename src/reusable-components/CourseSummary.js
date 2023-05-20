@@ -2,8 +2,8 @@ import AudioPlayer from "./LessonAudioPlayer";
 import {healthCareCourseSummary} from "../lessons/HealthCare/HealthCareLessonData";
 
 function CourseSummary({state, dispatch, lessonId}){
-    //const currentLesson = state.lessons[lessonId]
-    const courseSummaryItems = healthCareCourseSummary.courseListItems.map(courseLessons =>
+    const currentLesson = state.lessons[lessonId]
+    const courseSummaryItems = currentLesson.courseListItems.map(courseLessons =>
         <li>{courseLessons}</li>
     );
 
@@ -13,6 +13,9 @@ function CourseSummary({state, dispatch, lessonId}){
     }
 
     const nextComponent=()=>{
+        dispatch({ type: "SET_LESSON_COMPLETED", payload: { lesson: state.id, completed:true }});
+
+
 
     }
          return (<div className="overall_lessons_container">
@@ -21,8 +24,8 @@ function CourseSummary({state, dispatch, lessonId}){
 
                  </div>
                  <div className="lesson_card_keywords">
-                     <h2>{healthCareCourseSummary.courseSummaryTitle }</h2>
-                     <p>During this course you have learnt the following: </p>
+                     <h2>{currentLesson.courseSummaryTitle}</h2>
+                     <p>{currentLesson.courseSummaryParagraph}</p>
                      <ol>
                          {courseSummaryItems}
                      </ol>
@@ -32,7 +35,7 @@ function CourseSummary({state, dispatch, lessonId}){
                      <button className="lesson_buttons icon-buttons" onClick={()=>previousComponent()}>
                          <i className="material-icons" alt="forward arrow icon">arrow_back</i>
                          <p>Back</p></button>
-                     <button className="lesson_buttons icon-buttons">
+                     <button className="lesson_buttons icon-buttons" onClick={()=> nextComponent()}>
                          <p>Continue</p>
                          <i className="material-icons" alt="forward arrow icon">arrow_forward</i>
                      </button>

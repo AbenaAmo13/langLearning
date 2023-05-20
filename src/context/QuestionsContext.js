@@ -6,7 +6,7 @@ export const QuestionContext = createContext();
 
 function QuestionContextProvider({children, state, dispatch}) {
     const [CorrectAudio] = useState(() => new Audio(answeredCorrectly));
-    const {playAudio, isPlaying, stopAudio} = useContext(AudioContext);
+    const {playAudio, isPlaying, stopAudio,stopAnswerAudio} = useContext(AudioContext);
     const [correctNumberAnswers, setCorrectNumberAnswers] = useState(0)
     const [selectedAnswer, setSelectedAnswer] = useState(null)
     const [currentQuestion, setCurrentQuestion] = useState(0);
@@ -32,7 +32,7 @@ function QuestionContextProvider({children, state, dispatch}) {
         console.log("State: " + question.isAnswered)
         if (!question.isAnswered) {
             if (answer === correctAnswer) {
-                stopAudio()
+                stopAnswerAudio()
                 playAudio(CorrectAudio, question.TwiAudio);
                 console.log(question.componentScore)
                 dispatch({type: "SET_SCORE", payload: {lesson: state.id, score: question.componentScore, value: 10}});
@@ -57,7 +57,6 @@ function QuestionContextProvider({children, state, dispatch}) {
         if(currentQuestion===0){
             dispatch({ type: "SET_QUESTION_STARTED", payload: { lesson: state.id, started: false }});
             // dispatch({ type: "DECREASE_NUMBER_OF_LESSONS_COMPLETED", payload: { lesson: state.id, value: 1 }});
-
         }else{
             setSelectedAnswer(null)
             setCurrentQuestion(currentQuestion - 1)

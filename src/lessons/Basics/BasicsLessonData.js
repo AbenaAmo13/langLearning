@@ -222,6 +222,66 @@ export const FreeForm =[
 
 ]
 
+export const basicsKeyWords=[
+    {
+        Image:"",
+        EnglishWord: "Aban",
+        TwiWord: "The Government",
+        TwiAudio:"",
+        EnglishAudio:"",
+        KeyMessageEnglish: ""
+    },
+    {
+        Image:"",
+        EnglishWord: "Health Care",
+        TwiWord: "Apumoden",
+        TwiAudio:"",
+        EnglishAudio:"",
+        KeyMessageEnglish: ""
+    },
+    {
+        Image:"",
+        EnglishWord: "Education",
+        TwiWord: "Adesua",
+        TwiAudio:"",
+        EnglishAudio:"",
+        KeyMessageEnglish: ""
+    },
+    {
+        Image:"",
+        EnglishWord: "Jobs",
+        TwiWord: "Adwuma",
+        TwiAudio:"",
+        EnglishAudio:"",
+        KeyMessageEnglish: ""
+    },
+    {
+        Image:"",
+        EnglishWord: "Ghana Identification",
+        TwiWord: "Dɛ ɛma obi yɛ Ghanani",
+        TwiAudio:"",
+        EnglishAudio:"",
+        KeyMessageEnglish: ""
+    }
+
+
+
+]
+
+
+/*Course Summary Data*/
+export const basicsCourseSummary={
+    courseSummaryImage: "",
+    courseSummaryTitle: "Course Outline Summary",
+    courseSummaryParagraph: "In this application you will learn about ",
+    courseListItems : ["Ghana Health Service", "Education", "Jobs", "Ghana and Identification"],
+    TwiAudio: "",
+    EnglishAudio: "",
+
+
+}
+
+
 
 
 

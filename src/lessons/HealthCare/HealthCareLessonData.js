@@ -678,6 +678,7 @@ export const MatchingWordsQuestions2=[
 export const healthCareCourseSummary={
     courseSummaryImage: "",
     courseSummaryTitle: "Health Care Lesson Summary",
+    courseSummaryParagraph: "During this course you have learnt",
     courseListItems : ["Ghana Health Service", "How to register for the national health insurance scheme", "Malaria, its prevention and cure", "How to keep ourselves healthy"],
     TwiAudio: "",
     EnglishAudio: "",

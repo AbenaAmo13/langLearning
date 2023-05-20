@@ -31,11 +31,11 @@ function TrueOrFalseComponent({id}){
         questions: question
     }
 
-    useEffect(()=>{
+ /*   useEffect(()=>{
         dispatch({ type: "SET_QUESTION_STARTED", payload: { lesson: state.id, started: false }});
 
 
-    }, [state.lessonCompleted])
+    }, [state.lessonCompleted])*/
 
 
 

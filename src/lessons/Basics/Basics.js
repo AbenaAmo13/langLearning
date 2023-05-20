@@ -9,6 +9,8 @@ import PassedCourse from "../../reusable-components/PassedCourse";
 import {LockedStatusObjContext} from "../../App";
 import {AudioContext} from "../../context/AudioContext";
 import MultipleLessons from "../../reusable-components/MultipleLessons";
+import KeyWordsLessons from "../../reusable-components/KeyWordsLessons";
+import CourseSummary from "../../reusable-components/CourseSummary";
 
 function Basics() {
     const {lockedStatusJsonObj, setLockedStatusJsonObj} = useContext(LockedStatusObjContext)
@@ -18,12 +20,16 @@ function Basics() {
     const basicLessonState = lessons.BasicLessons;
     const numberOfCompletedLessons = basicLessonState.numberOfCompletedLessons
     const numberOfCompletedQuestions = basicLessonState.numberOfCompletedQuestions
+    const lessonCompleted = basicLessonState.lessonCompleted
     const [passedBasicLesson, setPassedBasicLesson] = useState(false)
     let allQuestionsAnswered
     const basicsComponent=[
         <MultipleLessons state={basicLessonState} dispatch={dispatch} lessonId={0}/>,
+        <KeyWordsLessons state={basicLessonState} dispatch={dispatch} lessonId={1}/>,
         <Question state={basicLessonState} questionType={"trueorfalse"} dispatch={dispatch} id={0}/>,
         <Question state={basicLessonState} questionType={"mcq"} dispatch={dispatch} id={1}/>,
+        <CourseSummary state={basicLessonState} dispatch={dispatch} lessonId={2}/>
+
     ]
 
     //Math.min is used to ensure that the component index does not exceed the maximum index of the lessonComponents Array
@@ -39,7 +45,7 @@ function Basics() {
     useEffect(()=>{
         const userPoints = basicLessonState.scores;
         const pointsRequired = basicLessonState.pointsToPassLesson;
-        //console.log("Number of completed questions: " + numberOfCompletedQuestions);
+      //console.log("Number of completed questions: " + numberOfCompletedQuestions);
         if (numberOfCompletedQuestions === basicLessonState.questions.length) {
             if (userPoints > pointsRequired) {
                 //console.log("you have passed the lessons");
@@ -52,12 +58,17 @@ function Basics() {
                 setPassedBasicLesson(false);
             }
         }
-    }, [numberOfCompletedQuestions]);
+    }, [lessonCompleted, numberOfCompletedQuestions]);
 
-    if (passedBasicLesson) {
-        return <PassedCourse to="/Health" />;
-    } else if (numberOfCompletedQuestions === basicLessonState.questions.length) {
-        return <RetakeCourse />;
+
+
+   if (lessonCompleted) {
+       if(passedBasicLesson){
+           return <PassedCourse to="/Health" />;
+       }else{
+           return <RetakeCourse/>
+       }
+
     } else {
         return basicsComponent[currentComponentIndex];
     }

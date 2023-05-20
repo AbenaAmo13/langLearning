@@ -2,24 +2,17 @@ import {useContext, useEffect, useState} from "react";
 import MultipleLessons from "../../reusable-components/MultipleLessons";
 import {LessonContext, LessonDispatchContext} from "../../context/GlobalStateContext";
 import KeyWordsLessons from "../../reusable-components/KeyWordsLessons";
-import MatchingOptionsQuestions from "../../reusable-components/MatchingOptionsQuestions";
 import Question from "../../reusable-components/Questions";
-import {AudioContext} from "../../context/AudioContext";
 import CourseSummary from "../../reusable-components/CourseSummary";
-
 
 function HealthCare(){
     const lessons = useContext(LessonContext)
     const dispatch = useContext(LessonDispatchContext)
     const healthcareLessonsState = lessons.HealthCareLessons;
     const [passedBasicLesson, setPassedBasicLesson] = useState(false)
-
     useEffect(()=>{
         dispatch({ type: "RESET_LESSON", payload: { lesson: healthcareLessonsState.id}});
     }, [])
-
-
-
 
     const healthCareComponents = [
         <MultipleLessons state={healthcareLessonsState} dispatch={dispatch} lessonId={0} />,
@@ -34,21 +27,14 @@ function HealthCare(){
         <MultipleLessons state={healthcareLessonsState} dispatch={dispatch} lessonId={6} />,
         <KeyWordsLessons state={healthcareLessonsState} dispatch={dispatch} lessonId={7} />,
         <Question state={healthcareLessonsState} questionType={"matching"} dispatch={dispatch} id={3}/>,
-        <CourseSummary state={healthcareLessonsState} dispatch={dispatch}/>
-
-
-
+        <CourseSummary state={healthcareLessonsState} dispatch={dispatch} lessonId={8}/>
     ];
-
     //Math.min is used to ensure that the component index does not exceed the maximum index of the lessonComponents Array
     const currentComponentIndex = Math.min(
         healthcareLessonsState.numberOfCompletedLessons + healthcareLessonsState.numberOfCompletedQuestions,
         healthCareComponents.length - 1
     );
     return healthCareComponents[currentComponentIndex];
-
-
-
 }
 
 export default HealthCare

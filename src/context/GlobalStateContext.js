@@ -1,8 +1,24 @@
 import {createContext, useEffect, useReducer, useState} from 'react';
-import {basicLessonData, basicsMCQS, FreeForm, trueOrFalseQuestions} from "../lessons/Basics/BasicsLessonData";
 import {
-    basicsMCQHealthCare, healthCareKeyWordsData, healthCareLessonData, MatchingWordsQuestions, NHISKeyWordsData,healthyKeyWords,
-    NHISLessonData, NHISRegistrationForm, RegistrationFormKeyWords, trueOrFalseQuestionsHealth, healthLessonData, MatchingWordsQuestions2
+    basicLessonData, basicsCourseSummary,
+    basicsKeyWords,
+    basicsMCQS,
+    trueOrFalseQuestions
+} from "../lessons/Basics/BasicsLessonData";
+import {
+    basicsMCQHealthCare,
+    healthCareKeyWordsData,
+    healthCareLessonData,
+    MatchingWordsQuestions,
+    NHISKeyWordsData,
+    healthyKeyWords,
+    NHISLessonData,
+    NHISRegistrationForm,
+    RegistrationFormKeyWords,
+    trueOrFalseQuestionsHealth,
+    healthLessonData,
+    MatchingWordsQuestions2,
+    healthCareCourseSummary
 } from "../lessons/HealthCare/HealthCareLessonData";
 
 export const LessonContext = createContext(null);
@@ -11,28 +27,24 @@ export const LessonDispatchContext = createContext(null);
 export function GlobalStatesProvider({ children }) {
     const lessonStates= {
         BasicLessons: {
-            id: "BasicLessons",
-            scores: 0,
-            lessons: [basicLessonData],
-            numberOfCompletedLessons: 0,
-            numberOfCompletedQuestions: 0,
-            lessonCompleted: false,
-            questionStarted: false,
-            trueOrFalseComplete: false,
-            mcqComplete: false,
-            questions: [trueOrFalseQuestions, basicsMCQS],
-            pointsToPassLesson : 65
+            id: "BasicLessons", //id of the lessons
+            scores: 0, //stores user score
+            lessons: [basicLessonData, basicsKeyWords, basicsCourseSummary], //lessons
+            numberOfCompletedLessons: 0, //used to trigger component rendering
+            numberOfCompletedQuestions: 0, //used to trigger component rendering
+            lessonCompleted: false, //check if lesson is completed
+            questionStarted: false, //check if a question has been started
+            questions: [trueOrFalseQuestions, basicsMCQS],//all the questions
+            pointsToPassLesson : 65 //points needed to unlock the next course
         },
         HealthCareLessons: {
             id: "HealthCareLessons",
             scores: 0,
-            lessons:[healthCareLessonData, healthCareKeyWordsData, NHISLessonData, NHISKeyWordsData, NHISRegistrationForm, RegistrationFormKeyWords, healthLessonData, healthyKeyWords],
+            lessons:[healthCareLessonData, healthCareKeyWordsData, NHISLessonData, NHISKeyWordsData, NHISRegistrationForm, RegistrationFormKeyWords, healthLessonData, healthyKeyWords, healthCareCourseSummary],
             numberOfCompletedLessons: 0,
             numberOfCompletedQuestions: 0,
             lessonCompleted: false,
             questionStarted: false,
-            trueOrFalseComplete: false,
-            mcqComplete: false,
             questions: [MatchingWordsQuestions, basicsMCQHealthCare, trueOrFalseQuestionsHealth, MatchingWordsQuestions2],
             pointsToPassLesson : 65
         },

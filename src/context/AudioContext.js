@@ -5,7 +5,6 @@ export const AudioContext = createContext();
  export const AudioContextProvider = ({ children }) => {
     const [isPlaying, setIsPlaying] = useState(false);
     const [activeName, setActiveName] = useState(null)
-     const [prevAudioPlayed, setPrevAudioPlayed] = useState('')
     const audioRef = useRef(null);
 
 
@@ -50,6 +49,15 @@ export const AudioContext = createContext();
         setActiveName(null)
     };
 
+    const stopAnswerAudio=()=>{
+        if(audioRef.current){
+            audioRef.current.pause();
+            audioRef.current.currentTime = 0;
+            setIsPlaying(false);
+            setActiveName(null)
+        }
+    }
+
     useEffect(() => {
         const audio = audioRef.current;
         if(audio){
@@ -64,7 +72,7 @@ export const AudioContext = createContext();
     }, [isPlaying]);
 
     return (
-        <AudioContext.Provider value={{ isPlaying, playAudio, stopAudio, activeName }}>
+        <AudioContext.Provider value={{ isPlaying, playAudio, stopAudio, activeName, stopAnswerAudio }}>
             {children}
         </AudioContext.Provider>
     );
