@@ -46,6 +46,13 @@ import identificationEnglishAudio from "../../audios/courseoutline/identificatio
 import jobsEnglishAudio from "../../audios/courseoutline/jobsEnglishAudio.mp3"
 import jobsTwiAudio from "../../audios/courseoutline/jobstwi.mp3"
 
+
+import aban from "../../audios/courseoutline/keywords/aban.mp3"
+import educationTwi from "../../audios/courseoutline/keywords/edcationtwi.mp3"
+import healthCareTwi from "../../audios/courseoutline/keywords/healthCareTwi.mp3"
+import identificationTwi from "../../audios/courseoutline/keywords/identificationtwi.mp3"
+import jobsTwi from "../../audios/courseoutline/keywords/jobstwi.mp3"
+
 export const basicLessonData=[
     {
         Image: ghanaGovernment,
@@ -225,9 +232,9 @@ export const FreeForm =[
 export const basicsKeyWords=[
     {
         Image:"",
-        EnglishWord: "Aban",
-        TwiWord: "The Government",
-        TwiAudio:"",
+        EnglishWord: "The Government",
+        TwiWord: "Aban",
+        TwiAudio:aban,
         EnglishAudio:"",
         KeyMessageEnglish: ""
     },
@@ -235,7 +242,7 @@ export const basicsKeyWords=[
         Image:"",
         EnglishWord: "Health Care",
         TwiWord: "Apumoden",
-        TwiAudio:"",
+        TwiAudio:healthCareTwi,
         EnglishAudio:"",
         KeyMessageEnglish: ""
     },
@@ -243,7 +250,7 @@ export const basicsKeyWords=[
         Image:"",
         EnglishWord: "Education",
         TwiWord: "Adesua",
-        TwiAudio:"",
+        TwiAudio:educationTwi,
         EnglishAudio:"",
         KeyMessageEnglish: ""
     },
@@ -251,7 +258,7 @@ export const basicsKeyWords=[
         Image:"",
         EnglishWord: "Jobs",
         TwiWord: "Adwuma",
-        TwiAudio:"",
+        TwiAudio:jobsTwi,
         EnglishAudio:"",
         KeyMessageEnglish: ""
     },
@@ -259,7 +266,7 @@ export const basicsKeyWords=[
         Image:"",
         EnglishWord: "Ghana Identification",
         TwiWord: "Dɛ ɛma obi yɛ Ghanani",
-        TwiAudio:"",
+        TwiAudio:identificationTwi,
         EnglishAudio:"",
         KeyMessageEnglish: ""
     }

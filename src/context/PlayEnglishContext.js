@@ -3,6 +3,7 @@ import React, {createContext, useState, useRef, useCallback} from 'react';
 export const EnglishAudioContext = createContext();
 
 export const EnglishAudioContextProvider= ({children}) => {
+    const [audioEnded, setAudioEnded] = useState(false)
     let voice;
     let synth = window.speechSynthesis;
 
@@ -34,13 +35,27 @@ export const EnglishAudioContextProvider= ({children}) => {
             console.log('voice available')
             let utterance_words = new SpeechSynthesisUtterance(text);
             utterance_words.voice = voice;
+
+            // Add an event listener for the 'start' event
+            utterance_words.addEventListener('start', handleStart);
+            // Add an event listener for the 'end' event
+            utterance_words.addEventListener('end', handleEnd);
             // Get the voices and speak the utterance for the words
             synth.speak(utterance_words);
         }
     }, [])
 
+    const handleEnd=()=>{
+        setAudioEnded(false)
+
+    }
+
+    const handleStart=()=>{
+        setAudioEnded(true)
+    }
+
     return (
-        <EnglishAudioContext.Provider value={{ speakEnglishWords}}>
+        <EnglishAudioContext.Provider value={{ speakEnglishWords, audioEnded}}>
             {children}
         </EnglishAudioContext.Provider>
     );

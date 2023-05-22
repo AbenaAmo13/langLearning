@@ -72,7 +72,7 @@ export const AudioContext = createContext();
     }, [isPlaying]);
 
     return (
-        <AudioContext.Provider value={{ isPlaying, playAudio, stopAudio, activeName, stopAnswerAudio }}>
+        <AudioContext.Provider value={{ isPlaying, playAudio, stopAudio, activeName, stopAnswerAudio, setActiveName}}>
             {children}
         </AudioContext.Provider>
     );

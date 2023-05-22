@@ -19,20 +19,24 @@ function TopAppBar(){
                 <h1 id="app-bar-title"> Government Says</h1>
             </div>
             <div className="appbar-icons">
-                <Link to="/Help">
-                    <button className="icon-buttons">
+                <Link to="/Help" className="app_bar_routes">
+                    <button className="icon-buttons top_app_bar">
+                        Help
                         <i className="material-icons" alt="help icon">help</i>
                     </button>
                 </Link>
-                <Link to="/">
-                    <button className="icon-buttons">
+                <Link to="/" className="app_bar_routes">
+                    <button className="icon-buttons top_app_bar">
+                        Home
                         <i className="material-icons" alt="home icon">home</i>
                     </button>
                 </Link>
 
-                <button className="icon-buttons" onClick={()=>playAudio(new Audio(testAudio))}>
+                <button className="icon-buttons top_app_bar" onClick={()=>playAudio(new Audio(testAudio))}>
+                    🇬🇭Welcome
                     <i className="material-icons" alt="volume icon">volume_up</i>
                 </button>
+                <InstallButton/>
               {/*  <select id="languageSelector" value={language} onChange={(e) => handleLanguageChange(e.target.value)}>
                     <option value="Twi" id="twiflag">🇬🇭Twi</option>
                     <option value="English" id="engishflag">🇬🇧 English</option>
@@ -43,3 +47,40 @@ function TopAppBar(){
 }
 
 export default TopAppBar;
+
+const InstallButton = () => {
+    const [deferredPrompt, setDeferredPrompt] = useState(null);
+    useEffect(() => {
+        // Listen for the 'beforeinstallprompt' event
+        const handleBeforeInstallPrompt = (event) => {
+            event.preventDefault();
+            setDeferredPrompt(event);
+        };
+
+        window.addEventListener('beforeinstallprompt', handleBeforeInstallPrompt);
+
+        return () => {
+            window.removeEventListener('beforeinstallprompt', handleBeforeInstallPrompt);
+        };
+    }, []);
+
+    //This is to install the application
+    const handleInstallApp = () => {
+        if (deferredPrompt) {
+            deferredPrompt.prompt();
+            deferredPrompt.userChoice.then((choiceResult) => {
+                if (choiceResult.outcome === 'accepted') {
+                    console.log('User installed the app');
+                }
+                setDeferredPrompt(null);
+            });
+        }
+    };
+
+    return (
+        <button onClick={handleInstallApp} className="download_button">
+            Download
+            <i className="material-icons" alt="download icon">download</i>
+        </button>
+    );
+};

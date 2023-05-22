@@ -10,6 +10,8 @@ import HealthCare from "./lessons/HealthCare/HealthCare"
 import Education from "./lessons/Education/Education"
 import Jobs from "./lessons/Jobs/Jobs";
 import Id from "./lessons/Id/Id"
+import HelpPage from "./HelpPage";
+import {EnglishAudioContextProvider} from "./context/PlayEnglishContext";
 
 export const LockedStatusObjContext = createContext(null);
 
@@ -49,6 +51,7 @@ function App() {
 
     return (
         <GlobalStatesProvider>
+            <EnglishAudioContextProvider>
             <AudioContextProvider>
                 <LockedStatusContextProvider lockedStatusJsonObj={lockedStatusJsonObj} setLockedStatusJsonObj={setLockedStatusJsonObj}>
                     <div className="App">
@@ -56,16 +59,19 @@ function App() {
                             <TopAppBar/>
                             <Routes>
                                 <Route path="/" element={<Homepage/>}/>
+                                <Route path="/Help" element={<HelpPage/>}/>
                                 <Route path="/Basics" element={<Basics/>}/>
                                 <Route path="/Health" element={lockedStatusJsonObj && lockedStatusJsonObj.Health === false ? (<HealthCare/>) : (<Navigate to="/"/>)}/>
                                 <Route path="/Education" element={lockedStatusJsonObj && lockedStatusJsonObj.Education === false ? (<Education/>) : (<Navigate to="/"/>)}/>
                                 <Route path="/Jobs" element={lockedStatusJsonObj && lockedStatusJsonObj.Jobs === false ? (<Jobs/>) : (<Navigate to="/"/>)}/>
                                 <Route path="/Id" element={lockedStatusJsonObj && lockedStatusJsonObj.Identification === false ? (<Id/>) : (<Navigate to="/"/>)}/>
+
                             </Routes>
                         </BrowserRouter>
                     </div>
                 </LockedStatusContextProvider>
             </AudioContextProvider>
+            </EnglishAudioContextProvider>
         </GlobalStatesProvider>
     );
 }
