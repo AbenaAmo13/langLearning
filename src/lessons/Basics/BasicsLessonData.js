@@ -33,6 +33,12 @@ import answerIsGhanaCard from "../../audios/courseoutline/mcquestions/incorrecta
 import answerIsWorkPlaceLaws from "../../audios/courseoutline/mcquestions/incorrectaudios/answerisworkplacelaws.mp3"
 import answerIsNHIS from "../../audios/courseoutline/mcquestions/incorrectaudios/answerisnhis.mp3"
 
+import answerIsBankingTwi from "../../audios/courseoutline/mcquestions/incorrectaudios/answerisBankingTwi.mp3"
+import answerIsEducationTwi from "../../audios/courseoutline/mcquestions/incorrectaudios/answeriseducationTwi.mp3"
+import answerIsGhanaCardTwi from "../../audios/courseoutline/mcquestions/incorrectaudios/answerisGhanaCardTwi.mp3"
+import answerIsWorkPlaceLawsTwi from "../../audios/courseoutline/mcquestions/incorrectaudios/answerisworkplacelawsTwi.mp3"
+import answerIsNHISTwi from "../../audios/courseoutline/mcquestions/incorrectaudios/answerisnhisTwi.mp3"
+
 
 
 import theGovernmentEnglishAudio from "../../audios/courseoutline/thegovernmentenglish.mp3"
@@ -52,6 +58,16 @@ import educationTwi from "../../audios/courseoutline/keywords/edcationtwi.mp3"
 import healthCareTwi from "../../audios/courseoutline/keywords/healthCareTwi.mp3"
 import identificationTwi from "../../audios/courseoutline/keywords/identificationtwi.mp3"
 import jobsTwi from "../../audios/courseoutline/keywords/jobstwi.mp3"
+
+import educationenglishkeyword from "../../audios/courseoutline/keywords/educationenglish.mp3"
+import identificationEnglishKeyword from "../../audios/courseoutline/keywords/identificationkeywordenglish.mp3"
+import healthcarekeywordenglish from "../../audios/courseoutline/keywords/healthcare.mp3"
+import jobsEnglishKeyWord from "../../audios/courseoutline/keywords/jobsEnglish.mp3"
+import thegovernmentenglishKeyWord from "../../audios/courseoutline/keywords/thegovernmentenglish.mp3"
+
+
+
+
 
 export const basicLessonData=[
     {
@@ -164,7 +180,7 @@ export const basicsMCQS =[
         EnglishAudio: mcqQuestion1English,
         TwiAudio:mcqQuestion1,
         IncorrectEnglishAudio: answerIsBanking,
-        IncorrectTwiAudio: '',
+        IncorrectTwiAudio: answerIsBankingTwi,
         Answer: "Banking",
         isAnswered: false,
         componentScore : "BasicsScore",
@@ -177,7 +193,7 @@ export const basicsMCQS =[
         EnglishAudio: mcQuestion2English,
         TwiAudio:mcqQuestion2,
         IncorrectEnglishAudio: answerIsEducation,
-        IncorrectTwiAudio: '',
+        IncorrectTwiAudio: answerIsEducationTwi,
         Answer: "Education",
         isAnswered: false,
         componentScore : "BasicsScore"
@@ -190,7 +206,7 @@ export const basicsMCQS =[
         EnglishAudio: mcqQuestion3english,
         TwiAudio:mcqQuestion3,
         IncorrectEnglishAudio: answerIsGhanaCard,
-        IncorrectTwiAudio: '',
+        IncorrectTwiAudio: answerIsGhanaCardTwi,
         Answer: "Ghana Card",
         isAnswered: false,
         componentScore : "BasicsScore",
@@ -202,7 +218,7 @@ export const basicsMCQS =[
         EnglishAudio: mcqQuestion4English,
         TwiAudio:mcqQuestion4,
         IncorrectEnglishAudio: answerIsWorkPlaceLaws,
-        IncorrectTwiAudio: '',
+        IncorrectTwiAudio: answerIsWorkPlaceLawsTwi,
         Answer: "Workplace laws",
         isAnswered: false,
         componentScore : "BasicsScore",
@@ -215,7 +231,7 @@ export const basicsMCQS =[
         EnglishAudio: mcqQuestion5English,
         TwiAudio:mcQuestion5,
         IncorrectEnglishAudio: answerIsNHIS,
-        IncorrectTwiAudio: '',
+        IncorrectTwiAudio: answerIsNHISTwi,
         Answer: "National Health Insurance Scheme",
         isAnswered: false,
         componentScore : "BasicsScore"
@@ -235,7 +251,7 @@ export const basicsKeyWords=[
         EnglishWord: "The Government",
         TwiWord: "Aban",
         TwiAudio:aban,
-        EnglishAudio:"",
+        EnglishAudio:thegovernmentenglishKeyWord,
         KeyMessageEnglish: ""
     },
     {
@@ -243,7 +259,7 @@ export const basicsKeyWords=[
         EnglishWord: "Health Care",
         TwiWord: "Apumoden",
         TwiAudio:healthCareTwi,
-        EnglishAudio:"",
+        EnglishAudio:healthcarekeywordenglish,
         KeyMessageEnglish: ""
     },
     {
@@ -251,7 +267,7 @@ export const basicsKeyWords=[
         EnglishWord: "Education",
         TwiWord: "Adesua",
         TwiAudio:educationTwi,
-        EnglishAudio:"",
+        EnglishAudio:educationenglishkeyword,
         KeyMessageEnglish: ""
     },
     {
@@ -259,7 +275,7 @@ export const basicsKeyWords=[
         EnglishWord: "Jobs",
         TwiWord: "Adwuma",
         TwiAudio:jobsTwi,
-        EnglishAudio:"",
+        EnglishAudio:jobsEnglishKeyWord,
         KeyMessageEnglish: ""
     },
     {
@@ -267,7 +283,7 @@ export const basicsKeyWords=[
         EnglishWord: "Ghana Identification",
         TwiWord: "Dɛ ɛma obi yɛ Ghanani",
         TwiAudio:identificationTwi,
-        EnglishAudio:"",
+        EnglishAudio:identificationEnglishKeyword,
         KeyMessageEnglish: ""
     }
 

@@ -2,6 +2,7 @@ import {useContext, useEffect, useReducer, useState} from "react";
 import {AudioContext} from "../context/AudioContext";
 import AudioPlayer from "../reusable-components/LessonAudioPlayer";
 import twiAudioPrompt from "../audios/transitionalaudios/keywordsTwi.mp3"
+import englishAudioPrompt from "../audios/transitionalaudios/keywordsEnglish.mp3"
 import QuestionPrompt from "./QuestionPrompt";
 
 
@@ -96,7 +97,7 @@ function KeyWordsLessons({state, dispatch, lessonId}){
                                     twiAudio={currentLesson[currentIndex].TwiAudio}
                                     englishAudioName={currentLesson[currentIndex].EnglishWord}
                                     twiAudioName={currentLesson[currentIndex].TwiWord}
-                                    englishAudio={currentLesson[currentIndex].EnglishWord}
+                                    englishAudio={currentLesson[currentIndex].EnglishAudio}
 
                                 />
 
@@ -131,10 +132,10 @@ function KeyWordsLessons({state, dispatch, lessonId}){
                         {keyWordText}
                     </div>
                     <AudioPlayer
-                        englishAudioName="keywordText"
-                        text={keyWordPromptText}
                         twiAudio={twiAudioPrompt}
                         twiAudioName={twiAudioPrompt}
+                        englishAudio={englishAudioPrompt}
+                        englishAudioName={englishAudioPrompt}
 
                     />
                     <div className="keyword_button_div">

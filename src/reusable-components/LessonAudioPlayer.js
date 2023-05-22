@@ -4,29 +4,44 @@ import {useContext, useEffect} from "react";
 import {EnglishAudioContext} from "../context/PlayEnglishContext";
  const LessonAudioButtons = ({ twiAudio, englishAudio, englishAudioName, twiAudioName, text}) => {
  const {playAudio, isPlaying, activeName, stopAudio, setActiveName } = useContext(AudioContext);
- const {speakEnglishWords, audioEnded}= useContext(EnglishAudioContext)
+ const {speakEnglishWords, isReading, stopAudioTextToSpeech}= useContext(EnglishAudioContext)
 
      useEffect(()=>{
-         setActiveName(null)
+         if(!isReading){
+             setActiveName(null)
+         }else{
+             setActiveName(englishAudioName)
+         }
+     }, [isReading])
 
-     }, [audioEnded])
+     const handleTextToSpeechPlay=()=>{
+         if(isPlaying) {
+             stopAudio()
+         }
+         if(isReading && activeName === englishAudioName){
+             stopAudioTextToSpeech()
+         }else{
+             console.log("Using APIs")
+             Object.keys(text).forEach(key => {
+                 speakEnglishWords(text[key]);
+
+             });
+         }
+     }
+
+     const handleEnglishAudioPlay=()=>{
+         if(isPlaying && activeName === englishAudioName){
+             stopAudio()
+         }else{
+             playAudio(new Audio(englishAudio), englishAudioName);
+         }
+     }
 
      const englishAudioPlay=()=>{
         if(text){
-            if(isPlaying && activeName === englishAudioName) {
-                stopAudio()
-            }
-            console.log("Using APIs")
-            Object.keys(text).forEach(key => {
-                speakEnglishWords(text[key]);
-                setActiveName(englishAudioName)
-            });
+        handleTextToSpeechPlay()
         }else{
-            if(isPlaying && activeName === englishAudioName){
-                stopAudio()
-            }else{
-                playAudio(new Audio(englishAudio), englishAudioName);
-            }
+            handleEnglishAudioPlay()
         }
 
      }

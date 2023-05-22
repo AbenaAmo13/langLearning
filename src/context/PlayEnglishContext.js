@@ -3,7 +3,7 @@ import React, {createContext, useState, useRef, useCallback} from 'react';
 export const EnglishAudioContext = createContext();
 
 export const EnglishAudioContextProvider= ({children}) => {
-    const [audioEnded, setAudioEnded] = useState(false)
+    const [isReading, setIsReadingText] = useState(false)
     let voice;
     let synth = window.speechSynthesis;
 
@@ -46,16 +46,22 @@ export const EnglishAudioContextProvider= ({children}) => {
     }, [])
 
     const handleEnd=()=>{
-        setAudioEnded(false)
+        setIsReadingText(false)
 
     }
 
     const handleStart=()=>{
-        setAudioEnded(true)
+        setIsReadingText(true)
     }
 
+    const stopAudioTextToSpeech = () => {
+        //alert('stopping the audio')
+        synth.cancel();
+        setIsReadingText(false)
+    };
+
     return (
-        <EnglishAudioContext.Provider value={{ speakEnglishWords, audioEnded}}>
+        <EnglishAudioContext.Provider value={{ speakEnglishWords, isReading, stopAudioTextToSpeech}}>
             {children}
         </EnglishAudioContext.Provider>
     );
