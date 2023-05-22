@@ -15,6 +15,10 @@
   background-color: #98ff98;
 }
 
+.navCard.yellowCardOutline.help_page {
+  height: 100%;
+}
+
 
 .card_audio_controls{
   background: white;
@@ -229,6 +233,29 @@ height: 100vh;
   background: #FFFFFF;
   box-shadow: 11px 11px 4px rgb(245, 159, 98) !important;
 }
+
+.help_collapse_icon{
+  display: flex;
+  justify-content: flex-end;
+}
+
+.help_icons_container{
+  padding: 16px;
+}
+
+
+
+.yellowCardOutline{
+  background: #FFFFFF;
+  box-shadow: 11px 11px 4px rgb(221, 175, 39) !important;
+}
+
+.yellowCard2{
+  background: #FFFFFF !important;
+  box-shadow: -2px 14px 6px rgba(221, 175, 39) !important;
+  border-radius: 20px;
+}
+
 .padding{
   padding: 16px;
 }
@@ -788,11 +815,21 @@ progress::-moz-progress-bar {
 
 
 
+
+
   /*Card Component stylings*/
   .card_component_container{
     width: 50%;
     margin:1% auto;
 
+  }
+
+
+  .help_content{
+    display: flex;
+    flex-direction: column;
+    word-wrap: break-word;
+    width: 275px;
   }
 
 

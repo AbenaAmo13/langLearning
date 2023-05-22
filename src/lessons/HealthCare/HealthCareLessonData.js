@@ -249,7 +249,7 @@ export const healthLessonData=[
         TwiWord: "",
         TwiAudio: "",
         EnglishAudio: "",
-        KeyMessageEnglish:'To treat malaria, you must go to a hospital or a drug store and ask for medicine for malaria ',
+        KeyMessageEnglish:'To treat malaria, you must go to a hospital or a drug store and ask for medicine for malaria',
 
     },{
         Image: "" ,
@@ -309,7 +309,7 @@ export const healthCareKeyWordsData=[
         TwiWord: "Ghana Akwahosan Dwumadibea",
         TwiAudio: "",
         EnglishAudio: "",
-        KeyMessageEnglish:'The group of people in the government that are tasked with helping us with our healthcare are known in english as the Ghana Health Service',
+        KeyMessageEnglish:'These are the group of people in the government that are tasked with helping us with our healthcare ',
     },
      {
         Image:"",
@@ -324,7 +324,8 @@ export const healthCareKeyWordsData=[
         TwiWord: "aduro",
         TwiAudio:"",
         EnglishAudio:"",
-        KeyMessageEnglish: "This is where we go when we are sick."
+        KeyMessageEnglish: "This is what you use when you're sick to feel better."
+
     },
     {
         Image:"",
@@ -354,7 +355,7 @@ export const NHISKeyWordsData=[
         TwiWord: "NHIS nnwanhwɛfoɔ",
         TwiAudio:"",
         EnglishAudio:"",
-        KeyMessageEnglish: "These are the hospitals that provide NHS services"
+        KeyMessageEnglish: "These are the hospitals that provide NHIS services"
     },
     {
         Image:"",
@@ -390,7 +391,8 @@ export const RegistrationFormKeyWords=[
         TwiWord: "deɛ wɔakyerɛ no din", //Not sure about this one
         TwiAudio:"",
         EnglishAudio:"",
-        KeyMessageEnglish: ""
+        KeyMessageEnglish: "\n" +
+            "A registration form is a paper or online form where you write down your details to join or sign up for something "
     },
     {
         Image:"",
@@ -398,7 +400,7 @@ export const RegistrationFormKeyWords=[
         TwiWord: "edin a wɔahyɛ no nyinaa",
         TwiAudio:"",
         EnglishAudio:"",
-        KeyMessageEnglish: ""
+        KeyMessageEnglish: "This is your first and last name together"
     },
     {
         Image:"",
@@ -406,7 +408,8 @@ export const RegistrationFormKeyWords=[
         TwiWord: "ɛda a yɛ wɔwoo no",
         TwiAudio:"",
         EnglishAudio:"",
-        KeyMessageEnglish: ""
+        KeyMessageEnglish: "Date of birth is the day, month, and year when you were born."
+
     },
     {
         Image:"",
@@ -414,7 +417,8 @@ export const RegistrationFormKeyWords=[
         TwiWord: "aware my gyinabea",
         TwiAudio:"",
         EnglishAudio:"",
-        KeyMessageEnglish: ""
+        KeyMessageEnglish: "Marital status means whether a person is married or not married (single)."
+
     },
     {
         Image:"",
@@ -422,7 +426,7 @@ export const RegistrationFormKeyWords=[
         TwiWord: "telefon nɔma",
         TwiAudio:"",
         EnglishAudio:"",
-        KeyMessageEnglish: ""
+        KeyMessageEnglish: "This is the number people can use to call you"
     },
     {
         Image:"",
@@ -430,14 +434,14 @@ export const RegistrationFormKeyWords=[
         TwiWord: "Fie akwankyerɛ",
         TwiAudio:"",
         EnglishAudio:"",
-        KeyMessageEnglish: ""
+        KeyMessageEnglish: "Home address is the place where you live. It includes the name of your street, the number of your house or apartment, and the name of your city or town."
     },
     {
         Image:"",
         EnglishWord: "Primary Provider",
         TwiWord: "ɔhwɛfoɔ titiriw",
         TwiAudio:"",
-        EnglishAudio:"",
+        EnglishAudio:"This is the first hospital/person you go to when you are sick",
         KeyMessageEnglish: ""
     },
 ]

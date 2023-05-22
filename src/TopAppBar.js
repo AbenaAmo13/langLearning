@@ -12,6 +12,13 @@ function TopAppBar(){
     const { isPlaying, playAudio, stopAudio } = useContext(AudioContext);
     const testAudio = appBarTestAudio;
 
+    const handleAudioCheck=()=>{
+        if(isPlaying){
+            stopAudio()
+        }
+
+    }
+
     return(
         <div className='topAppBar'>
             <div className="title_and_logo">
@@ -20,13 +27,13 @@ function TopAppBar(){
             </div>
             <div className="appbar-icons">
                 <Link to="/Help" className="app_bar_routes">
-                    <button className="icon-buttons top_app_bar">
+                    <button className="icon-buttons top_app_bar" onClick={()=>handleAudioCheck()}>
                         Help
                         <i className="material-icons" alt="help icon">help</i>
                     </button>
                 </Link>
                 <Link to="/" className="app_bar_routes">
-                    <button className="icon-buttons top_app_bar">
+                    <button className="icon-buttons top_app_bar" onClick={()=>handleAudioCheck()}>
                         Home
                         <i className="material-icons" alt="home icon">home</i>
                     </button>
@@ -49,6 +56,7 @@ function TopAppBar(){
 export default TopAppBar;
 
 const InstallButton = () => {
+    const { isPlaying, playAudio, stopAudio } = useContext(AudioContext);
     const [deferredPrompt, setDeferredPrompt] = useState(null);
     useEffect(() => {
         // Listen for the 'beforeinstallprompt' event
@@ -74,6 +82,10 @@ const InstallButton = () => {
                 }
                 setDeferredPrompt(null);
             });
+        }
+
+        if(isPlaying){
+            stopAudio()
         }
     };
 
