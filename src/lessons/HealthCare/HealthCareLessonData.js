@@ -1,6 +1,20 @@
 import healthImage from "../../images/greyhealthcare.webp";
 
+import GHS1Twi from "../../audios/healthCare/GhanaHealthService/GHS_audio_Twi_1_main.mp3"
+import GHS2Twi from "../../audios/healthCare/GhanaHealthService/GHS_audioTwi_2.mp3"
+import GHS3Twi from "../../audios/healthCare/GhanaHealthService/GHS_audioTwi_3.mp3"
+import GHS4Twi from "../../audios/healthCare/GhanaHealthService/GHS_audiotwi_4.mp3"
 
+import NHIS1Twi from "../../audios/healthCare/NHISLessonDataAudios/NHIS_1_Twi.mp3"
+import NHIS2Twi from "../../audios/healthCare/NHISLessonDataAudios/NHIS_KeyMessage_Object2.mp3"
+import NHIS3Twi from "../../audios/healthCare/NHISLessonDataAudios/NHIS_3_Twi.mp3"
+import KorleBuTwi from "../../audios/healthCare/NHISLessonDataAudios/Korele_Bu_Twi.mp3"
+import KomfoAnokyeTwi from "../../audios/healthCare/NHISLessonDataAudios/Komfo_Anokye_Twi.mp3"
+import ThirtySevenMillitaryTwi from "../../audios/healthCare/NHISLessonDataAudios/37_Military_Hospital_Twi.mp3"
+import TemaGeneralHospital from "../../audios/healthCare/NHISLessonDataAudios/tema_hospital_twi.mp3"
+import MoreHospitalProvidersTwi from "../../audios/healthCare/NHISLessonDataAudios/More_Hospital_Providers_Twi.mp3"
+import NHISInterviewTwi from "../../audios/healthCare/NHISLessonDataAudios/NHIS_Interview_Twi.mp3"
+import NHIS_ExemptGroupExample from "../../audios/healthCare/NHISLessonDataAudios/NHIS_ExemptGroup_Examples.mp3"
 
 
 //Key lesson data
@@ -9,7 +23,7 @@ export const healthCareLessonData=[
         Image: healthImage,
         EnglishWord: "Ghana Health Service",
         TwiWord: "Aban",
-        TwiAudio:"" ,
+        TwiAudio:GHS1Twi ,
         EnglishAudio: "",
         KeyMessageEnglish: "In the government, there are a team people who work to ensure that everyone in Ghana can get good healthcare even if you can't afford it",
     },
@@ -18,7 +32,7 @@ export const healthCareLessonData=[
         Image:"" ,
         EnglishWord: "Ghana Health Service",
         TwiWord: "",
-        TwiAudio: "",
+        TwiAudio: GHS2Twi,
         EnglishAudio: "",
         KeyMessageEnglish: 'They do this by  providing us with hospitals that we can go to and medicines that we can take to make us feel better when we are sick. '
     },
@@ -26,7 +40,7 @@ export const healthCareLessonData=[
         Image: "",
         EnglishWord: "Ghana Health Service",
         TwiWord: "Adesua",
-        TwiAudio:"" ,
+        TwiAudio:GHS3Twi ,
         EnglishAudio: "",
         KeyMessageEnglish:'Hospital bills can be expensive but there are ways that we can get still be taken care of when we our sick.',
     },
@@ -34,7 +48,7 @@ export const healthCareLessonData=[
         Image: "" ,
         EnglishWord: "Ghana Health Service",
         TwiWord: "TwiID",
-        TwiAudio: "",
+        TwiAudio: GHS4Twi,
         EnglishAudio: "",
         KeyMessageEnglish:'One of the ways that the government help us get access to healthcare even when we our sick is known as the National Health Insurance Scheme,',
     },
@@ -45,7 +59,7 @@ export const NHISLessonData=[
         Image: "" ,
         EnglishWord: "National Health Insurance Scheme (NHIS)",
         TwiWord: "",
-        TwiAudio: "",
+        TwiAudio: NHIS1Twi,
         EnglishAudio: "",
         KeyMessageEnglish:'The national health insurance scheme is made to help us access healthcare at an affordable price',
     },
@@ -53,7 +67,7 @@ export const NHISLessonData=[
         Image: "" ,
         EnglishWord: "National Health Insurance Scheme (NHIS)",
         TwiWord: "",
-        TwiAudio: "",
+        TwiAudio: NHIS2Twi,
         EnglishAudio: "",
         KeyMessageEnglish:'To register for the National Health Insurance Scheme, you must follow a set of instructions',
     },
@@ -61,7 +75,7 @@ export const NHISLessonData=[
         Image: "" ,
         EnglishWord: "NHIS Registration: Find a provider ",
         TwiWord: "",
-        TwiAudio: "",
+        TwiAudio: NHIS3Twi,
         EnglishAudio: "",
         KeyMessageEnglish:'First step is to find a hospital where you can get NHIS services. The most famous ones include:',
     },
@@ -69,7 +83,7 @@ export const NHISLessonData=[
         Image: "" ,
         EnglishWord: " Korle Bu Hospital",
         TwiWord: "TwiID",
-        TwiAudio: "",
+        TwiAudio: KorleBuTwi,
         EnglishAudio: "",
         KeyMessageEnglish:'This is located in Accra',
     },
@@ -77,7 +91,7 @@ export const NHISLessonData=[
         Image: "" ,
         EnglishWord: "Komfo Anoche Teaching Hospital",
         TwiWord: "",
-        TwiAudio: "",
+        TwiAudio: KomfoAnokyeTwi,
         EnglishAudio: "",
         KeyMessageEnglish:'This is located in Kumasi',
     },
@@ -85,7 +99,7 @@ export const NHISLessonData=[
         Image: "" ,
         EnglishWord: "37 Military Hospital",
         TwiWord: "",
-        TwiAudio: "",
+        TwiAudio: ThirtySevenMillitaryTwi,
         EnglishAudio: "",
         KeyMessageEnglish:'This is located in Accra on Liberation Road, near the Tetteh Quarshie Interchange',
     },
@@ -93,7 +107,7 @@ export const NHISLessonData=[
         Image: "" ,
         EnglishWord: "Tema General Hospital",
         TwiWord: "",
-        TwiAudio: "",
+        TwiAudio: TemaGeneralHospital,
         EnglishAudio: "",
         KeyMessageEnglish:'This is located in Tema. ',
     },
@@ -101,14 +115,14 @@ export const NHISLessonData=[
         Image: "" ,
         EnglishWord: "More Hospital Providers",
         TwiWord: "",
-        TwiAudio: "",
+        TwiAudio: MoreHospitalProvidersTwi,
         EnglishAudio: "",
         KeyMessageEnglish:'To find the hospital providers in your area, you can call: 📞 030 223 8136 or  📞 030 223 3255',
     }, {
         Image: "" ,
         EnglishWord: "NHIS Interview",
         TwiWord: "",
-        TwiAudio: "",
+        TwiAudio: NHISInterviewTwi,
         EnglishAudio: "",
         KeyMessageEnglish:'Next, a person will talk to you to find which group you belong to: Annual premium or exempt group',
 
@@ -116,7 +130,7 @@ export const NHISLessonData=[
         Image: "" ,
         EnglishWord: "NHIS Interview: Exempt Group",
         TwiWord: "",
-        TwiAudio: "",
+        TwiAudio: NHIS_ExemptGroupExample,
         EnglishAudio: "",
         KeyMessageEnglish:'Exempt Group include: a pregnant woman, A SSNIT contributor, the elderly (above 70 years old), a disabled person, person with a mental disorder, and a low income person',
 
