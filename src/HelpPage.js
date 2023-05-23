@@ -69,7 +69,7 @@ function HelpPage(){
     ];
 
     const HelpPageCard = ({ cardInfo }) => {
-        console.log("This is card inffo" + JSON.stringify(cardInfo.content))
+        //console.log("This is card inffo" + JSON.stringify(cardInfo.content))
         const [expanded, setExpanded] = useState(false);
         const [iconValue, setIconValue] = useState("expand_more")
 

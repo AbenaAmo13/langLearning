@@ -62,6 +62,10 @@ function TopAppBar(){
             case "/Help":
                 setClickedIcon('help')
                 break;
+            case "/AccountCircle":
+                setClickedIcon('dashboard')
+                break;
+
             default:
                 // Code to handle cases other than "/" and "/Help"
                 // For example:
@@ -103,6 +107,13 @@ function TopAppBar(){
                         <i className="material-icons" alt="help icon">help</i>
                     </button>
                 </Link>
+                <Link to="/AccountCircle" className="app_bar_routes">
+                    <button className={`icon-buttons top_app_bar ${clickedIcon === 'dashboard' ? 'active_icon' : ''}`} onClick={()=>handleAudioAndIconCheck('dashboard')}>
+                        Dashboard
+                        <i className="material-icons" alt="help icon">account_circle</i>
+                    </button>
+                </Link>
+                <InstallButton  />
                <button className={`icon-buttons top_app_bar volume_icon`} onClick={()=> handleAudioClick('twi_audio')}>
                     🇬🇭Welcome
                     <i className={`material-icons ${IconClicked === 'twi_audio' ? 'audio_active app_bar_active' : ''}`} alt="volume icon">volume_up</i>
@@ -111,7 +122,7 @@ function TopAppBar(){
                     🇬🇧Welcome
                     <i className={`material-icons ${IconClicked === 'english_audio' ? 'audio_active app_bar_active' : ''}`} alt="volume icon">volume_up</i>
                 </button>
-                <InstallButton  />
+
               {/*  <select id="languageSelector" value={language} onChange={(e) => handleLanguageChange(e.target.value)}>
                     <option value="Twi" id="twiflag">🇬🇭Twi</option>
                     <option value="English" id="engishflag">🇬🇧 English</option>
