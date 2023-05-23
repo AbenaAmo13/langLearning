@@ -6,14 +6,11 @@ export const AudioContext = createContext();
     const [isPlaying, setIsPlaying] = useState(false);
     const [activeName, setActiveName] = useState(null)
     const audioRef = useRef(null);
-
-
     const playAudio = (audio, audioName) => {
         if(isPlaying){
             stopAudio()
 
         }
-
         audioRef.current = audio;
         audioRef.current.play();
         setIsPlaying(true);
@@ -22,24 +19,6 @@ export const AudioContext = createContext();
             setActiveName(audioName)
             //console.log("Audio name: " + audioName)
         };
-
-
-
-            /*if(isPlaying){
-                stopAudio()
-                setPrevAudioPlayed(audioName)
-
-            }
-
-            audioRef.current = audio;
-            audioRef.current.play();
-            audioRef.current.onplaying = function() {
-                setIsPlaying(true);
-                setActiveName(audioName)
-                //console.log("Audio name: " + audioName)
-            };
-*/
-
     };
 
     const stopAudio = () => {

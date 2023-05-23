@@ -15,6 +15,10 @@
   background-color: #98ff98;
 }
 
+.active_icon{
+  background-color: white!important;
+}
+
 .navCard.yellowCardOutline.help_page {
   height: 100%;
 }
@@ -697,6 +701,11 @@ progress::-moz-progress-bar {
 
 @media only screen and (max-width: 767px){
 
+  .appbar-icons{
+    width: 100%;
+    justify-content: space-evenly;
+  }
+
   .card_lesson_image{
     width: 100%;
   }
@@ -776,6 +785,11 @@ progress::-moz-progress-bar {
   margin: auto;
 }
 
+  .appbar-icons{
+    width: 70%;
+    justify-content: space-evenly;
+  }
+
   .card_box{
     width:50%;
     margin: 1% auto;
@@ -834,17 +848,7 @@ progress::-moz-progress-bar {
 
 
 
-  .card_component_cards{
 
-  }
-
-  .card_component_title{
-
-  }
-
-  .card_component_text{
-
-  }
 
 }
 
