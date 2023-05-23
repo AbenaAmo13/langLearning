@@ -296,7 +296,7 @@ export const basicsKeyWords=[
 export const basicsCourseSummary={
     courseSummaryImage: "",
     courseSummaryTitle: "Course Outline Summary",
-    courseSummaryParagraph: "In this application you will learn about ",
+    courseSummaryParagraph: "In this application you have been introduced to: ",
     courseListItems : ["Ghana Health Service", "Education", "Jobs", "Ghana and Identification"],
     TwiAudio: "",
     EnglishAudio: "",

@@ -29,6 +29,8 @@ function CourseSummary({state, dispatch, lessonId}){
                      <ol>
                          {courseSummaryItems}
                      </ol>
+                     <p>To complete and find out if you passed the course, click continue </p>
+                     <p>If you want to go back to the last set of questions click Back </p>
                  </div>
                  <AudioPlayer/>
                  <div className="keyword_button_div">
@@ -40,6 +42,7 @@ function CourseSummary({state, dispatch, lessonId}){
                          <i className="material-icons" alt="forward arrow icon">arrow_forward</i>
                      </button>
                  </div>
+
 
              </div>
          </div>
