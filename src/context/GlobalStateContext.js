@@ -5,21 +5,17 @@ import {
     basicsMCQS,
     trueOrFalseQuestions
 } from "../lessons/Basics/BasicsLessonData";
-import {
-    basicsMCQHealthCare,
-    healthCareKeyWordsData,
-    healthCareLessonData,
-    MatchingWordsQuestions,
-    NHISKeyWordsData,
-    healthyKeyWords,
-    NHISLessonData,
+import {basicsMCQHealthCare, healthCareKeyWordsData, healthCareLessonData, MatchingWordsQuestions, NHISKeyWordsData, NHISLessonData,
     NHISRegistrationForm,
     RegistrationFormKeyWords,
     trueOrFalseQuestionsHealth,
-    healthLessonData,
-    MatchingWordsQuestions2,
     healthCareCourseSummary
 } from "../lessons/HealthCare/HealthCareLessonData";
+import {
+    educationLessonData,
+    educationLessonDataKeyWords,
+    EducationMatchingWordsQuestions
+} from "../lessons/Education/EducationLessonData";
 
 export const LessonContext = createContext(null);
 export const LessonDispatchContext = createContext(null);
@@ -40,12 +36,23 @@ export function GlobalStatesProvider({ children }) {
         HealthCareLessons: {
             id: "HealthCareLessons",
             scores: 0,
-            lessons:[healthCareLessonData, healthCareKeyWordsData, NHISLessonData, NHISKeyWordsData, NHISRegistrationForm, RegistrationFormKeyWords, healthLessonData, healthyKeyWords, healthCareCourseSummary],
+            lessons:[healthCareLessonData, healthCareKeyWordsData, NHISLessonData, NHISKeyWordsData, NHISRegistrationForm, RegistrationFormKeyWords, healthCareCourseSummary],
             numberOfCompletedLessons: 0,
             numberOfCompletedQuestions: 0,
             lessonCompleted: false,
             questionStarted: false,
-            questions: [MatchingWordsQuestions, basicsMCQHealthCare, trueOrFalseQuestionsHealth, MatchingWordsQuestions2],
+            questions: [MatchingWordsQuestions, basicsMCQHealthCare, trueOrFalseQuestionsHealth],
+            pointsToPassLesson : 80
+        },
+        EducationLessons: {
+            id: "EducationLessons",
+            scores: 0,
+            lessons:[educationLessonData, educationLessonDataKeyWords, NHISLessonData, NHISKeyWordsData, NHISRegistrationForm, RegistrationFormKeyWords, healthCareCourseSummary],
+            numberOfCompletedLessons: 0,
+            numberOfCompletedQuestions: 0,
+            lessonCompleted: false,
+            questionStarted: false,
+            questions: [EducationMatchingWordsQuestions, basicsMCQHealthCare, trueOrFalseQuestionsHealth],
             pointsToPassLesson : 65
         },
 

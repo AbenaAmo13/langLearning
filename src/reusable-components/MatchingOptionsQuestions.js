@@ -90,6 +90,7 @@ function MatchingOptionsQuestions({id}) {
 
     const handleLeftOptionChange=(event)=>{
         const leftSelectedOption = event.target.value;
+        //alert()
         const selectedColumn = event.target.parentElement.parentElement.parentElement.className;
         if (selectedColumn === "matching_left_column") {
             inputRefs.current.forEach((left_input) => {
@@ -98,6 +99,11 @@ function MatchingOptionsQuestions({id}) {
                 }
             });
         }
+        if(isPlaying){
+            stopAnswerAudio()
+        }
+        playAudio(new Audio(question.leftColumnAudios[leftSelectedOption]))
+
         setLeftOptionSelected(leftSelectedOption)
     }
     const handleRightOptionChange=(event)=>{
@@ -111,6 +117,13 @@ function MatchingOptionsQuestions({id}) {
                 }
             });
         }
+
+        if(isPlaying){
+            stopAnswerAudio()
+        }
+        playAudio(new Audio(question.rightColumnAudios[rightSelectedOption]))
+
+
         setRightOptionSelected(rightSelectedOption)
     }
 
@@ -132,8 +145,6 @@ function MatchingOptionsQuestions({id}) {
             });
             console.log("Status is" + isOptionPairCorrect)
            if(isOptionPairCorrect){
-
-
                dispatch({type: "SET_SCORE", payload: {lesson: state.id, score: question.componentScore, value: 10}});
                stopAnswerAudio()
                playAudio(CorrectAudio, question.TwiAudio);

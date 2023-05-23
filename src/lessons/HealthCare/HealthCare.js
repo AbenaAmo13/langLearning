@@ -5,6 +5,8 @@ import KeyWordsLessons from "../../reusable-components/KeyWordsLessons";
 import Question from "../../reusable-components/Questions";
 import CourseSummary from "../../reusable-components/CourseSummary";
 import {LockedStatusObjContext} from "../../App";
+import PassedCourse from "../../reusable-components/PassedCourse";
+import RetakeCourse from "../../reusable-components/RetakeCourse";
 
 function HealthCare(){
     const {lockedStatusJsonObj, setLockedStatusJsonObj} = useContext(LockedStatusObjContext)
@@ -16,7 +18,7 @@ function HealthCare(){
     const lessonCompleted = healthcareLessonsState.lessonCompleted
 
 
-    const [passedBasicLesson, setPassedBasicLesson] = useState(false)
+    const [passedHealthLesson, setHealthCareLesson] = useState(false)
     useEffect(()=>{
         dispatch({ type: "RESET_LESSON", payload: { lesson: healthcareLessonsState.id}});
     }, [])
@@ -32,9 +34,9 @@ function HealthCare(){
                 lockedStatus.Education = false;
                 localStorage.setItem("lockedStatusData", JSON.stringify(lockedStatus));
                 setLockedStatusJsonObj(lockedStatus);
-                setPassedBasicLesson(true);
+                setHealthCareLesson(true);
             } else {
-                setPassedBasicLesson(false);
+                setHealthCareLesson(false);
             }
         }
     }, [lessonCompleted, numberOfCompletedQuestions]);
@@ -62,7 +64,18 @@ function HealthCare(){
         healthcareLessonsState.numberOfCompletedLessons + healthcareLessonsState.numberOfCompletedQuestions,
         healthCareComponents.length - 1
     );
-    return healthCareComponents[currentComponentIndex];
+
+    if (lessonCompleted) {
+        if(passedHealthLesson){
+            return <PassedCourse to="/Education" />;
+        }else{
+            return <RetakeCourse/>
+        }
+
+    } else {
+        return healthCareComponents[currentComponentIndex];
+    }
+
 }
 
 export default HealthCare
