@@ -24,7 +24,7 @@ import mcqQuestion3english from "../../audios/courseoutline/mcquestions/mcquesti
 import mcqQuestion4 from "../../audios/courseoutline/mcquestions/mcquestion4.mp3"
 import mcqQuestion4English from "../../audios/courseoutline/mcquestions/mcquestion4english.mp3"
 import mcQuestion5 from "../../audios/courseoutline/mcquestions/mcquestion5.mp3"
-import mcqQuestion5English from "../../audios/courseoutline/mcquestions/mcquestion5.mp3"
+import mcqQuestion5English from "../../audios/courseoutline/mcquestions/mcquestion5english.mp3"
 
 
 import answerIsBanking from "../../audios/courseoutline/mcquestions/incorrectaudios/answerisbanking.mp3"
