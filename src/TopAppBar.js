@@ -6,12 +6,13 @@ import welcomeEnglishAudio from "./audios/topAppBarAudios/welcomeEnglishAudio.mp
 import appBarTestAudio from "./audios/testing.mp3"
 import {Link} from "react-router-dom";
 import LessonAudioPlayer from "./reusable-components/LessonAudioPlayer";
+import {useLocation} from "react-router";
 
 function TopAppBar(){
     //const imagePath = `${process.env.PUBLIC_URL}/empower-us-192.webp`;
     const imagePath = process.env.PUBLIC_URL + '/empower-us-192.webp';
     const [clickedIcon, setClickedIcon] = useState('home');
-    const [audioClicked, setHandleAudioClicked] = useState(null)
+    const [IconClicked, setHandleIconClicked] = useState(null)
     const [audioIsPlayig, setAudioIsPlaying]= useState(false)
     console.log(imagePath)
     const { isPlaying, playAudio, stopAudio } = useContext(AudioContext);
@@ -20,16 +21,16 @@ function TopAppBar(){
     const handleAudioAndIconCheck=(iconName)=>{
         if(isPlaying){
             stopAudio()
-            setHandleAudioClicked(null)
+            setHandleIconClicked(null)
         }
-        setClickedIcon(iconName);
+        //setClickedIcon(iconName);
     }
 
     const audioTimer=(time)=>{
         //alert('audio_timer_clicked')
         const timer = setTimeout(() => {
             // Change the state after 30 seconds
-            setHandleAudioClicked(null)
+            setHandleIconClicked(null)
         }, time); // 10 seconds in milliseconds
         // Clean up the timer when the component unmounts or state changes
         return () => clearTimeout(timer);
@@ -40,15 +41,46 @@ function TopAppBar(){
         if(audioIsPlayig){
             stopAudio()
             setAudioIsPlaying(false)
-            setHandleAudioClicked(null)
+            setHandleIconClicked(null)
         }else{
             playAudio(new Audio(audio))
-            setHandleAudioClicked(iconName)
+            setHandleIconClicked(iconName)
             setAudioIsPlaying(true)
             audioTimer(45000)
         }
 
    }
+
+    const location = useLocation();
+    useEffect(() => {
+        // Code to be executed when the route changes
+        //alert('Route has changed:'+ location.pathname);
+        switch (location.pathname){
+            case "/":
+                setClickedIcon('home');
+            break;
+            case "/Help":
+                setClickedIcon('help')
+                break;
+            default:
+                // Code to handle cases other than "/" and "/Help"
+                // For example:
+                setClickedIcon(null);
+                break;
+        }
+
+
+
+
+        // You can perform additional logic or actions based on the route change
+        // ...
+        // Clean up the effect if needed
+        return () => {
+            // Code to clean up the effect, if necessary
+            // This will be called when the component unmounts or when the route changes again
+        };
+    }, [location]);
+
 
 
     return(
@@ -71,13 +103,13 @@ function TopAppBar(){
                         <i className="material-icons" alt="help icon">help</i>
                     </button>
                 </Link>
-               <button className={`icon-buttons top_app_bar volume_icon ${audioClicked === 'twi_audio' ? 'active_icon' : ''}`} onClick={()=> handleAudioClick('twi_audio')}>
+               <button className={`icon-buttons top_app_bar volume_icon ${IconClicked === 'twi_audio' ? 'active_icon' : ''}`} onClick={()=> handleAudioClick('twi_audio')}>
                     🇬🇭Welcome
                     <i className="material-icons" alt="volume icon">volume_up</i>
                 </button>
                 <button className={`icon-buttons top_app_bar volume_icon`} onClick={()=> handleAudioClick('english_audio', welcomeEnglishAudio)}>
                     🇬🇧Welcome
-                    <i className={`material-icons ${audioClicked === 'english_audio' ? 'audio_active' : ''}`} alt="volume icon">volume_up</i>
+                    <i className={`material-icons ${IconClicked === 'english_audio' ? 'audio_active' : ''}`} alt="volume icon">volume_up</i>
                 </button>
                 <InstallButton  />
               {/*  <select id="languageSelector" value={language} onChange={(e) => handleLanguageChange(e.target.value)}>
