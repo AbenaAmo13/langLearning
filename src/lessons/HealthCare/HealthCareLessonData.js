@@ -16,6 +16,20 @@ import MoreHospitalProvidersTwi from "../../audios/healthCare/NHISLessonDataAudi
 import NHISInterviewTwi from "../../audios/healthCare/NHISLessonDataAudios/NHIS_Interview_Twi.mp3"
 import NHIS_ExemptGroupExample from "../../audios/healthCare/NHISLessonDataAudios/NHIS_ExemptGroup_Examples.mp3"
 
+import NHISRegistrationFormTwi from "../../audios/healthCare/NHISRegistrationFormAudios/NHISRegistrationFormTwi.mp3"
+import FullNameTwiAudios from "../../audios/healthCare/NHISRegistrationFormAudios/FullNameTwiAudio.mp3"
+import DateOfBirthTwi from "../../audios/healthCare/NHISRegistrationFormAudios/DateOfBirthTwiAudio.mp3"
+import HomeAndAddressTwi from "../../audios/healthCare/NHISRegistrationFormAudios/HomeAddressTwiAudio.mp3"
+import MaritalStatusTwi from "../../audios/healthCare/NHISRegistrationFormAudios/MaritalStatusTwiAudio.mp3"
+import NHIS_Registration_And_FingerPrintTwi from "../../audios/healthCare/NHISRegistrationFormAudios/NHIS_Registration_And_FingerPrint_Twi.mp3"
+import Preferred_Provider_Twi from "../../audios/healthCare/NHISRegistrationFormAudios/Preffered_Provider_Twi.mp3"
+import WhenIllTwi from "../../audios/healthCare/NHISRegistrationFormAudios/WhenIllTwi.mp3"
+import AgeTwiAudio from "../../audios/healthCare/NHISRegistrationFormAudios/AgeTwiAudio.mp3"
+import TelephoneNumberTwiAudio from "../../audios/healthCare/NHISRegistrationFormAudios/TelephoneNumberTwi.mp3"
+
+
+
+
 
 //Key lesson data
 export const healthCareLessonData=[
@@ -143,7 +157,7 @@ export const NHISRegistrationForm=[
         Image: "" ,
         EnglishWord: "NHIS: Registration Form",
         TwiWord: "",
-        TwiAudio: "",
+        TwiAudio: NHISRegistrationFormTwi,
         EnglishAudio: "",
         KeyMessageEnglish:'After the interview, you will have to fill a registration form with the following information:',
     },
@@ -151,7 +165,7 @@ export const NHISRegistrationForm=[
         Image: "" ,
         EnglishWord: "Full Name",
         TwiWord: "",
-        TwiAudio: "",
+        TwiAudio: FullNameTwiAudios,
         EnglishAudio: "",
         KeyMessageEnglish:'This is your full name as shown in your passport, for e.g Kofi Poku',
     },
@@ -159,7 +173,7 @@ export const NHISRegistrationForm=[
         Image: "" ,
         EnglishWord: "Date of Birth",
         TwiWord: "",
-        TwiAudio: "",
+        TwiAudio: DateOfBirthTwi,
         EnglishAudio: "",
         KeyMessageEnglish:'This is the date that you were born',
     },
@@ -167,7 +181,7 @@ export const NHISRegistrationForm=[
         Image: "" ,
         EnglishWord: "Age",
         TwiWord: "",
-        TwiAudio: "",
+        TwiAudio: AgeTwiAudio,
         EnglishAudio: "",
         KeyMessageEnglish:'This is how old you are currently',
     },
@@ -175,7 +189,7 @@ export const NHISRegistrationForm=[
         Image: "" ,
         EnglishWord: "Marital Status",
         TwiWord: "",
-        TwiAudio: "",
+        TwiAudio: MaritalStatusTwi,
         EnglishAudio: "",
         KeyMessageEnglish:'This is whether or not you are married',
     },
@@ -183,7 +197,7 @@ export const NHISRegistrationForm=[
         Image: "" ,
         EnglishWord: "Mobile Phone Number",
         TwiWord: "",
-        TwiAudio: "",
+        TwiAudio: TelephoneNumberTwiAudio,
         EnglishAudio: "",
         KeyMessageEnglish:'This is the number on your phone',
     },
@@ -191,22 +205,22 @@ export const NHISRegistrationForm=[
         Image: "" ,
         EnglishWord: "Home Address",
         TwiWord: "",
-        TwiAudio: "",
-        EnglishAudio: "",
+        TwiAudio: HomeAndAddressTwi,
+        EnglishAudio: '',
         KeyMessageEnglish:'This is where you live',
     },
     {
         Image: "" ,
         EnglishWord: "NHIS: Picture and Fingerprint",
         TwiWord: "",
-        TwiAudio: "",
+        TwiAudio: NHIS_Registration_And_FingerPrintTwi,
         EnglishAudio: "",
         KeyMessageEnglish:'After filling the form, you will take a picture and scan your fingerprints',
     }, {
         Image: "" ,
         EnglishWord: "NHIS: Select Prefered primary provider",
         TwiWord: "",
-        TwiAudio: "",
+        TwiAudio: Preferred_Provider_Twi,
         EnglishAudio: "",
         KeyMessageEnglish:'Finally you will choose which of the hospitals will be the place you would go to when you get sick. ',
 
@@ -214,7 +228,7 @@ export const NHISRegistrationForm=[
         Image: "" ,
         EnglishWord: "When ill... ",
         TwiWord: "",
-        TwiAudio: "",
+        TwiAudio: WhenIllTwi,
         EnglishAudio: "",
         KeyMessageEnglish:'When sick, you must go to your chosen hospital but if it is an emergency you can get any health care at any health care facility',
 
