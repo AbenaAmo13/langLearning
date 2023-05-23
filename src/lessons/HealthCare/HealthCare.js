@@ -4,15 +4,42 @@ import {LessonContext, LessonDispatchContext} from "../../context/GlobalStateCon
 import KeyWordsLessons from "../../reusable-components/KeyWordsLessons";
 import Question from "../../reusable-components/Questions";
 import CourseSummary from "../../reusable-components/CourseSummary";
+import {LockedStatusObjContext} from "../../App";
 
 function HealthCare(){
+    const {lockedStatusJsonObj, setLockedStatusJsonObj} = useContext(LockedStatusObjContext)
     const lessons = useContext(LessonContext)
     const dispatch = useContext(LessonDispatchContext)
     const healthcareLessonsState = lessons.HealthCareLessons;
+    const numberOfCompletedLessons = healthcareLessonsState.numberOfCompletedLessons
+    const numberOfCompletedQuestions = healthcareLessonsState.numberOfCompletedQuestions
+    const lessonCompleted = healthcareLessonsState.lessonCompleted
+
+
     const [passedBasicLesson, setPassedBasicLesson] = useState(false)
     useEffect(()=>{
         dispatch({ type: "RESET_LESSON", payload: { lesson: healthcareLessonsState.id}});
     }, [])
+
+    useEffect(()=>{
+        const userPoints = healthcareLessonsState.scores;
+        const pointsRequired = healthcareLessonsState.pointsToPassLesson;
+        //console.log("Number of completed questions: " + numberOfCompletedQuestions);
+        if (numberOfCompletedQuestions === healthcareLessonsState.questions.length) {
+            if (userPoints > pointsRequired) {
+                //console.log("you have passed the lessons");
+                const lockedStatus = JSON.parse(localStorage.getItem("lockedStatusData"));
+                lockedStatus.Education = false;
+                localStorage.setItem("lockedStatusData", JSON.stringify(lockedStatus));
+                setLockedStatusJsonObj(lockedStatus);
+                setPassedBasicLesson(true);
+            } else {
+                setPassedBasicLesson(false);
+            }
+        }
+    }, [lessonCompleted, numberOfCompletedQuestions]);
+
+
 
     const healthCareComponents = [
         <MultipleLessons state={healthcareLessonsState} dispatch={dispatch} lessonId={0} />,
@@ -24,10 +51,11 @@ function HealthCare(){
         <MultipleLessons state={healthcareLessonsState} dispatch={dispatch} lessonId={4} />,
         <KeyWordsLessons state={healthcareLessonsState} dispatch={dispatch} lessonId={5} />,
         <Question state={healthcareLessonsState} questionType={"trueorfalse"} dispatch={dispatch} id={2}/>,
-        <MultipleLessons state={healthcareLessonsState} dispatch={dispatch} lessonId={6} />,
+        <CourseSummary state={healthcareLessonsState} dispatch={dispatch} lessonId={8}/>
+      /*  <MultipleLessons state={healthcareLessonsState} dispatch={dispatch} lessonId={6} />,
         <KeyWordsLessons state={healthcareLessonsState} dispatch={dispatch} lessonId={7} />,
         <Question state={healthcareLessonsState} questionType={"matching"} dispatch={dispatch} id={3}/>,
-        <CourseSummary state={healthcareLessonsState} dispatch={dispatch} lessonId={8}/>
+        <CourseSummary state={healthcareLessonsState} dispatch={dispatch} lessonId={8}/>*/
     ];
     //Math.min is used to ensure that the component index does not exceed the maximum index of the lessonComponents Array
     const currentComponentIndex = Math.min(

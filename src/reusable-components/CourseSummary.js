@@ -3,8 +3,8 @@ import {healthCareCourseSummary} from "../lessons/HealthCare/HealthCareLessonDat
 
 function CourseSummary({state, dispatch, lessonId}){
     const currentLesson = state.lessons[lessonId]
-    const courseSummaryItems = currentLesson.courseListItems.map(courseLessons =>
-        <li>{courseLessons}</li>
+    const courseSummaryItems = currentLesson.courseListItems.map((courseLessons, index) =>
+        <li key={index}>{courseLessons}</li>
     );
 
     const previousComponent=()=>{

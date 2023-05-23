@@ -103,13 +103,13 @@ function TopAppBar(){
                         <i className="material-icons" alt="help icon">help</i>
                     </button>
                 </Link>
-               <button className={`icon-buttons top_app_bar volume_icon ${IconClicked === 'twi_audio' ? 'active_icon' : ''}`} onClick={()=> handleAudioClick('twi_audio')}>
+               <button className={`icon-buttons top_app_bar volume_icon`} onClick={()=> handleAudioClick('twi_audio')}>
                     🇬🇭Welcome
-                    <i className="material-icons" alt="volume icon">volume_up</i>
+                    <i className={`material-icons ${IconClicked === 'twi_audio' ? 'audio_active app_bar_active' : ''}`} alt="volume icon">volume_up</i>
                 </button>
                 <button className={`icon-buttons top_app_bar volume_icon`} onClick={()=> handleAudioClick('english_audio', welcomeEnglishAudio)}>
                     🇬🇧Welcome
-                    <i className={`material-icons ${IconClicked === 'english_audio' ? 'audio_active' : ''}`} alt="volume icon">volume_up</i>
+                    <i className={`material-icons ${IconClicked === 'english_audio' ? 'audio_active app_bar_active' : ''}`} alt="volume icon">volume_up</i>
                 </button>
                 <InstallButton  />
               {/*  <select id="languageSelector" value={language} onChange={(e) => handleLanguageChange(e.target.value)}>

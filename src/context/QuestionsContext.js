@@ -39,6 +39,7 @@ function QuestionContextProvider({children, state, dispatch}) {
                 setCorrectNumberAnswers(correctNumberAnswers + 1)
             }
         }
+
         dispatch({ type: "SET_QUESTION_IS_ANSWERED", payload: { lesson: state.id, questionIndex: id, currentQuestionIndex: currentQuestion}});
         //question.isAnswered = true;
         // function code
@@ -89,7 +90,7 @@ function QuestionContextProvider({children, state, dispatch}) {
 
 
     return(
-        <QuestionContext.Provider value={{ handleNextQuestion, checkAnswer, state, dispatch, nextSetOfQuestions, selectedAnswer, setSelectedAnswer, currentQuestion, correctNumberAnswers, setCurrentQuestion, handlePrevQuestion, isPlaying}}>
+        <QuestionContext.Provider value={{ handleNextQuestion, checkAnswer, state, dispatch, nextSetOfQuestions, selectedAnswer, setSelectedAnswer, currentQuestion, correctNumberAnswers, setCurrentQuestion, handlePrevQuestion, isPlaying, CorrectAudio}}>
             {children}
         </QuestionContext.Provider>
     )

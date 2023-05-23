@@ -6,6 +6,7 @@ import QuestionPrompt from "./QuestionPrompt";
 import quizImage from "../images/quizImage.webp";
 
 import RenderResults from "./RenderResults";
+import {AudioContext} from "../context/AudioContext";
 
 
 function MatchingOptionsQuestions({id}) {
@@ -13,9 +14,12 @@ function MatchingOptionsQuestions({id}) {
         handleNextQuestion, checkAnswer,
         handlePrevQuestion, currentQuestion,
         selectedAnswer,nextSetOfQuestions,
-        setSelectedAnswer, isPlaying,
+        setCorrectNumberAnswers,
+        setSelectedAnswer, isPlaying,CorrectAudio,
         dispatch
         } = useContext(QuestionContext)
+    const {playAudio, stopAudio,stopAnswerAudio} = useContext(AudioContext);
+
     const [rightOptionSelected, setRightOptionSelected] = useState(null)
     const [leftOptionSelected, setLeftOptionSelected] = useState(null)
     const [correctPair, setCorrectPair] = useState([]);
@@ -26,7 +30,7 @@ function MatchingOptionsQuestions({id}) {
     const rightInputRefs = useRef([])
     let MatchingOptions = state.questions[id];
     let question = MatchingOptions[currentQuestion];
-    let numberOfPairs = question
+    //let numberOfPairs = question
     //console.log(question)
     const QuestionPromptData = {
         cardTextContent:[{
@@ -128,13 +132,20 @@ function MatchingOptionsQuestions({id}) {
             });
             console.log("Status is" + isOptionPairCorrect)
            if(isOptionPairCorrect){
+
+
+               dispatch({type: "SET_SCORE", payload: {lesson: state.id, score: question.componentScore, value: 10}});
+               stopAnswerAudio()
+               playAudio(CorrectAudio, question.TwiAudio);
                const confirmMatched = "Matched"
-               checkAnswer(question, confirmMatched)
+               setSelectedAnswer(confirmMatched)
+               //checkAnswer(question, confirmMatched, id)
                setPairMatched(prevValue => prevValue + 1);
                setCorrectMatches(prevValue => prevValue + 1);
            }else{
                const denyMatched = "UnMatched"
-               checkAnswer(question, denyMatched)
+               setSelectedAnswer(denyMatched)
+               //checkAnswer(question, denyMatched, id)
                setPairMatched(prevValue => prevValue + 1);
                //Find the correct pair:
                const correctPairValues = question.correctAnswerPairs.find(pair => pair.leftColumn === leftOptionSelected);

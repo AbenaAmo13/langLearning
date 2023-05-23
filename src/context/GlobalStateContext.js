@@ -132,7 +132,7 @@ export function GlobalStatesProvider({ children }) {
                 const fullLesson = lessonState[lesson];
                 //console.log("Full lesson: " + fullLesson)
                 const activeQuestion = fullLesson.questions[questionIndex];
-                //console.log("Active question" + activeQuestion)
+                console.log("Active question" + activeQuestion)
                 const mainCurrentQuestion = activeQuestion[currentQuestionIndex]
                 //const updatedQuestions = mainCurrentQuestion.find(index=> index===questionIndex)
                 mainCurrentQuestion.isAnswered = true

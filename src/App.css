@@ -15,6 +15,10 @@
   background-color: #98ff98;
 }
 
+.app_bar_active{
+  border-radius: 50%;
+}
+
 .active_icon{
   background-color: white!important;
 }
