@@ -1,12 +1,14 @@
 import {createContext, useCallback, useContext, useEffect, useReducer, useState} from "react";
 import answeredCorrectly from "../audios/basics/answeredCorrectlyv2.ogg";
 import {AudioContext} from "./AudioContext";
+import {RewardsContext} from "./RewardsContext";
 export const QuestionContext = createContext();
 
 
 function QuestionContextProvider({children, state, dispatch}) {
     const [CorrectAudio] = useState(() => new Audio(answeredCorrectly));
     const {playAudio, isPlaying, stopAudio,stopAnswerAudio} = useContext(AudioContext);
+    const {userCoins, setUserCoins, updateUserCoins} = useContext(RewardsContext);
     const [correctNumberAnswers, setCorrectNumberAnswers] = useState(0)
     const [selectedAnswer, setSelectedAnswer] = useState(null)
     const [currentQuestion, setCurrentQuestion] = useState(0);
@@ -36,6 +38,7 @@ function QuestionContextProvider({children, state, dispatch}) {
                 playAudio(CorrectAudio, question.TwiAudio);
                 console.log(question.componentScore)
                 dispatch({type: "SET_SCORE", payload: {lesson: state.id, score: question.componentScore, value: 10}});
+                updateUserCoins(8)
                 setCorrectNumberAnswers(correctNumberAnswers + 1)
             }
         }

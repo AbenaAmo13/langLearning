@@ -4,7 +4,7 @@ import AudioPlayer from "../reusable-components/LessonAudioPlayer";
 import {AudioContext} from "../context/AudioContext";
 import {useNavigate} from "react-router";
 
-function Lessons({state, dispatch, lessonId}){
+function MultipleLessons({state, dispatch, lessonId}){
     const { isPlaying, stopAudio } = useContext(AudioContext);
     const currentLesson = state.lessons[lessonId]
     const [currentIndex, setCurrentIndex] = useState(0);
@@ -55,11 +55,26 @@ function Lessons({state, dispatch, lessonId}){
                             <img src={currentLesson[currentIndex].Image} className="card_lesson_image"/>
                         </div>
                         <div className="lesson_card_keywords">
-                            <h3 className="lesson_titles">{currentLesson[currentIndex].EnglishWord}</h3>
-                            <div>
-                                <p className="text_content">{currentLesson[currentIndex].KeyMessageEnglish}</p>
+                            <div className="parallel_text header">
+                                <div className="header_title">
+                                    <h3 className="">{currentLesson[currentIndex].TwiWord}</h3>
+                                </div>
+                                <div className="header_title">
+                                    <h3 className="">{currentLesson[currentIndex].EnglishWord}</h3>
+                                </div>
                             </div>
-
+                            <div className="parallel_text">
+                                <div>
+                                    {currentLesson[currentIndex].KeyMessageTwi.map((text, index) => (
+                                        <p className="text_content" key={index}>{text}</p>
+                                    ))}
+                                </div>
+                                <div>
+                                    {currentLesson[currentIndex].KeyMessageEnglish.map((text, index) => (
+                                        <p className="text_content" key={index}>{text}</p>
+                                    ))}
+                                </div>
+                            </div>
                             <AudioPlayer
                                 twiAudio={currentLesson[currentIndex].TwiAudio}
                                 englishAudio={currentLesson[currentIndex].EnglishAudio}
@@ -102,4 +117,4 @@ function Lessons({state, dispatch, lessonId}){
     )
 }
 
-export default Lessons;
+export default MultipleLessons;

@@ -81,8 +81,8 @@ function HelpPage(){
 
 
         return (
-            <div className="navCard yellowCardOutline help_page">
-                <div className="cardmedia yellowCard2">
+            <div className="navCard help_page">
+                <div className="cardmedia">
                     <img src={cardInfo.image}/>
                 </div>
                 <div className="help_icons_container">

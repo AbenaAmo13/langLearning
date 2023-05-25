@@ -7,16 +7,37 @@ import appBarTestAudio from "./audios/testing.mp3"
 import {Link} from "react-router-dom";
 import LessonAudioPlayer from "./reusable-components/LessonAudioPlayer";
 import {useLocation} from "react-router";
+import coins from "./images/rewardImages/cedis-2.webp";
+import {RewardsContext} from "./context/RewardsContext";
 
 function TopAppBar(){
     //const imagePath = `${process.env.PUBLIC_URL}/empower-us-192.webp`;
     const imagePath = process.env.PUBLIC_URL + '/empower-us-192.webp';
+    const {userCoins, setUserCoins, updateUserCoins} = useContext(RewardsContext);
     const [clickedIcon, setClickedIcon] = useState('home');
     const [IconClicked, setHandleIconClicked] = useState(null)
     const [audioIsPlayig, setAudioIsPlaying]= useState(false)
     console.log(imagePath)
-    const { isPlaying, playAudio, stopAudio } = useContext(AudioContext);
+    const { isPlaying, playAudio, stopAudio, CoinsGainedFromAudio } = useContext(AudioContext);
     const testAudio = appBarTestAudio;
+
+
+    useEffect(() => {
+        const storedCoins = localStorage.getItem('userCoins');
+        const initialCoins = storedCoins ? parseInt(storedCoins) : 0;
+        setUserCoins(initialCoins);
+    }, []);
+
+    useEffect(()=>{
+        if (!localStorage.getItem('userCoins')) {
+            localStorage.setItem('userCoins', JSON.stringify(userCoins));
+        }else {
+            const userCoinsStorage = JSON.parse(localStorage.getItem('userCoins'));
+            setUserCoins(userCoinsStorage)
+        }
+    }, [CoinsGainedFromAudio, userCoins])
+
+
 
     const handleAudioAndIconCheck=(iconName)=>{
         if(isPlaying){
@@ -62,8 +83,8 @@ function TopAppBar(){
             case "/Help":
                 setClickedIcon('help')
                 break;
-            case "/AccountCircle":
-                setClickedIcon('dashboard')
+            case "/RewardStore":
+                setClickedIcon('rewards')
                 break;
 
             default:
@@ -107,21 +128,26 @@ function TopAppBar(){
                         <i className="material-icons" alt="help icon">help</i>
                     </button>
                 </Link>
-                <Link to="/AccountCircle" className="app_bar_routes">
-                    <button className={`icon-buttons top_app_bar ${clickedIcon === 'dashboard' ? 'active_icon' : ''}`} onClick={()=>handleAudioAndIconCheck('dashboard')}>
-                        Dashboard
-                        <i className="material-icons" alt="help icon">account_circle</i>
+                <Link to="/RewardStore" className="app_bar_routes">
+                    <button className={`icon-buttons top_app_bar ${clickedIcon === 'rewards' ? 'active_icon' : ''}`} onClick={()=>handleAudioAndIconCheck('dashboard')}>
+                        Rewards
+                        <i className="material-icons" alt="social leader board icon">stars</i>
                     </button>
                 </Link>
                 <InstallButton  />
-               <button className={`icon-buttons top_app_bar volume_icon`} onClick={()=> handleAudioClick('twi_audio')}>
+                <div className="coins_app_bar">
+                    <img src={coins} alt="coins" className="coin_style_top_app_bar" />
+                    <p className="user_coins">{userCoins}</p>
+                </div>
+
+               {/*<button className={`icon-buttons top_app_bar volume_icon`} onClick={()=> handleAudioClick('twi_audio')} aria-label="volume icon to play text in English">
                     🇬🇭Welcome
-                    <i className={`material-icons ${IconClicked === 'twi_audio' ? 'audio_active app_bar_active' : ''}`} alt="volume icon">volume_up</i>
+                    <i className={`material-icons ${IconClicked === 'twi_audio' ? 'audio_active app_bar_active' : ''}`} alt="volume icon" aria-label="volume icon to play text in Twi">volume_up</i>
                 </button>
-                <button className={`icon-buttons top_app_bar volume_icon`} onClick={()=> handleAudioClick('english_audio', welcomeEnglishAudio)}>
+                <button className={`icon-buttons top_app_bar volume_icon`} onClick={()=> handleAudioClick('english_audio', welcomeEnglishAudio)} aria-label="volume icon to play text in English">
                     🇬🇧Welcome
-                    <i className={`material-icons ${IconClicked === 'english_audio' ? 'audio_active app_bar_active' : ''}`} alt="volume icon">volume_up</i>
-                </button>
+                    <i className={`material-icons ${IconClicked === 'english_audio' ? 'audio_active app_bar_active' : ''}`} alt="volume icon" aria-label="volume icon to play text in English">volume_up</i>
+                </button>*/}
 
               {/*  <select id="languageSelector" value={language} onChange={(e) => handleLanguageChange(e.target.value)}>
                     <option value="Twi" id="twiflag">🇬🇭Twi</option>
@@ -184,7 +210,7 @@ const InstallButton = () => {
 
     return (
         <button onClick={handleInstallApp} className={`download_button icon-buttons top_app_bar ${downloadIconHighlight === 'download' ? 'active_icon' : ''}`}>
-            Download
+            Install
             <i className="material-icons" alt="download icon">download</i>
         </button>
     );

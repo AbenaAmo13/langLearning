@@ -11,6 +11,7 @@ import {AudioContext} from "../../context/AudioContext";
 import MultipleLessons from "../../reusable-components/MultipleLessons";
 import KeyWordsLessons from "../../reusable-components/KeyWordsLessons";
 import CourseSummary from "../../reusable-components/CourseSummary";
+import MultipleLessonsParallel from "../../reusable-components/MultipleLessonsParallel";
 
 function Basics() {
     const {lockedStatusJsonObj, setLockedStatusJsonObj} = useContext(LockedStatusObjContext)

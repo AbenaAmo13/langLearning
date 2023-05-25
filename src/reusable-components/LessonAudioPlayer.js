@@ -4,8 +4,8 @@ import {useContext, useEffect} from "react";
 import {EnglishAudioContext} from "../context/PlayEnglishContext";
  const LessonAudioButtons = ({ twiAudio, englishAudio, englishAudioName, twiAudioName, text}) => {
  const {playAudio, isPlaying, activeName, stopAudio, setActiveName } = useContext(AudioContext);
- const {speakEnglishWords, isReading, stopAudioTextToSpeech}= useContext(EnglishAudioContext)
-
+ //const {speakEnglishWords, isReading, stopAudioTextToSpeech}= useContext(EnglishAudioContext)
+/*
      useEffect(()=>{
          if(!isReading){
              setActiveName(null)
@@ -27,7 +27,7 @@ import {EnglishAudioContext} from "../context/PlayEnglishContext";
 
              });
          }
-     }
+     }*/
 
      const handleEnglishAudioPlay=()=>{
          if(isPlaying && activeName === englishAudioName){
@@ -37,14 +37,14 @@ import {EnglishAudioContext} from "../context/PlayEnglishContext";
          }
      }
 
-     const englishAudioPlay=()=>{
+    /* const englishAudioPlay=()=>{
         if(text){
         handleTextToSpeechPlay()
         }else{
             handleEnglishAudioPlay()
         }
 
-     }
+     }*/
 
 
     return (
@@ -71,7 +71,7 @@ import {EnglishAudioContext} from "../context/PlayEnglishContext";
                 <div>🇬🇧</div>
                 <button
                     className={`volume_icon lesson_volume_icon keyword_volume_icon ${activeName === englishAudioName ? 'audio_active' : ''}`}
-                    onClick={() => englishAudioPlay()}
+                    onClick={() => handleEnglishAudioPlay()}
                 >
                     <i className="material-icons" alt="help icon">
                         volume_up

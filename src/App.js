@@ -12,6 +12,8 @@ import Jobs from "./lessons/Jobs/Jobs";
 import Id from "./lessons/Id/Id"
 import HelpPage from "./HelpPage";
 import {EnglishAudioContextProvider} from "./context/PlayEnglishContext";
+import RewardsStore from "./reusable-components/RewardsStore";
+import RewardsContextProvider from "./context/RewardsContext";
 
 export const LockedStatusObjContext = createContext(null);
 
@@ -31,6 +33,10 @@ function App() {
         IDScore: 0,
         JobsScore: 0
     }
+
+    const userCoins= 0;
+
+
     useEffect(() => {
         if (!localStorage.getItem('lockedStatusData')) {
             console.log("The locked status" + lockedStatusJsonObj)
@@ -39,6 +45,10 @@ function App() {
         }
         if (!localStorage.getItem('userScores')) {
             localStorage.setItem('userScores', JSON.stringify(userScore));
+        }
+
+        if (!localStorage.getItem('userCoins')) {
+            localStorage.setItem('userCoins', JSON.stringify(userCoins));
         }
         setLockedStatusJsonObj(JSON.parse(localStorage.getItem('lockedStatusData')))
         console.log('locked status obj' + JSON.stringify(lockedStatusJsonObj))
@@ -51,7 +61,7 @@ function App() {
 
     return (
         <GlobalStatesProvider>
-            <EnglishAudioContextProvider>
+            <RewardsContextProvider>
             <AudioContextProvider>
                 <LockedStatusContextProvider lockedStatusJsonObj={lockedStatusJsonObj} setLockedStatusJsonObj={setLockedStatusJsonObj}>
                     <div className="App">
@@ -65,13 +75,13 @@ function App() {
                                 <Route path="/Education" element={lockedStatusJsonObj && lockedStatusJsonObj.Education === false ? (<Education/>) : (<Navigate to="/"/>)}/>
                                 <Route path="/Jobs" element={lockedStatusJsonObj && lockedStatusJsonObj.Jobs === false ? (<Jobs/>) : (<Navigate to="/"/>)}/>
                                 <Route path="/Id" element={lockedStatusJsonObj && lockedStatusJsonObj.Identification === false ? (<Id/>) : (<Navigate to="/"/>)}/>
-
+                                <Route path="/RewardStore" element={<RewardsStore/>}/>
                             </Routes>
                         </BrowserRouter>
                     </div>
                 </LockedStatusContextProvider>
             </AudioContextProvider>
-            </EnglishAudioContextProvider>
+            </RewardsContextProvider>
         </GlobalStatesProvider>
     );
 }

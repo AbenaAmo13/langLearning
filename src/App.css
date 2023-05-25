@@ -3,6 +3,11 @@
   /*text-align: center*/;
 }
 
+.user_coins{
+  font-weight: bolder;
+  font-size: 20px;
+}
+
 
 /*body
 @media (orientation: portrait) {
@@ -10,7 +15,23 @@
     background-size: auto 100vh;
   }
 }*/
+.header_title{
+  min-width: 50%;
+}
 
+.coins_app_bar{
+  display: flex;
+  align-items: center;
+}
+
+.parallel_text.header{
+width: 100%;
+  gap: 0;
+}
+.parallel_text{
+  display: flex;
+  gap: 20px;
+}
 .audio_active{
   background-color: #98ff98;
 }
@@ -21,6 +42,8 @@
 
 .active_icon{
   background-color: white!important;
+  border-radius: 4px;
+  padding: 8px;
 }
 
 .navCard.yellowCardOutline.help_page {
@@ -108,13 +131,51 @@ padding: 6px 16px;
   justify-content: space-between;
 }
 
-
+.question_button_divs{
+  background-color: white;
+}
+/*
 html, body {
   background: url("./images/backgroundPic.svg") no-repeat center center fixed;
   background-size: cover;
-  /*background-size: cover;*/
+  !*background-size: cover;*!
 
 }
+*/
+
+.navCard.help_page{
+  height: 100%;
+}
+
+.cardmedia{
+  /*background-color: #ffe2b0;*/
+}
+
+html, body {
+  /*background: linear-gradient(to bottom, #ffdedb, #ffefcc, #ccffd9);*/
+  /*background: linear-gradient(to bottom, #ffdedb, #ffefcc, #ccffd9);*/
+
+  /*background: linear-gradient(to bottom, #5c90c1, #b0d4e6);*/
+  min-height: 100vh;
+
+  background: linear-gradient(to bottom, #7ad4f1, #b6d2d2);
+
+
+
+
+  /*background: linear-gradient(to bottom, #b2d8d8, #e6f1f1);*/
+
+
+
+
+
+
+
+
+  /*background: linear-gradient(to bottom, #5f9ea0, #8fbfc1);*/
+
+}
+
 
 .download_button{
   display: flex;
@@ -362,7 +423,8 @@ button.selected{
 
 .start-button{
   padding: 20%;
-  background-color: palegreen;
+  /*background-color: palegreen;*/
+  background-color: antiquewhite;
   border: solid 1px;
   border-radius: 4px;
   font-size: 18px;
@@ -782,6 +844,28 @@ progress::-moz-progress-bar {
 
 
 @media only screen and (min-width: 767px){
+
+  .reward_container{
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    padding: 3%;
+    justify-content: space-evenly;
+  }
+
+  .coins_div{
+    display: flex;
+    align-items: center;
+  }
+  .coins_text{
+    font-size: 22px;
+  }
+
+
+  .coin_style{
+    width: 30%;
+  }
+
 
   /*NavBar Element Stylings*/
 .overall_lessons_container{

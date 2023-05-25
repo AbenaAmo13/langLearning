@@ -26,7 +26,7 @@ function QuestionPrompt({state,dispatch, questionPromptData, id}) {
 
     return(
         <div>
-            <div className="card_component_container purpleCardOutline">
+            <div className="card_component_container">
                 <div className="card_component_image" >
                     <img src={questionPromptData.quizImage}/>
                 </div>
@@ -38,7 +38,7 @@ function QuestionPrompt({state,dispatch, questionPromptData, id}) {
                         </p>
                     ))}
                 </div>
-                <div>
+                <div className="question_button_divs">
                   {/*  <div className="volume_button_divs">
                         <div>🇬🇭</div>
                         <button

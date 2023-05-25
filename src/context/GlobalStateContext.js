@@ -62,11 +62,13 @@ export function GlobalStatesProvider({ children }) {
         switch (action.type) {
             case "SET_SCORE": {
                 const { lesson, score, value } = action.payload;
-                const userScore = JSON.parse(localStorage.getItem('userScores'));
-                const originalScore = userScore[score];
+                //const userScore = JSON.parse(localStorage.getItem('userScores'));
+                //const originalScore = userScore[score];
+                const originalScore = lessonState[lesson].scores
+                //alert(originalScore)
                 const updatedScore = originalScore + value;
-                userScore[score] = updatedScore;
-                localStorage.setItem('userScores', JSON.stringify(userScore));
+                //userScore[score] = updatedScore;
+                //localStorage.setItem('userScores', JSON.stringify(userScore));
                 return {
                     ...lessonState,
                     [lesson]: {

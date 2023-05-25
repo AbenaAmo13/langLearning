@@ -126,7 +126,7 @@ function KeyWordsLessons({state, dispatch, lessonId}){
     const promptView=()=>{
         return(
             <div>
-                <div className="card_component_container purpleCardOutline">
+                <div className="card_component_container blueCardOutline">
                     <div className="card_component_content">
                         <h3 className="card_component_title">{keyWordPromptText.title}</h3>
                         {keyWordText}

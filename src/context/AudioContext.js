@@ -1,4 +1,5 @@
-import React, {createContext, useState, useRef, useEffect} from 'react';
+import React, {createContext, useState, useRef, useEffect, useContext} from 'react';
+import {RewardsContext} from "./RewardsContext";
 
 export const AudioContext = createContext();
 
@@ -6,6 +7,8 @@ export const AudioContext = createContext();
     const [isPlaying, setIsPlaying] = useState(false);
     const [activeName, setActiveName] = useState(null)
     const audioRef = useRef(null);
+     const {userCoins, setUserCoins, updateUserCoins} = useContext(RewardsContext);
+     const [CoinsGainedFromAudio, setCoinsGainedFromAudio]= useState(0)
     const playAudio = (audio, audioName) => {
         if(isPlaying){
             stopAudio()
@@ -41,17 +44,24 @@ export const AudioContext = createContext();
         const audio = audioRef.current;
         if(audio){
             audio.onended= function() {
+                //alert()
                 stopAudio()
+                updateUserCoins(2)
+                //alert('Your coins have increased by 2')
                 /*setIsPlaying(false);
                 setActiveName(null)*/
                 //alert('Audio has ended');
-            };;
+            };
+
+
         }
+
+
 
     }, [isPlaying]);
 
     return (
-        <AudioContext.Provider value={{ isPlaying, playAudio, stopAudio, activeName, stopAnswerAudio, setActiveName}}>
+        <AudioContext.Provider value={{ isPlaying, playAudio, stopAudio, activeName, stopAnswerAudio, setActiveName, CoinsGainedFromAudio}}>
             {children}
         </AudioContext.Provider>
     );

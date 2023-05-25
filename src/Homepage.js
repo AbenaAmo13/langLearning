@@ -136,8 +136,8 @@ function Homepage() {
 
         <div className="navBar">
             {navBarElements.map((navElement, index) => (
-                <div key={index} className={`navCard ${navElement.className}`}>
-                    <div className={`cardmedia ${navElement.classNameMedia}`}>
+                <div key={index} className={`navCard`}>
+                    <div className={`cardmedia`}>
                         <img src={navElement.Image} alt={navElement.NavBarTitleEnglish}  className="cardImg " />
                     </div>
                    <div>
