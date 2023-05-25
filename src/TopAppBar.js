@@ -26,6 +26,7 @@ function TopAppBar(){
         const storedCoins = localStorage.getItem('userCoins');
         const initialCoins = storedCoins ? parseInt(storedCoins) : 0;
         setUserCoins(initialCoins);
+        //alert(window.location.pathname)
     }, []);
 
     useEffect(()=>{

@@ -48,6 +48,12 @@ function Basics() {
         const pointsRequired = basicLessonState.pointsToPassLesson;
       //console.log("Number of completed questions: " + numberOfCompletedQuestions);
         if (numberOfCompletedQuestions === basicLessonState.questions.length) {
+            const userScoreObject = JSON.parse(localStorage.getItem("userScores"));
+            let maxUserScore = userScoreObject[basicLessonState.userScoreName]
+            if(userPoints > maxUserScore){
+                userScoreObject[basicLessonState.userScoreName] = userPoints
+                localStorage.setItem('userScores', JSON.stringify(userScoreObject))
+            }
             if (userPoints > pointsRequired) {
                 //console.log("you have passed the lessons");
                 const lockedStatus = JSON.parse(localStorage.getItem("lockedStatusData"));

@@ -1,15 +1,22 @@
-import {createContext, useEffect, useReducer, useState} from 'react';
+import {createContext, useReducer} from 'react';
 import {
-    basicLessonData, basicsCourseSummary,
+    basicLessonData,
+    basicsCourseSummary,
     basicsKeyWords,
     basicsMCQS,
     trueOrFalseQuestions
 } from "../lessons/Basics/BasicsLessonData";
-import {basicsMCQHealthCare, healthCareKeyWordsData, healthCareLessonData, MatchingWordsQuestions, NHISKeyWordsData, NHISLessonData,
+import {
+    basicsMCQHealthCare,
+    healthCareCourseSummary,
+    healthCareKeyWordsData,
+    healthCareLessonData,
+    MatchingWordsQuestions,
+    NHISKeyWordsData,
+    NHISLessonData,
     NHISRegistrationForm,
     RegistrationFormKeyWords,
-    trueOrFalseQuestionsHealth,
-    healthCareCourseSummary
+    trueOrFalseQuestionsHealth
 } from "../lessons/HealthCare/HealthCareLessonData";
 import {
     educationLessonData,
@@ -25,6 +32,7 @@ export function GlobalStatesProvider({ children }) {
         BasicLessons: {
             id: "BasicLessons", //id of the lessons
             scores: 0, //stores user score
+            userScoreName: "BasicsScore",
             lessons: [basicLessonData, basicsKeyWords, basicsCourseSummary], //lessons
             numberOfCompletedLessons: 0, //used to trigger component rendering
             numberOfCompletedQuestions: 0, //used to trigger component rendering
@@ -36,6 +44,7 @@ export function GlobalStatesProvider({ children }) {
         HealthCareLessons: {
             id: "HealthCareLessons",
             scores: 0,
+            userScoreName: "HealthScore",
             lessons:[healthCareLessonData, healthCareKeyWordsData, NHISLessonData, NHISKeyWordsData, NHISRegistrationForm, RegistrationFormKeyWords, healthCareCourseSummary],
             numberOfCompletedLessons: 0,
             numberOfCompletedQuestions: 0,
@@ -47,6 +56,7 @@ export function GlobalStatesProvider({ children }) {
         EducationLessons: {
             id: "EducationLessons",
             scores: 0,
+            userScoreName: "EducationScore",
             lessons:[educationLessonData, educationLessonDataKeyWords, NHISLessonData, NHISKeyWordsData, NHISRegistrationForm, RegistrationFormKeyWords, healthCareCourseSummary],
             numberOfCompletedLessons: 0,
             numberOfCompletedQuestions: 0,
@@ -61,14 +71,16 @@ export function GlobalStatesProvider({ children }) {
     function lessonReducer(lessonState, action) {
         switch (action.type) {
             case "SET_SCORE": {
-                const { lesson, score, value } = action.payload;
-                //const userScore = JSON.parse(localStorage.getItem('userScores'));
-                //const originalScore = userScore[score];
+                const { lesson, value } = action.payload;
                 const originalScore = lessonState[lesson].scores
-                //alert(originalScore)
                 const updatedScore = originalScore + value;
-                //userScore[score] = updatedScore;
-                //localStorage.setItem('userScores', JSON.stringify(userScore));
+
+             /*   const userScore = JSON.parse(localStorage.getItem('userScores'));
+                const originalUserScore = userScore[score]
+                userScore[score] = originalUserScore + value;
+                localStorage.setItem('userScores', JSON.stringify(userScore));*/
+                //const resetScore = JSON.parse(localStorage.getItem('userScores'));;
+
                 return {
                     ...lessonState,
                     [lesson]: {
@@ -78,10 +90,10 @@ export function GlobalStatesProvider({ children }) {
                 };
             }
             case "RESET_SCORE": {
-                const { lesson, score } = action.payload;
-                const resetScore = JSON.parse(localStorage.getItem('userScores'));
-                resetScore[score] = 0;
-                localStorage.setItem('userScores', JSON.stringify(resetScore));
+                const { lesson} = action.payload;
+                //const resetScore = JSON.parse(localStorage.getItem('userScores'));
+                //resetScore[score] = 0;
+               // localStorage.setItem('userScores', JSON.stringify(resetScore));
                 return {
                     ...lessonState,
                     [lesson]: {

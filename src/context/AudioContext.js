@@ -1,14 +1,16 @@
 import React, {createContext, useState, useRef, useEffect, useContext} from 'react';
 import {RewardsContext} from "./RewardsContext";
 
+
+
 export const AudioContext = createContext();
 
  export const AudioContextProvider = ({ children }) => {
-    const [isPlaying, setIsPlaying] = useState(false);
+     const [isPlaying, setIsPlaying] = useState(false);
     const [activeName, setActiveName] = useState(null)
     const audioRef = useRef(null);
      const {userCoins, setUserCoins, updateUserCoins} = useContext(RewardsContext);
-     const [CoinsGainedFromAudio, setCoinsGainedFromAudio]= useState(0)
+     const [dontAddCoins, setDontAddCoins]= useState(false)
     const playAudio = (audio, audioName) => {
         if(isPlaying){
             stopAudio()
@@ -40,13 +42,52 @@ export const AudioContext = createContext();
         }
     }
 
+
+
+    const addUserCoins=()=>{
+        const audio = audioRef.current
+        switch (window.location.pathname){
+            case "/":
+                //alert('You are in the main place')
+                setDontAddCoins(true)
+                break;
+            case "/Help":
+                setDontAddCoins(true)
+                break;
+            case "/RewardStore":
+                setDontAddCoins(true)
+                break;
+
+            default:
+                setDontAddCoins(false)
+                // Code to handle all the other cases
+                break;
+        }
+      /*  if(audio){
+            const audioString = audio.toString()
+            //alert(audioString)
+            if(audioString.includes("answeredCorrectly")){
+                //alert("audio being played is" + audioRef.current.src)
+                //setDontAddCoins(true)
+            }
+        }*/
+
+
+    }
+
+
     useEffect(() => {
+        addUserCoins()
         const audio = audioRef.current;
         if(audio){
             audio.onended= function() {
-                //alert()
-                stopAudio()
-                updateUserCoins(2)
+                //alert(audio.src)
+               stopAudio()
+                //alert("Dont add coin is" + dontAddCoins)
+                if(!dontAddCoins){
+                    updateUserCoins(2)
+                }
+
                 //alert('Your coins have increased by 2')
                 /*setIsPlaying(false);
                 setActiveName(null)*/
@@ -61,7 +102,7 @@ export const AudioContext = createContext();
     }, [isPlaying]);
 
     return (
-        <AudioContext.Provider value={{ isPlaying, playAudio, stopAudio, activeName, stopAnswerAudio, setActiveName, CoinsGainedFromAudio}}>
+        <AudioContext.Provider value={{ isPlaying, playAudio, stopAudio, activeName, stopAnswerAudio, setActiveName}}>
             {children}
         </AudioContext.Provider>
     );

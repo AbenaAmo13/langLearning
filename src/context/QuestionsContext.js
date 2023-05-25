@@ -1,4 +1,4 @@
-import {createContext, useCallback, useContext, useEffect, useReducer, useState} from "react";
+import {createContext, useCallback, useContext, useEffect, useReducer, useState, useRef} from "react";
 import answeredCorrectly from "../audios/basics/answeredCorrectlyv2.ogg";
 import {AudioContext} from "./AudioContext";
 import {RewardsContext} from "./RewardsContext";
@@ -8,6 +8,7 @@ export const QuestionContext = createContext();
 function QuestionContextProvider({children, state, dispatch}) {
     const [CorrectAudio] = useState(() => new Audio(answeredCorrectly));
     const {playAudio, isPlaying, stopAudio,stopAnswerAudio} = useContext(AudioContext);
+    //const questionIndex = useRef(0)
     const {userCoins, setUserCoins, updateUserCoins} = useContext(RewardsContext);
     const [correctNumberAnswers, setCorrectNumberAnswers] = useState(0)
     const [selectedAnswer, setSelectedAnswer] = useState(null)
@@ -27,6 +28,7 @@ function QuestionContextProvider({children, state, dispatch}) {
 
 
     const checkAnswer = useCallback((question, answer, id) => {
+       //questionIndex.current = id
         let correctAnswer = question.Answer;
         setSelectedAnswer(answer)
         console.log("Question: " + question.Question)
@@ -36,13 +38,12 @@ function QuestionContextProvider({children, state, dispatch}) {
             if (answer === correctAnswer) {
                 stopAnswerAudio()
                 playAudio(CorrectAudio, question.TwiAudio);
-                console.log(question.componentScore)
-                dispatch({type: "SET_SCORE", payload: {lesson: state.id, score: question.componentScore, value: 10}});
-                updateUserCoins(8)
+                //console.log(question.componentScore)
+                dispatch({type: "SET_SCORE", payload: {lesson: state.id, value: 10}});
+                updateUserCoins(10)
                 setCorrectNumberAnswers(correctNumberAnswers + 1)
             }
         }
-
         dispatch({ type: "SET_QUESTION_IS_ANSWERED", payload: { lesson: state.id, questionIndex: id, currentQuestionIndex: currentQuestion}});
         //question.isAnswered = true;
         // function code

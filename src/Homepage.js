@@ -22,6 +22,7 @@ import educationAudio from "./audios/homepage/educationaudio.mp3"
 import identificationAudio from "./audios/homepage/identification.mp3"
 import adwuma from "./audios/homepage/adwuma.mp3"
 import LessonAudioPlayer from "./reusable-components/LessonAudioPlayer";
+import coins from "./images/rewardImages/cedi.webp";
 
 
 function Homepage() {
@@ -133,7 +134,9 @@ function Homepage() {
             </div>
 
         </div>*/}
-
+        <div className="navCard scoreCard">
+           <p className="score_rec_text"> Based on your scores, we reccomend you take: The Course Outline lesson</p>
+        </div>
         <div className="navBar">
             {navBarElements.map((navElement, index) => (
                 <div key={index} className={`navCard`}>

@@ -18,7 +18,12 @@
 .header_title{
   min-width: 50%;
 }
-
+.navCard.scoreCard{
+  display: flex;
+  align-items: center;
+  width: 50%;
+  margin: 2% auto;
+}
 .coins_app_bar{
   display: flex;
   align-items: center;
@@ -766,6 +771,21 @@ progress::-moz-progress-bar {
 
 
 @media only screen and (max-width: 767px){
+
+  .navCard.scoreCard{
+    width: 90%;
+
+  }
+
+  .coin_style_top_app_bar{
+    width: 22px;
+  }
+  .user_coins{
+    font-size: 18px;
+  }
+  .score_rec_text{
+    padding: 3%;
+  }
 
   .appbar-icons{
     width: 100%;

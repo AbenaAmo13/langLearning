@@ -15,7 +15,7 @@ function QuestionPrompt({state,dispatch, questionPromptData, id}) {
     }
     function ready(){
         if(id===0){
-            dispatch({type:"RESET_SCORE",  payload: { lesson: state.id, score: questionPromptData.questions.componentScore}})
+            dispatch({type:"RESET_SCORE",  payload: { lesson: state.id}})
         }
         dispatch({ type: "RESET_QUESTION", payload: { lesson: state.id, index: id}});
         dispatch({ type: "SET_QUESTION_STARTED", payload: { lesson: state.id, started: true }});

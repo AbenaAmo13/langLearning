@@ -138,20 +138,27 @@ function TrueOrFalseComponent({id}){
                                             twiAudioName={question.Answer === 'True' ? correctAnswerIsTrueAudioTwi  : isFalseTwiAudio}
                                         />
                                     </div>
-                                )}
+                                )
+
+                                }
                             </div>
                         )}
                     </div>
-                    <div  className="overall_lessons_container action_buttons">
-                        <button onClick={()=> handlePrevQuestion()} /*disabled={currentQuestion === 0}*/  className="lesson_buttons mcq_buttons">
-                            <i className="material-icons" alt="help icon">arrow_back</i>
-                            <p>BACK </p>
-                        </button>
-                        <button onClick={()=> handleNextQuestion()} disabled={currentQuestion===trueOrFalseQuestions.length}  className="lesson_buttons mcq_buttons" >
-                            <p>NEXT </p>
-                            <i className="material-icons" alt="help icon">arrow_forward</i>
-                        </button>
-                    </div>
+                    {selectedAnswer && (
+                        <div  className="overall_lessons_container action_buttons">
+                            <button onClick={()=> handlePrevQuestion()} /*disabled={currentQuestion === 0}*/  className="lesson_buttons mcq_buttons">
+                                <i className="material-icons" alt="help icon">arrow_back</i>
+                                <p>BACK </p>
+                            </button>
+                            <button onClick={()=> handleNextQuestion()} disabled={currentQuestion===trueOrFalseQuestions.length}  className="lesson_buttons mcq_buttons" >
+                                <p>NEXT </p>
+                                <i className="material-icons" alt="help icon">arrow_forward</i>
+                            </button>
+                        </div>
+
+                    )}
+
+
                 </div>
 
             </div>
