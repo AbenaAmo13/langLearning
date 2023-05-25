@@ -8,6 +8,10 @@
   font-size: 20px;
 }
 
+.pointing_hands{
+  width: 60px;
+}
+
 
 /*body
 @media (orientation: portrait) {
@@ -404,6 +408,13 @@ button.selected{
   color: #2365ae
 }
 
+
+
+.audio_container{
+  display: flex;
+  align-items: center;
+}
+
 .keyword_volume_icon{
   margin-top: 3%;
   padding:50%!important;
@@ -514,6 +525,8 @@ background: transparent;
   display: flex;
   align-items: center;
 }
+
+
 
 
 .icon-buttons{
@@ -668,6 +681,8 @@ background: transparent;
 
 
 
+
+
 progress {
   height: 40px;
   width: 100%;
@@ -777,6 +792,14 @@ progress::-moz-progress-bar {
 
 }
 
+.start-button.purchase-button{
+  padding: 7%;
+}
+
+.purchase_div{
+  display: flex;
+}
+
 
 .purchased_item{
   display: flex;
@@ -797,6 +820,20 @@ progress::-moz-progress-bar {
 }
 
 @media only screen and (max-width: 767px){
+
+
+
+
+  .importantAudioPlayer{
+    padding: 1%;
+    width: 50%;
+
+  }
+
+  .navCard.importantAudioPlayer{
+    margin: 2% auto;
+  }
+
 
 
   .reward_container{
@@ -907,6 +944,9 @@ progress::-moz-progress-bar {
 
     padding: 5%;
   }
+  .navCard.rewards_cards{
+    padding: 2%;
+  }
 
 
 }
@@ -914,7 +954,21 @@ progress::-moz-progress-bar {
 
 
 
+
+
 @media only screen and (min-width: 767px){
+
+
+
+
+  .navCard.rewards_cards{
+    padding: 1%;
+  }
+  .navCard.importantAudioPlayer{
+    width: 25%;
+    margin: 2% auto;
+    padding: 0.5%;
+  }
 
   .reward_container{
     display: flex;
@@ -984,12 +1038,6 @@ progress::-moz-progress-bar {
   .mcq_buttons{
     flex-shrink: 0;
   }
-
-
-
-
-
-
   /*Card Component stylings*/
   .card_component_container{
     width: 50%;

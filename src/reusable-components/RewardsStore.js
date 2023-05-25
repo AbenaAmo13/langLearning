@@ -6,9 +6,14 @@ import goldMedal from "../images/rewardImages/gold-medal.webp"
 import afroBeat from "../images/rewardImages/afrobeat.webp"
 import blackStart from "../images/rewardImages/black-star.webp"
 import coins from "../images/rewardImages/cedi.webp"
+import pointhands from "../images/rewardImages/pointinghand.gif"
+import testingAudios from "../audios/introduction.mp3"
 import celebrations from "../images/rewardImages/confetti.webp"
 import {useContext, useEffect, useState} from "react";
 import {RewardsContext} from "../context/RewardsContext";
+import LessonAudioPlayer from "./LessonAudioPlayer";
+import OverviewAudios from "./OverViewAudios";
+import {AudioContext} from "../context/AudioContext";
 
  function RewardsStore() {
      const {userCoins, setUserCoins, updateUserCoins} = useContext(RewardsContext);
@@ -20,13 +25,10 @@ import {RewardsContext} from "../context/RewardsContext";
          setPersonalRewards(initialRewards);
          //alert(window.location.pathname)
      }, []);
-
      useEffect(() => {
          // Save the updated userRewards to localStorage whenever it changes
          localStorage.setItem('personalRewards', JSON.stringify(userRewards));
      }, [userRewards]);
-
-
      const unlockableRewardsItems = [
         { name: 'AfricaImage', coinsRequired: 50, image: africaImage, purchased: false},
         { name: 'AfroBeat', coinsRequired: 120, image: afroBeat, purchased: false },
@@ -36,9 +38,6 @@ import {RewardsContext} from "../context/RewardsContext";
         { name: 'Trophy', coinsRequired: 800, image: trophy, purchased: false },
         // Add more virtual items and their respective coin thresholds
     ];
-
-     //const rewardsPurchased =['AfricaImage', 'AfroBeat', 'GoldMedal']
-
      const unlockedRewards = unlockableRewardsItems.filter(reward => userRewards.includes(reward.name))
      const lockedRewards = unlockableRewardsItems.filter(reward => !userRewards.includes(reward.name))
 
@@ -52,17 +51,20 @@ import {RewardsContext} from "../context/RewardsContext";
      const purchaseItem=(price, itemName)=>{
          if(price> userCoins){
              setSuccessPurchase(false)
-             alert(successPurchase)
+             //alert(successPurchase)
          }else{
              updateUserCoins(-price)
              setSuccessPurchase(true)
              // Add the purchased item to the userRewards array
              setPersonalRewards(prevRewards => [...prevRewards, itemName]);
-
          }
      }
      return (
          <div>
+             <OverviewAudios
+                 englishAudio={testingAudios}
+                 englishAudioName={testingAudios}
+             />
              {
                  successPurchase !== null &&(
                      successPurchase=== true ? (
@@ -83,7 +85,6 @@ import {RewardsContext} from "../context/RewardsContext";
                          <div className="purchased_item">
                              {/*<img src={celebrations} alt="celebrations" />*/}
                              <i className="material-icons" alt="circle checkmark" aria-label="check_circle">check_circle</i>
-
                          </div>
                          <div className="cardmedia">
                              <img src={item.image} alt={item.name} />
@@ -93,7 +94,7 @@ import {RewardsContext} from "../context/RewardsContext";
                  ))}
 
                  {lockedRewards.map((item, index) => (
-                     <div key={index} className="navCard rewards_cards">
+                     <div key={index} className="navCard rewards_cards" onClick={()=>purchaseItem(item.coinsRequired, item.name)}>
                          <div className="cardmedia">
                              <img src={item.image} alt={item.name} />
                          </div>
@@ -102,17 +103,15 @@ import {RewardsContext} from "../context/RewardsContext";
                                  <img src={coins} alt="coins" className="coin_style" />
                                  <p className="coins_text">{item.coinsRequired}</p>
                              </div>
-                             <button onClick={()=> purchaseItem(item.coinsRequired, item.name)}>Buy me</button>
+                             <div className="purchase_div">
+                                 <button className="start-button purchase-button" onClick={()=> purchaseItem(item.coinsRequired, item.name)}>Buy me</button>
+                             </div>
 
                          </div>
                      </div>
                  ))}
-
-
              </div>
          </div>
-
-
     );
 
 }
