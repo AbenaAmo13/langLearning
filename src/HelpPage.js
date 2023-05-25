@@ -20,6 +20,7 @@ import TwiAudioForDownload from "./audios/helppage/downloadtwi.mp3"
 import TwiAudioForLessons from "./audios/helppage/lessonsTwi.mp3"
 import TwiAudioForQuestions from "./audios/helppage/questionsTwi.mp3"
 import TwiAudioForNavigation from "./audios/helppage/navigationTwi.mp3"
+import OverviewAudios from "./reusable-components/OverViewAudios";
 
 function HelpPage(){
     /*Teach users how to download the application on their phone*/
@@ -127,6 +128,7 @@ function HelpPage(){
 
 
     return(<div>
+    <OverviewAudios/>
        <HelpCardList cards={helpCardInformation}/>
     </div>)
 }

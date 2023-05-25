@@ -1,6 +1,9 @@
 
 import logo from "./logo.svg";
 import {Link} from "react-router-dom";
+import Pointhands from "./images/rewardImages/pointinghand2.gif";
+import PointDownwards from "./images/rewardImages/downwardpoint.gif";
+
 import {useContext, useEffect, useState} from "react";
 import {AudioContext} from "./context/AudioContext";
 import healthImage from "./images/healthservice.webp"
@@ -14,6 +17,8 @@ import ghanahealthservice from "./audios/homepage/ghanahealthservice.mp3"
 import identification from "./audios/homepage/nationalidentification.mp3"
 import educationEnglish from "./audios/homepage/ghanaeducationservice.mp3"
 import jobsEnglishAudio from "./audios/homepage/jobs.mp3"
+import overviewtwi from "./audios/homepage/overviewtwi.mp3"
+import overviewenglish from "./audios/homepage/overview_english.mp3"
 
 
 
@@ -23,11 +28,13 @@ import identificationAudio from "./audios/homepage/identification.mp3"
 import adwuma from "./audios/homepage/adwuma.mp3"
 import LessonAudioPlayer from "./reusable-components/LessonAudioPlayer";
 import coins from "./images/rewardImages/cedi.webp";
+import OverviewAudios from "./reusable-components/OverViewAudios";
 
 
 function Homepage() {
     //let audio = new Audio(process.env.PUBLIC_URL + '/audio/introduction.mp3')
     const {playAudio, activeName, isPlaying, stopAudio} = useContext(AudioContext);
+    const [personalRecommendedLesson, setPersonalRecommendedLesson] = useState(null)
     const [status, setStatus]= useState({})
 
     const lockedStatusObj =
@@ -104,9 +111,6 @@ function Homepage() {
 
         }
     ]
-
-
-
     useEffect(() => {
         if (!localStorage.getItem('lockedStatusData')) {
             localStorage.setItem('lockedStatusData', JSON.stringify(lockedStatusObj));
@@ -121,22 +125,50 @@ function Homepage() {
         setStatus(status)
     }, [])
 
+    useEffect(() => {
+        const lockedStatus = JSON.parse(localStorage.getItem('lockedStatusData'));
+        const userScores = JSON.parse(localStorage.getItem('userScores'));
+        let lowestUnlockedScore = Infinity;
+        let recommendedLesson = null;
+        // Find the lesson with the lowest unlocked score
+        Object.entries(lockedStatus).forEach(([key, value]) => {
+            const userScoreKey = key+"Score";
+            if (!value && userScores[userScoreKey] < lowestUnlockedScore) {
+                lowestUnlockedScore = userScores[userScoreKey];
+                recommendedLesson = key;
+            }
+        });
+        //alert(recommendedLesson)
+        switch(recommendedLesson){
+            case "Health":
+                setPersonalRecommendedLesson("Ghana Health Service")
+                break;
+            case "Basics":
+                setPersonalRecommendedLesson("Course Outline")
+                break;
+            case "Education":
+                setPersonalRecommendedLesson("Ghana Education Service")
+                break;
+            case "Identification":
+                setPersonalRecommendedLesson("National Identification Authority")
+                break;
+            case "Jobs":
+                setPersonalRecommendedLesson("Jobs")
+                break;
+        }
+    }, []);
+
+
+
+
+
+
     return(
     <div>
-       {/* <div className="card_box">
-            <div className="card_title">
-                <h2>Welcome </h2>
+            <div className="navCard scoreCard">
+                <p className="score_rec_text"> Based on your scores, we recommend you take the lesson: <b>{personalRecommendedLesson}</b></p>
+                <LessonAudioPlayer/>
             </div>
-            <div className="volume_div">
-                <button className="volume_icon lesson_volume_icon main_audio" >
-                    <i className="material-icons" alt="help icon">volume_up</i>
-                </button>
-            </div>
-
-        </div>*/}
-        <div className="navCard scoreCard">
-           <p className="score_rec_text"> Based on your scores, we reccomend you take: The Course Outline lesson</p>
-        </div>
         <div className="navBar">
             {navBarElements.map((navElement, index) => (
                 <div key={index} className={`navCard`}>
@@ -194,9 +226,13 @@ function Homepage() {
                                </i>
                            </button>
                            {navElement.locked_status ===false &&(
-                               <Link key={index} to={`/${navElement.Link}`} className= "nav_link_routers">
-                                   <button className="start-button">START</button>
-                               </Link>
+                               <div>
+                                   <img src={PointDownwards} className="pointing_hands top_app_pointing" alt="pointing hands"/>
+                                   <Link key={index} to={`/${navElement.Link}`} className= "nav_link_routers">
+                                       <button className="start-button">START</button>
+                                   </Link>
+                               </div>
+
                            )}
                        </div>
                    </div>

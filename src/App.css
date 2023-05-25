@@ -12,6 +12,10 @@
   width: 60px;
 }
 
+.top_app_pointing.pointing_hands{
+  display: flex;
+}
+
 
 /*body
 @media (orientation: portrait) {
@@ -225,6 +229,9 @@ html, body {
   padding: 6px 16px;
 }
 
+.start-button.complete_button:hover{
+  cursor: pointer;
+}
 
 
 body{
@@ -710,6 +717,7 @@ progress::-moz-progress-bar {
 }
 .navCard{
   background-color: white;
+  height: 100%;
 }
 
 

@@ -4,7 +4,7 @@ import LessonAudioPlayer from "./LessonAudioPlayer";
 import {useContext} from "react";
 import {AudioContext} from "../context/AudioContext";
 
-function OverviewAudios({englishAudio, TwiAudio, englishAudioName, TwiAudioName}){
+function OverviewAudios({englishAudio, twiAudio, englishAudioName, twiAudioName}){
     const {playAudio, isPlaying, stopAudio,stopAnswerAudio} = useContext(AudioContext);
     return(<div className="navCard importantAudioPlayer">
         <div>
@@ -16,6 +16,8 @@ function OverviewAudios({englishAudio, TwiAudio, englishAudioName, TwiAudioName}
                 <LessonAudioPlayer
                     englishAudio={englishAudio}
                     englishAudioName={englishAudioName}
+                    twiAudio={twiAudio}
+                    twiAudioName={twiAudioName}
                 />
             </div>
 
