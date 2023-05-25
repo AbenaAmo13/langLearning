@@ -6,35 +6,113 @@ import goldMedal from "../images/rewardImages/gold-medal.webp"
 import afroBeat from "../images/rewardImages/afrobeat.webp"
 import blackStart from "../images/rewardImages/black-star.webp"
 import coins from "../images/rewardImages/cedi.webp"
+import celebrations from "../images/rewardImages/confetti.webp"
+import {useContext, useEffect, useState} from "react";
+import {RewardsContext} from "../context/RewardsContext";
 
  function RewardsStore() {
-    const unlockableRewardsItems = [
-        { name: 'Arfica Image', coinsRequired: 50, image: africaImage },
-        { name: 'AfroBeat', coinsRequired: 120, image: afroBeat },
-        { name: 'CediRewards', coinsRequired: 120, image: cediRewards },
-        { name: 'BlackStar', coinsRequired: 250, image: blackStart },
-        { name: 'GoldMedal', coinsRequired: 700, image: goldMedal },
-        { name: 'Trophy', coinsRequired: 800, image: trophy },
+     const {userCoins, setUserCoins, updateUserCoins} = useContext(RewardsContext);
+     const [userRewards, setPersonalRewards] = useState([])
+     const [successPurchase, setSuccessPurchase] = useState(null)
+     useEffect(() => {
+         const personalRewards = localStorage.getItem('personalRewards');
+         const initialRewards = personalRewards ? JSON.parse(personalRewards) : [];
+         setPersonalRewards(initialRewards);
+         //alert(window.location.pathname)
+     }, []);
+
+     useEffect(() => {
+         // Save the updated userRewards to localStorage whenever it changes
+         localStorage.setItem('personalRewards', JSON.stringify(userRewards));
+     }, [userRewards]);
+
+
+     const unlockableRewardsItems = [
+        { name: 'AfricaImage', coinsRequired: 50, image: africaImage, purchased: false},
+        { name: 'AfroBeat', coinsRequired: 120, image: afroBeat, purchased: false },
+        { name: 'CediRewards', coinsRequired: 120, image: cediRewards, purchased: false },
+        { name: 'BlackStar', coinsRequired: 250, image: blackStart, purchased:false},
+        { name: 'GoldMedal', coinsRequired: 700, image: goldMedal, purchased: false },
+        { name: 'Trophy', coinsRequired: 800, image: trophy, purchased: false },
         // Add more virtual items and their respective coin thresholds
     ];
 
-    return (
-        <div className="reward_container">
-            {unlockableRewardsItems.map((item, index) => (
-                <div key={index} className="navCard">
-                    <div className="cardmedia">
-                        <img src={item.image} alt={item.name} />
-                    </div>
-                    <div>
-                        <div className="coins_div">
-                            <img src={coins} alt="coins" className="coin_style" />
-                            <p className="coins_text">{item.coinsRequired}</p>
-                        </div>
+     //const rewardsPurchased =['AfricaImage', 'AfroBeat', 'GoldMedal']
 
-                    </div>
-                </div>
-            ))}
-        </div>
+     const unlockedRewards = unlockableRewardsItems.filter(reward => userRewards.includes(reward.name))
+     const lockedRewards = unlockableRewardsItems.filter(reward => !userRewards.includes(reward.name))
+
+    // const unPurchasedRewards = unlockableRewardsItems.filter(item => !item.purchased);
+
+     //unlocked rewards based on the ones that are saved in the unpurchasedRewards sector
+/*     const unlockedRewards = unlockableRewardsItems.filter(reward => rewardsPurchased.includes(reward.name));
+     const lockedRewards = unlockableRewardsItems.filter(reward => !rewardsPurchased.includes(reward.name));*/
+
+
+     const purchaseItem=(price, itemName)=>{
+         if(price> userCoins){
+             setSuccessPurchase(false)
+             alert(successPurchase)
+         }else{
+             updateUserCoins(-price)
+             setSuccessPurchase(true)
+             // Add the purchased item to the userRewards array
+             setPersonalRewards(prevRewards => [...prevRewards, itemName]);
+
+         }
+     }
+     return (
+         <div>
+             {
+                 successPurchase !== null &&(
+                     successPurchase=== true ? (
+                         <div>
+                             <p> You have bought the item</p>
+                         </div>
+                     ):(
+                         <div>
+                             <p> Purchase was unsuccessful</p>
+                         </div>
+                     )
+
+                 )
+             }
+             <div className="reward_container">
+                 {unlockedRewards.map((item, index) => (
+                     <div key={index} className="navCard rewards_cards">
+                         <div className="purchased_item">
+                             {/*<img src={celebrations} alt="celebrations" />*/}
+                             <i className="material-icons" alt="circle checkmark" aria-label="check_circle">check_circle</i>
+
+                         </div>
+                         <div className="cardmedia">
+                             <img src={item.image} alt={item.name} />
+                         </div>
+
+                     </div>
+                 ))}
+
+                 {lockedRewards.map((item, index) => (
+                     <div key={index} className="navCard rewards_cards">
+                         <div className="cardmedia">
+                             <img src={item.image} alt={item.name} />
+                         </div>
+                         <div>
+                             <div className="coins_div">
+                                 <img src={coins} alt="coins" className="coin_style" />
+                                 <p className="coins_text">{item.coinsRequired}</p>
+                             </div>
+                             <button onClick={()=> purchaseItem(item.coinsRequired, item.name)}>Buy me</button>
+
+                         </div>
+                     </div>
+                 ))}
+
+
+             </div>
+         </div>
+
+
     );
 
 }

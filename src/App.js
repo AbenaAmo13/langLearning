@@ -14,6 +14,12 @@ import HelpPage from "./HelpPage";
 import {EnglishAudioContextProvider} from "./context/PlayEnglishContext";
 import RewardsStore from "./reusable-components/RewardsStore";
 import RewardsContextProvider from "./context/RewardsContext";
+import africaImage from "./images/rewardImages/africa.webp";
+import afroBeat from "./images/rewardImages/afrobeat.webp";
+import cediRewards from "./images/rewardImages/cedis_rewards.webp";
+import blackStart from "./images/rewardImages/black-star.webp";
+import goldMedal from "./images/rewardImages/gold-medal.webp";
+import trophy from "./images/rewardImages/trophy.webp";
 
 export const LockedStatusObjContext = createContext(null);
 
@@ -35,6 +41,10 @@ function App() {
     }
 
     const userCoins= 0;
+    const personalRewards= [];
+
+
+
 
 
     useEffect(() => {
@@ -49,6 +59,10 @@ function App() {
 
         if (!localStorage.getItem('userCoins')) {
             localStorage.setItem('userCoins', JSON.stringify(userCoins));
+        }
+
+        if (!localStorage.getItem('personalRewards')) {
+            localStorage.setItem('personalRewards', JSON.stringify(personalRewards));
         }
         setLockedStatusJsonObj(JSON.parse(localStorage.getItem('lockedStatusData')))
         console.log('locked status obj' + JSON.stringify(lockedStatusJsonObj))

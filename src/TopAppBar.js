@@ -23,6 +23,7 @@ function TopAppBar(){
 
 
     useEffect(() => {
+        //This is to initialise the coins in case something goes wrong with local storage
         const storedCoins = localStorage.getItem('userCoins');
         const initialCoins = storedCoins ? parseInt(storedCoins) : 0;
         setUserCoins(initialCoins);

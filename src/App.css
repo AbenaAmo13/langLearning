@@ -767,11 +767,62 @@ progress::-moz-progress-bar {
   font-size: 18px;
 }
 
+.rewards_cards{
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.rewards_cards:hover {
+  background-color: #e0e0e0;
+
+}
 
 
+.purchased_item{
+  display: flex;
+  justify-content: flex-end;
+
+}
+
+@keyframes touch {
+  0% { transform: scale(1); }
+  25% { transform: scale(0.95); }
+  50% { transform: scale(1.05); }
+  75% { transform: scale(0.98); }
+  100% { transform: scale(1); }
+}
+
+.rewards_cards:active {
+  animation: touch 0.3s ease;
+}
 
 @media only screen and (max-width: 767px){
 
+
+  .reward_container{
+    display: flex;
+    flex-wrap: wrap;
+
+  }
+  .rewards_cards{
+    width: 35%;
+
+  }
+
+
+
+  .coins_div{
+    display: flex;
+    align-items: center;
+  }
+  .coin_style{
+    width: 12%;
+  }
+
+  .navCard.rewards_cards{
+    margin: 2% auto;
+
+  }
   .navCard.scoreCard{
     width: 90%;
 
