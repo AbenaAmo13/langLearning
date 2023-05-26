@@ -11,6 +11,7 @@ function Lessons({state, dispatch, lessonId}){
     const currentLesson = state.lessons[lessonId]
     const [currentIndex, setCurrentIndex] = useState(0);
     const [shouldRenderNextToAudioIcons, setShouldRenderNextToAudioIcon] = useState(true)
+    const [shouldDoTutorial, setShouldDoTutorial] = useState(true)
     const [shouldRenderNextToForwardButton, setShouldRenderNextToForwardButton] = useState(false)
     const [error, setError] = useState(null);
     const navigate = useNavigate();
@@ -32,10 +33,12 @@ function Lessons({state, dispatch, lessonId}){
         if(isPlaying){
             stopAudio()
         }
-        if(state.id==="BasicLesson"){
+        //alert(state.id)
+        if(state.id==="BasicLessons"){
             setIsEnding(false)
             setShouldRenderNextToAudioIcon(true)
             setShouldRenderNextToForwardButton(false)
+            //alert(shouldRenderNextToAudioIcons)
         }
 
     };
@@ -55,7 +58,7 @@ function Lessons({state, dispatch, lessonId}){
         if(isPlaying){
             stopAudio()
         }
-        if(state.id==="BasicLesson"){
+        if(state.id==="BasicLessons"){
             setIsEnding(false)
             setShouldRenderNextToAudioIcon(true)
             setShouldRenderNextToForwardButton(false)
@@ -77,7 +80,6 @@ function Lessons({state, dispatch, lessonId}){
             }else{
                 setShouldRenderNextToAudioIcon(true)
             }
-
             const shouldRenderNextToForwardButton= isEnded && audioCheck && state.id===tutorialLevel
             if(shouldRenderNextToForwardButton){
                 setShouldRenderNextToForwardButton(true)
@@ -89,14 +91,25 @@ function Lessons({state, dispatch, lessonId}){
 
     }, [isPlaying, state])
 
-    useEffect(()=>{
-       // const lockedStatus = localStorage.getItem()
-        const tutorialLevel = "BasicLessons"
-        if(state.id!==tutorialLevel){
-            setShouldRenderNextToAudioIcon(false)
-            setShouldRenderNextToForwardButton(false)
-        }
+    useEffect(()=> {
+        const lockedStatusData = JSON.parse(localStorage.getItem('lockedStatusData'));
+        if (lockedStatusData) {
+            const keys = Object.keys(lockedStatusData);
+            const hasFalseValue = keys
+                .filter(key => key !== "Basics")
+                .some(key => lockedStatusData[key] === false);
 
+              if (hasFalseValue) {
+                   console.log("At least one value is false aside from Basics");
+                   setShouldDoTutorial(false)
+               } else {
+                   // Perform your action when all values are false
+                   console.log("All values aside from basics are false");
+                   setShouldDoTutorial(true)
+               }
+           } else {
+               console.log("lockedStatusData not found in localStorage");
+           }
     }, [])
 
 
@@ -117,7 +130,7 @@ function Lessons({state, dispatch, lessonId}){
                             </div>
                             <div className="lessons_pointer_container">
                                 <div>
-                                    {shouldRenderNextToAudioIcons&&(
+                                    {shouldRenderNextToAudioIcons  && shouldDoTutorial &&(
                                         <img
                                             src={PointingSide}
                                             className="pointing_hands top_app_pointing"
@@ -148,7 +161,7 @@ function Lessons({state, dispatch, lessonId}){
                     <i className="material-icons" alt="help icon">arrow_back</i>
                     <p>Back</p>
                 </button>
-                {shouldRenderNextToForwardButton&&(
+                {shouldRenderNextToForwardButton && shouldDoTutorial&&(
                     <img
                         src={PointingSide}
                         className="pointing_hands top_app_pointing"
