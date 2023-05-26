@@ -32,6 +32,7 @@ function Lessons({state, dispatch, lessonId}){
         if(isPlaying){
             stopAudio()
         }
+        setIsEnding(false)
         setShouldRenderNextToAudioIcon(true)
         setShouldRenderNextToForwardButton(false)
     };
@@ -51,6 +52,7 @@ function Lessons({state, dispatch, lessonId}){
         if(isPlaying){
             stopAudio()
         }
+        setIsEnding(false)
         setShouldRenderNextToAudioIcon(true)
         setShouldRenderNextToForwardButton(false)
     };
