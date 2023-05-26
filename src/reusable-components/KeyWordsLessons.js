@@ -120,8 +120,6 @@ function KeyWordsLessons({state, dispatch, lessonId}){
                         <p>Next </p>
                         <i className="material-icons" alt="help icon">arrow_forward</i>
                     </button>
-
-                    )}
                 </div>
             </div>
         )
