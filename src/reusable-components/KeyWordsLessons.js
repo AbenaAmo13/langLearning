@@ -105,6 +105,15 @@ function KeyWordsLessons({state, dispatch, lessonId}){
 
     }, [isPlaying, currentIndex])
 
+    useEffect(()=>{
+        const tutorialLevel = "BasicLessons"
+        if(state.id!==tutorialLevel){
+            setShouldRenderNextToAudioIcon(false)
+            setShouldRenderNextToForwardButton(false)
+        }
+
+    }, [])
+
     const renderLessons=()=>{
         return(
             <div className="overall_lessons_container">

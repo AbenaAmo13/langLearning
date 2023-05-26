@@ -90,6 +90,7 @@ function Lessons({state, dispatch, lessonId}){
     }, [isPlaying, state])
 
     useEffect(()=>{
+       // const lockedStatus = localStorage.getItem()
         const tutorialLevel = "BasicLessons"
         if(state.id!==tutorialLevel){
             setShouldRenderNextToAudioIcon(false)

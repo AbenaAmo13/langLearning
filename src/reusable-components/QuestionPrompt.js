@@ -1,6 +1,7 @@
-import {useContext} from "react";
+import {useContext, useEffect} from "react";
 import {AudioContext} from "../context/AudioContext";
 import LessonAudioPlayer from "./LessonAudioPlayer";
+import PointingSide from "../images/rewardImages/pointinghand2.gif";
 
 function QuestionPrompt({state,dispatch, questionPromptData, id}) {
     const {playAudio, isPlaying, activeName, stopAudio } = useContext(AudioContext);
@@ -23,6 +24,8 @@ function QuestionPrompt({state,dispatch, questionPromptData, id}) {
             stopAudio()
         }
     }
+
+
 
     return(
         <div>
@@ -80,6 +83,13 @@ function QuestionPrompt({state,dispatch, questionPromptData, id}) {
 
                     />
                     <div className="question_prompt_button_divs">
+                        {state.id==="BasicLessons"&&(
+                            <img
+                                src={PointingSide}
+                                className="pointing_hands top_app_pointing"
+                                alt="pointing hands"
+                            />
+                        )}
                         <button  className="lesson_buttons icon-buttons" onClick={()=>ready()}>
                             <p>Yes</p>
                             <i className="material-icons" alt="help icon">thumb_up_alt</i>

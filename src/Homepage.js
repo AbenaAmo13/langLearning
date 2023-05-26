@@ -194,7 +194,7 @@ function Homepage() {
     return(
     <div>
             <div className="navCard scoreCard">
-                <p className="score_rec_text"> Based on your scores, we recommend you take the lesson: <b>{personalRecommendedLesson}</b></p>
+                <p className="score_rec_text"> Based on your scores, we recommend you take the course: <b>{personalRecommendedLesson}</b></p>
                 <LessonAudioPlayer
                     twiAudioName={recAudio}
                     twiAudio={recAudio}

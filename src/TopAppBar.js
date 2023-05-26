@@ -101,7 +101,7 @@ function TopAppBar(){
 
 
 
-    const playOnHover=(hoverButtonName)=>{
+    /*const playOnHover=(hoverButtonName)=>{
         const audioMap = {
             home: homeAudio,
             help: helpAudio,
@@ -116,7 +116,7 @@ function TopAppBar(){
 
     const stopPlayOnHover=()=>{
         stopAnswerAudio()
-    }
+    }*/
 
 
     return(
@@ -156,7 +156,7 @@ function TopAppBar(){
                         onMouseLeave={() => stopPlayOnHover()}*/
                     >
                         Rewards
-                        <i className="material-icons" alt="social leader board icon">stars</i>
+                        <i className="material-icons" alt="social leader board icon">emoji_events</i>
                     </button>
                 </Link>
                 <InstallButton  />

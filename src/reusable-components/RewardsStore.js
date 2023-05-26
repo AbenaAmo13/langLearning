@@ -93,6 +93,10 @@ import {AudioContext} from "../context/AudioContext";
                          <div className="cardmedia">
                              <img src={item.image} alt={item.name} />
                          </div>
+                         <div>
+                             <a href={item.image} className="start-button purchase-button link"download >Download Me</a>
+
+                         </div>
 
                      </div>
                  ))}
