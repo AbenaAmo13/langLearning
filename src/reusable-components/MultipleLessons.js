@@ -103,17 +103,18 @@ function Lessons({state, dispatch, lessonId}){
                     <i className="material-icons" alt="help icon">arrow_back</i>
                     <p>Back</p>
                 </button>
-                <button onClick={getNextLesson} disabled={currentIndex === currentLesson.length} className="lesson_buttons icon-buttons">
-                    <p>Next </p>
-                    <i className="material-icons" alt="help icon">arrow_forward</i>
-                </button>
                 {shouldRenderNextToForwardButton&&(
                     <img
-                        src={leftPoint}
+                        src={PointingSide}
                         className="pointing_hands top_app_pointing"
                         alt="pointing hands"
                     />
                 )}
+                <button onClick={getNextLesson} disabled={currentIndex === currentLesson.length} className="lesson_buttons icon-buttons">
+                    <p>Next </p>
+                    <i className="material-icons" alt="help icon">arrow_forward</i>
+                </button>
+
 
             </div>
 

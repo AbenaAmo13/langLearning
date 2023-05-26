@@ -5,6 +5,7 @@ import twiAudioPrompt from "../audios/transitionalaudios/keywordsTwi.mp3"
 import englishAudioPrompt from "../audios/transitionalaudios/keywordsEnglish.mp3"
 import QuestionPrompt from "./QuestionPrompt";
 import leftPoint from "../images/rewardImages/leftPoint.gif";
+import PointingSide from "../images/rewardImages/pointinghand2.gif";
 
 
 function KeyWordsLessons({state, dispatch, lessonId}){
@@ -146,17 +147,18 @@ function KeyWordsLessons({state, dispatch, lessonId}){
                             <i className="material-icons" alt="forward arrow icon">arrow_back</i>
                             <p>Back</p>
                         </button>
-                        <button  className="lesson_buttons icon-buttons" onClick={()=>handleKeyWordLessonTransition()}>
-                            <p>Continue</p>
-                            <i className="material-icons" alt="forward arrow icon">arrow_forward</i>
-                        </button>
                         {state.id==="BasicLessons"&&(
                             <img
-                                src={leftPoint}
+                                src={PointingSide}
                                 className="pointing_hands top_app_pointing"
                                 alt="pointing hands"
                             />
                         )}
+                        <button  className="lesson_buttons icon-buttons" onClick={()=>handleKeyWordLessonTransition()}>
+                            <p>Continue</p>
+                            <i className="material-icons" alt="forward arrow icon">arrow_forward</i>
+                        </button>
+
                     </div>
                 </div>
             </div>
