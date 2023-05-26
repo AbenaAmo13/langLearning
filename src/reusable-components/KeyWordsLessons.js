@@ -10,7 +10,9 @@ import PointingSide from "../images/rewardImages/pointinghand2.gif";
 
 function KeyWordsLessons({state, dispatch, lessonId}){
     const currentLesson = state.lessons[lessonId]
-    const{isPlaying, stopAudio} = useContext(AudioContext)
+    const{isPlaying, stopAudio, audioRef, isEnded, setIsEnding} = useContext(AudioContext)
+    const [shouldRenderNextToAudioIcons, setShouldRenderNextToAudioIcon] = useState(true)
+    const [shouldRenderNextToForwardButton, setShouldRenderNextToForwardButton] = useState(false)
     const [keyLessonState, setKeyLessonState] = useState(false);
     const [currentIndex, setCurrentIndex] = useState(0);
     const [error, setError] = useState(null);
@@ -76,6 +78,33 @@ function KeyWordsLessons({state, dispatch, lessonId}){
         }
     };
 
+    useEffect(()=>{
+        if(audioRef.current){
+            const tutorialLevel = "BasicLessons"
+            const currentAudio= audioRef.current.src
+            const audioPath = new URL(currentAudio).pathname;
+            const currentTwiLessonAudio = currentLesson[currentIndex].TwiAudio
+            const currentEnglishLessonAudio = currentLesson[currentIndex].EnglishAudio
+            const audioCheck = audioPath === currentTwiLessonAudio || audioPath ===currentEnglishLessonAudio
+            console.log(audioCheck)
+            let setShouldRenderNextToAudioIconToFalse = isPlaying || isEnded && audioCheck  || state.id!==tutorialLevel
+            if(setShouldRenderNextToAudioIconToFalse){
+                setShouldRenderNextToAudioIcon(false)
+            }else{
+                setShouldRenderNextToAudioIcon(true)
+            }
+
+            const shouldRenderNextToForwardButton= isEnded && audioCheck && state.id===tutorialLevel
+            if(shouldRenderNextToForwardButton){
+                setShouldRenderNextToForwardButton(true)
+            }else{
+                setShouldRenderNextToForwardButton(false)
+            }
+
+        }
+
+    }, [isPlaying, currentIndex])
+
     const renderLessons=()=>{
         return(
             <div className="overall_lessons_container">
@@ -95,13 +124,24 @@ function KeyWordsLessons({state, dispatch, lessonId}){
                                     <div className="keywords_icon">🇬🇧 </div>
                                     <h3>{currentLesson[currentIndex].EnglishWord}</h3>
                                 </div>
-                                <AudioPlayer
-                                    twiAudio={currentLesson[currentIndex].TwiAudio}
-                                    englishAudioName={currentLesson[currentIndex].EnglishWord}
-                                    twiAudioName={currentLesson[currentIndex].TwiWord}
-                                    englishAudio={currentLesson[currentIndex].EnglishAudio}
 
-                                />
+                                <div className="tutorial_keywords_container">
+                                    {shouldRenderNextToAudioIcons&&(
+                                        <img
+                                            src={PointingSide}
+                                            className="pointing_hands top_app_pointing"
+                                            alt="pointing hands"
+                                        />
+                                    )}
+                                    <AudioPlayer
+                                        twiAudio={currentLesson[currentIndex].TwiAudio}
+                                        englishAudioName={currentLesson[currentIndex].EnglishWord}
+                                        twiAudioName={currentLesson[currentIndex].TwiWord}
+                                        englishAudio={currentLesson[currentIndex].EnglishAudio}
+
+                                    />
+                                </div>
+
 
                             </div>
                         </div>
@@ -116,6 +156,13 @@ function KeyWordsLessons({state, dispatch, lessonId}){
                         <i className="material-icons" alt="help icon">arrow_back</i>
                         <p>Back</p>
                     </button>
+                    {shouldRenderNextToForwardButton&&(
+                        <img
+                            src={PointingSide}
+                            className="pointing_hands top_app_pointing"
+                            alt="pointing hands"
+                        />
+                    )}
                     <button onClick={getNextLesson} disabled={currentIndex === currentLesson.length} className="lesson_buttons icon-buttons">
                         <p>Next </p>
                         <i className="material-icons" alt="help icon">arrow_forward</i>

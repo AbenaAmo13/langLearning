@@ -12,6 +12,12 @@
   width: 60px;
 }
 
+.tutorial_keywords_container{
+  display: flex;
+  width: 100%;
+  align-items: center;
+}
+
 .top_app_pointing.pointing_hands{
   display: flex;
 }
