@@ -32,9 +32,12 @@ function Lessons({state, dispatch, lessonId}){
         if(isPlaying){
             stopAudio()
         }
-        setIsEnding(false)
-        setShouldRenderNextToAudioIcon(true)
-        setShouldRenderNextToForwardButton(false)
+        if(state.id==="BasicLesson"){
+            setIsEnding(false)
+            setShouldRenderNextToAudioIcon(true)
+            setShouldRenderNextToForwardButton(false)
+        }
+
     };
 
 
@@ -52,12 +55,12 @@ function Lessons({state, dispatch, lessonId}){
         if(isPlaying){
             stopAudio()
         }
-        setIsEnding(false)
-        setShouldRenderNextToAudioIcon(true)
-        setShouldRenderNextToForwardButton(false)
+        if(state.id==="BasicLesson"){
+            setIsEnding(false)
+            setShouldRenderNextToAudioIcon(true)
+            setShouldRenderNextToForwardButton(false)
+        }
     };
-    // Check if state1 is false and state2 is equal to a specific object
-
 
     useEffect(()=>{
         if(audioRef.current){
