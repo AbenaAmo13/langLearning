@@ -7,7 +7,8 @@ export const AudioContext = createContext();
 
  export const AudioContextProvider = ({ children }) => {
      const [isPlaying, setIsPlaying] = useState(false);
-    const [activeName, setActiveName] = useState(null)
+     const [isEnded, setIsEnding] = useState(false);
+     const [activeName, setActiveName] = useState(null)
     const audioRef = useRef(null);
      const {userCoins, setUserCoins, updateUserCoins} = useContext(RewardsContext);
      const [dontAddCoins, setDontAddCoins]= useState(false)
@@ -22,6 +23,7 @@ export const AudioContext = createContext();
         audioRef.current.onplaying = function() {
             setIsPlaying(true);
             setActiveName(audioName)
+            setIsEnding(false)
             //console.log("Audio name: " + audioName)
         };
     };
@@ -82,19 +84,13 @@ export const AudioContext = createContext();
         if(audio){
             audio.onended= function() {
                 //alert(audio.src)
+                setIsEnding(true)
                stopAudio()
                 //alert("Dont add coin is" + dontAddCoins)
                 if(!dontAddCoins){
                     updateUserCoins(2)
                 }
-
-                //alert('Your coins have increased by 2')
-                /*setIsPlaying(false);
-                setActiveName(null)*/
-                //alert('Audio has ended');
             };
-
-
         }
 
 
@@ -102,7 +98,7 @@ export const AudioContext = createContext();
     }, [isPlaying]);
 
     return (
-        <AudioContext.Provider value={{ isPlaying, playAudio, stopAudio, activeName, stopAnswerAudio, setActiveName}}>
+        <AudioContext.Provider value={{ isPlaying, playAudio, stopAudio, activeName, stopAnswerAudio, setActiveName, isEnded, audioRef, setIsEnding}}>
             {children}
         </AudioContext.Provider>
     );

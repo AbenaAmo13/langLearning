@@ -8,6 +8,8 @@ import blackStart from "../images/rewardImages/black-star.webp"
 import coins from "../images/rewardImages/cedi.webp"
 import pointhands from "../images/rewardImages/pointinghand.gif"
 import testingAudios from "../audios/introduction.mp3"
+import rewardOverviewTwi from "../audios/rewardspage/rewards_twi_audio.mp3"
+import rewardOverviewEnglish  from "../audios/rewardspage/rewards_audio_english.mp3"
 import celebrations from "../images/rewardImages/confetti.webp"
 import {useContext, useEffect, useState} from "react";
 import {RewardsContext} from "../context/RewardsContext";
@@ -62,8 +64,10 @@ import {AudioContext} from "../context/AudioContext";
      return (
          <div>
              <OverviewAudios
-                 englishAudio={testingAudios}
-                 englishAudioName={testingAudios}
+                 englishAudio={rewardOverviewEnglish}
+                 englishAudioName={rewardOverviewEnglish}
+                 twiAudio={rewardOverviewTwi}
+                 twiAudioName={rewardOverviewTwi}
              />
              {
                  successPurchase !== null &&(

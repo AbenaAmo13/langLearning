@@ -11,14 +11,27 @@ import greyGovernment from "./images/governmentlogo.webp"
 import ghanaId from "./images/ghanacard.webp"
 import educationalImage from "./images/transparenteducation.webp"
 import jobsImage from "./images/jobstransparent.webp"
-import basicsTwiAudio from "./audios/homepage/courseoutlinetwi.mp3"
 import courseOutline from "./audios/homepage/courseoutlineenglish.mp3"
 import ghanahealthservice from "./audios/homepage/ghanahealthservice.mp3"
 import identification from "./audios/homepage/nationalidentification.mp3"
 import educationEnglish from "./audios/homepage/ghanaeducationservice.mp3"
 import jobsEnglishAudio from "./audios/homepage/jobs.mp3"
-import overviewtwi from "./audios/homepage/overviewtwi.mp3"
-import overviewenglish from "./audios/homepage/overview_english.mp3"
+import basicsTwiAudio from "./audios/homepage/courseoutlinetwi.mp3"
+
+
+import recsCourseOutlineTwi from "./audios/homepage/recscourseoutline.mp3"
+import recsHealthTwi from "./audios/homepage/recsGhanaHealthCare.mp3"
+import recsEducationTwi from "./audios/homepage/recsEducation.mp3"
+import recsIdTwi from "./audios/homepage/idrecs.mp3"
+import recsJobsTwi from "./audios/homepage/jobsrecs_twi.mp3"
+
+import recsCourseOutlineEnglish from "./audios/homepage/recsCourseOutineEnglish.mp3"
+import recsHealthEnglish from "./audios/homepage/recsGHSEnglish.mp3"
+import recsEducationEnglish from "./audios/homepage/recsEducationEnglish.mp3"
+import recsIdTwiEnglish from "./audios/homepage/recsIDenglish.mp3"
+import recsJobsEnglish from "./audios/homepage/recsJobsEnglish.mp3"
+
+
 
 
 
@@ -27,15 +40,18 @@ import educationAudio from "./audios/homepage/educationaudio.mp3"
 import identificationAudio from "./audios/homepage/identification.mp3"
 import adwuma from "./audios/homepage/adwuma.mp3"
 import LessonAudioPlayer from "./reusable-components/LessonAudioPlayer";
-import coins from "./images/rewardImages/cedi.webp";
-import OverviewAudios from "./reusable-components/OverViewAudios";
+
 
 
 function Homepage() {
     //let audio = new Audio(process.env.PUBLIC_URL + '/audio/introduction.mp3')
     const {playAudio, activeName, isPlaying, stopAudio} = useContext(AudioContext);
     const [personalRecommendedLesson, setPersonalRecommendedLesson] = useState(null)
+    const [recAudio, setRecAudio] = useState(null)
+    const [recEnglishAudio, setRecEnglishAudio] = useState(null)
     const [status, setStatus]= useState({})
+    // Find the index of the latest unlocked card for hand directing
+    let latestUnlockedIndex = Object.values(status).lastIndexOf(false);
 
     const lockedStatusObj =
     {  Basics: false,
@@ -142,32 +158,49 @@ function Homepage() {
         switch(recommendedLesson){
             case "Health":
                 setPersonalRecommendedLesson("Ghana Health Service")
+                setRecAudio(recsHealthTwi)
+                setRecEnglishAudio(recsHealthEnglish)
+
                 break;
             case "Basics":
                 setPersonalRecommendedLesson("Course Outline")
+                setRecAudio(recsCourseOutlineTwi)
+                setRecEnglishAudio(recsCourseOutlineEnglish)
                 break;
             case "Education":
                 setPersonalRecommendedLesson("Ghana Education Service")
+                setRecAudio(recsEducationTwi)
+                setRecEnglishAudio(recsEducationEnglish)
                 break;
             case "Identification":
                 setPersonalRecommendedLesson("National Identification Authority")
+                setRecAudio(recsIdTwi)
+                setRecEnglishAudio(recsIdTwiEnglish)
                 break;
             case "Jobs":
                 setPersonalRecommendedLesson("Jobs")
+                setRecAudio(recsJobsTwi)
+                setRecEnglishAudio(recsJobsEnglish)
                 break;
+            default:
+                setPersonalRecommendedLesson(null)
+                setRecAudio(null)
+                setRecEnglishAudio(null)
+                break;
+
         }
     }, []);
-
-
-
-
-
 
     return(
     <div>
             <div className="navCard scoreCard">
                 <p className="score_rec_text"> Based on your scores, we recommend you take the lesson: <b>{personalRecommendedLesson}</b></p>
-                <LessonAudioPlayer/>
+                <LessonAudioPlayer
+                    twiAudioName={recAudio}
+                    twiAudio={recAudio}
+                    englishAudio={recEnglishAudio}
+                    englishAudioName={recEnglishAudio}
+                />
             </div>
         <div className="navBar">
             {navBarElements.map((navElement, index) => (
@@ -227,7 +260,14 @@ function Homepage() {
                            </button>
                            {navElement.locked_status ===false &&(
                                <div>
-                                   <img src={PointDownwards} className="pointing_hands top_app_pointing" alt="pointing hands"/>
+                                   {/* Render pointing hand gif image next to the latest unlocked card */}
+                                   {index === latestUnlockedIndex && (
+                                       <img
+                                           src={PointDownwards}
+                                           className="pointing_hands top_app_pointing"
+                                           alt="pointing hands"
+                                       />
+                                   )}
                                    <Link key={index} to={`/${navElement.Link}`} className= "nav_link_routers">
                                        <button className="start-button">START</button>
                                    </Link>

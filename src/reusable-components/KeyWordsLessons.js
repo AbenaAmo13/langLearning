@@ -4,6 +4,7 @@ import AudioPlayer from "../reusable-components/LessonAudioPlayer";
 import twiAudioPrompt from "../audios/transitionalaudios/keywordsTwi.mp3"
 import englishAudioPrompt from "../audios/transitionalaudios/keywordsEnglish.mp3"
 import QuestionPrompt from "./QuestionPrompt";
+import leftPoint from "../images/rewardImages/leftPoint.gif";
 
 
 function KeyWordsLessons({state, dispatch, lessonId}){
@@ -118,6 +119,8 @@ function KeyWordsLessons({state, dispatch, lessonId}){
                         <p>Next </p>
                         <i className="material-icons" alt="help icon">arrow_forward</i>
                     </button>
+
+                    )}
                 </div>
             </div>
         )
@@ -147,6 +150,13 @@ function KeyWordsLessons({state, dispatch, lessonId}){
                             <p>Continue</p>
                             <i className="material-icons" alt="forward arrow icon">arrow_forward</i>
                         </button>
+                        {state.id==="BasicLessons"&&(
+                            <img
+                                src={leftPoint}
+                                className="pointing_hands top_app_pointing"
+                                alt="pointing hands"
+                            />
+                        )}
                     </div>
                 </div>
             </div>

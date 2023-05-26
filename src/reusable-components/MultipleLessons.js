@@ -3,9 +3,11 @@ import {useContext, useEffect, useReducer, useState} from "react";
 import AudioPlayer from "../reusable-components/LessonAudioPlayer";
 import {AudioContext} from "../context/AudioContext";
 import {useNavigate} from "react-router";
+import PointingSide from "../images/rewardImages/pointinghand2.gif";
+import leftPoint from "../images/rewardImages/leftPoint.gif";
 
 function Lessons({state, dispatch, lessonId}){
-    const { isPlaying, stopAudio } = useContext(AudioContext);
+    const { isPlaying, stopAudio, isEnded, audioRef,setIsEnding} = useContext(AudioContext);
     const currentLesson = state.lessons[lessonId]
     const [currentIndex, setCurrentIndex] = useState(0);
     const [error, setError] = useState(null);
@@ -28,6 +30,8 @@ function Lessons({state, dispatch, lessonId}){
         if(isPlaying){
             stopAudio()
         }
+        setIsEnding(false)
+
     };
 
 
@@ -45,7 +49,14 @@ function Lessons({state, dispatch, lessonId}){
         if(isPlaying){
             stopAudio()
         }
+        setIsEnding(false)
     };
+    // Check if state1 is false and state2 is equal to a specific object
+    const tutorialLevel = "BasicLessons"
+    const shouldRenderNextToAudioIcons = !isPlaying && !isEnded && state.id===tutorialLevel
+    const shouldRenderNextToForwardButton= isEnded && state.id===tutorialLevel
+
+
     return(
         <div className="overall_lessons_container">
             {currentLesson.length > 0  && (
@@ -59,13 +70,26 @@ function Lessons({state, dispatch, lessonId}){
                             <div>
                                 <p className="text_content">{currentLesson[currentIndex].KeyMessageEnglish}</p>
                             </div>
+                            <div className="lessons_pointer_container">
+                                <div>
+                                    {shouldRenderNextToAudioIcons&&(
+                                        <img
+                                            src={PointingSide}
+                                            className="pointing_hands top_app_pointing"
+                                            alt="pointing hands"
+                                        />
+                                    )}
 
-                            <AudioPlayer
-                                twiAudio={currentLesson[currentIndex].TwiAudio}
-                                englishAudio={currentLesson[currentIndex].EnglishAudio}
-                                englishAudioName={currentLesson[currentIndex].EnglishWord}
-                                twiAudioName={currentLesson[currentIndex].TwiWord}
-                            />
+                                </div>
+                                <AudioPlayer
+                                    twiAudio={currentLesson[currentIndex].TwiAudio}
+                                    englishAudio={currentLesson[currentIndex].EnglishAudio}
+                                    englishAudioName={currentLesson[currentIndex].EnglishWord}
+                                    twiAudioName={currentLesson[currentIndex].TwiWord}
+                                />
+                            </div>
+
+
                         </div>
                     </div>
                 </div>
@@ -83,6 +107,14 @@ function Lessons({state, dispatch, lessonId}){
                     <p>Next </p>
                     <i className="material-icons" alt="help icon">arrow_forward</i>
                 </button>
+                {shouldRenderNextToForwardButton&&(
+                    <img
+                        src={leftPoint}
+                        className="pointing_hands top_app_pointing"
+                        alt="pointing hands"
+                    />
+                )}
+
             </div>
 
 

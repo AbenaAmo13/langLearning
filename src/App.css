@@ -16,6 +16,14 @@
   display: flex;
 }
 
+.icon-buttons.top_app_bar:hover{
+  cursor: pointer;
+  background-color: whitesmoke;
+  border-radius:4px;
+  padding: 8px;
+
+}
+
 
 /*body
 @media (orientation: portrait) {
@@ -717,7 +725,7 @@ progress::-moz-progress-bar {
 }
 .navCard{
   background-color: white;
-  height: 100%;
+
 }
 
 
@@ -959,6 +967,12 @@ progress::-moz-progress-bar {
 
 }
 
+.lessons_pointer_container{
+  display: flex;
+  width: 100%;
+  align-items: center;
+}
+
 
 
 
@@ -967,7 +981,10 @@ progress::-moz-progress-bar {
 @media only screen and (min-width: 767px){
 
 
-
+  .navCard.scoreCard{
+    width: 35%;
+    padding: 1%;
+  }
 
   .navCard.rewards_cards{
     padding: 1%;

@@ -1,24 +1,26 @@
 import {useContext, useEffect, useState} from "react";
 import {AudioContext} from "./context/AudioContext";
-import {EnglishAudioContext} from "./context/PlayEnglishContext";
-import {LanguageContext} from "./context/LanguageContext";
-import welcomeEnglishAudio from "./audios/topAppBarAudios/welcomeEnglishAudio.mp3"
 import appBarTestAudio from "./audios/testing.mp3"
 import {Link} from "react-router-dom";
 import LessonAudioPlayer from "./reusable-components/LessonAudioPlayer";
 import {useLocation} from "react-router";
 import coins from "./images/rewardImages/cedis-2.webp";
 import {RewardsContext} from "./context/RewardsContext";
+import homeAudio from "./audios/topAppBarAudios/homepagehoveraudio.mp3"
+import helpAudio from "./audios/topAppBarAudios/helppagehoveraudio.mp3"
+import rewardsAudio from "./audios/topAppBarAudios/rewardsPageHoverAudio.mp3"
+import {hover} from "@testing-library/user-event/dist/hover";
 
 function TopAppBar(){
     //const imagePath = `${process.env.PUBLIC_URL}/empower-us-192.webp`;
     const imagePath = process.env.PUBLIC_URL + '/empower-us-192.webp';
     const {userCoins, setUserCoins, updateUserCoins} = useContext(RewardsContext);
     const [clickedIcon, setClickedIcon] = useState('home');
+    const [hoveredButton, setHoveredButton] = useState(null);
     const [IconClicked, setHandleIconClicked] = useState(null)
     const [audioIsPlayig, setAudioIsPlaying]= useState(false)
     console.log(imagePath)
-    const { isPlaying, playAudio, stopAudio, CoinsGainedFromAudio } = useContext(AudioContext);
+    const { isPlaying, playAudio, stopAudio, CoinsGainedFromAudio, stopAnswerAudio } = useContext(AudioContext);
     const testAudio = appBarTestAudio;
 
 
@@ -95,19 +97,26 @@ function TopAppBar(){
                 setClickedIcon(null);
                 break;
         }
-
-
-
-
-        // You can perform additional logic or actions based on the route change
-        // ...
-        // Clean up the effect if needed
-        return () => {
-            // Code to clean up the effect, if necessary
-            // This will be called when the component unmounts or when the route changes again
-        };
     }, [location]);
 
+
+
+    const playOnHover=(hoverButtonName)=>{
+        const audioMap = {
+            home: homeAudio,
+            help: helpAudio,
+            rewards: rewardsAudio,
+        };
+        //alert(audioMap[hoverButtonName])
+        if (hoverButtonName && audioMap[hoverButtonName]) {
+            playAudio(new Audio(audioMap[hoverButtonName]), "navigationIcons");
+        }
+
+    }
+
+    const stopPlayOnHover=()=>{
+        stopAnswerAudio()
+    }
 
 
     return(
@@ -118,20 +127,34 @@ function TopAppBar(){
             </div>
             <div className="appbar-icons">
                 <Link to="/" className="app_bar_routes">
-                    <button className={`icon-buttons top_app_bar ${clickedIcon === 'home' ? 'active_icon' : ''}`}  onClick={()=>handleAudioAndIconCheck('home')}>
+                    <button className={`icon-buttons top_app_bar ${clickedIcon === 'home' ? 'active_icon' : ''}`}
+                            onClick={()=>handleAudioAndIconCheck('home')}
+                            onMouseEnter={() => playOnHover('home')}
+                            onMouseLeave={() => stopPlayOnHover()}
+
+                    >
                         Home
                         <i className="material-icons" alt="home icon">home</i>
                     </button>
                 </Link>
 
                 <Link to="/Help" className="app_bar_routes">
-                    <button className={`icon-buttons top_app_bar ${clickedIcon === 'help' ? 'active_icon' : ''}`} onClick={()=>handleAudioAndIconCheck('help')}>
+                    <button className={`icon-buttons top_app_bar ${clickedIcon === 'help' ? 'active_icon' : ''}`}
+                            onClick={()=>handleAudioAndIconCheck('help')}
+                            onMouseEnter={() => playOnHover('help')}
+                            onMouseLeave={() => stopPlayOnHover()}
+                    >
                         Help
                         <i className="material-icons" alt="help icon">help</i>
                     </button>
                 </Link>
                 <Link to="/RewardStore" className="app_bar_routes">
-                    <button className={`icon-buttons top_app_bar ${clickedIcon === 'rewards' ? 'active_icon' : ''}`} onClick={()=>handleAudioAndIconCheck('dashboard')}>
+                    <button
+                        className={`icon-buttons top_app_bar ${clickedIcon === 'rewards' ? 'active_icon' : ''}`}
+                        onClick={()=>handleAudioAndIconCheck('dashboard')}
+                        onMouseEnter={() => playOnHover('rewards')}
+                        onMouseLeave={() => stopPlayOnHover()}
+                    >
                         Rewards
                         <i className="material-icons" alt="social leader board icon">stars</i>
                     </button>
