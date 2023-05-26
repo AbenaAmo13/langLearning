@@ -57,10 +57,11 @@ function Lessons({state, dispatch, lessonId}){
         setShouldRenderNextToForwardButton(false)
     };
     // Check if state1 is false and state2 is equal to a specific object
-    const tutorialLevel = "BasicLessons"
+
 
     useEffect(()=>{
         if(audioRef.current){
+            const tutorialLevel = "BasicLessons"
             const currentAudio= audioRef.current.src
             const audioPath = new URL(currentAudio).pathname;
             const currentTwiLessonAudio = currentLesson[currentIndex].TwiAudio
@@ -84,6 +85,15 @@ function Lessons({state, dispatch, lessonId}){
         }
 
     }, [isPlaying, state])
+
+    useEffect(()=>{
+        const tutorialLevel = "BasicLessons"
+        if(state.id!==tutorialLevel){
+            setShouldRenderNextToAudioIcon(false)
+            setShouldRenderNextToForwardButton(false)
+        }
+
+    }, [])
 
 
 
