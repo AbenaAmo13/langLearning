@@ -83,7 +83,7 @@ function Lessons({state, dispatch, lessonId}){
 
         }
 
-    }, [isPlaying])
+    }, [isPlaying, state])
 
 
 
