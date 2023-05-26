@@ -10,6 +10,8 @@ function Lessons({state, dispatch, lessonId}){
     const { isPlaying, stopAudio, isEnded, audioRef,setIsEnding} = useContext(AudioContext);
     const currentLesson = state.lessons[lessonId]
     const [currentIndex, setCurrentIndex] = useState(0);
+    const [shouldRenderNextToAudioIcons, setShouldRenderNextToAudioIcon] = useState(true)
+    const [shouldRenderNextToForwardButton, setShouldRenderNextToForwardButton] = useState(false)
     const [error, setError] = useState(null);
     const navigate = useNavigate();
     //It is basicLessonData.
@@ -30,8 +32,8 @@ function Lessons({state, dispatch, lessonId}){
         if(isPlaying){
             stopAudio()
         }
-        setIsEnding(false)
-
+        setShouldRenderNextToAudioIcon(true)
+        setShouldRenderNextToForwardButton(false)
     };
 
 
@@ -49,12 +51,39 @@ function Lessons({state, dispatch, lessonId}){
         if(isPlaying){
             stopAudio()
         }
-        setIsEnding(false)
+        setShouldRenderNextToAudioIcon(true)
+        setShouldRenderNextToForwardButton(false)
     };
     // Check if state1 is false and state2 is equal to a specific object
     const tutorialLevel = "BasicLessons"
-    const shouldRenderNextToAudioIcons = !isPlaying && !isEnded && state.id===tutorialLevel
-    const shouldRenderNextToForwardButton= isEnded && state.id===tutorialLevel
+
+    useEffect(()=>{
+        if(audioRef.current){
+            const currentAudio= audioRef.current.src
+            const audioPath = new URL(currentAudio).pathname;
+            const currentTwiLessonAudio = currentLesson[currentIndex].TwiAudio
+            const currentEnglishLessonAudio = currentLesson[currentIndex].EnglishAudio
+            const audioCheck = audioPath === currentTwiLessonAudio || audioPath ===currentEnglishLessonAudio
+            console.log(audioCheck)
+            let setShouldRenderNextToAudioIconToFalse = isPlaying || isEnded && audioCheck  || state.id!==tutorialLevel
+            if(setShouldRenderNextToAudioIconToFalse){
+                setShouldRenderNextToAudioIcon(false)
+            }else{
+                setShouldRenderNextToAudioIcon(true)
+            }
+
+            const shouldRenderNextToForwardButton= isEnded && audioCheck && state.id===tutorialLevel
+            if(shouldRenderNextToForwardButton){
+                setShouldRenderNextToForwardButton(true)
+            }else{
+                setShouldRenderNextToForwardButton(false)
+            }
+
+        }
+
+    }, [isPlaying])
+
+
 
 
     return(

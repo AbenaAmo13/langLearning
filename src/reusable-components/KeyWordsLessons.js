@@ -138,7 +138,6 @@ function KeyWordsLessons({state, dispatch, lessonId}){
                         twiAudioName={twiAudioPrompt}
                         englishAudio={englishAudioPrompt}
                         englishAudioName={englishAudioPrompt}
-
                     />
                     <div className="keyword_button_div">
                         <button  className="lesson_buttons icon-buttons" onClick={()=> goToPreviousLessonGroup()}>
