@@ -129,8 +129,8 @@ function TopAppBar(){
                 <Link to="/" className="app_bar_routes">
                     <button className={`icon-buttons top_app_bar ${clickedIcon === 'home' ? 'active_icon' : ''}`}
                             onClick={()=>handleAudioAndIconCheck('home')}
-                            onMouseEnter={() => playOnHover('home')}
-                            onMouseLeave={() => stopPlayOnHover()}
+                           /* onMouseEnter={() => playOnHover('home')}
+                            onMouseLeave={() => stopPlayOnHover()}*/
 
                     >
                         Home
@@ -141,8 +141,8 @@ function TopAppBar(){
                 <Link to="/Help" className="app_bar_routes">
                     <button className={`icon-buttons top_app_bar ${clickedIcon === 'help' ? 'active_icon' : ''}`}
                             onClick={()=>handleAudioAndIconCheck('help')}
-                            onMouseEnter={() => playOnHover('help')}
-                            onMouseLeave={() => stopPlayOnHover()}
+                            /*onMouseEnter={() => playOnHover('help')}
+                            onMouseLeave={() => stopPlayOnHover()}*/
                     >
                         Help
                         <i className="material-icons" alt="help icon">help</i>
@@ -152,8 +152,8 @@ function TopAppBar(){
                     <button
                         className={`icon-buttons top_app_bar ${clickedIcon === 'rewards' ? 'active_icon' : ''}`}
                         onClick={()=>handleAudioAndIconCheck('dashboard')}
-                        onMouseEnter={() => playOnHover('rewards')}
-                        onMouseLeave={() => stopPlayOnHover()}
+                       /* onMouseEnter={() => playOnHover('rewards')}
+                        onMouseLeave={() => stopPlayOnHover()}*/
                     >
                         Rewards
                         <i className="material-icons" alt="social leader board icon">stars</i>
