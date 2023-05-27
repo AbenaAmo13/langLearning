@@ -18,7 +18,7 @@ import OverviewAudios from "./OverViewAudios";
 import {AudioContext} from "../context/AudioContext";
 
  function RewardsStore() {
-     const {userCoins, setUserCoins, updateUserCoins} = useContext(RewardsContext);
+     const {userCoins, setUserCoins, buyItem} = useContext(RewardsContext);
      const [userRewards, setPersonalRewards] = useState([])
      const [successPurchase, setSuccessPurchase] = useState(null)
      useEffect(() => {
@@ -50,12 +50,14 @@ import {AudioContext} from "../context/AudioContext";
      const lockedRewards = unlockableRewardsItems.filter(reward => !rewardsPurchased.includes(reward.name));*/
 
 
-     const purchaseItem=(price, itemName)=>{
-         if(price> userCoins){
+     const purchaseItem=(price, itemName, purchased)=>{
+         if(price> userCoins || purchased ){
              setSuccessPurchase(false)
              //alert(successPurchase)
          }else{
-             updateUserCoins(-price)
+             alert(price)
+             buyItem(price)
+             //updateUserCoins(price)
              setSuccessPurchase(true)
              // Add the purchased item to the userRewards array
              setPersonalRewards(prevRewards => [...prevRewards, itemName]);
@@ -93,16 +95,18 @@ import {AudioContext} from "../context/AudioContext";
                          <div className="cardmedia">
                              <img src={item.image} alt={item.name} />
                          </div>
-                         <div>
-                             <a href={item.image} className="start-button purchase-button link"download >Download Me</a>
-
+                         <div className="coins_div">
+                             <p className="pruchased_styling">Purchased</p>
+                         </div>
+                         <div className="downloaad_me_div purchase_div">
+                             <a href={item.image} className="start-button purchase-button link"download >Download</a>
                          </div>
 
                      </div>
                  ))}
 
                  {lockedRewards.map((item, index) => (
-                     <div key={index} className="navCard rewards_cards" onClick={()=>purchaseItem(item.coinsRequired, item.name)}>
+                     <div key={index} className="navCard rewards_cards">
                          <div className="cardmedia">
                              <img src={item.image} alt={item.name} />
                          </div>
@@ -112,7 +116,7 @@ import {AudioContext} from "../context/AudioContext";
                                  <p className="coins_text">{item.coinsRequired}</p>
                              </div>
                              <div className="purchase_div">
-                                 <button className="start-button purchase-button" onClick={()=> purchaseItem(item.coinsRequired, item.name)}>Buy me</button>
+                                 <button className="start-button purchase-button" onClick={()=> purchaseItem(item.coinsRequired, item.name, item.purchased)}>Buy me</button>
                              </div>
 
                          </div>
