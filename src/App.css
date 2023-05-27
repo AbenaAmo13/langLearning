@@ -8,12 +8,12 @@
   color: black;
 }
 
-/*
+
 button {
   -webkit-text-fill-color: black;
   color: black;
 }
- */
+
 
 .material-icons{
   color: black;
@@ -463,7 +463,7 @@ button.selected{
 
 .keyword_volume_icon{
   margin-top: 3%;
-  padding:50%!important;
+  /*padding:50%!important;*/
 }
 
 .volume_button_divs{
