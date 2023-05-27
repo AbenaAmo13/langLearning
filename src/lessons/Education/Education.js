@@ -1,4 +1,3 @@
-import CourseComponent from "../../reusable-components/CourseComponent";
 import CourseComponentSimplified from "../../reusable-components/CourseComponentMoreSimplified";
 
 function Education(){
