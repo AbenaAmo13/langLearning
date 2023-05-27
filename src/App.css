@@ -8,6 +8,14 @@
   color: black;
 }
 
+button {
+  -webkit-text-fill-color: black;
+  color: black;
+}
+
+.material-icons{
+  color: black;
+}
 
 .user_coins{
   font-weight: bolder;
@@ -464,6 +472,7 @@ button.selected{
 
 
 
+
 .volume_div{
   display: flex;
 }
@@ -568,6 +577,7 @@ background: transparent;
 .icon-buttons{
   background: none;
   border: none;
+  color: black;
 }
 
 #twiflag{
