@@ -85,10 +85,18 @@ function App() {
                                 <Route path="/" element={<Homepage/>}/>
                                 <Route path="/Help" element={<HelpPage/>}/>
                                 <Route path="/Basics" element={<Basics/>}/>
-                                <Route path="/Health" element={lockedStatusJsonObj && lockedStatusJsonObj.Health === false ? (<HealthCare/>) : (<Navigate to="/"/>)}/>
-                                <Route path="/Education" element={lockedStatusJsonObj && lockedStatusJsonObj.Education === false ? (<Education/>) : (<Navigate to="/"/>)}/>
-                                <Route path="/Jobs" element={lockedStatusJsonObj && lockedStatusJsonObj.Jobs === false ? (<Jobs/>) : (<Navigate to="/"/>)}/>
-                                <Route path="/Id" element={lockedStatusJsonObj && lockedStatusJsonObj.Identification === false ? (<Id/>) : (<Navigate to="/"/>)}/>
+                                <Route path="/Health"
+                                   element={lockedStatusJsonObj && lockedStatusJsonObj.Health === false ?
+                                   (<HealthCare/>) : (<Navigate to="/"/>)}/>
+                                <Route path="/Education"
+                                   element={lockedStatusJsonObj && lockedStatusJsonObj.Education === false ?
+                                   (<Education/>) : (<Navigate to="/"/>)}/>
+                                <Route path="/Jobs"
+                                       element={lockedStatusJsonObj && lockedStatusJsonObj.Jobs === false ?
+                                           (<Jobs/>) : (<Navigate to="/"/>)}/>
+                                <Route path="/Id"
+                                       element={lockedStatusJsonObj && lockedStatusJsonObj.Identification === false ?
+                                           (<Id/>) : (<Navigate to="/"/>)}/>
                                 <Route path="/RewardStore" element={<RewardsStore/>}/>
                             </Routes>
                         </BrowserRouter>
