@@ -19,9 +19,10 @@ import {
     trueOrFalseQuestionsHealth
 } from "../lessons/HealthCare/HealthCareLessonData";
 import {
+    educationKeyWordsSection2,
     educationLessonData,
-    educationLessonDataKeyWords,
-    EducationMatchingWordsQuestions
+    educationLessonDataKeyWords, educationLessonSection2,
+    EducationMatchingWordsQuestions, educationQuestionSet2, UniversityEducationSupport, universityKeyWordEducation
 } from "../lessons/Education/EducationLessonData";
 
 export const LessonContext = createContext(null);
@@ -57,12 +58,12 @@ export function GlobalStatesProvider({ children }) {
             id: "EducationLessons",
             scores: 0,
             userScoreName: "EducationScore",
-            lessons:[educationLessonData, educationLessonDataKeyWords, NHISLessonData, NHISKeyWordsData, NHISRegistrationForm, RegistrationFormKeyWords, healthCareCourseSummary],
+            lessons:[educationLessonData, educationLessonDataKeyWords, educationLessonSection2, educationKeyWordsSection2, UniversityEducationSupport, universityKeyWordEducation,  healthCareCourseSummary],
             numberOfCompletedLessons: 0,
             numberOfCompletedQuestions: 0,
             lessonCompleted: false,
             questionStarted: false,
-            questions: [EducationMatchingWordsQuestions, basicsMCQHealthCare, trueOrFalseQuestionsHealth],
+            questions: [EducationMatchingWordsQuestions, educationQuestionSet2, trueOrFalseQuestionsHealth],
             pointsToPassLesson : 65
         },
 

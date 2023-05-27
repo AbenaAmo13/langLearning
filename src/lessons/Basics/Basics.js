@@ -12,120 +12,29 @@ import MultipleLessons from "../../reusable-components/MultipleLessons";
 import KeyWordsLessons from "../../reusable-components/KeyWordsLessons";
 import CourseSummary from "../../reusable-components/CourseSummary";
 import MultipleLessonsParallel from "../../reusable-components/MultipleLessonsParallel";
+import CourseComponentSimplified from "../../reusable-components/CourseComponentMoreSimplified";
 
 function Basics() {
-    const {lockedStatusJsonObj, setLockedStatusJsonObj} = useContext(LockedStatusObjContext)
-    const {isPlaying, stopAudio} = useContext(AudioContext)
-    const lessons = useContext(LessonContext)
-    const dispatch = useContext(LessonDispatchContext)
-    const basicLessonState = lessons.BasicLessons;
-    const numberOfCompletedLessons = basicLessonState.numberOfCompletedLessons
-    const numberOfCompletedQuestions = basicLessonState.numberOfCompletedQuestions
-    const lessonCompleted = basicLessonState.lessonCompleted
-    const [passedBasicLesson, setPassedBasicLesson] = useState(false)
-    let allQuestionsAnswered
-    const basicsComponent=[
-        <MultipleLessons state={basicLessonState} dispatch={dispatch} lessonId={0}/>,
-        <KeyWordsLessons state={basicLessonState} dispatch={dispatch} lessonId={1}/>,
-        <Question state={basicLessonState} questionType={"trueorfalse"} dispatch={dispatch} id={0}/>,
-        <Question state={basicLessonState} questionType={"mcq"} dispatch={dispatch} id={1}/>,
-        <CourseSummary state={basicLessonState} dispatch={dispatch} lessonId={2}/>
-
-    ]
-
-    //Math.min is used to ensure that the component index does not exceed the maximum index of the lessonComponents Array
-    const currentComponentIndex = Math.min(
-        numberOfCompletedLessons + numberOfCompletedQuestions,
-        basicsComponent.length - 1
-    );
-
-    useEffect(()=>{
-        dispatch({ type: "RESET_LESSON", payload: { lesson: basicLessonState.id}});
-    }, [])
-
-    useEffect(()=>{
-        const userPoints = basicLessonState.scores;
-        const pointsRequired = basicLessonState.pointsToPassLesson;
-      //console.log("Number of completed questions: " + numberOfCompletedQuestions);
-        if (numberOfCompletedQuestions === basicLessonState.questions.length) {
-            const userScoreObject = JSON.parse(localStorage.getItem("userScores"));
-            let maxUserScore = userScoreObject[basicLessonState.userScoreName]
-            if(userPoints > maxUserScore){
-                userScoreObject[basicLessonState.userScoreName] = userPoints
-                localStorage.setItem('userScores', JSON.stringify(userScoreObject))
-            }
-            if (userPoints > pointsRequired) {
-                //console.log("you have passed the lessons");
-                const lockedStatus = JSON.parse(localStorage.getItem("lockedStatusData"));
-                lockedStatus.Health = false;
-                localStorage.setItem("lockedStatusData", JSON.stringify(lockedStatus));
-                setLockedStatusJsonObj(lockedStatus);
-                setPassedBasicLesson(true);
-            } else {
-                setPassedBasicLesson(false);
-            }
-        }
-    }, [lessonCompleted, numberOfCompletedQuestions]);
-
-
-
-   if (lessonCompleted) {
-       if(passedBasicLesson){
-           return <PassedCourse to="/Health" />;
-       }else{
-           return <RetakeCourse/>
-       }
-
-    } else {
-        return basicsComponent[currentComponentIndex];
-    }
-
-
-
-
-
-
-
-
-
-
- /*   useEffect(()=>{
-        if(isPlaying){
-            stopAudio()
-        }
-
-        const userPoints = basicLessonState.scores;
-        const pointsRequired = basicLessonState.pointsToPassLesson;
-        if(userPoints > pointsRequired && localStorage.getItem('lockedStatusData')) {
-            const lockedStatus = JSON.parse(localStorage.getItem('lockedStatusData'))
-            lockedStatus.Health = false
-            localStorage.setItem('lockedStatusData', JSON.stringify(lockedStatus))
-            console.log("Final object: "+ lockedStatus)
-            setLockedStatusJsonObj(lockedStatus)
-
-            setPassedBasicLesson(true);
-        }
-    }, [basicLessonState.mcqComplete])
-
-
-
-
-    if(!basicLessonState.lessonCompleted ){
-        return( <Lessons state={basicLessonState} dispatch={dispatch}/>)
-    }else if(!basicLessonState.trueOrFalseComplete){
-            return(<Question state={basicLessonState} questionType={"trueorfalse"} dispatch={dispatch} id={0}/>)
-    }else if(!basicLessonState.mcqComplete){
-            return(<Question state={basicLessonState} questionType={"mcq"} dispatch={dispatch} id={1}/>)
-    }else if(passedBasicLesson) {
-        // All questions answered, quiz complete
-        return(
-           <PassedCourse to="/Health"/>
-        )
-    }else{
-        return(
-            <RetakeCourse/>
-        )
-    }*/
+    const questionTypeArray=["trueorfalse", "mcq"]
+    // Dynamic lesson components data
+    const lessonComponentsData = [
+        { type: 'MultipleLessons', props: {lessonId: 0} },
+        { type: 'KeyWordsLessons', props:{lessonId: 1} },
+        { type: 'Questions', props:{questionType: questionTypeArray[0], id: 0} },
+        { type: 'Questions', props:{questionType: questionTypeArray[1], id: 1} },
+        { type: 'CourseSummary', props:{lessonId: 2}}
+        // Add more lesson component data objects as needed
+    ];
+    return(
+        <div>
+            <CourseComponentSimplified
+                lessonName="BasicLessons"
+                lockedStatusItem="EducationLessons"
+                redirectToLink="/Health"
+                lessonComponentsData = {lessonComponentsData}
+            />
+        </div>
+    )
 
 }
 

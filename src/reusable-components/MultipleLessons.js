@@ -23,8 +23,10 @@ function Lessons({state, dispatch, lessonId}){
         }
         else {
             if (currentIndex === currentLesson.length -1) {
-                dispatch({ type: "INCREASE_NUMBER_OF_LESSONS_COMPLETED", payload: { lesson: state.id, value: 1 }});
-               // dispatch({ type: "SET_LESSON_COMPLETED", payload: { lesson: state.id, completed: true }});
+                dispatch(
+                    {type: "INCREASE_NUMBER_OF_LESSONS_COMPLETED",
+                    payload: { lesson: state.id, value: 1 }}
+                );
             }else{
                 setError(null);
                 setCurrentIndex(currentIndex + 1);
@@ -33,15 +35,15 @@ function Lessons({state, dispatch, lessonId}){
         if(isPlaying){
             stopAudio()
         }
-        //alert(state.id)
         if(state.id==="BasicLessons"){
             setIsEnding(false)
             setShouldRenderNextToAudioIcon(true)
             setShouldRenderNextToForwardButton(false)
-            //alert(shouldRenderNextToAudioIcons)
         }
-
     };
+
+
+
 
 
     const getPreviousLesson = () => {
@@ -100,10 +102,11 @@ function Lessons({state, dispatch, lessonId}){
                 .some(key => lockedStatusData[key] === false);
 
               if (hasFalseValue) {
+                  // Remove the tutorial arrows as the user doesn't need them anymore
                    console.log("At least one value is false aside from Basics");
                    setShouldDoTutorial(false)
                } else {
-                   // Perform your action when all values are false
+                   // Keep the tutorial arrows as the user might need them
                    console.log("All values aside from basics are false");
                    setShouldDoTutorial(true)
                }

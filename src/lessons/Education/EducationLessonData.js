@@ -111,7 +111,6 @@ export const EducationMatchingWordsQuestions=[
             { leftColumn: "Ghana Education Service", rightColumn: "Ghana Nhomasua Dwumadibea" }
         ],
         Answer:"Matched",
-        componentScore : "HealthScore",
         isAnswered: false,
         TwiAudio:"testforTwi",
         EnglishAudio: "",
@@ -128,268 +127,203 @@ export const EducationMatchingWordsQuestions=[
 
 
 
-
-export const NHISRegistrationForm=[
+/*Second set of questions*/
+export const educationLessonSection2=[
     {
         Image: "" ,
-        EnglishWord: "NHIS: Registration Form",
+        EnglishWord: "Free Compulsory Universal Basic Education (FCUBE)",
         TwiWord: "",
         TwiAudio: "",
         EnglishAudio: "",
-        KeyMessageEnglish:'After the interview, you will have to fill a registration form with the following information:',
+        KeyMessageEnglish:'This is a policy that ensures that basic education is free for all children of school-going age',
     },
     {
         Image: "" ,
-        EnglishWord: "Full Name",
+        EnglishWord: "Free Compulsory Universal Basic Education (FCUBE)",
         TwiWord: "",
         TwiAudio: "",
         EnglishAudio: "",
-        KeyMessageEnglish:'This is your full name as shown in your passport, for e.g Kofi Poku',
+        KeyMessageEnglish:'The government pays for school fees, textbooks, and other educational things ',
     },
     {
         Image: "" ,
-        EnglishWord: "Date of Birth",
+        EnglishWord: "Free Compulsory Universal Basic Education (FCUBE)",
         TwiWord: "",
         TwiAudio: "",
         EnglishAudio: "",
-        KeyMessageEnglish:'This is the date that you were born',
+        KeyMessageEnglish:'This applies for children between the ages of 4 and 15',
     },
     {
         Image: "" ,
-        EnglishWord: "Age",
+        EnglishWord: "Free Compulsory Universal Basic Education (FCUBE)",
         TwiWord: "",
         TwiAudio: "",
         EnglishAudio: "",
-        KeyMessageEnglish:'This is how old you are currently',
+        KeyMessageEnglish:'You can take your child to any government public middle and/or primary school to get free education for your child',
     },
     {
         Image: "" ,
-        EnglishWord: "Marital Status",
+        EnglishWord: "Free Compulsory Universal Basic Education (FCUBE): Optional",
         TwiWord: "",
         TwiAudio: "",
         EnglishAudio: "",
-        KeyMessageEnglish:'This is whether or not you are married',
+        KeyMessageEnglish:'You are not forced to take your child to a government public school, you can take them to a private school if you wish to do so',
     },
-    {
-        Image: "" ,
-        EnglishWord: "Mobile Phone Number",
-        TwiWord: "",
-        TwiAudio: "",
-        EnglishAudio: "",
-        KeyMessageEnglish:'This is the number on your phone',
-    },
-    {
-        Image: "" ,
-        EnglishWord: "Home Address",
-        TwiWord: "",
-        TwiAudio: "",
-        EnglishAudio: '',
-        KeyMessageEnglish:'This is where you live',
-    },
-    {
-        Image: "" ,
-        EnglishWord: "NHIS: Picture and Fingerprint",
-        TwiWord: "",
-        TwiAudio: "",
-        EnglishAudio: "",
-        KeyMessageEnglish:'After filling the form, you will take a picture and scan your fingerprints',
-    }, {
-        Image: "" ,
-        EnglishWord: "NHIS: Select Prefered primary provider",
-        TwiWord: "",
-        TwiAudio: "",
-        EnglishAudio: "",
-        KeyMessageEnglish:'Finally you will choose which of the hospitals will be the place you would go to when you get sick. ',
-
-    },{
-        Image: "" ,
-        EnglishWord: "When ill... ",
-        TwiWord: "",
-        TwiAudio: "",
-        EnglishAudio: "",
-        KeyMessageEnglish:'When sick, you must go to your chosen hospital but if it is an emergency you can get any health care at any health care facility',
-
-    }
-]
-
-export const healthLessonData=[
-    {
-        Image: "" ,
-        EnglishWord: "Malaria",
-        TwiWord: "",
-        TwiAudio: "",
-        EnglishAudio: "",
-        KeyMessageEnglish:'In this lesson, we will learn about malaria and ways to keep ourselves healthy by preventing and treating it.' ,
-
-    },
-    {
-        Image: "" ,
-        EnglishWord: "Malaria",
-        TwiWord: "",
-        TwiAudio: "",
-        EnglishAudio: "",
-        KeyMessageEnglish:'This is a diseases we get when we are bitten by mosquitoes' ,
-
-    },
-
-    {
-        Image: "" ,
-        EnglishWord: "Malaria Prevention: Mosquito Nets",
-        TwiWord: "",
-        TwiAudio: "",
-        EnglishAudio: "",
-        KeyMessageEnglish:'To prevent malaria, you must get and sleep under mosquito nets',
-
-    },  {
-        Image: "" ,
-        EnglishWord: "Malaria Prevention: Mosquito Coils",
-        TwiWord: "",
-        TwiAudio: "",
-        EnglishAudio: "",
-        KeyMessageEnglish:'To prevent malaria, you must buy and use mosquito coils in your house',
-
-    }, {
-        Image: "" ,
-        EnglishWord: "Malaria Treatment: Medicine",
-        TwiWord: "",
-        TwiAudio: "",
-        EnglishAudio: "",
-        KeyMessageEnglish:'To treat malaria, you must go to a hospital or a drug store and ask for medicine for malaria',
-
-    },{
-        Image: "" ,
-        EnglishWord: "Malaria Treatment: Self Care",
-        TwiWord: "",
-        TwiAudio: "",
-        EnglishAudio: "",
-        KeyMessageEnglish:'To treat malaria, you must also make sure you are eating properly, drinking lots of water and sleeping well',
-
-    },{
-        Image: "" ,
-        EnglishWord: "Keeping Healthy",
-        TwiWord: "",
-        TwiAudio: "",
-        EnglishAudio: "",
-        KeyMessageEnglish:'Next we will going over ways that we can keep ourselves healthy',
-
-    },
-    {
-        Image: "" ,
-        EnglishWord: "Wash your Hands",
-        TwiWord: "",
-        TwiAudio: "",
-        EnglishAudio: "",
-        KeyMessageEnglish:'To keep healthy: you must wash your hands before and after meals',
-
-    },  {
-        Image: "" ,
-        EnglishWord: "Balanced Diet",
-        TwiWord: "",
-        TwiAudio: "",
-        EnglishAudio: "",
-        KeyMessageEnglish:'To keep healthy: you must eat a balanced diet with plenty fruits and vegetables',
-
-    }, {
-        Image: "" ,
-        EnglishWord: "Exercise",
-        TwiWord: "",
-        TwiAudio: "",
-        EnglishAudio: "",
-        KeyMessageEnglish:'To keep healthy: you must get lots of exercise such as dancing, walking, and/or playing sports',
-
-    },
-
 
 ]
 
 
 
 
-/*Key Words Lesson Data*/
-
-export const healthCareKeyWordsData=[
+export const educationKeyWordsSection2=[
     {
         Image: "" ,
-        EnglishWord: "Ghana Health Service",
-        TwiWord: "Ghana Akwahosan Dwumadibea",
+        EnglishWord: "Basic Education",
+        TwiWord: "Mfitiase Nhomasua",
         TwiAudio: "",
         EnglishAudio: "",
-        KeyMessageEnglish:'These are the group of people in the government that are tasked with helping us with our healthcare ',
+        KeyMessageEnglish:'This includes primary education and lower secondary education',
     },
      {
         Image:"",
-        EnglishWord: "National Health Insurance Scheme (NHIS)",
-        TwiWord: "ɔman Apɔmuden nsiakyibaa",
+        EnglishWord: "Universal",
+        TwiWord: "Amansan nyinaa",
         TwiAudio:"",
         EnglishAudio:"",
-        KeyMessageEnglish: "The government provides cheap health care through a programme in english known as called the National Health Insurance Scheme"
+        KeyMessageEnglish: "This means it is available for everyone"
     }, {
         Image:"",
-        EnglishWord: "Medicine",
-        TwiWord: "aduro",
+        EnglishWord: "School Fees",
+        TwiWord: "Sukuu ho ka",
         TwiAudio:"",
         EnglishAudio:"",
-        KeyMessageEnglish: "This is what you use when you're sick to feel better."
+        KeyMessageEnglish: "This is what you pay to get an education, usually for private schools."
 
     },
     {
         Image:"",
-        EnglishWord: "Hospital",
-        TwiWord: "Ayaresabea",
+        EnglishWord: "Government school",
+        TwiWord: "Aban no sukuu",
         TwiAudio:"",
         EnglishAudio:"",
-        KeyMessageEnglish: "This is where we go when we are sick."
+        KeyMessageEnglish: "These are schools that receive funding from the government."
     },
 
 ]
 
 
+export const educationQuestionSet2 =[
+    {
+        id: 1,
+        Question: "What is the name of the policy that ensures all children can go to school for free?",
+        Options: ["Free Compulsory Universal Basic Education (FCUBE)", "Basic Education Plan", "Government School Initiative"],
+        EnglishAudio:'' ,
+        TwiAudio: '',
+        IncorrectEnglishAudio: '' ,
+        IncorrectTwiAudio: '',
+        Answer: "Free Compulsory Universal Basic Education (FCUBE)",
+        isAnswered: false,
+        type: "mcqs",
+    },
+    {
+        id: 2,
+        Question: "Which age group does the FCUBE policy apply to",
+        Options: [" 4-10 years", " 6-12 years", "D) 4-15 years"],
+        EnglishAudio: '',
+        TwiAudio:'',
+        IncorrectEnglishAudio: '',
+        IncorrectTwiAudio: '',
+        Answer: "Pregnant women",
+        isAnswered: false,
 
-export const NHISKeyWordsData=[
+    },
+    {
+        id: 3,
+        Question: "What does the government cover under the FCUBE policy",
+        Options: ["After-school activities and programs", "School fees, textbooks and others", "Food and transportation for students"],
+        EnglishAudio: '',
+        TwiAudio:'',
+        IncorrectEnglishAudio: '',
+        IncorrectTwiAudio: '',
+        Answer: "School fees, textbooks and others",
+        isAnswered: false,
+    },
+    {
+        id: 4,
+        Question: "What is Aban no sukuu in English?",
+        Options: ["Government church", "Government school", "Government home"],
+        EnglishAudio: '',
+        TwiAudio:'',
+        IncorrectEnglishAudio: '',
+        IncorrectTwiAudio: '',
+        Answer: "Government school",
+        isAnswered: false,
+    }
+    ,
+    {
+        id: 5,
+        Question: "What is Sukuu ho ka in English",
+        Options: ["School fees", "School attendance", "School teacher"],
+        EnglishAudio: '',
+        TwiAudio:'',
+        IncorrectEnglishAudio: '',
+        IncorrectTwiAudio: '',
+        Answer: "School fees",
+        isAnswered: false,
+    }
+]
+
+
+
+
+
+
+/*Third set of lesson */
+export const UniversityEducationSupport=[
     {
         Image:"",
-        EnglishWord: "NHIS Registration",
+        EnglishWord: "Ghana Education Service",
         TwiWord: "NHIS atwerɛtwerɛ",
         TwiAudio:"",
         EnglishAudio:"",
-        KeyMessageEnglish: "This is the process of registering for the NHIS"
+        KeyMessageEnglish: "The government allows for student to apply for student loans to help pay for their education "
     },
     {
         Image:"",
-        EnglishWord: "NHIS Providers",
+        EnglishWord: "University Student Loans",
         TwiWord: "NHIS nnwanhwɛfoɔ",
         TwiAudio:"",
         EnglishAudio:"",
-        KeyMessageEnglish: "These are the hospitals that provide NHIS services"
+        KeyMessageEnglish: "The government allows university student to apply for student loans"
     },
     {
         Image:"",
-        EnglishWord: "Interview",
+        EnglishWord: "University Student Loans: Things you need",
         TwiWord: "Nkɔmmɔbɔ",
         TwiAudio:"",
         EnglishAudio:"",
-        KeyMessageEnglish: "A formal conversation with someone. "
+        KeyMessageEnglish: "To apply for this loan, you must be a Ghanaian and have a Ghanaian Card Number. You need to be accepted by a university and be going there soon."
     },
     {
         Image:"",
-        EnglishWord: "Exempt Group",
+        EnglishWord: "University Student Loans: Things you need",
         TwiWord: "Yi nnipakuw bi firi mu",
         TwiAudio:"",
         EnglishAudio:"",
-        KeyMessageEnglish: "These are individuals that are not included in a certain rule"
+        KeyMessageEnglish: "You must also have a E-zwich Card which you can get from a bank, an email address and phone number"
     },
     {
         Image:"",
-        EnglishWord: "Annual Premium",
+        EnglishWord: "University Student Loans: Application",
         TwiWord: "Afe biara sika",
         TwiAudio:"",
         EnglishAudio:"",
-        KeyMessageEnglish: "A yearly fee"
+        KeyMessageEnglish: "To get this loan, you must apply online using the following address: https://www.sltf.gov.gh/"
     },
 ]
 
 
-export const RegistrationFormKeyWords=[
+export const universityKeyWordEducation=[
     {
         Image:"",
         EnglishWord: "Registration Form",
@@ -514,71 +448,7 @@ export const healthyKeyWords=[
 
 
 
-export const basicsMCQHealthCare =[
-    {
-        id: 1,
-        Question: "Which of the following hospitals provide NHS services",
-        Options: ["Korle Bu Hospital", "Ghana International Hospital", "HealthCare"],
-        EnglishAudio:'' ,
-        TwiAudio: '',
-        IncorrectEnglishAudio: '' ,
-        IncorrectTwiAudio: '',
-        Answer: "Korle Bu Hospital",
-        isAnswered: false,
-        componentScore : "HealthScore",
-        type: "mcqs",
-    },
-    {
-        id: 2,
-        Question: "Which of the following people are part of the exempt group",
-        Options: ["Pregnant women", "Rich Politicians", "Celebrities"],
-        EnglishAudio: '',
-        TwiAudio:'',
-        IncorrectEnglishAudio: '',
-        IncorrectTwiAudio: '',
-        Answer: "Pregnant women",
-        isAnswered: false,
-        componentScore : "HealthScore"
 
-    },
-    {
-        id: 3,
-        Question: "Which of the following hospitals does not provide NHS services ?",
-        Options: ["37 Military Hospital", "Tema Hospital", "Ghana Card"],
-        EnglishAudio: '',
-        TwiAudio:'',
-        IncorrectEnglishAudio: '',
-        IncorrectTwiAudio: '',
-        Answer: "Ghana Card",
-        isAnswered: false,
-        componentScore : "HealthScore",
-    },
-    {
-        id: 4,
-        Question: "What is the first step in registering for NHIS?",
-        Options: ["Finding a provider", "Pay money", "Getting interviewed"],
-        EnglishAudio: '',
-        TwiAudio:'',
-        IncorrectEnglishAudio: '',
-        IncorrectTwiAudio: '',
-        Answer: "Finding a provider",
-        isAnswered: false,
-        componentScore : "HealthScore",
-    }
-    ,
-    {
-        id: 5,
-        Question: "What is the second step in registering for NHIS ",
-        Options: ["An interview", "Paying a registration fee", "Free SHS"],
-        EnglishAudio: '',
-        TwiAudio:'',
-        IncorrectEnglishAudio: '',
-        IncorrectTwiAudio: '',
-        Answer: "An interview",
-        isAnswered: false,
-        componentScore : "HealthScore"
-    }
-]
 
 export const trueOrFalseQuestionsHealth=[
     {
