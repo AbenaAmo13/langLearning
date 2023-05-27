@@ -12,7 +12,7 @@ import MultipleLessons from "../../reusable-components/MultipleLessons";
 import KeyWordsLessons from "../../reusable-components/KeyWordsLessons";
 import CourseSummary from "../../reusable-components/CourseSummary";
 import MultipleLessonsParallel from "../../reusable-components/MultipleLessonsParallel";
-import CourseComponentSimplified from "../../reusable-components/CourseComponentMoreSimplified";
+import CourseComponent from "../../reusable-components/CourseComponent";
 
 function Basics() {
     const questionTypeArray=["trueorfalse", "mcq"]
@@ -27,7 +27,7 @@ function Basics() {
     ];
     return(
         <div>
-            <CourseComponentSimplified
+            <CourseComponent
                 lessonName="BasicLessons"
                 lockedStatusItem="Health"
                 redirectToLink="/Health"
@@ -35,8 +35,6 @@ function Basics() {
             />
         </div>
     )
-
-
 }
 
 

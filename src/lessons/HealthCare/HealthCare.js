@@ -7,7 +7,7 @@ import CourseSummary from "../../reusable-components/CourseSummary";
 import {LockedStatusObjContext} from "../../App";
 import PassedCourse from "../../reusable-components/PassedCourse";
 import RetakeCourse from "../../reusable-components/RetakeCourse";
-import CourseComponentSimplified from "../../reusable-components/CourseComponentMoreSimplified";
+import CourseComponent from "../../reusable-components/CourseComponent";
 
 function HealthCare(){
     const questionTypeArray=["matching", "mcq", "trueorfalse"]
@@ -28,7 +28,7 @@ function HealthCare(){
     ];
     return(
         <div>
-            <CourseComponentSimplified
+            <CourseComponent
                 lessonName="HealthCareLessons"
                 lockedStatusItem="Education"
                 redirectToLink="/Health"

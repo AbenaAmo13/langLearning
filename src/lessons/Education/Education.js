@@ -1,4 +1,4 @@
-import CourseComponentSimplified from "../../reusable-components/CourseComponentMoreSimplified";
+import CourseComponent from "../../reusable-components/CourseComponent";
 
 function Education(){
     const questionTypeArray=["matching", "mcq", "trueorfalse"]
@@ -11,7 +11,7 @@ function Education(){
     ];
     return(
         <div>
-            <CourseComponentSimplified
+            <CourseComponent
                 lessonName="EducationLessons"
                 lockedStatusItem="Identification"
                 redirectToLink="/Id"
