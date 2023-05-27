@@ -19,6 +19,7 @@ import {AudioContext} from "../context/AudioContext";
 
  function RewardsStore() {
      const {userCoins, setUserCoins, buyItem} = useContext(RewardsContext);
+     const overViewText ="Use the coins you won from completing your course to get downloadable pictures of Ghana items on your phone"
      const [userRewards, setPersonalRewards] = useState([])
      const [successPurchase, setSuccessPurchase] = useState(null)
      useEffect(() => {
@@ -66,6 +67,7 @@ import {AudioContext} from "../context/AudioContext";
      return (
          <div>
              <OverviewAudios
+                 text={overViewText}
                  englishAudio={rewardOverviewEnglish}
                  englishAudioName={rewardOverviewEnglish}
                  twiAudio={rewardOverviewTwi}

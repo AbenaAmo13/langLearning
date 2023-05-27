@@ -8,6 +8,12 @@
   color: black;
 }
 
+.overview_point_container{
+  display: flex;
+  width: 100%;
+  align-items: center;
+}
+
 
 button {
   -webkit-text-fill-color: black;
@@ -459,6 +465,7 @@ button.selected{
 .audio_container{
   display: flex;
   align-items: center;
+  flex-direction: column;
 }
 
 .keyword_volume_icon{
