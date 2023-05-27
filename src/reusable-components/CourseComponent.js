@@ -8,7 +8,7 @@ import Questions from "./Questions";
 import KeyWordsLessons from "./KeyWordsLessons";
 import CourseSummary from "./CourseSummary";
 
-function CourseComponentSimplified({lessonName, lockedStatusItem,redirectToLink, lessonComponentsData}){
+function CourseComponent({lessonName, lockedStatusItem,redirectToLink, lessonComponentsData}){
     const {lockedStatusJsonObj, setLockedStatusJsonObj} = useContext(LockedStatusObjContext)
     const lessons = useContext(LessonContext)
     const dispatch = useContext(LessonDispatchContext)
@@ -72,4 +72,4 @@ function CourseComponentSimplified({lessonName, lockedStatusItem,redirectToLink,
 
 }
 
-export default CourseComponentSimplified
+export default CourseComponent
