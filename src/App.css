@@ -485,7 +485,7 @@ button.selected{
 }
 
 .start-button{
-  padding: 20%;
+ /* padding: 20%;*//
   /*background-color: palegreen;*/
   background-color: antiquewhite;
   border: solid 1px;
