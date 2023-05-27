@@ -29,12 +29,13 @@ function Basics() {
         <div>
             <CourseComponentSimplified
                 lessonName="BasicLessons"
-                lockedStatusItem="EducationLessons"
+                lockedStatusItem="Health"
                 redirectToLink="/Health"
                 lessonComponentsData = {lessonComponentsData}
             />
         </div>
     )
+
 
 }
 

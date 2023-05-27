@@ -16,7 +16,7 @@ function CourseComponentSimplified({lessonName, lockedStatusItem,redirectToLink,
     const numberOfCompletedQuestions = lessonState.numberOfCompletedQuestions
     const lessonCompleted = lessonState.lessonCompleted
 
-    const [passedHealthLesson, setHealthCareLesson] = useState(false)
+    const [passedLesson, setPassedLesson] = useState(false)
     useEffect(()=>{
         dispatch({ type: "RESET_LESSON", payload: { lesson: lessonState.id}});
     }, [])
@@ -32,9 +32,9 @@ function CourseComponentSimplified({lessonName, lockedStatusItem,redirectToLink,
                 lockedStatus[lockedStatusItem] = false;
                 localStorage.setItem("lockedStatusData", JSON.stringify(lockedStatus));
                 setLockedStatusJsonObj(lockedStatus);
-                setHealthCareLesson(true);
+                setPassedLesson(true);
             } else {
-                setHealthCareLesson(false);
+                setPassedLesson(false);
             }
         }
     }, [lessonCompleted, numberOfCompletedQuestions]);
@@ -60,7 +60,7 @@ function CourseComponentSimplified({lessonName, lockedStatusItem,redirectToLink,
     );
 
     if (lessonCompleted) {
-        if(passedHealthLesson){
+        if(passedLesson){
             return <PassedCourse to={redirectToLink} />;
         }else{
             return <RetakeCourse/>

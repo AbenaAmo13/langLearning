@@ -14,7 +14,7 @@ function Education(){
         <div>
             <CourseComponentSimplified
                 lessonName="EducationLessons"
-                lockedStatusItem="EducationLessons"
+                lockedStatusItem="Identification"
                 redirectToLink="/Id"
                 lessonComponentsData = {lessonComponentsData}
             />
