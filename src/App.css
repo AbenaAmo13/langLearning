@@ -490,7 +490,7 @@ button.selected{
 }
 
 .start-button{
-  padding: 16px;
+  padding: 6px 16px;
 
   background-color: antiquewhite;
   border: solid 1px;
@@ -851,7 +851,7 @@ progress::-moz-progress-bar {
 
 
 .start-button.purchase-button{
-  padding: 7%;
+  padding: 16px;
 }
 
 .purchase_div{
