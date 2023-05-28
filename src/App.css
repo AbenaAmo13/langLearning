@@ -553,7 +553,7 @@ background-color: #e2e5df;
 .correct_answer_icon{
 background: transparent;
   border: none;
-  color: green;
+  color: green!important;
 }
 
 .correct_answer_icons{

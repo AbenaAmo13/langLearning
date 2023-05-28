@@ -8,10 +8,10 @@ function HealthCare(){
     const questionTypeArray=["matching", "mcq", "trueorfalse"]
     const healthCarePromptData = {
         cardTextContent:[
-            "For this section, we will be going introducing the topics that you will cover for the application. To complete this course and start the next one, you must get at least 7 questions right"
+            "For this section, we will be going over how the Government of Ghana help us with our healthcare, If you are ready to start click yes, if not click no. "
         ],
         quizImage : lesson1Image,
-        cardTitle: "Course Outline",
+        cardTitle: "Health Care",
         cardTitleTwi: "twiTitle",
         EnglishAudio: "",
         TwiAudio: "",
