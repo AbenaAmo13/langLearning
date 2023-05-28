@@ -1,5 +1,4 @@
 import CourseComponent from "../../reusable-components/CourseComponent";
-
 function Education(){
     const questionTypeArray=["matching", "mcq", "trueorfalse"]
     // Dynamic lesson components data
@@ -7,7 +6,6 @@ function Education(){
         { type: 'MultipleLessons', props: {lessonId: 0} },
         { type: 'KeyWordsLessons', props:{lessonId: 1} },
         { type: 'Questions', props:{questionType: questionTypeArray[0], id: 0} },
-        // Add more lesson component data objects as needed
     ];
     return(
         <div>
@@ -20,5 +18,4 @@ function Education(){
         </div>
     )
 }
-
 export default Education

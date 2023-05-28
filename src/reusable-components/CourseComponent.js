@@ -7,6 +7,7 @@ import MultipleLessons from "./MultipleLessons";
 import Questions from "./Questions";
 import KeyWordsLessons from "./KeyWordsLessons";
 import CourseSummary from "./CourseSummary";
+import StartCourseComponent from "./StartCourseComponent";
 
 function CourseComponent({lessonName, lockedStatusItem,redirectToLink, lessonComponentsData}){
     const {lockedStatusJsonObj, setLockedStatusJsonObj} = useContext(LockedStatusObjContext)
@@ -40,13 +41,14 @@ function CourseComponent({lessonName, lockedStatusItem,redirectToLink, lessonCom
     }, [lessonCompleted, numberOfCompletedQuestions]);
 
 
+    //Used for component mapping
     const componentMapping = {
         MultipleLessons,
         Questions,
         KeyWordsLessons,
         CourseSummary,
+        StartCourseComponent,
     };
-
     // Generate lesson components dynamically
     const lessonCourseComponents = lessonComponentsData.map((componentData, index) => {
         const ComponentName =componentMapping[componentData.type];
