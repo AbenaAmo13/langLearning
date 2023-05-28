@@ -194,6 +194,7 @@ function Homepage() {
     return(
     <div>
             <div className="navCard scoreCard">
+                <p className="score_rec_text"> Welcome to Empower-Us. w e</p>
                 <p className="score_rec_text"> Based on your scores, we recommend you take the course: <b>{personalRecommendedLesson}</b></p>
                 <LessonAudioPlayer
                     twiAudioName={recAudio}

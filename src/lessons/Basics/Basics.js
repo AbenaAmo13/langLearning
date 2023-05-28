@@ -8,8 +8,8 @@ function Basics() {
     const questionTypeArray=["trueorfalse", "mcq"]
     const basicsPromptData = {
         cardTextContent:[
-            "For this section, we will be going introducing the topics that you will cover for the application To complete this course and start the next one, you must get at least 7 questions right"
-            ],
+            "For this section, we will be going introducing the topics that you will cover for the application. To complete this course and start the next one, you must get at least 7 questions right"
+        ],
         quizImage : lesson1Image,
         cardTitle: "Course Outline",
         cardTitleTwi: "twiTitle",
