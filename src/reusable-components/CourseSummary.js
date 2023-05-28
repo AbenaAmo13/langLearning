@@ -32,7 +32,11 @@ function CourseSummary({state, dispatch, lessonId}){
                      <p>To complete and find out if you passed the course, click continue </p>
                      <p>If you want to go back to the last set of questions click Back </p>
                  </div>
-                 <AudioPlayer/>
+                 <AudioPlayer
+                 englishAudio={currentLesson.EnglishAudio}
+                 englishAudioName={currentLesson.EnglishAudio}
+
+                 />
                  <div className="keyword_button_div">
                      <button className="lesson_buttons icon-buttons" onClick={()=>previousComponent()}>
                          <i className="material-icons" alt="forward arrow icon">arrow_back</i>

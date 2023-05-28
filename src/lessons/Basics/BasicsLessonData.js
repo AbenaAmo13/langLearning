@@ -65,6 +65,8 @@ import healthcarekeywordenglish from "../../audios/courseoutline/keywords/health
 import jobsEnglishKeyWord from "../../audios/courseoutline/keywords/jobsEnglish.mp3"
 import thegovernmentenglishKeyWord from "../../audios/courseoutline/keywords/thegovernmentenglish.mp3"
 
+import courseSummaryEnglish from "../../audios/courseoutline/courseSummaryEnglish.mp3"
+import courseSummaryTwi from "../../audios/courseoutline/courseSummaryTwi.mp3"
 
 
 
@@ -296,10 +298,10 @@ export const basicsKeyWords=[
 export const basicsCourseSummary={
     courseSummaryImage: "",
     courseSummaryTitle: "Course Outline Summary",
-    courseSummaryParagraph: "In this application you have been introduced to: ",
-    courseListItems : ["Ghana Health Service", "Education", "Jobs", "Ghana and Identification"],
-    TwiAudio: "",
-    EnglishAudio: "",
+    courseSummaryParagraph: "In this lesson, you have been introduced to the topics that we will cover in the application which includes: ",
+    courseListItems : ["Health Care", "Education", "Jobs", "Ghana and Identification"],
+    TwiAudio: courseSummaryTwi,
+    EnglishAudio:courseSummaryEnglish ,
 
 
 }

@@ -550,6 +550,10 @@ background-color: #e2e5df;
   border: none;
 }
 
+.material-icons.correct_answer_icon{
+  color: green;
+}
+
 .correct_answer_icon{
 background: transparent;
   border: none;
