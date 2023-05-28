@@ -56,7 +56,7 @@ import {AudioContext} from "../context/AudioContext";
              setSuccessPurchase(false)
              //alert(successPurchase)
          }else{
-             alert(price)
+             //alert(price)
              buyItem(price)
              //updateUserCoins(price)
              setSuccessPurchase(true)
