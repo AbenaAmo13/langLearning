@@ -194,15 +194,22 @@ function Homepage() {
     return(
     <div>
             <div className="navCard scoreCard">
-                <p className="score_rec_text"> Welcome to Empower-Us. w e</p>
-                <p className="score_rec_text"> Based on your scores, we recommend you take the course: <b>{personalRecommendedLesson}</b></p>
+                <p className="score_rec_text"> Welcome to Empower-Us.</p>
+                <p className="score_rec_text"> This is an application dedicated to teaching you everything you need to know about Ghana's governmental service to empower your life!</p>
                 <LessonAudioPlayer
-                    twiAudioName={recAudio}
-                    twiAudio={recAudio}
-                    englishAudio={recEnglishAudio}
-                    englishAudioName={recEnglishAudio}
+
                 />
             </div>
+      {/*  <div className="navCard scoreCard">
+
+            <p className="score_rec_text"> Based on your scores, we recommend you take the course: <b>{personalRecommendedLesson}</b></p>
+            <LessonAudioPlayer
+                twiAudioName={recAudio}
+                twiAudio={recAudio}
+                englishAudio={recEnglishAudio}
+                englishAudioName={recEnglishAudio}
+            />
+        </div>*/}
         <div className="navBar">
             {navBarElements.map((navElement, index) => (
                 <div key={index} className={`navCard`}>
