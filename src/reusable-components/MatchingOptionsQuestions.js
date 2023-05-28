@@ -102,9 +102,10 @@ function MatchingOptionsQuestions({id}) {
         if(isPlaying){
             stopAnswerAudio()
         }
+        setLeftOptionSelected(leftSelectedOption)
         playAudio(new Audio(question.leftColumnAudios[leftSelectedOption]))
 
-        setLeftOptionSelected(leftSelectedOption)
+
     }
     const handleRightOptionChange=(event)=>{
         const rightSelectedOption = event.target.value;
@@ -121,10 +122,11 @@ function MatchingOptionsQuestions({id}) {
         if(isPlaying){
             stopAnswerAudio()
         }
+        setRightOptionSelected(rightSelectedOption)
         playAudio(new Audio(question.rightColumnAudios[rightSelectedOption]))
 
 
-        setRightOptionSelected(rightSelectedOption)
+
     }
 
     useEffect(()=>{

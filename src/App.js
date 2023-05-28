@@ -11,15 +11,10 @@ import Education from "./lessons/Education/Education"
 import Jobs from "./lessons/Jobs/Jobs";
 import Id from "./lessons/Id/Id"
 import HelpPage from "./HelpPage";
-import {EnglishAudioContextProvider} from "./context/PlayEnglishContext";
 import RewardsStore from "./reusable-components/RewardsStore";
 import RewardsContextProvider from "./context/RewardsContext";
-import africaImage from "./images/rewardImages/africa.webp";
-import afroBeat from "./images/rewardImages/afrobeat.webp";
-import cediRewards from "./images/rewardImages/cedis_rewards.webp";
-import blackStart from "./images/rewardImages/black-star.webp";
-import goldMedal from "./images/rewardImages/gold-medal.webp";
-import trophy from "./images/rewardImages/trophy.webp";
+import AudioTEST from "./db";
+
 
 export const LockedStatusObjContext = createContext(null);
 
@@ -98,6 +93,7 @@ function App() {
                                        element={lockedStatusJsonObj && lockedStatusJsonObj.Identification === false ?
                                            (<Id/>) : (<Navigate to="/"/>)}/>
                                 <Route path="/RewardStore" element={<RewardsStore/>}/>
+                                <Route path="/AudioTest" element={<AudioTEST/>}/>
                             </Routes>
                         </BrowserRouter>
                     </div>
