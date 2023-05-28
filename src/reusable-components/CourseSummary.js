@@ -35,6 +35,9 @@ function CourseSummary({state, dispatch, lessonId}){
                  <AudioPlayer
                  englishAudio={currentLesson.EnglishAudio}
                  englishAudioName={currentLesson.EnglishAudio}
+                 twiAudio={currentLesson.TwiAudio}
+                 twiAudioName={currentLesson.TwiAudio}
+
 
                  />
                  <div className="keyword_button_div">

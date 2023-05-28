@@ -545,17 +545,19 @@ background-color: #e2e5df;
 }
 
 .incorrect_answer_icon{
+  -webkit-text-fill-color: red;
   color:red;
   background: transparent;
   border: none;
 }
 
-.material-icons.correct_answer_icon{
-  color: green;
+button.material-icons.correct_answer_icon{
+  color: green!important;
 }
 
 .correct_answer_icon{
-background: transparent;
+  -webkit-text-fill-color: green;
+  background: transparent;
   border: none;
   color: green!important;
 }
