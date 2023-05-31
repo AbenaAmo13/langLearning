@@ -29,15 +29,16 @@ function HealthCare(){
         { type: 'MultipleLessons', props: {lessonId: 4} },
         { type: 'KeyWordsLessons', props:{lessonId: 5} },
         { type: 'Questions', props:{questionType: questionTypeArray[2], id: 2} },
-        { type: 'CourseSummary', props:{lessonId: 2}}
+        { type: 'CourseSummary', props:{lessonId: 6}}
     ];
     return(
         <div>
             <CourseComponent
                 lessonName="HealthCareLessons"
                 lockedStatusItem="Education"
-                redirectToLink="/Health"
+                redirectToLink="/Education"
                 lessonComponentsData = {lessonComponentsData}
+                failRedirectTo="/Health"
             />
         </div>
     )

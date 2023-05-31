@@ -9,7 +9,7 @@ import KeyWordsLessons from "./KeyWordsLessons";
 import CourseSummary from "./CourseSummary";
 import CourseIntroduction from "./CourseIntroduction";
 
-function CourseComponent({lessonName, lockedStatusItem,redirectToLink, lessonComponentsData}){
+function CourseComponent({lessonName, lockedStatusItem,redirectToLink, lessonComponentsData, failRedirectTo}){
     const {lockedStatusJsonObj, setLockedStatusJsonObj} = useContext(LockedStatusObjContext)
     const lessons = useContext(LessonContext)
     const dispatch = useContext(LessonDispatchContext)
@@ -66,7 +66,7 @@ function CourseComponent({lessonName, lockedStatusItem,redirectToLink, lessonCom
         if(passedLesson){
             return <PassedCourse to={redirectToLink} />;
         }else{
-            return <RetakeCourse/>
+            return <RetakeCourse to={failRedirectTo}/>
         }
 
     } else {

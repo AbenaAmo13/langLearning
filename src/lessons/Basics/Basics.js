@@ -35,6 +35,7 @@ function Basics() {
                 lockedStatusItem="Health"
                 redirectToLink="/Health"
                 lessonComponentsData = {lessonComponentsData}
+                failRedirectTo="/Basics"
             />
         </div>
     )

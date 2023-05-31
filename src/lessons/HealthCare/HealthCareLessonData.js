@@ -32,6 +32,13 @@ import medicine from "../../audios/healthCare/keywords/medicine.mp3"
 
 import NHIS1Twi from "../../audios/healthCare/NHISLessonDataAudios/NHIS_1_Twi.mp3"
 import NHIS2Twi from "../../audios/healthCare/NHISLessonDataAudios/NHIS_KeyMessage_Object2.mp3"
+
+
+import NHIS_English1 from "../../audios/healthCare/NHISLessonDataAudios/NHIS_1_English.mp3"
+import NHIS_English2 from "../../audios/healthCare/NHISLessonDataAudios/NHIS_2_English.mp3"
+
+
+
 import NHIS3Twi from "../../audios/healthCare/NHISLessonDataAudios/NHIS_3_Twi.mp3"
 import KorleBuTwi from "../../audios/healthCare/NHISLessonDataAudios/Korele_Bu_Twi.mp3"
 import KomfoAnokyeTwi from "../../audios/healthCare/NHISLessonDataAudios/Komfo_Anokye_Twi.mp3"
@@ -99,7 +106,7 @@ export const NHISLessonData=[
         EnglishWord: "National Health Insurance Scheme (NHIS)",
         TwiWord: "",
         TwiAudio: NHIS1Twi,
-        EnglishAudio: "",
+        EnglishAudio: NHIS_English1,
         KeyMessageEnglish:'The national health insurance scheme is made to help us access healthcare at an affordable price',
     },
     {
@@ -107,7 +114,7 @@ export const NHISLessonData=[
         EnglishWord: "National Health Insurance Scheme (NHIS)",
         TwiWord: "",
         TwiAudio: NHIS2Twi,
-        EnglishAudio: "",
+        EnglishAudio: NHIS_English2,
         KeyMessageEnglish:'To register for the National Health Insurance Scheme, you must follow a set of instructions',
     },
     {
@@ -247,7 +254,7 @@ export const NHISRegistrationForm=[
         TwiWord: "",
         TwiAudio: Preferred_Provider_Twi,
         EnglishAudio: "",
-        KeyMessageEnglish:'Finally you will choose which of the hospitals will be the place you would go to when you get sick. ',
+        KeyMessageEnglish:'Finally you will choose which of the hospitals you would go to when you get sick. ',
 
     },{
         Image: "" ,
@@ -738,7 +745,7 @@ export const healthCareCourseSummary={
     courseSummaryImage: "",
     courseSummaryTitle: "Health Care Lesson Summary",
     courseSummaryParagraph: "During this course you have learnt",
-    courseListItems : ["Ghana Health Service", "How to register for the national health insurance scheme", "Malaria, its prevention and cure", "How to keep ourselves healthy"],
+    courseListItems : ["Ghana Health Service", "How to register for the national health insurance scheme"],
     TwiAudio: "",
     EnglishAudio: "",
 

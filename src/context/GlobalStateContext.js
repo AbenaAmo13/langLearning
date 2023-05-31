@@ -19,10 +19,11 @@ import {
     trueOrFalseQuestionsHealth
 } from "../lessons/HealthCare/HealthCareLessonData";
 import {
+    educationCourseSummary,
     educationKeyWordsSection2,
     educationLessonData,
     educationLessonDataKeyWords, educationLessonSection2,
-    EducationMatchingWordsQuestions, educationQuestionSet2, UniversityEducationSupport, universityKeyWordEducation
+    EducationMatchingWordsQuestions, educationQuestionSet2, UniversityEducationSupport,
 } from "../lessons/Education/EducationLessonData";
 
 export const LessonContext = createContext(null);
@@ -58,7 +59,7 @@ export function GlobalStatesProvider({ children }) {
             id: "EducationLessons",
             scores: 0,
             userScoreName: "EducationScore",
-            lessons:[educationLessonData, educationLessonDataKeyWords, educationLessonSection2, educationKeyWordsSection2, UniversityEducationSupport, universityKeyWordEducation,  healthCareCourseSummary],
+            lessons:[educationLessonData, educationLessonDataKeyWords, educationLessonSection2, educationKeyWordsSection2, UniversityEducationSupport, educationCourseSummary],
             numberOfCompletedLessons: 0,
             numberOfCompletedQuestions: 0,
             lessonCompleted: false,
