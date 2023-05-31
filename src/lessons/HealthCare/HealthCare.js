@@ -3,7 +3,8 @@ import KeyWordsLessons from "../../reusable-components/KeyWordsLessons";
 import CourseSummary from "../../reusable-components/CourseSummary";
 import CourseComponent from "../../reusable-components/CourseComponent";
 import lesson1Image from "../../images/lessonCourseImage/course_intro.webp";
-
+import courseIntroEnglish from "../../audios/healthCare/courseIntroEnglish.mp3"
+import courseIntroTwi from "../../audios/healthCare/courseIntroTwi.mp3"
 function HealthCare(){
     const questionTypeArray=["matching", "mcq", "trueorfalse"]
     const healthCarePromptData = {
@@ -13,8 +14,8 @@ function HealthCare(){
         quizImage : lesson1Image,
         cardTitle: "Health Care",
         cardTitleTwi: "twiTitle",
-        EnglishAudio: "",
-        TwiAudio: "",
+        EnglishAudio: courseIntroEnglish,
+        TwiAudio: courseIntroTwi,
     }
     // Dynamic lesson components data
     const lessonComponentsData = [
