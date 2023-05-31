@@ -31,22 +31,17 @@ function QuestionContextProvider({children, state, dispatch}) {
        //questionIndex.current = id
         let correctAnswer = question.Answer;
         setSelectedAnswer(answer)
-         //alert(selectedAnswer)
-         if(selectedAnswer){
-             if (!question.isAnswered ) {
-                 if (answer === correctAnswer) {
-                     stopAnswerAudio()
-                     playAudio(CorrectAudio, question.TwiAudio);
-                     //console.log(question.componentScore)
-                     dispatch({type: "SET_SCORE", payload: {lesson: state.id, value: 10}});
-                     updateUserCoins(10)
-                     setCorrectNumberAnswers(correctNumberAnswers + 1)
-                 }
+         if (!question.isAnswered ) {
+             if (answer === correctAnswer) {
+                 stopAnswerAudio()
+                 playAudio(CorrectAudio, question.TwiAudio);
+                 //console.log(question.componentScore)
+                 dispatch({type: "SET_SCORE", payload: {lesson: state.id, value: 10}});
+                 updateUserCoins(10)
+                 setCorrectNumberAnswers(correctNumberAnswers + 1)
              }
-             dispatch({ type: "SET_QUESTION_IS_ANSWERED", payload: { lesson: state.id, questionIndex: id, currentQuestionIndex: currentQuestion}});
-         }else{
-
          }
+         dispatch({ type: "SET_QUESTION_IS_ANSWERED", payload: { lesson: state.id, questionIndex: id, currentQuestionIndex: currentQuestion}});
     }, [currentQuestion]);
 
 

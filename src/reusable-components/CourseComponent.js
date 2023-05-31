@@ -25,7 +25,10 @@ function CourseComponent({lessonName, lockedStatusItem,redirectToLink, lessonCom
     useEffect(()=>{
         const userPoints = lessonState.scores;
         const pointsRequired = lessonState.pointsToPassLesson;
-        //console.log("Number of completed questions: " + numberOfCompletedQuestions);
+
+        const userScores = JSON.parse(localStorage.getItem("userScores"));
+        userScores[lessonState.userScoreName] = userPoints
+        localStorage.setItem("userScores", JSON.stringify(userScores));
         if (numberOfCompletedQuestions === lessonState.questions.length) {
             if (userPoints > pointsRequired) {
                 //console.log("you have passed the lessons");

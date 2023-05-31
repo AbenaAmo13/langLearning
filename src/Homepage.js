@@ -44,16 +44,19 @@ import educationAudio from "./audios/homepage/educationaudio.mp3"
 import identificationAudio from "./audios/homepage/identification.mp3"
 import adwuma from "./audios/homepage/adwuma.mp3"
 import LessonAudioPlayer from "./reusable-components/LessonAudioPlayer";
+import {LockedStatusObjContext} from "./App";
 
 
 
 function Homepage() {
     //let audio = new Audio(process.env.PUBLIC_URL + '/audio/introduction.mp3')
     const {playAudio, activeName, isPlaying, stopAudio} = useContext(AudioContext);
+    const {lockedStatusJsonObj} = useContext(LockedStatusObjContext);
     const [personalRecommendedLesson, setPersonalRecommendedLesson] = useState(null)
     const [recAudio, setRecAudio] = useState(null)
     const [recEnglishAudio, setRecEnglishAudio] = useState(null)
     const [status, setStatus]= useState({})
+    const [showRecommendedLesson, setShowReccomendedLesson] = useState(false)
     // Find the index of the latest unlocked card for hand directing
     let latestUnlockedIndex = Object.values(status).lastIndexOf(false);
 
@@ -150,6 +153,13 @@ function Homepage() {
         const userScores = JSON.parse(localStorage.getItem('userScores'));
         let lowestUnlockedScore = Infinity;
         let recommendedLesson = null;
+
+
+        const showRecommendedLesson = Object.keys(lockedStatus).some(key => key !== 'Basics' && !lockedStatus[key]);
+        if(showRecommendedLesson){
+            setShowReccomendedLesson(true)
+        }
+
         // Find the lesson with the lowest unlocked score
         Object.entries(lockedStatus).forEach(([key, value]) => {
             const userScoreKey = key+"Score";
@@ -193,7 +203,7 @@ function Homepage() {
                 break;
 
         }
-    }, []);
+    }, [lockedStatusJsonObj]);
 
     return(
     <div>
@@ -208,16 +218,22 @@ function Homepage() {
                 twiAudio={introTwi}
                 />
             </div>
-            <div className="navCard scoreCard reccomendationlesson">
-                <h2 className="score_rec_text">Reccomended Lesson</h2>
-                <p className="score_rec_text"> Based on your scores, we recommend you take the course: <b>{personalRecommendedLesson}</b></p>
-                <LessonAudioPlayer
-                    twiAudioName={recAudio}
-                    twiAudio={recAudio}
-                    englishAudio={recEnglishAudio}
-                    englishAudioName={recEnglishAudio}
-                />
-            </div>
+
+            { showRecommendedLesson && (
+                <div className="navCard scoreCard reccomendationlesson">
+                    <h2 className="score_rec_text">Reccomended Lesson</h2>
+                    <p className="score_rec_text"> Based on your scores, we recommend you take the course: <b>{personalRecommendedLesson}</b></p>
+                    <LessonAudioPlayer
+                        twiAudioName={recAudio}
+                        twiAudio={recAudio}
+                        englishAudio={recEnglishAudio}
+                        englishAudioName={recEnglishAudio}
+                    />
+                </div>
+            )
+
+            }
+
         </div>
 
         <div className="navBar">
