@@ -5,6 +5,31 @@ import GHS2Twi from "../../audios/healthCare/GhanaHealthService/GHS_audioTwi_2.m
 import GHS3Twi from "../../audios/healthCare/GhanaHealthService/GHS_audioTwi_3.mp3"
 import GHS4Twi from "../../audios/healthCare/GhanaHealthService/GHS_audiotwi_4.mp3"
 
+
+import GHS1English from "../../audios/healthCare/GhanaHealthService/GHS1English.mp3"
+import GHS2English from "../../audios/healthCare/GhanaHealthService/GHS2English.mp3"
+import GHS3English from "../../audios/healthCare/GhanaHealthService/GHS3English.mp3"
+import GHS4English from "../../audios/healthCare/GhanaHealthService/GHS4English.mp3"
+
+
+
+
+import KeyWord1English from "../../audios/healthCare/keywords/GhanaHealthServiceKeyWord.mp3"
+import KeyWord1Twi from "../../audios/healthCare/keywords/KeyWord1Twi.mp3"
+import KeyWord2English from "../../audios/healthCare/keywords/NHISEnglish.mp3"
+import KeyWord2Twi from "../../audios/healthCare/keywords/NHISTwi.mp3"
+
+import aduro from "../../audios/healthCare/keywords/aduro.mp3"
+import ayaresabea from "../../audios/healthCare/keywords/ayaresabea.mp3"
+import hospital from "../../audios/healthCare/keywords/hospital.mp3"
+import medicine from "../../audios/healthCare/keywords/medicine.mp3"
+
+
+
+
+
+
+
 import NHIS1Twi from "../../audios/healthCare/NHISLessonDataAudios/NHIS_1_Twi.mp3"
 import NHIS2Twi from "../../audios/healthCare/NHISLessonDataAudios/NHIS_KeyMessage_Object2.mp3"
 import NHIS3Twi from "../../audios/healthCare/NHISLessonDataAudios/NHIS_3_Twi.mp3"
@@ -38,8 +63,8 @@ export const healthCareLessonData=[
         EnglishWord: "Ghana Health Service",
         TwiWord: "Aban",
         TwiAudio:GHS1Twi ,
-        EnglishAudio: "",
-        KeyMessageEnglish: "In the government, there are a team people who work to ensure that everyone in Ghana can get good healthcare even if you can't afford it",
+        EnglishAudio: GHS1English,
+        KeyMessageEnglish: "In the government, there are a team of people who work to ensure that everyone in Ghana can get good healthcare even if you can't afford it",
     },
 
     {
@@ -47,7 +72,7 @@ export const healthCareLessonData=[
         EnglishWord: "Ghana Health Service",
         TwiWord: "",
         TwiAudio: GHS2Twi,
-        EnglishAudio: "",
+        EnglishAudio: GHS2English,
         KeyMessageEnglish: 'They do this by  providing us with hospitals that we can go to and medicines that we can take to make us feel better when we are sick. '
     },
     {
@@ -55,16 +80,16 @@ export const healthCareLessonData=[
         EnglishWord: "Ghana Health Service",
         TwiWord: "Adesua",
         TwiAudio:GHS3Twi ,
-        EnglishAudio: "",
-        KeyMessageEnglish:'Hospital bills can be expensive but there are ways that we can get still be taken care of when we our sick.',
+        EnglishAudio: GHS3English,
+        KeyMessageEnglish:'Hospital bills can be expensive but there are ways that we can still be taken care of when we our sick.',
     },
     {
         Image: "" ,
         EnglishWord: "Ghana Health Service",
         TwiWord: "TwiID",
         TwiAudio: GHS4Twi,
-        EnglishAudio: "",
-        KeyMessageEnglish:'One of the ways that the government help us get access to healthcare even when we our sick is known as the National Health Insurance Scheme,',
+        EnglishAudio: GHS4English,
+        KeyMessageEnglish:'One of the ways that the government help us get access to healthcare even when we our sick is known as the National Health Insurance Scheme.',
     },
 ]
 
@@ -335,23 +360,23 @@ export const healthCareKeyWordsData=[
         Image: "" ,
         EnglishWord: "Ghana Health Service",
         TwiWord: "Ghana Akwahosan Dwumadibea",
-        TwiAudio: "",
-        EnglishAudio: "",
+        TwiAudio: KeyWord1Twi,
+        EnglishAudio: KeyWord1English,
         KeyMessageEnglish:'These are the group of people in the government that are tasked with helping us with our healthcare ',
     },
      {
         Image:"",
         EnglishWord: "National Health Insurance Scheme (NHIS)",
         TwiWord: "ɔman Apɔmuden nsiakyibaa",
-        TwiAudio:"",
-        EnglishAudio:"",
+        TwiAudio:KeyWord2Twi,
+        EnglishAudio:KeyWord2English,
         KeyMessageEnglish: "The government provides cheap health care through a programme in english known as called the National Health Insurance Scheme"
     }, {
         Image:"",
         EnglishWord: "Medicine",
         TwiWord: "aduro",
-        TwiAudio:"",
-        EnglishAudio:"",
+        TwiAudio:aduro,
+        EnglishAudio:medicine,
         KeyMessageEnglish: "This is what you use when you're sick to feel better."
 
     },
@@ -359,8 +384,8 @@ export const healthCareKeyWordsData=[
         Image:"",
         EnglishWord: "Hospital",
         TwiWord: "Ayaresabea",
-        TwiAudio:"",
-        EnglishAudio:"",
+        TwiAudio:hospital,
+        EnglishAudio:ayaresabea,
         KeyMessageEnglish: "This is where we go when we are sick."
     },
 
@@ -540,6 +565,8 @@ export const MatchingWordsQuestions=[
         Task: "Match the english word to the twi word",
         leftColumn:["Medicine","Ghana Health Service", "Hospital", "National Health Insurance Scheme (NHIS)" ],
         rightColumn:["ɔman Apɔmuden nsiakyibaa", "Ayaresabea", "Aduro", "Ghana Akwahosan Dwumadibea" ],
+        leftColumnAudios: {Medicine: medicine, Hospital: hospital, "National Health Insurance Scheme (NHIS)": KeyWord2English, "Ghana Health Service": KeyWord1English},
+        rightColumnAudios: {"ɔman Apɔmuden nsiakyibaa": KeyWord2Twi, Ayaresabea: ayaresabea, Aduro:  aduro, "Ghana Akwahosan Dwumadibea": KeyWord1Twi},
         correctAnswerPairs:[
             { leftColumn: "Medicine", rightColumn: "Aduro" },
             { leftColumn: "Ghana Health Service", rightColumn: "Ghana Akwahosan Dwumadibea" },
