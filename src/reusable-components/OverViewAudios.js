@@ -9,7 +9,7 @@ function OverviewAudios({englishAudio, twiAudio, englishAudioName, twiAudioName,
     return(<div className="navCard importantAudioPlayer">
         <div>
             <div className="audio_container">
-                <p className="pruchased_styling">{text}</p>
+                <p className="pruchased_styling overviewmessage">{text}</p>
                 <div className="overview_point_container">
                     {isPlaying===false && (
                         <img src={pointhands2} className="pointing_hands"/>

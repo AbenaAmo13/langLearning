@@ -3,7 +3,7 @@ import {AudioContext} from "../context/AudioContext";
 import LessonAudioPlayer from "./LessonAudioPlayer";
 import PointingSide from "../images/rewardImages/pointinghand2.gif";
 
-function StartCourseComponent({state,dispatch, startCoursePromptData, id}) {
+function CourseIntroduction({state,dispatch, startCoursePromptData, id}) {
     const { isPlaying, stopAudio } = useContext(AudioContext);
 
     function notReady(){
@@ -80,4 +80,4 @@ function StartCourseComponent({state,dispatch, startCoursePromptData, id}) {
     )
 }
 
-export default StartCourseComponent;
+export default CourseIntroduction;

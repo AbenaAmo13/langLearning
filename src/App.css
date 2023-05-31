@@ -544,6 +544,10 @@ background-color: #e2e5df;
   display: flex;
 }
 
+.text_content.inform_user{
+  color: red;
+}
+
 .incorrect_answer_icon{
   -webkit-text-fill-color: red;
   color:red;
@@ -878,6 +882,10 @@ progress::-moz-progress-bar {
 
 }
 
+
+.score_rec_text.main{
+  font-weight: bolder;
+}
 /*@keyframes touch {
   0% { transform: scale(1); }
   25% { transform: scale(0.95); }
@@ -892,6 +900,18 @@ progress::-moz-progress-bar {
 
 @media only screen and (max-width: 767px){
 
+  .score_rec_text.main {
+    font-size: 28px;
+  }
+
+  .navCard.importantAudioPlayer{
+    width: 90%;
+  }
+
+  .pruchased_styling.overviewmessage{
+    padding: 10px;
+    line-height: 32px;
+  }
 
 
 
@@ -943,7 +963,7 @@ progress::-moz-progress-bar {
     font-size: 18px;
   }
   .score_rec_text{
-    padding: 3%;
+    padding: 16px;
   }
 
   .appbar-icons{
@@ -1035,6 +1055,31 @@ progress::-moz-progress-bar {
 
 @media only screen and (min-width: 767px){
 
+  .navCard.scoreCard.introduction{
+    width: 50%;
+  }
+
+  .navCard.scoreCard.reccomendationlesson{
+    width: 25%;
+
+  }
+
+
+
+  .pruchased_styling.overviewmessage{
+    padding: 10px;
+    line-height: 32px;
+  }
+
+  .homepage_intro_cards{
+    display: flex;
+  }
+
+  .score_rec_text.main{
+    font-size: 30px;
+    text-align: center;
+  }
+
 
   .navCard.scoreCard{
     width: 35%;
@@ -1045,7 +1090,7 @@ progress::-moz-progress-bar {
     padding: 1%;
   }
   .navCard.importantAudioPlayer{
-    width: 25%;
+    width: 70%;
     margin: 2% auto;
     padding: 0.5%;
   }

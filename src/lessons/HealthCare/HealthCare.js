@@ -18,7 +18,7 @@ function HealthCare(){
     }
     // Dynamic lesson components data
     const lessonComponentsData = [
-        { type: 'StartCourseComponent', props: {id: 0, startCoursePromptData: healthCarePromptData}},
+        { type: 'CourseIntroduction', props: {id: 0, startCoursePromptData: healthCarePromptData}},
         { type: 'MultipleLessons', props: {lessonId: 0} },
         { type: 'KeyWordsLessons', props:{lessonId: 1} },
         { type: 'Questions', props:{questionType: questionTypeArray[0], id: 0} },

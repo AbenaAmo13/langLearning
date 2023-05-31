@@ -10,6 +10,7 @@ import homeAudio from "./audios/topAppBarAudios/homepagehoveraudio.mp3"
 import helpAudio from "./audios/topAppBarAudios/helppagehoveraudio.mp3"
 import rewardsAudio from "./audios/topAppBarAudios/rewardsPageHoverAudio.mp3"
 import {hover} from "@testing-library/user-event/dist/hover";
+import {userCoinValidationCheck} from "./validation";
 
 function TopAppBar(){
     //const imagePath = `${process.env.PUBLIC_URL}/empower-us-192.webp`;
@@ -26,9 +27,11 @@ function TopAppBar(){
 
     useEffect(() => {
         //This is to initialise the coins in case something goes wrong with local storage
-        const storedCoins = localStorage.getItem('userCoins');
-        const initialCoins = storedCoins ? parseInt(storedCoins) : 0;
-        setUserCoins(initialCoins);
+        const storedCoins = JSON.parse(localStorage.getItem('userCoins'));
+        if(userCoinValidationCheck(storedCoins)){
+            const initialCoins = storedCoins ? parseInt(storedCoins) : 0;
+            setUserCoins(initialCoins);
+        }
         //alert(window.location.pathname)
     }, []);
 
@@ -37,9 +40,12 @@ function TopAppBar(){
             localStorage.setItem('userCoins', JSON.stringify(userCoins));
         }else {
             const userCoinsStorage = JSON.parse(localStorage.getItem('userCoins'));
-            setUserCoins(userCoinsStorage)
+            if(userCoinValidationCheck(userCoinsStorage)){
+                setUserCoins(userCoinsStorage)
+            }
         }
     }, [CoinsGainedFromAudio, userCoins])
+
 
 
 
@@ -240,3 +246,4 @@ const InstallButton = () => {
         </button>
     );
 };
+

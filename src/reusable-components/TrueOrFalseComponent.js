@@ -13,11 +13,14 @@ import isFalseAudio from "../audios/transitionalaudios/isFalse.mp3"
 import isFalseTwiAudio from "../audios/transitionalaudios/isFalseTwi.mp3"
 
 import RenderResults from "./RenderResults";
+import {selectOptions} from "@testing-library/user-event/dist/select-options";
 function TrueOrFalseComponent({id}){
     let {isPlaying, stopAudio} = useContext(AudioContext)
     let { state, correctNumberAnswers, handleNextQuestion, checkAnswer, nextSetOfQuestions, selectedAnswer, currentQuestion, dispatch, handlePrevQuestion} = useContext(QuestionContext)
     let trueOrFalseQuestions = state.questions[id];
     const [optionSelected, setOptionSelected] = useState(null)
+    const [informUser, setDisplayErrorMessage] = useState(null)
+
     const inputRefs = useRef([]);
     let question = trueOrFalseQuestions[currentQuestion];
     const options =["True", "False"];
@@ -59,7 +62,12 @@ function TrueOrFalseComponent({id}){
 
 
     const handleAnswers=()=>{
-        checkAnswer(question, optionSelected, id);
+        if(optionSelected){
+            checkAnswer(question, optionSelected, id);
+            setDisplayErrorMessage(false)
+        }else{
+            setDisplayErrorMessage(true)
+        }
     }
     const renderQuestions=()=>{
         return(
@@ -89,6 +97,12 @@ function TrueOrFalseComponent({id}){
                                         </label>
                                     </div>
                                 ))}
+                                {informUser &&  (
+                                    <div>
+                                        <p className="text_content inform_user">Please select an answer</p>
+                                    </div>
+
+                                )}
                                 {!selectedAnswer &&
                                 (
                                     <div className="mcq_actions">
@@ -100,7 +114,7 @@ function TrueOrFalseComponent({id}){
 
                                         />
                                         <button type="submit" className="lesson_buttons mcq_buttons" onClick={()=>handleAnswers()} >
-                                            <p>CHECK ANSWER </p>
+                                            <p>CHECK ANSWER</p>
                                             <i className="material-icons" alt="help icon">flaky</i>
                                         </button>
                                     </div>

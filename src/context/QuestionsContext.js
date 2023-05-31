@@ -27,26 +27,26 @@ function QuestionContextProvider({children, state, dispatch}) {
 
 
 
-    const checkAnswer = useCallback((question, answer, id) => {
+     const checkAnswer = useCallback((question, answer, id) => {
        //questionIndex.current = id
         let correctAnswer = question.Answer;
         setSelectedAnswer(answer)
-        console.log("Question: " + question.Question)
-        console.log("Answer is: " + question.Answer)
-        console.log("State: " + question.isAnswered)
-        if (!question.isAnswered) {
-            if (answer === correctAnswer) {
-                stopAnswerAudio()
-                playAudio(CorrectAudio, question.TwiAudio);
-                //console.log(question.componentScore)
-                dispatch({type: "SET_SCORE", payload: {lesson: state.id, value: 10}});
-                updateUserCoins(10)
-                setCorrectNumberAnswers(correctNumberAnswers + 1)
-            }
-        }
-        dispatch({ type: "SET_QUESTION_IS_ANSWERED", payload: { lesson: state.id, questionIndex: id, currentQuestionIndex: currentQuestion}});
-        //question.isAnswered = true;
-        // function code
+         //alert(selectedAnswer)
+         if(selectedAnswer){
+             if (!question.isAnswered ) {
+                 if (answer === correctAnswer) {
+                     stopAnswerAudio()
+                     playAudio(CorrectAudio, question.TwiAudio);
+                     //console.log(question.componentScore)
+                     dispatch({type: "SET_SCORE", payload: {lesson: state.id, value: 10}});
+                     updateUserCoins(10)
+                     setCorrectNumberAnswers(correctNumberAnswers + 1)
+                 }
+             }
+             dispatch({ type: "SET_QUESTION_IS_ANSWERED", payload: { lesson: state.id, questionIndex: id, currentQuestionIndex: currentQuestion}});
+         }else{
+
+         }
     }, [currentQuestion]);
 
 

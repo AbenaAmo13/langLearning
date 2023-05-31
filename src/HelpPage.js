@@ -20,6 +20,10 @@ import TwiAudioForDownload from "./audios/helppage/downloadtwi.mp3"
 import TwiAudioForLessons from "./audios/helppage/lessonsTwi.mp3"
 import TwiAudioForQuestions from "./audios/helppage/questionsTwi.mp3"
 import TwiAudioForNavigation from "./audios/helppage/navigationTwi.mp3"
+
+
+import helpIntroEnglish from "./audios/helppage/helpIntro.mp3"
+import helpIntroTwi from "./audios/helppage/helpIntroTwi.mp3"
 import OverviewAudios from "./reusable-components/OverViewAudios";
 
 function HelpPage(){
@@ -68,6 +72,8 @@ function HelpPage(){
         },
 
     ];
+
+    const overViewText="You are currently at the help page if you need help with anything, you can either listen to it by clicking on the audio icon below the Ghana flag to hear the content in twi or the British flag to hear it in English. If you would prefer to read it, click on the square button in the lower right corner with the icon pointing downwards. "
 
     const HelpPageCard = ({ cardInfo }) => {
         //console.log("This is card inffo" + JSON.stringify(cardInfo.content))
@@ -128,7 +134,8 @@ function HelpPage(){
 
 
     return(<div>
-    <OverviewAudios/>
+    <OverviewAudios text={overViewText} englishAudio={helpIntroEnglish} englishAudioName={helpIntroEnglish} twiAudio={helpIntroTwi} twiAudioName={helpIntroTwi}
+    />
        <HelpCardList cards={helpCardInformation}/>
     </div>)
 }

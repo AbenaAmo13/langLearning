@@ -21,7 +21,7 @@ function Basics() {
     }
     // Dynamic lesson components data
     const lessonComponentsData = [
-        { type: 'StartCourseComponent', props: {id: 0, startCoursePromptData: basicsPromptData}},
+        { type: 'CourseIntroduction', props: {id: 0, startCoursePromptData: basicsPromptData}},
         { type: 'MultipleLessons', props: {lessonId: 0} },
         { type: 'KeyWordsLessons', props:{lessonId: 1} },
         { type: 'Questions', props:{questionType: questionTypeArray[0], id: 0} },

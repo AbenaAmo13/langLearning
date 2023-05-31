@@ -19,6 +19,10 @@ import jobsEnglishAudio from "./audios/homepage/jobs.mp3"
 import basicsTwiAudio from "./audios/homepage/courseoutlinetwi.mp3"
 
 
+import introEnglish from "./audios/homepage/intro_english.mp3"
+import introTwi from "./audios/homepage/intro_twi.mp3"
+
+
 import recsCourseOutlineTwi from "./audios/homepage/recscourseoutline.mp3"
 import recsHealthTwi from "./audios/homepage/recsGhanaHealthCare.mp3"
 import recsEducationTwi from "./audios/homepage/recsEducation.mp3"
@@ -193,21 +197,29 @@ function Homepage() {
 
     return(
     <div>
-            <div className="navCard scoreCard">
-                <p className="score_rec_text"> Welcome to Empower-Us.</p>
-                <p className="score_rec_text"> This is an application dedicated to teaching you everything you need to know about Ghana's governmental service to empower your life!</p>
-                <LessonAudioPlayer/>
+        <div className="homepage_intro_cards">
+            <div className="navCard scoreCard introduction">
+                <h1 className="score_rec_text main"> Welcome to Empower-Us.</h1>
+                <p className="score_rec_text"> This is an application dedicated to teaching you everything you need to know about Ghana's governmental service to empower your life! Click the start button that is being pointed at by the hand to know more about what you will learn in the course</p>
+                <LessonAudioPlayer
+                englishAudioName={introEnglish}
+                englishAudio={introEnglish}
+                twiAudioName={introTwi}
+                twiAudio={introTwi}
+                />
             </div>
-      {/*  <div className="navCard scoreCard">
+            <div className="navCard scoreCard reccomendationlesson">
+                <h2 className="score_rec_text">Reccomended Lesson</h2>
+                <p className="score_rec_text"> Based on your scores, we recommend you take the course: <b>{personalRecommendedLesson}</b></p>
+                <LessonAudioPlayer
+                    twiAudioName={recAudio}
+                    twiAudio={recAudio}
+                    englishAudio={recEnglishAudio}
+                    englishAudioName={recEnglishAudio}
+                />
+            </div>
+        </div>
 
-            <p className="score_rec_text"> Based on your scores, we recommend you take the course: <b>{personalRecommendedLesson}</b></p>
-            <LessonAudioPlayer
-                twiAudioName={recAudio}
-                twiAudio={recAudio}
-                englishAudio={recEnglishAudio}
-                englishAudioName={recEnglishAudio}
-            />
-        </div>*/}
         <div className="navBar">
             {navBarElements.map((navElement, index) => (
                 <div key={index} className={`navCard`}>
