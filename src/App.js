@@ -35,13 +35,19 @@ function App() {
         JobsScore: 0
     }
 
+    const userProgress = {
+        numberOfCompletedQuestion: 0,
+        numberOfCompletedLessons: 0,
+        lessonCompleted: false,
+        lastLessonIndex: 0,
+        currentQuestionIndex: 0,
+        savedUserProgress: false
+    }
+
+    const progressTitles =  ["Basics", "Education", "Health", "ID", "Jobs"]
+
     const userCoins= 0;
     const personalRewards= [];
-
-
-
-
-
     useEffect(() => {
         if (!localStorage.getItem('lockedStatusData')) {
             console.log("The locked status" + lockedStatusJsonObj)
@@ -59,6 +65,16 @@ function App() {
         if (!localStorage.getItem('personalRewards')) {
             localStorage.setItem('personalRewards', JSON.stringify(personalRewards));
         }
+
+        //To save user progress
+        for(const title of  progressTitles){
+            if(!localStorage.getItem(title)){
+                localStorage.setItem(title, JSON.stringify(userProgress));
+            }
+        }
+
+
+
         setLockedStatusJsonObj(JSON.parse(localStorage.getItem('lockedStatusData')))
         console.log('locked status obj' + JSON.stringify(lockedStatusJsonObj))
     }, []);

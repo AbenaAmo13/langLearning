@@ -3,6 +3,52 @@
   /*text-align: center*/;
 }
 
+.homepage_container_hands{
+  display: flex;
+  flex-direction: column;
+}
+
+.course_intro_content_container{
+  padding: 16px;
+}
+.cardAction_hands{
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+ /* width: 35%;*/
+}
+
+.question_audio_icons.startTutorialButton{
+  width: 50%;
+}
+
+
+
+.starting_hand{
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+
+.lesson_buttons.icon-buttons.start_lesson{
+  min-width: 150px;
+  display: flex;
+  justify-content: center;
+}
+
+
+
+
+.cardActionTutorialStartOnly{
+padding: 16px;
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-evenly;
+}
+.course_intro.card_component_container{
+  background-color: white;
+}
+
 .start-button.purchase-button.link{
   text-decoration: none;
   color: black;
@@ -14,6 +60,11 @@
   align-items: center;
 }
 
+.question_prompt_button_divs.course_intro{
+  width: 100%;
+  padding: 8px;
+}
+
 
 button {
   -webkit-text-fill-color: black;
@@ -21,6 +72,25 @@ button {
 }
 
 
+.cardmedia.help_page{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: beige;
+}
+
+.help_collapse_icon{
+  padding: 8px;
+}
+
+.navCard.help_page{
+  display: flex;
+  flex-direction: row;
+}
+.start-button.readmore{
+  display: flex;
+  align-items: center;
+}
 .material-icons{
   color: black;
 }
@@ -40,8 +110,20 @@ button {
   align-items: center;
 }
 
-.top_app_pointing.pointing_hands{
-  display: flex;
+.course_intro.hands{
+
+
+}
+
+.course_intro.hands.continue{
+  position: relative;
+  left: 70%;
+}
+
+.course_intro.hands.start{
+
+
+
 }
 
 .icon-buttons.top_app_bar:hover{
@@ -96,6 +178,10 @@ width: 100%;
 
 .app_bar_active{
   border-radius: 50%;
+}
+
+.score_rec_text{
+  line-height: 32px;
 }
 
 .active_icon{
@@ -201,8 +287,9 @@ html, body {
 }
 */
 
+
 .navCard.help_page{
-  height: 100%;
+ /* height: 100%;*/
 }
 
 .cardmedia{
@@ -458,6 +545,11 @@ button.selected{
 
 .volume_icon .lesson_volume_icon{
   color: #2365ae
+}
+
+.pointing_course_intro_hand.course_intro{
+  display: flex;
+
 }
 
 
@@ -898,7 +990,19 @@ progress::-moz-progress-bar {
   animation: touch 0.3s ease;
 }*/
 
+
+@media only screen and (max-width: 500px){
+  .card_component_text.course_intro{
+    font-size: 16px;
+  }
+
+}
+
 @media only screen and (max-width: 767px){
+
+  .navCard.help_page{
+    flex-direction: column;
+  }
 
   .score_rec_text.main {
    text-align: center;
@@ -1054,6 +1158,22 @@ progress::-moz-progress-bar {
 
 
 @media only screen and (min-width: 767px){
+
+  .card_action_flex-grid{
+    display: flex;
+    padding: 16px;
+    align-items: flex-end;
+  }
+
+  .card_action_column{
+    flex: 1;
+  }
+
+  .pointing_hands.card_action_column{
+    display: flex;
+    align-items: baseline;
+    flex-direction: column;
+  }
 
   .navCard.scoreCard.introduction{
     width: 50%;

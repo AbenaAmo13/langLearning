@@ -9,7 +9,8 @@ import leftPoint from "../images/rewardImages/leftPoint.gif";
 function Lessons({state, dispatch, lessonId}){
     const { isPlaying, stopAudio, isEnded, audioRef,setIsEnding} = useContext(AudioContext);
     const currentLesson = state.lessons[lessonId]
-    const [currentIndex, setCurrentIndex] = useState(0);
+    //const [currentIndex, setCurrentIndex] = useState(state.currentLessonIndex);
+    const currentIndex= state.currentLessonIndex
     const [shouldRenderNextToAudioIcons, setShouldRenderNextToAudioIcon] = useState(true)
     const [shouldDoTutorial, setShouldDoTutorial] = useState(true)
     const [shouldRenderNextToForwardButton, setShouldRenderNextToForwardButton] = useState(false)
@@ -19,7 +20,8 @@ function Lessons({state, dispatch, lessonId}){
     const progressWidth = Math.round(((currentIndex + 1) / currentLesson.length ) * 100);
     const getNextLesson = () => {
         if (currentIndex >= currentLesson.length) {
-            setCurrentIndex(0);
+            dispatch({type: "SET_CURRENT_LESSON_INDEX", payload: { lesson: state.id, value: 0 }});
+            //setCurrentIndex(0);
         }
         else {
             if (currentIndex === currentLesson.length -1) {
@@ -27,9 +29,13 @@ function Lessons({state, dispatch, lessonId}){
                     {type: "INCREASE_NUMBER_OF_LESSONS_COMPLETED",
                     payload: { lesson: state.id, value: 1 }}
                 );
+                dispatch({type: "SET_CURRENT_LESSON_INDEX", payload: { lesson: state.id, value: 0 }});
             }else{
+                dispatch({type: "INCREASE_CURRENT_LESSON_INDEX",
+                        payload: { lesson: state.id, value: 1 }});
+                //alert(state.currentLessonIndex)
+                //setCurrentIndex(currentIndex + 1);
                 setError(null);
-                setCurrentIndex(currentIndex + 1);
             }
         }
         if(isPlaying){
@@ -48,14 +54,17 @@ function Lessons({state, dispatch, lessonId}){
 
     const getPreviousLesson = () => {
         if(currentIndex === 0 && lessonId === 0){
-            navigate('/')
+            //navigate('/')
         }
         if (currentIndex === 0) {
             dispatch({ type: "DECREASE_NUMBER_OF_LESSONS_COMPLETED", payload: { lesson: state.id, value: 1 }});
             setError('No previous items');
         } else {
             setError(null)
-            setCurrentIndex(currentIndex - 1);
+            dispatch({type: "DECREASE_CURRENT_LESSON_INDEX",
+                payload: { lesson: state.id, value: 1 }});
+            //alert(state.currentLessonIndex)
+            //setCurrentIndex(currentIndex - 1);
         }
         if(isPlaying){
             stopAudio()
@@ -92,6 +101,11 @@ function Lessons({state, dispatch, lessonId}){
         }
 
     }, [isPlaying, state])
+
+
+    useEffect(()=>{
+        //dispatch({type: "SET_CURRENT_LESSON_INDEX", payload: { lesson: state.id, value: 0 }});
+    }, [lessonId])
 
     useEffect(()=> {
         const lockedStatusData = JSON.parse(localStorage.getItem('lockedStatusData'));

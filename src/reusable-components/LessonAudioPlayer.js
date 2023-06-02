@@ -2,7 +2,7 @@
 import {AudioContext} from "../context/AudioContext";
 import {useContext, useEffect} from "react";
 import {EnglishAudioContext} from "../context/PlayEnglishContext";
- const LessonAudioButtons = ({ twiAudio, englishAudio, englishAudioName, twiAudioName, text}) => {
+ const LessonAudioButtons = ({ twiAudio, englishAudio, englishAudioName, twiAudioName, text, className}) => {
  const {playAudio, isPlaying, activeName, stopAudio, setActiveName } = useContext(AudioContext);
  //const {speakEnglishWords, isReading, stopAudioTextToSpeech}= useContext(EnglishAudioContext)
 /*
@@ -48,7 +48,7 @@ import {EnglishAudioContext} from "../context/PlayEnglishContext";
 
 
     return (
-        <div className="question_audio_icons">
+        <div className={`question_audio_icons ${className}`}>
             <div className="volume_button_divs">
                 <div>🇬🇭</div>
                 <button

@@ -22,8 +22,11 @@ import {
     educationCourseSummary,
     educationKeyWordsSection2,
     educationLessonData,
-    educationLessonDataKeyWords, educationLessonSection2,
-    EducationMatchingWordsQuestions, educationQuestionSet2, UniversityEducationSupport,
+    educationLessonDataKeyWords,
+    educationLessonSection2,
+    EducationMatchingWordsQuestions,
+    educationQuestionSet2,
+    UniversityEducationSupport,
 } from "../lessons/Education/EducationLessonData";
 
 export const LessonContext = createContext(null);
@@ -41,7 +44,8 @@ export function GlobalStatesProvider({ children }) {
             lessonCompleted: false, //check if lesson is completed
             questionStarted: false, //check if a question has been started
             questions: [trueOrFalseQuestions, basicsMCQS],//all the questions
-            pointsToPassLesson : 65 //points needed to unlock the next course
+            pointsToPassLesson : 65, //points needed to unlock the next course
+            currentLessonIndex: 0
         },
         HealthCareLessons: {
             id: "HealthCareLessons",
@@ -53,7 +57,9 @@ export function GlobalStatesProvider({ children }) {
             lessonCompleted: false,
             questionStarted: false,
             questions: [MatchingWordsQuestions, basicsMCQHealthCare, trueOrFalseQuestionsHealth],
-            pointsToPassLesson : 80
+            pointsToPassLesson : 80,
+            goToSavedProgress: false,
+            currentLessonIndex: 0
         },
         EducationLessons: {
             id: "EducationLessons",
@@ -65,7 +71,9 @@ export function GlobalStatesProvider({ children }) {
             lessonCompleted: false,
             questionStarted: false,
             questions: [EducationMatchingWordsQuestions, educationQuestionSet2, trueOrFalseQuestionsHealth],
-            pointsToPassLesson : 65
+            pointsToPassLesson : 65,
+            goToSavedProgress: false,
+            currentLessonIndex: 0
         },
 
     }
@@ -257,6 +265,82 @@ export function GlobalStatesProvider({ children }) {
                     ...fullLesson,
                     numberOfCompletedLessons: originalNumberOfLessons - value,
                 };
+                return {
+                    ...lessonState,
+                    [lesson]: updatedLesson
+                }
+            }
+
+            case "SET_GO_TO_SAVED_PROGRESS":{
+                const {lesson, value}= action.payload
+                const fullLesson = lessonState[lesson];
+                const updatedLesson = {
+                    ...fullLesson,
+                    goToSavedProgress: value
+                };
+                //console.log(JSON.stringify(returnValue, null, 4))
+                return {
+                    ...lessonState,
+                    [lesson]: updatedLesson
+                }
+            }
+
+            case "INCREASE_CURRENT_LESSON_INDEX":{
+                const {lesson, value}= action.payload
+                const fullLesson = lessonState[lesson];
+                const updatedValue = fullLesson.currentLessonIndex + value
+                const updatedLesson = {
+                    ...fullLesson,
+                    currentLessonIndex: updatedValue
+                };
+                //console.log(JSON.stringify(returnValue, null, 4))
+                return {
+                    ...lessonState,
+                    [lesson]: updatedLesson
+                }
+            }
+
+            case "DECREASE_CURRENT_LESSON_INDEX":{
+                const {lesson, value}= action.payload
+                const fullLesson = lessonState[lesson];
+                const updatedValue = fullLesson.currentLessonIndex - value
+                const updatedLesson = {
+                    ...fullLesson,
+                    currentLessonIndex: updatedValue
+                };
+                //console.log(JSON.stringify(returnValue, null, 4))
+                return {
+                    ...lessonState,
+                    [lesson]: updatedLesson
+                }
+            }
+
+
+            case "SET_CURRENT_LESSON_INDEX":{
+                const {lesson, value}= action.payload
+                const fullLesson = lessonState[lesson];
+                const updatedLesson = {
+                    ...fullLesson,
+                    currentLessonIndex: value
+                };
+                //console.log(JSON.stringify(returnValue, null, 4))
+                return {
+                    ...lessonState,
+                    [lesson]: updatedLesson
+                }
+            }
+
+            case "RESUME_LESSON":{
+                const {lesson, progressKeyName} = action.payload
+                const fullLesson = lessonState[lesson];
+                const userProgress= JSON.parse(localStorage.getItem(progressKeyName))
+                const updatedLesson = {
+                    ...fullLesson,
+                    numberOfCompletedLessons: userProgress.numberOfCompletedLessons,
+                    numberOfCompletedQuestions: userProgress.numberOfCompletedQuestion,
+                    lessonCompleted: userProgress.lessonCompleted,
+                    currentLessonIndex: userProgress.lastLessonIndex
+                }
                 return {
                     ...lessonState,
                     [lesson]: updatedLesson

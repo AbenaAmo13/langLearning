@@ -73,7 +73,7 @@ function HelpPage(){
 
     ];
 
-    const overViewText="You are currently at the help page if you need help with anything, you can either listen to it by clicking on the audio icon below the Ghana flag to hear the content in twi or the British flag to hear it in English. If you would prefer to read it, click on the square button in the lower right corner with the icon pointing downwards. "
+    const overViewText="You are currently at the help page if you need help with anything, you can either listen to it by clicking on the audio icon below the Ghana flag to hear the content in twi or the British flag to hear it in English."
 
     const HelpPageCard = ({ cardInfo }) => {
         //console.log("This is card inffo" + JSON.stringify(cardInfo.content))
@@ -89,27 +89,32 @@ function HelpPage(){
 
         return (
             <div className="navCard help_page">
-                <div className="cardmedia">
+                <div className="cardmedia help_page">
                     <img src={cardInfo.image}/>
                 </div>
                 <div className="help_icons_container">
-                    <h3>{cardInfo.title}</h3>
+                    <h1>{cardInfo.title}</h1>
                     <div className="help_content">
-                        {expanded &&
+                        {
+                            cardInfo.content.map((content, index) => (
+                                <p key={index} className="text_content">{content}</p>
+                            ))
+                        }
+
+                       {/* {expanded &&
                         cardInfo.content.map((content, index) => (
                             <p key={index} className="text_content">{content}</p>
                         ))
-                        }
+                        }*/}
                     </div>
-
                     <div>
                         <LessonAudioPlayer englishAudio={cardInfo.englishAudio} englishAudioName={cardInfo.englishAudio} twiAudio={cardInfo.twiAudio} twiAudioName={cardInfo.twiAudio}/>
-                        <div className="help_collapse_icon">
-                            <button onClick={handleToggle}>
+                       {/* <div className="help_collapse_icon">
+                            <button onClick={handleToggle} className="start-button readmore">
+                                <p>READ MORE</p>
                                 <i className="material-icons" alt="expansion">{iconValue}</i>
                             </button>
-                        </div>
-
+                        </div>*/}
                     </div>
 
                 </div>

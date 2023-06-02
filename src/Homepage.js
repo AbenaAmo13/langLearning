@@ -205,12 +205,17 @@ function Homepage() {
         }
     }, [lockedStatusJsonObj]);
 
+
+
+
+
+
     return(
     <div>
         <div className="homepage_intro_cards">
             <div className="navCard scoreCard introduction">
                 <h1 className="score_rec_text main"> Welcome to Empower-Us.</h1>
-                <p className="score_rec_text"> This is an application dedicated to teaching you everything you need to know about Ghana's governmental service to empower your life! Click the start button that is being pointed at by the hand to know more about what you will learn in the course</p>
+                <p className="score_rec_text"> This is an application dedicated to teaching you everything you need to know about Ghana's governmental service to empower your life! Click the start button that is being pointed at by the hand to know more about what you will learn in the course.</p>
                 <LessonAudioPlayer
                 englishAudioName={introEnglish}
                 englishAudio={introEnglish}
@@ -293,7 +298,7 @@ function Homepage() {
                                </i>
                            </button>
                            {navElement.locked_status ===false &&(
-                               <div>
+                               <div className="homepage_container_hands">
                                    {/* Render pointing hand gif image next to the latest unlocked card */}
                                    {index === latestUnlockedIndex && (
                                        <img

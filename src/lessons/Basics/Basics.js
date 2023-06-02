@@ -7,17 +7,19 @@ import courseIntroTwi from "../../audios/basics/course_intro_twi_full.mp3";
 import courseIntroEnglish from "../../audios/basics/course_intro_english.mp3";
 
 function Basics() {
+
     const questionTypeArray=["trueorfalse", "mcq"]
     const basicsPromptData = {
         cardTextContent:[
-            "For this section, we will be going through the topics that you will cover in the application. To complete this course and start the next one, you must get at least 7 questions right",
-            "To start click Yes. If you aren't ready to start then click No"
+            "For this section, we will be going through the topics that you will cover in the application.", "To complete this course and start the next one, you must get at least 7 questions right."
         ],
+
         quizImage : lesson1Image,
         cardTitle: "Course Outline",
         cardTitleTwi: "twiTitle",
         EnglishAudio: courseIntroEnglish,
         TwiAudio: courseIntroTwi,
+        progressKeyName: "Basics"
     }
     // Dynamic lesson components data
     const lessonComponentsData = [
@@ -36,6 +38,7 @@ function Basics() {
                 redirectToLink="/Health"
                 lessonComponentsData = {lessonComponentsData}
                 failRedirectTo="/Basics"
+                progressKeyName="Basics"
             />
         </div>
     )

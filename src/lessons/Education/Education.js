@@ -5,12 +5,8 @@ function Education(){
     const lessonComponentsData = [
         { type: 'MultipleLessons', props: {lessonId: 0} },
         { type: 'KeyWordsLessons', props:{lessonId: 1} },
-        { type: 'Questions', props:{questionType: questionTypeArray[0], id: 0} },
+        { type: 'Questions', props:{questionType: questionTypeArray[0], id: 0}},
         { type: 'CourseSummary', props:{lessonId: 5}}
-
-
-
-
     ];
     return(
         <div>

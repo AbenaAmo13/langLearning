@@ -9,12 +9,14 @@ import KeyWordsLessons from "./KeyWordsLessons";
 import CourseSummary from "./CourseSummary";
 import CourseIntroduction from "./CourseIntroduction";
 
-function CourseComponent({lessonName, lockedStatusItem,redirectToLink, lessonComponentsData, failRedirectTo}){
+function CourseComponent({lessonName, lockedStatusItem,redirectToLink, lessonComponentsData, failRedirectTo, progressKeyName}){
     const {lockedStatusJsonObj, setLockedStatusJsonObj} = useContext(LockedStatusObjContext)
     const lessons = useContext(LessonContext)
     const dispatch = useContext(LessonDispatchContext)
     const lessonState = lessons[lessonName];
     const numberOfCompletedQuestions = lessonState.numberOfCompletedQuestions
+    const numberOfCompletedLessons = lessonState.numberOfCompletedLessons
+    const lastLessonIndex = lessonState.currentLessonIndex
     const lessonCompleted = lessonState.lessonCompleted
 
     const [passedLesson, setPassedLesson] = useState(false)
@@ -25,7 +27,6 @@ function CourseComponent({lessonName, lockedStatusItem,redirectToLink, lessonCom
     useEffect(()=>{
         const userPoints = lessonState.scores;
         const pointsRequired = lessonState.pointsToPassLesson;
-
         const userScores = JSON.parse(localStorage.getItem("userScores"));
         userScores[lessonState.userScoreName] = userPoints
         localStorage.setItem("userScores", JSON.stringify(userScores));
@@ -42,6 +43,27 @@ function CourseComponent({lessonName, lockedStatusItem,redirectToLink, lessonCom
             }
         }
     }, [lessonCompleted, numberOfCompletedQuestions]);
+
+    useEffect(()=>{
+        /*console.log("lessonState:", lessonState);
+        console.log("lessonCompleted:", lessonCompleted);
+        console.log("numberOfCompletedQuestions:", numberOfCompletedQuestions);
+        console.log("numberOfCompletedLessons:", numberOfCompletedLessons);
+        console.log("progressKeyName:", progressKeyName);*/
+        if(numberOfCompletedLessons > 0){
+            let userProgress={
+                numberOfCompletedQuestion: numberOfCompletedQuestions ,
+                numberOfCompletedLessons: numberOfCompletedLessons,
+                lessonCompleted: lessonCompleted,
+                lastLessonIndex: lastLessonIndex,
+                currentQuestionIndex: 0,
+                savedUserProgress: true,
+            }
+            localStorage.setItem(progressKeyName, JSON.stringify(userProgress))
+        }
+
+
+    }, [lessonCompleted, numberOfCompletedQuestions, numberOfCompletedLessons, lastLessonIndex])
 
 
     //Used for component mapping

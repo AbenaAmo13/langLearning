@@ -14,6 +14,7 @@ import {userCoinValidationCheck} from "./validation";
 
 function TopAppBar(){
     //const imagePath = `${process.env.PUBLIC_URL}/empower-us-192.webp`;
+
     const imagePath = process.env.PUBLIC_URL + '/empower-us-192.webp';
     const {userCoins, setUserCoins, updateUserCoins} = useContext(RewardsContext);
     const [clickedIcon, setClickedIcon] = useState('home');
