@@ -20,7 +20,9 @@ function Lessons({state, dispatch, lessonId}){
     const progressWidth = Math.round(((currentIndex + 1) / currentLesson.length ) * 100);
     const getNextLesson = () => {
         if (currentIndex >= currentLesson.length) {
+/*
             dispatch({type: "SET_CURRENT_LESSON_INDEX", payload: { lesson: state.id, value: 0 }});
+*/
             //setCurrentIndex(0);
         }
         else {
@@ -29,7 +31,7 @@ function Lessons({state, dispatch, lessonId}){
                     {type: "INCREASE_NUMBER_OF_LESSONS_COMPLETED",
                     payload: { lesson: state.id, value: 1 }}
                 );
-                dispatch({type: "SET_CURRENT_LESSON_INDEX", payload: { lesson: state.id, value: 0 }});
+             /*   dispatch({type: "SET_CURRENT_LESSON_INDEX", payload: { lesson: state.id, value: 0 }});*/
             }else{
                 dispatch({type: "INCREASE_CURRENT_LESSON_INDEX",
                         payload: { lesson: state.id, value: 1 }});
@@ -54,7 +56,7 @@ function Lessons({state, dispatch, lessonId}){
 
     const getPreviousLesson = () => {
         if(currentIndex === 0 && lessonId === 0){
-            //navigate('/')
+            navigate('/')
         }
         if (currentIndex === 0) {
             dispatch({ type: "DECREASE_NUMBER_OF_LESSONS_COMPLETED", payload: { lesson: state.id, value: 1 }});

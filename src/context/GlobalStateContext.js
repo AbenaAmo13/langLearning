@@ -28,6 +28,12 @@ import {
     educationQuestionSet2,
     UniversityEducationSupport,
 } from "../lessons/Education/EducationLessonData";
+import {
+    jobsCourseSummary,
+    jobsKeyWordsLessonData,
+    jobsLessonData,
+    jobsLessonTrueOrFalseQuestions
+} from "../lessons/Jobs/JobsLessonData";
 
 export const LessonContext = createContext(null);
 export const LessonDispatchContext = createContext(null);
@@ -45,7 +51,10 @@ export function GlobalStatesProvider({ children }) {
             questionStarted: false, //check if a question has been started
             questions: [trueOrFalseQuestions, basicsMCQS],//all the questions
             pointsToPassLesson : 65, //points needed to unlock the next course
-            currentLessonIndex: 0
+            keyLessonState: false,
+            currentLessonIndex: 0,
+            currentQuestionIndex: 0,
+            correctNumberOfAnswers: 0
         },
         HealthCareLessons: {
             id: "HealthCareLessons",
@@ -56,10 +65,13 @@ export function GlobalStatesProvider({ children }) {
             numberOfCompletedQuestions: 0,
             lessonCompleted: false,
             questionStarted: false,
+            keyLessonState: false,
             questions: [MatchingWordsQuestions, basicsMCQHealthCare, trueOrFalseQuestionsHealth],
             pointsToPassLesson : 80,
             goToSavedProgress: false,
-            currentLessonIndex: 0
+            currentLessonIndex: 0,
+            currentQuestionIndex: 0,
+            correctNumberOfAnswers: 0
         },
         EducationLessons: {
             id: "EducationLessons",
@@ -69,12 +81,50 @@ export function GlobalStatesProvider({ children }) {
             numberOfCompletedLessons: 0,
             numberOfCompletedQuestions: 0,
             lessonCompleted: false,
+            keyLessonState: false,
             questionStarted: false,
             questions: [EducationMatchingWordsQuestions, educationQuestionSet2, trueOrFalseQuestionsHealth],
             pointsToPassLesson : 65,
             goToSavedProgress: false,
-            currentLessonIndex: 0
+            currentLessonIndex: 0,
+            currentQuestionIndex: 0,
+            correctNumberOfAnswers:0
         },
+        JobsLesson: {
+            id: "JobsLesson",
+            scores: 0,
+            userScoreName: "JobsScore",
+            lessons:[jobsLessonData, jobsKeyWordsLessonData, jobsCourseSummary],
+            numberOfCompletedLessons: 0,
+            numberOfCompletedQuestions: 0,
+            lessonCompleted: false,
+            keyLessonState: false,
+            questionStarted: false,
+            questions: [jobsLessonTrueOrFalseQuestions],
+            pointsToPassLesson : 30,
+            goToSavedProgress: false,
+            currentLessonIndex: 0,
+            currentQuestionIndex: 0,
+            correctNumberOfAnswers:0
+        },
+        IdLesson: {
+            id: "IdLesson",
+            scores: 0,
+            userScoreName: "IDScore",
+            lessons:[],
+            numberOfCompletedLessons: 0,
+            numberOfCompletedQuestions: 0,
+            lessonCompleted: false,
+            keyLessonState: false,
+            questionStarted: false,
+            questions: [],
+            pointsToPassLesson : 30,
+            goToSavedProgress: false,
+            currentLessonIndex: 0,
+            currentQuestionIndex: 0,
+            correctNumberOfAnswers:0
+        },
+
 
     }
 
@@ -228,6 +278,83 @@ export function GlobalStatesProvider({ children }) {
                     [lesson]: updatedLesson
                 }
             }
+
+            case "INCREASE_CURRENT_QUESTION_INDEX":{
+                const {lesson, value} = action.payload
+                const fullLesson = lessonState[lesson]
+                const originalCurrentQuestionIndex = fullLesson.currentQuestionIndex
+                const updatedLesson ={
+                    ...fullLesson,
+                    currentQuestionIndex: originalCurrentQuestionIndex + value
+                }
+                return{
+                    ...lessonState,
+                    [lesson]: updatedLesson
+                }
+            }
+            case "DECREASE_CURRENT_QUESTION_INDEX":{
+                const {lesson, value} = action.payload
+                const fullLesson = lessonState[lesson]
+                const originalCurrentQuestionIndex = fullLesson.currentQuestionIndex
+                const updatedLesson ={
+                    ...fullLesson,
+                    currentQuestionIndex: originalCurrentQuestionIndex - value
+                }
+                return{
+                    ...lessonState,
+                    [lesson]: updatedLesson
+                }
+            }
+            case "INCREASE_CORRECT_NUMBER_OF_ANSWERS":{
+                const {lesson, value} = action.payload
+                const fullLesson = lessonState[lesson]
+                const originalCurrentQuestionIndex = fullLesson.correctNumberOfAnswers
+                const updatedLesson ={
+                    ...fullLesson,
+                    correctNumberOfAnswers: originalCurrentQuestionIndex + value
+                }
+                return{
+                    ...lessonState,
+                    [lesson]: updatedLesson
+                }
+            }
+            case "DECREASE_CORRECT_NUMBER_OF_ANSWERS":{
+                const {lesson, value} = action.payload
+                const fullLesson = lessonState[lesson]
+                const originalCurrentQuestionIndex = fullLesson.correctNumberOfAnswers
+                const updatedLesson ={
+                    ...fullLesson,
+                    correctNumberOfAnswers: originalCurrentQuestionIndex - value
+                }
+                return{
+                    ...lessonState,
+                    [lesson]: updatedLesson
+                }
+            }
+            case "SET_CURRENT_QUESTION_INDEX":{
+                const {lesson, value} = action.payload
+                const fullLesson = lessonState[lesson]
+                const updatedLesson ={
+                    ...fullLesson,
+                    currentQuestionIndex: value
+                }
+                return{
+                    ...lessonState,
+                    [lesson]: updatedLesson
+                }
+            }
+            case "SET_CORRECT_NUMBER_OF_ANSWERS":{
+                const {lesson, value} = action.payload
+                const fullLesson = lessonState[lesson]
+                const updatedLesson ={
+                    ...fullLesson,
+                    correctNumberOfAnswers: value
+                }
+                return{
+                    ...lessonState,
+                    [lesson]: updatedLesson
+                }
+            }
             case "INCREASE_NUMBER_OF_QUESTIONS_COMPLETED":{
                 const {lesson, value} = action.payload;
                 const fullLesson = lessonState[lesson];
@@ -339,11 +466,28 @@ export function GlobalStatesProvider({ children }) {
                     numberOfCompletedLessons: userProgress.numberOfCompletedLessons,
                     numberOfCompletedQuestions: userProgress.numberOfCompletedQuestion,
                     lessonCompleted: userProgress.lessonCompleted,
-                    currentLessonIndex: userProgress.lastLessonIndex
+                    currentLessonIndex: userProgress.lastLessonIndex,
+                    questionStarted: userProgress.questionStarted,
+                    keyLessonState: userProgress.keyLessonState,
+                    currentQuestionIndex: userProgress.currentQuestionIndex,
+                    correctNumberOfAnswers: userProgress.correctNumberOfAnswers,
+                    scores: userProgress.scores
                 }
                 return {
                     ...lessonState,
                     [lesson]: updatedLesson
+                }
+            }
+            case "SET_KEY_LESSON_STATE":{
+                const {lesson, value}= action.payload
+                const fullLesson = lessonState[lesson];
+                const updatedLesson = {
+                    ...fullLesson,
+                    keyLessonState: value
+                };
+                return{
+                    ...lessonState,
+                    [lesson]:updatedLesson
                 }
             }
             default:

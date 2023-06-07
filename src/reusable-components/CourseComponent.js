@@ -56,14 +56,19 @@ function CourseComponent({lessonName, lockedStatusItem,redirectToLink, lessonCom
                 numberOfCompletedLessons: numberOfCompletedLessons,
                 lessonCompleted: lessonCompleted,
                 lastLessonIndex: lastLessonIndex,
-                currentQuestionIndex: 0,
+                currentQuestionIndex: lessonState.currentQuestionIndex,
+                correctNumberOfAnswers: lessonState.correctNumberOfAnswers,
+                questionStarted: lessonState.questionStarted,
+                keyLessonState: lessonState.keyLessonState,
                 savedUserProgress: true,
+                scores:lessonState.scores
+
             }
             localStorage.setItem(progressKeyName, JSON.stringify(userProgress))
         }
 
 
-    }, [lessonCompleted, numberOfCompletedQuestions, numberOfCompletedLessons, lastLessonIndex])
+    }, [lessonCompleted, numberOfCompletedQuestions, numberOfCompletedLessons, lastLessonIndex, lessonState])
 
 
     //Used for component mapping
@@ -88,7 +93,7 @@ function CourseComponent({lessonName, lockedStatusItem,redirectToLink, lessonCom
         if(passedLesson){
             return <PassedCourse to={redirectToLink} />;
         }else{
-            return <RetakeCourse to={failRedirectTo}/>
+            return <RetakeCourse to={failRedirectTo} state={lessonState} dispatch={dispatch}/>
         }
 
     } else {

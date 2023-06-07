@@ -4,7 +4,7 @@ import LessonAudioPlayer from "./LessonAudioPlayer";
 import {useContext} from "react";
 import {AudioContext} from "../context/AudioContext";
 
-function RetakeCourse({to}){
+function RetakeCourse({to, state, dispatch,}){
     const {isPlaying, stopAudio} = useContext(AudioContext)
     return(
         <div className="card_component_container lightOrangeCardOutline padding">
@@ -15,7 +15,10 @@ function RetakeCourse({to}){
                     if(isPlaying){
                         stopAudio()
                     }
-                }}>
+                            dispatch({type: "RESET_LESSON", payload: { lesson: state.id }});
+
+
+                        }}>
                     Retake course
                 </button>
             </Link>

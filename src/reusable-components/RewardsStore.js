@@ -13,15 +13,21 @@ import rewardOverviewEnglish  from "../audios/rewardspage/rewards_audio_english.
 import celebrations from "../images/rewardImages/confetti.webp"
 import {useContext, useEffect, useState} from "react";
 import {RewardsContext} from "../context/RewardsContext";
+import 'react-toastify/dist/ReactToastify.css';
+import {toast, ToastContainer} from "react-toastify";
 import LessonAudioPlayer from "./LessonAudioPlayer";
 import OverviewAudios from "./OverViewAudios";
 import {AudioContext} from "../context/AudioContext";
 
+
  function RewardsStore() {
      const {userCoins, setUserCoins, buyItem} = useContext(RewardsContext);
-     const overViewText ="Use the coins you won from completing your course to get downloadable pictures of Ghana items on your phone"
+     const title= "Rewards"
+     const mainText= ["Use the coins you won from completing your course to get downloadable pictures of Ghana items on your phone"]
      const [userRewards, setPersonalRewards] = useState([])
+     const [purchasedItem, setPurchasedItem]= useState(null)
      const [successPurchase, setSuccessPurchase] = useState(null)
+     const [overViewText, setOverViewText] = useState(mainText)
      useEffect(() => {
          const personalRewards = localStorage.getItem('personalRewards');
          const initialRewards = personalRewards ? JSON.parse(personalRewards) : [];
@@ -33,7 +39,7 @@ import {AudioContext} from "../context/AudioContext";
          localStorage.setItem('personalRewards', JSON.stringify(userRewards));
      }, [userRewards]);
      const unlockableRewardsItems = [
-        { name: 'AfricaImage', coinsRequired: 50, image: africaImage, purchased: false},
+        { name: 'AfricanImage', coinsRequired: 50, image: africaImage, purchased: false},
         { name: 'AfroBeat', coinsRequired: 120, image: afroBeat, purchased: false },
         { name: 'CediRewards', coinsRequired: 120, image: cediRewards, purchased: false },
         { name: 'BlackStar', coinsRequired: 250, image: blackStart, purchased:false},
@@ -54,39 +60,49 @@ import {AudioContext} from "../context/AudioContext";
      const purchaseItem=(price, itemName, purchased)=>{
          if(price> userCoins || purchased ){
              setSuccessPurchase(false)
+             let message = "You don't have enough coins to purchase: " + itemName
+             toast.error(message, { position: toast.POSITION.TOP_RIGHT, autoClose: 2000}); // Error toast with position at top-right
+
              //alert(successPurchase)
          }else{
              //alert(price)
              buyItem(price)
              //updateUserCoins(price)
              setSuccessPurchase(true)
+             //Set item that was purchased:
+             setPurchasedItem(itemName)
              // Add the purchased item to the userRewards array
              setPersonalRewards(prevRewards => [...prevRewards, itemName]);
+             let message = "You have successfully purchased: " + itemName
+
+             toast.success(message, { autoClose: 2000 }); // Success toast with auto-close after 3 seconds
+
          }
      }
+
+
+ useEffect(()=>{
+   if(successPurchase){
+       let purchasedText= "You have successfully purchased: " + purchasedItem
+       let newTextItems =[...overViewText, purchasedText]
+       setOverViewText(newTextItems)
+     /*  let overViewText = mainText + "You have successfully purchase an item!"
+       //setOverViewText(overViewText)*/
+   }
+
+ }, [successPurchase])
      return (
          <div>
              <OverviewAudios
+                 title={title}
                  text={overViewText}
                  englishAudio={rewardOverviewEnglish}
                  englishAudioName={rewardOverviewEnglish}
                  twiAudio={rewardOverviewTwi}
                  twiAudioName={rewardOverviewTwi}
-             />
-             {
-                 successPurchase !== null &&(
-                     successPurchase=== true ? (
-                         <div>
-                             <p> You have bought the item</p>
-                         </div>
-                     ):(
-                         <div>
-                             <p> Purchase was unsuccessful</p>
-                         </div>
-                     )
 
-                 )
-             }
+             />
+
              <div className="reward_container">
                  {unlockedRewards.map((item, index) => (
                      <div key={index} className="navCard rewards_cards">
@@ -103,7 +119,6 @@ import {AudioContext} from "../context/AudioContext";
                          <div className="downloaad_me_div purchase_div">
                              <a href={item.image} className="start-button purchase-button link"download >Download</a>
                          </div>
-
                      </div>
                  ))}
 
@@ -124,6 +139,7 @@ import {AudioContext} from "../context/AudioContext";
                          </div>
                      </div>
                  ))}
+                 <ToastContainer/>
              </div>
          </div>
     );

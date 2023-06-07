@@ -1,4 +1,12 @@
 import healthImage from "../../images/greyhealthcare.webp";
+import hospitals from "../../images/healthCareImages/hospital.png";
+import medicineImage from "../../images/healthCareImages/medicine.png";
+import medicine_2 from "../../images/healthCareImages/medicine (3).png";
+import nhisI from "../../images/healthCareImages/medicine (3).png";
+
+import hospitalAnimated from "../../images/healthCareImages/hospitalAnimated.png";
+
+
 
 import GHS1Twi from "../../audios/healthCare/GhanaHealthService/GHS_audio_Twi_1_main.mp3"
 import GHS2Twi from "../../audios/healthCare/GhanaHealthService/GHS_audioTwi_2.mp3"
@@ -60,6 +68,8 @@ import AgeTwiAudio from "../../audios/healthCare/NHISRegistrationFormAudios/AgeT
 import TelephoneNumberTwiAudio from "../../audios/healthCare/NHISRegistrationFormAudios/TelephoneNumberTwi.mp3"
 
 
+import matchingPromptEnglish from "../../audios/healthCare/questions/matchingPromptEnglish.mp3"
+import matchingPromptTwi from "../../audios/healthCare/questions/matchingPromptTwi.mp3"
 
 
 
@@ -75,15 +85,15 @@ export const healthCareLessonData=[
     },
 
     {
-        Image:"" ,
+        Image:medicine_2,
         EnglishWord: "Ghana Health Service",
         TwiWord: "",
         TwiAudio: GHS2Twi,
         EnglishAudio: GHS2English,
-        KeyMessageEnglish: 'They do this by  providing us with hospitals that we can go to and medicines that we can take to make us feel better when we are sick. '
+        KeyMessageEnglish: 'They do this by providing us with hospitals that we can go to and medicines that we can take to make us feel better when we are sick. '
     },
     {
-        Image: "",
+        Image: hospitalAnimated,
         EnglishWord: "Ghana Health Service",
         TwiWord: "Adesua",
         TwiAudio:GHS3Twi ,
@@ -91,7 +101,7 @@ export const healthCareLessonData=[
         KeyMessageEnglish:'Hospital bills can be expensive but there are ways that we can still be taken care of when we our sick.',
     },
     {
-        Image: "" ,
+        Image: healthImage ,
         EnglishWord: "Ghana Health Service",
         TwiWord: "TwiID",
         TwiAudio: GHS4Twi,
@@ -583,8 +593,8 @@ export const MatchingWordsQuestions=[
         Answer:"Matched",
        componentScore : "HealthScore",
         isAnswered: false,
-        TwiAudio:"testforTwi",
-        EnglishAudio: "",
+        TwiAudio:matchingPromptTwi,
+        EnglishAudio: matchingPromptEnglish,
 
     }
 ]
@@ -732,8 +742,8 @@ export const MatchingWordsQuestions2=[
         Answer:"Matched",
         componentScore : "HealthScore",
         isAnswered: false,
-        TwiAudio:"testforTwi",
-        EnglishAudio: "",
+        TwiAudio:matchingPromptTwi,
+        EnglishAudio: matchingPromptEnglish,
 
     }
 ]

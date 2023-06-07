@@ -79,7 +79,7 @@ function Homepage() {
     const English = "English";
      const navBarElements=[
         {  "Image":greyGovernment,
-            "NavBarTitleEnglish": "Course Outline",
+            "NavBarTitleEnglish": "Lesson Plan",
             "TwiAudioName": "coursetwi",
             "TwiAudio":basicsTwiAudio,
             "EnglishAudio": courseOutline ,
@@ -214,25 +214,34 @@ function Homepage() {
     <div>
         <div className="homepage_intro_cards">
             <div className="navCard scoreCard introduction">
-                <h1 className="score_rec_text main"> Welcome to Empower-Us.</h1>
-                <p className="score_rec_text"> This is an application dedicated to teaching you everything you need to know about Ghana's governmental service to empower your life! Click the start button that is being pointed at by the hand to know more about what you will learn in the course.</p>
+                <div>
+                    <h1 className="score_rec_text main"> Welcome to Empower-Us.</h1>
+                </div>
+                <div className="cardContainer">
+                    <p className="score_rec_text"> This is an application dedicated to teaching you everything you need to know about Ghana's governmental services to empower your life! If you want to find out what you can learn from this app, just click the start button on the card with the picture of Ghana's government logo.
+                    </p>
+                </div>
                 <LessonAudioPlayer
                 englishAudioName={introEnglish}
                 englishAudio={introEnglish}
                 twiAudioName={introTwi}
                 twiAudio={introTwi}
+                className="empower_us_audios"
                 />
             </div>
 
             { showRecommendedLesson && (
                 <div className="navCard scoreCard reccomendationlesson">
-                    <h2 className="score_rec_text">Reccomended Lesson</h2>
+                    <h2 className="score_rec_text">Recommended Lesson</h2>
+                    <div className="cardContainer">
                     <p className="score_rec_text"> Based on your scores, we recommend you take the course: <b>{personalRecommendedLesson}</b></p>
-                    <LessonAudioPlayer
+                    </div>
+                        <LessonAudioPlayer
                         twiAudioName={recAudio}
                         twiAudio={recAudio}
                         englishAudio={recEnglishAudio}
                         englishAudioName={recEnglishAudio}
+                        className="empower_us_audios"
                     />
                 </div>
             )

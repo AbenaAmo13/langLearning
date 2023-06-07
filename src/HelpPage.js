@@ -33,17 +33,9 @@ function HelpPage(){
     /*Should speak about structure of the application in terms of lessons being a main lesson, keyword, then question*/
     const helpCardInformation = [
         {
-            title: 'Audio',
-            image: audioImage,
-            content: ['In the application there are volume icons',  'The 🇬🇭 Ghana flag at the top of the volume icon plays text in the twi language', 'The 🇬🇧 British flag at the top of the volume icon plays text in the english language'],
-            englishAudio: englishAudioForAudioHelp,
-            twiAudio: TwiAudioForAudioHelp
-
-        },
-        {
             title: 'Download',
             image: downloadImage,
-            content: ['To get the app on your phone, click the arrow pointing down at the top of the page.'],
+            content: ['To get the app on your phone, click the arrow pointing down at the top of the page.', ' You should see a pop-up message, click the button on the right with the word "Install"'],
             contentImage: "",
             englishAudio: downloadEnglishAudio,
             twiAudio: TwiAudioForDownload
@@ -54,6 +46,14 @@ function HelpPage(){
             content: ['The application has lessons which you can start by clicking the start button', 'If a lesson is locked, in the home page you will see a locked icon 🔒 on the card', 'If a lesson is unlocked, in yhe home page you will see an unlocked icon 🔓', 'You need to pass the course by getting at least 65 points (or more)  to unlock the next course' ],
             englishAudio: lessonAudioEnglish,
             twiAudio: TwiAudioForLessons
+        },
+        {
+            title: 'Audio',
+            image: audioImage,
+            content: ['In the application there are volume icons',  'The 🇬🇭 Ghana flag at the top of the volume icon plays text in the twi language', 'The 🇬🇧 British flag at the top of the volume icon plays text in the english language'],
+            englishAudio: englishAudioForAudioHelp,
+            twiAudio: TwiAudioForAudioHelp
+
         },
         {
             title: 'Questions',
@@ -69,12 +69,13 @@ function HelpPage(){
             content: ['To go to the first page, click the house icon at the top', 'In the course, use the forward arrow button below the volume icon to go to the next item.', 'In the course, use the back arrow button below the volume icon to go to the previous item.'],
             englishAudio: navigationEnglishAudio,
             twiAudio: TwiAudioForNavigation
-        },
+        }
 
     ];
 
-    const overViewText="You are currently at the help page if you need help with anything, you can either listen to it by clicking on the audio icon below the Ghana flag to hear the content in twi or the British flag to hear it in English."
+    const overViewText=["You are currently at the help page if you need help with anything, you can either listen to it by clicking on the audio icon below the Ghana flag to hear the content in twi or the British flag to hear it in English."]
 
+    const title = "Help Page"
     const HelpPageCard = ({ cardInfo }) => {
         //console.log("This is card inffo" + JSON.stringify(cardInfo.content))
         const [expanded, setExpanded] = useState(false);
@@ -108,7 +109,7 @@ function HelpPage(){
                         }*/}
                     </div>
                     <div>
-                        <LessonAudioPlayer englishAudio={cardInfo.englishAudio} englishAudioName={cardInfo.englishAudio} twiAudio={cardInfo.twiAudio} twiAudioName={cardInfo.twiAudio}/>
+                        <LessonAudioPlayer englishAudio={cardInfo.englishAudio} englishAudioName={cardInfo.englishAudio} twiAudio={cardInfo.twiAudio} twiAudioName={cardInfo.twiAudio} className="help_audios"/>
                        {/* <div className="help_collapse_icon">
                             <button onClick={handleToggle} className="start-button readmore">
                                 <p>READ MORE</p>
@@ -139,7 +140,7 @@ function HelpPage(){
 
 
     return(<div>
-    <OverviewAudios text={overViewText} englishAudio={helpIntroEnglish} englishAudioName={helpIntroEnglish} twiAudio={helpIntroTwi} twiAudioName={helpIntroTwi}
+    <OverviewAudios text={overViewText} englishAudio={helpIntroEnglish} englishAudioName={helpIntroEnglish} twiAudio={helpIntroTwi} twiAudioName={helpIntroTwi} title={title}
     />
        <HelpCardList cards={helpCardInformation}/>
     </div>)

@@ -13,9 +13,9 @@ function KeyWordsLessons({state, dispatch, lessonId}){
     const{isPlaying, stopAudio, audioRef, isEnded, setIsEnding} = useContext(AudioContext)
     const [shouldRenderNextToAudioIcons, setShouldRenderNextToAudioIcon] = useState(true)
     const [shouldRenderNextToForwardButton, setShouldRenderNextToForwardButton] = useState(false)
-    const [keyLessonState, setKeyLessonState] = useState(false);
+   // const [keyLessonState, setKeyLessonState] = useState(false);
+    const keyLessonState = state.keyLessonState
     const currentIndex= state.currentLessonIndex
-
     //const [currentIndex, setCurrentIndex] = useState(0);
     const [error, setError] = useState(null);
     const keyWordPromptText={
@@ -52,6 +52,11 @@ function KeyWordsLessons({state, dispatch, lessonId}){
     //This goes to the previous lesson group
     function goToPreviousLessonGroup(){
         dispatch({ type: "DECREASE_NUMBER_OF_LESSONS_COMPLETED", payload: { lesson: state.id, value: 1 }});
+        const previousLessonLastIndex = (state.lessons[lessonId-1].length)-1
+        //alert(previousLessonLastIndex)
+        dispatch({ type: "SET_CURRENT_LESSON_INDEX", payload: {lesson: state.id,value: previousLessonLastIndex}});
+        //alert(previousLessonLastIndex)
+
         if(isPlaying){
             stopAudio()
         }
@@ -59,7 +64,8 @@ function KeyWordsLessons({state, dispatch, lessonId}){
 
     //This goes to the previous lesson group
     function handleKeyWordLessonTransition(){
-        setKeyLessonState(true)
+        dispatch({ type: "SET_KEY_LESSON_STATE", payload: { lesson: state.id, value: true }});
+        dispatch({type: "SET_CURRENT_LESSON_INDEX", payload: { lesson: state.id, value: 0 }});
         if(isPlaying){
             stopAudio()
         }
@@ -68,7 +74,7 @@ function KeyWordsLessons({state, dispatch, lessonId}){
 
     const getPreviousLesson = () => {
         if (currentIndex === 0) {
-            setKeyLessonState(false)
+            dispatch({ type: "SET_KEY_LESSON_STATE", payload: { lesson: state.id, value: false }});
             setError('No previous items');
         } else {
             setError(null)
@@ -82,29 +88,34 @@ function KeyWordsLessons({state, dispatch, lessonId}){
     };
 
     useEffect(()=>{
-        if(audioRef.current){
-            const tutorialLevel = "BasicLessons"
-            const currentAudio= audioRef.current.src
-            const audioPath = new URL(currentAudio).pathname;
-            const currentTwiLessonAudio = currentLesson[currentIndex].TwiAudio
-            const currentEnglishLessonAudio = currentLesson[currentIndex].EnglishAudio
-            const audioCheck = audioPath === currentTwiLessonAudio || audioPath ===currentEnglishLessonAudio
-            console.log(audioCheck)
-            let setShouldRenderNextToAudioIconToFalse = isPlaying || isEnded && audioCheck  || state.id!==tutorialLevel
-            if(setShouldRenderNextToAudioIconToFalse){
-                setShouldRenderNextToAudioIcon(false)
-            }else{
-                setShouldRenderNextToAudioIcon(true)
-            }
+        try{
+            if(audioRef.current){
+                const tutorialLevel = "BasicLessons"
+                const currentAudio= audioRef.current.src
+                const audioPath = new URL(currentAudio).pathname;
+                const currentTwiLessonAudio = currentLesson[currentIndex].TwiAudio
+                const currentEnglishLessonAudio = currentLesson[currentIndex].EnglishAudio
+                const audioCheck = audioPath === currentTwiLessonAudio || audioPath ===currentEnglishLessonAudio
+                console.log(audioCheck)
+                let setShouldRenderNextToAudioIconToFalse = isPlaying || isEnded && audioCheck  || state.id!==tutorialLevel
+                if(setShouldRenderNextToAudioIconToFalse){
+                    setShouldRenderNextToAudioIcon(false)
+                }else{
+                    setShouldRenderNextToAudioIcon(true)
+                }
 
-            const shouldRenderNextToForwardButton= isEnded && audioCheck && state.id===tutorialLevel
-            if(shouldRenderNextToForwardButton){
-                setShouldRenderNextToForwardButton(true)
-            }else{
-                setShouldRenderNextToForwardButton(false)
-            }
+                const shouldRenderNextToForwardButton= isEnded && audioCheck && state.id===tutorialLevel
+                if(shouldRenderNextToForwardButton){
+                    setShouldRenderNextToForwardButton(true)
+                }else{
+                    setShouldRenderNextToForwardButton(false)
+                }
 
+            }
+        }catch (e){
+            console.log(e)
         }
+
 
     }, [isPlaying, currentIndex])
 
@@ -211,7 +222,7 @@ function KeyWordsLessons({state, dispatch, lessonId}){
                             />
                         )}
                         <button  className="lesson_buttons icon-buttons" onClick={()=>handleKeyWordLessonTransition()}>
-                            <p>Continue</p>
+                            <p>Next</p>
                             <i className="material-icons" alt="forward arrow icon">arrow_forward</i>
                         </button>
 

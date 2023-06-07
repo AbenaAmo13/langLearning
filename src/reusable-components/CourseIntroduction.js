@@ -10,6 +10,7 @@ function CourseIntroduction({state,dispatch, startCoursePromptData, id}) {
     const continueButtonRef = useRef(null);
     const [shouldDoTutorial, setShouldDoTutorial] = useState(true)
     const [pointingHandPosition, setPointingHandPosition] = useState(0);
+   // const isMobile = window.innerWidth <= 768; // Set the breakpoint for mobile screens
     const restartText = "To restart the course, click the restart button with the triangle icon. If you want to continue, click the continue button with the circle icon down below."
     const startText = "To start click the start button with the triangle icon down below."
 
@@ -75,70 +76,7 @@ function CourseIntroduction({state,dispatch, startCoursePromptData, id}) {
             console.log("lockedStatusData not found in localStorage");
         }
     }, [])
-    const cardActionTutorialStartOnly = () => {
-        return (
-            <div className="cardActionTutorialStartOnly">
-                <div className="cardAction_hands">
-                    <div className="starting_hand">
-                        <img
-                            src={PointingSide}
-                            className={`course_intro hands ${enableResume ? "continue" : "start"}`}
-                            alt="pointing hands"
-                        />
-                    </div>
 
-                    <button className="lesson_buttons icon-buttons start_lesson" onClick={() => ready()}>
-                        <p>Start</p>
-                        <i className="material-icons" alt="restart icon">change_history</i>
-                    </button>
-                </div>
-                <LessonAudioPlayer
-                    englishAudio={startCoursePromptData.EnglishAudio}
-                    twiAudio={startCoursePromptData.TwiAudio}
-                    englishAudioName={startCoursePromptData.EnglishAudio}
-                    twiAudioName={startCoursePromptData.TwiAudio}
-                    className="startTutorialButton"
-                />
-            </div>
-        );
-    };
-
-
-    const cardActionResume=()=>{
-        return(
-            <div className="card_action_flex-grid">
-                <div className="card_action_column pointing_hands ">
-                    <div>
-                        <img
-                            src={PointingSide}
-                            className={`course_intro hands ${enableResume ? "continue" : "start"}`}
-                            alt="pointing hands"
-                        />
-                    </div>
-                    <button r className="lesson_buttons icon-buttons" onClick={() => continueProgress()}>
-                        <p>CONTINUE</p>
-                        <i className="material-icons" alt="continue icon">radio_button_unchecked</i>
-                    </button>
-                </div>
-                <div className="card_action_column">
-                    <button  className="lesson_buttons icon-buttons" onClick={() => ready()}>
-                        <p>RESTART</p>
-                        <i className="material-icons" alt="restart icon">change_history</i>
-                    </button>
-                </div>
-                <div className="card_action_column">
-                    <LessonAudioPlayer
-                        englishAudio={startCoursePromptData.EnglishAudio}
-                        twiAudio={startCoursePromptData.TwiAudio}
-                        englishAudioName={startCoursePromptData.EnglishAudio}
-                        twiAudioName={startCoursePromptData.TwiAudio}
-                        className="continueTutorialButton"
-                    />
-                </div>
-            </div>
-        )
-
-    }
 
 
 
@@ -146,7 +84,7 @@ function CourseIntroduction({state,dispatch, startCoursePromptData, id}) {
         <div>
             <div className="card_component_container course_intro">
                 <div className="card_component_image" >
-                    <img src={startCoursePromptData.quizImage}/>
+                    <img src={startCoursePromptData.quizImage} alt="course outline"/>
                 </div>
                 <div className="course_intro_content_container">
                     <h1 className="card_component_title">{startCoursePromptData.cardTitle}</h1>
@@ -155,32 +93,32 @@ function CourseIntroduction({state,dispatch, startCoursePromptData, id}) {
                             {cardTextContent}
                         </p>
                     ))}
-                    <p className="card_component_text course_intro">{enableResume ? restartText : startText}</p>
+                    <LessonAudioPlayer
+                        englishAudio={startCoursePromptData.EnglishAudio}
+                        twiAudio={startCoursePromptData.TwiAudio}
+                        englishAudioName={startCoursePromptData.EnglishAudio}
+                        twiAudioName={startCoursePromptData.TwiAudio}
 
+                    />
                 </div>
 
-                    {shouldDoTutorial ? (
-                        enableResume ? (
-                            cardActionResume()
-
-                        ) : (
-                           cardActionTutorialStartOnly()// Remove angle brackets to correctly reference the component
-
-                        )
-                    ) : (
-                        <div className={`question_prompt_button_divs course_intro`}>
-                            <button ref={!enableResume ? continueButtonRef : null} className="lesson_buttons icon-buttons" onClick={() => ready()}>
-                                <p>{enableResume ? "RESTART" : "START"}</p>
-                                <i className="material-icons" alt="restart icon">change_history</i>
-                            </button>
-                            {enableResume && (
-                                <button ref={enableResume ? continueButtonRef : null} className="lesson_buttons icon-buttons" onClick={() => continueProgress()}>
-                                    <p>CONTINUE</p>
-                                    <i className="material-icons" alt="continue icon">radio_button_unchecked</i>
-                                </button>
-                            )}
-                        </div>
-                    )}
+                <div className={`card_action_image ${enableResume ? "continueShift": "startShift"}`}>
+                    {shouldDoTutorial && <img
+                        src={PointingSide}
+                        className={`course_intro hands ${enableResume ? "continue" : "start"}`}
+                        alt="pointing hands"
+                    />}
+                </div>
+                <div className="card_action buttons">
+                    <button className="lesson_buttons icon-buttons card_action_buttons_smallscreen" onClick={() => ready()}>
+                        <p>{enableResume ? "RESTART" : "START"}</p>
+                        <i className="material-icons" alt="restart icon">change_history</i>
+                    </button>
+                    <button className="lesson_buttons icon-buttons card_action_buttons_smallscreen" disabled={!enableResume} onClick={() => continueProgress()}>
+                        <p>CONTINUE</p>
+                        <i className="material-icons" alt="continue icon">radio_button_unchecked</i>
+                    </button>
+                </div>
             </div>
         </div>
 

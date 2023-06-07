@@ -61,7 +61,7 @@ padding: 16px;
 }
 
 .question_prompt_button_divs.course_intro{
-  width: 100%;
+ /* width: 100%;*/
   padding: 8px;
 }
 
@@ -115,10 +115,15 @@ button {
 
 }
 
-.course_intro.hands.continue{
+.image_container_continue{
+  display: flex;
+  justify-content: center;
+}
+
+/*.course_intro.hands.continue{
   position: relative;
   left: 70%;
-}
+}*/
 
 .course_intro.hands.start{
 
@@ -904,6 +909,7 @@ progress::-moz-progress-bar {
 
 #logo{
   width: 10%;
+  display: none;
 }
 
 .question_buttons{
@@ -974,10 +980,19 @@ progress::-moz-progress-bar {
 
 }
 
+button:disabled {
+  /* Custom styles for disabled button */
+  opacity: 0.6; /* Reduced opacity */
+  cursor: not-allowed; /* Change cursor to "not-allowed" */
+  /* Add any other styles you want to apply to disabled buttons */
+}
+
 
 .score_rec_text.main{
   font-weight: bolder;
 }
+
+
 /*@keyframes touch {
   0% { transform: scale(1); }
   25% { transform: scale(0.95); }
@@ -998,7 +1013,120 @@ progress::-moz-progress-bar {
 
 }
 
+.lesson_buttons.icon-buttons.cardresume{
+ gap: 5px;
+}
+
+.card_action{
+  padding: 16px;
+}
+
+.card_action_image{
+  padding: 0 16px 0 16px;
+
+}
+
+.card_action.buttons{
+  display: flex;
+  justify-content: space-evenly;
+}
+
+
 @media only screen and (max-width: 767px){
+
+  .lesson_card_media{
+    display:flex;
+    justify-content: center;
+    background-color: #e1e5df;
+  }
+
+
+  .empower_us_audios.question_audio_icons{
+  margin-bottom: 8px;
+  }
+
+  .cardContainer{
+    padding: 8px;
+  }
+
+  .card_action_image.continueShift{
+    position: relative;
+    left: 200px;
+  }
+
+  .card_action_image.startShift{
+    position: relative;
+    left: 50px;
+  }
+
+
+
+  .card_action_buttons_smallscreen{
+    font-size: 16px;
+  }
+
+
+
+
+/* .startButton{
+    order:3;
+
+  }
+
+  .card_action_column.continueAudio{
+    flex-basis: 100%;
+    order: 1
+  }
+
+
+  .courseIntroButtons{
+    order: 2;
+  }
+  .question_prompt_button_divs.course_intro{
+    flex-wrap: wrap;
+    row-gap: 20px;
+  }
+
+
+  .lesson_buttons.icon-buttons.cardresume{
+    font-size: 16px;
+  }
+
+
+  .empower_us_audios.question_audio_icons{
+    padding: 8px;
+  }
+
+  .card_action_column.pointing_hands{
+    flex-basis: 50%;
+    order: 2;
+
+  }
+
+  .card_action_flex-grid{
+    display: flex;
+  !*  flex-direction: column-reverse;*!
+    flex-wrap: wrap;
+    padding: 16px;
+    align-items: flex-end;
+  }
+
+  .card_action_column.audio{
+    flex-basis: 100%;
+    order: 1;
+  }
+
+  .card_action_column.restart_button{
+    flex-basis: 50%;
+    order: 3;
+  }
+
+  .card_action_column {
+    flex-basis: 50%; !* Take 33.33% width on screens larger than 768px *!
+  }*/
+
+
+
 
   .navCard.help_page{
     flex-direction: column;
@@ -1066,10 +1194,10 @@ progress::-moz-progress-bar {
   .user_coins{
     font-size: 18px;
   }
-  .score_rec_text{
+ /* .score_rec_text{
     padding: 16px;
   }
-
+*/
   .appbar-icons{
     width: 100%;
     justify-content: space-evenly;
@@ -1159,10 +1287,49 @@ progress::-moz-progress-bar {
 
 @media only screen and (min-width: 767px){
 
+
+  .card_action_image.startShift{
+    position: relative;
+    left: 22%;
+  }
+
+  .card_action_image.continueShift{
+    position: relative;
+    left: 65%;
+  }
+
+  .question_audio_icons{
+    justify-content: space-evenly;
+  }
+
+
+
+  .nav-title{
+    padding: 8px;
+  }
+
+
+  .empower_us_audios.question_audio_icons{
+    justify-content: space-evenly;
+  }
+
+  .card_action_column.main_container{
+    display: flex;
+    align-items: flex-end;
+  }
+
   .card_action_flex-grid{
     display: flex;
     padding: 16px;
     align-items: flex-end;
+  }
+
+ /* .card_action_column.buttons{
+    flex: 2;
+  }*/
+
+  .card_action_column.audio{
+    flex: 1;
   }
 
   .card_action_column{
@@ -1210,7 +1377,7 @@ progress::-moz-progress-bar {
     padding: 1%;
   }
   .navCard.importantAudioPlayer{
-    width: 70%;
+    width: 50%;
     margin: 2% auto;
     padding: 0.5%;
   }

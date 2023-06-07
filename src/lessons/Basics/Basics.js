@@ -11,7 +11,7 @@ function Basics() {
     const questionTypeArray=["trueorfalse", "mcq"]
     const basicsPromptData = {
         cardTextContent:[
-            "For this section, we will be going through the topics that you will cover in the application.", "To complete this course and start the next one, you must get at least 7 questions right."
+            "For this section, we will be going through the topics that you will cover in the application. To complete this course and start the next one, you must get at least 7 questions right. Click the button with the triangle to start/restart or click the button with the circle to continue from where you last left off.",
         ],
 
         quizImage : lesson1Image,

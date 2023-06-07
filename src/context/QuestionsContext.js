@@ -10,9 +10,11 @@ function QuestionContextProvider({children, state, dispatch}) {
     const {playAudio, isPlaying, stopAudio,stopAnswerAudio} = useContext(AudioContext);
     //const questionIndex = useRef(0)
     const {userCoins, setUserCoins, updateUserCoins} = useContext(RewardsContext);
-    const [correctNumberAnswers, setCorrectNumberAnswers] = useState(0)
+    //const [correctNumberAnswers, setCorrectNumberAnswers] = useState(0)
+    const correctNumberAnswers = state.correctNumberOfAnswers
     const [selectedAnswer, setSelectedAnswer] = useState(null)
-    const [currentQuestion, setCurrentQuestion] = useState(0);
+    //const [currentQuestion, setCurrentQuestion] = useState(0);
+    const currentQuestion = state.currentQuestionIndex
     useEffect(() => {
         CorrectAudio.preload = 'auto';
         CorrectAudio.load();
@@ -38,7 +40,9 @@ function QuestionContextProvider({children, state, dispatch}) {
                  //console.log(question.componentScore)
                  dispatch({type: "SET_SCORE", payload: {lesson: state.id, value: 10}});
                  updateUserCoins(10)
-                 setCorrectNumberAnswers(correctNumberAnswers + 1)
+                 dispatch({ type: "INCREASE_CORRECT_NUMBER_OF_ANSWERS", payload: { lesson: state.id, value: 1 }});
+
+                 //setCorrectNumberAnswers(correctNumberAnswers + 1)
              }
          }
          dispatch({ type: "SET_QUESTION_IS_ANSWERED", payload: { lesson: state.id, questionIndex: id, currentQuestionIndex: currentQuestion}});
@@ -47,7 +51,8 @@ function QuestionContextProvider({children, state, dispatch}) {
 
     const handleNextQuestion = useCallback(() => {
         setSelectedAnswer(null)
-        setCurrentQuestion(currentQuestion + 1)
+        dispatch({ type: "INCREASE_CURRENT_QUESTION_INDEX", payload: { lesson: state.id, value: 1 }});
+        //setCurrentQuestion(currentQuestion + 1)
         if(isPlaying){
             stopAudio()
         }
@@ -59,7 +64,8 @@ function QuestionContextProvider({children, state, dispatch}) {
             // dispatch({ type: "DECREASE_NUMBER_OF_LESSONS_COMPLETED", payload: { lesson: state.id, value: 1 }});
         }else{
             setSelectedAnswer(null)
-            setCurrentQuestion(currentQuestion - 1)
+            dispatch({ type: "INCREASE_CURRENT_QUESTION_INDEX", payload: { lesson: state.id, value: 1 }});
+            //setCurrentQuestion(currentQuestion - 1)
             console.log("BACK BUTTON AND IS PLAYING")
             console.log(isPlaying)
         }
@@ -82,14 +88,21 @@ function QuestionContextProvider({children, state, dispatch}) {
         }*/
 
         dispatch({ type: "SET_QUESTION_STARTED", payload: {lesson: state.id,started: false}});
+        dispatch({ type: "SET_KEY_LESSON_STATE", payload: {lesson: state.id,started: false}});
         dispatch({ type: "INCREASE_NUMBER_OF_QUESTIONS_COMPLETED", payload: {lesson: state.id,value: 1}});
-        setCurrentQuestion(0);
-        setCorrectNumberAnswers(0)
+        dispatch({ type: "SET_CURRENT_QUESTION_INDEX", payload: { lesson: state.id, value: 0 }});
+        dispatch({ type: "SET_CORRECT_NUMBER_OF_ANSWERS", payload: { lesson: state.id, value: 0 }});
+        dispatch({ type: "SET_CURRENT_LESSON_INDEX", payload: {lesson: state.id,value: 0}});
+
+
+
+        //setCurrentQuestion(0);
+        //setCorrectNumberAnswers(0)
     },[])
 
 
     return(
-        <QuestionContext.Provider value={{ handleNextQuestion, checkAnswer, state, dispatch, nextSetOfQuestions, selectedAnswer, setSelectedAnswer, currentQuestion, correctNumberAnswers, setCurrentQuestion, handlePrevQuestion, isPlaying, CorrectAudio}}>
+        <QuestionContext.Provider value={{ handleNextQuestion, checkAnswer, state, dispatch, nextSetOfQuestions, selectedAnswer, setSelectedAnswer, currentQuestion, correctNumberAnswers, handlePrevQuestion, isPlaying, CorrectAudio}}>
             {children}
         </QuestionContext.Provider>
     )

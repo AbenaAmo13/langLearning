@@ -14,9 +14,6 @@ function CourseSummary({state, dispatch, lessonId}){
 
     const nextComponent=()=>{
         dispatch({ type: "SET_LESSON_COMPLETED", payload: { lesson: state.id, completed:true }});
-
-
-
     }
          return (<div className="overall_lessons_container">
              <div className="lesson_card_visuals lessonBlueOutline">

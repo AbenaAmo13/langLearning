@@ -9,13 +9,14 @@ function HealthCare(){
     const questionTypeArray=["matching", "mcq", "trueorfalse"]
     const healthCarePromptData = {
         cardTextContent:[
-            "For this section, we will be going over how the Government of Ghana help us with our healthcare, If you are ready to start click yes, if not click no. "
+            "For this section, we will be going over how the Government of Ghana help us with our healthcare. Click the button with the triangle to start/restart or click the button with the square to continue from where you last left off."
         ],
         quizImage : lesson1Image,
-        cardTitle: "Health Care",
+        cardTitle: "Ghana Health Service",
         cardTitleTwi: "twiTitle",
         EnglishAudio: courseIntroEnglish,
         TwiAudio: courseIntroTwi,
+        progressKeyName: "Health"
     }
     // Dynamic lesson components data
     const lessonComponentsData = [
@@ -39,6 +40,7 @@ function HealthCare(){
                 redirectToLink="/Education"
                 lessonComponentsData = {lessonComponentsData}
                 failRedirectTo="/Health"
+                progressKeyName="Health"
             />
         </div>
     )

@@ -135,6 +135,11 @@ function MatchingOptionsQuestions({id}) {
 
 
     const handleAnswers=()=> {
+
+        if(isPlaying){
+            stopAudio()
+        }
+
         if(leftOptionSelected && rightOptionSelected){
             let optionPair = {
                 leftColumn: leftOptionSelected,

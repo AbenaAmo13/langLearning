@@ -8,7 +8,7 @@ function QuestionPrompt({state,dispatch, questionPromptData, id}) {
 
     function notReady(){
         dispatch({ type: "DECREASE_NUMBER_OF_LESSONS_COMPLETED", payload: { lesson: state.id, value: 1 }});
-
+        dispatch({ type: "SET_QUESTION_STARTED", payload: { lesson: state.id, started: false }});
         dispatch({ type: "SET_LESSON_COMPLETED", payload: { lesson: state.id, completed: false }});
         if(isPlaying){
             stopAudio()

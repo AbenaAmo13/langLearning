@@ -13,7 +13,8 @@ import Id from "./lessons/Id/Id"
 import HelpPage from "./HelpPage";
 import RewardsStore from "./reusable-components/RewardsStore";
 import RewardsContextProvider from "./context/RewardsContext";
-import AudioTEST from "./db";
+import 'react-toastify/dist/ReactToastify.css';
+
 
 
 export const LockedStatusObjContext = createContext(null);
@@ -41,6 +42,10 @@ function App() {
         lessonCompleted: false,
         lastLessonIndex: 0,
         currentQuestionIndex: 0,
+        correctNumberOfAnswers: 0,
+        scores: 0,
+        questionStarted: false,
+        keyLessonState: false,
         savedUserProgress: false
     }
 
@@ -109,7 +114,7 @@ function App() {
                                        element={lockedStatusJsonObj && lockedStatusJsonObj.Identification === false ?
                                            (<Id/>) : (<Navigate to="/"/>)}/>
                                 <Route path="/RewardStore" element={<RewardsStore/>}/>
-                                <Route path="/AudioTest" element={<AudioTEST/>}/>
+
                             </Routes>
                         </BrowserRouter>
                     </div>
