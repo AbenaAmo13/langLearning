@@ -40,7 +40,7 @@ After this to run the program, you will need to type this command:
 ```
 npm run start 
 ```
-That is all. If you want to install the application, and have it on working offline click on the install button shown in the top app bar in the image above. 
+That's it! To install the application and use it offline, click the "Install" button in the top app bar, as shown in the image above.
 
 
 
